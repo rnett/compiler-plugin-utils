@@ -81,7 +81,7 @@ abstract class BaseIrPluginTest : HasContext {
     @TestFactory
     fun Tests() = MakeTests(this::class)
 
-    protected fun withLet(expression: IrExpression, block: IrBlockBodyBuilder.(IrValueParameter) -> Unit) = AlsoTest(expression, block)
+    protected fun withAlso(expression: IrExpression, block: IrBlockBodyBuilder.(IrValueParameter) -> Unit) = AlsoTest(expression, block)
 
     protected fun testProperty() = ReadOnlyProperty<IrBuilderWithScope, IrCall> { builder, prop ->
         with(builder) {

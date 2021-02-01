@@ -66,32 +66,32 @@ class MapTests : BaseIrPluginTest() {
     // mutable map
 
     @PluginTestReplaceInAlso("map + (3 to 4)")
-    fun IrBuilderWithScope.testMapPut() = withLet(newMutableMap) {
+    fun IrBuilderWithScope.testMapPut() = withAlso(newMutableMap) {
         +stdlib.collections.MutableMap.put(irGet(it), irInt(3), irInt(4))
     }
 
     @PluginTestReplaceInAlso("map - 2")
-    fun IrBuilderWithScope.testMapRemove() = withLet(newMutableMap) {
+    fun IrBuilderWithScope.testMapRemove() = withAlso(newMutableMap) {
         +stdlib.collections.MutableMap.remove(irGet(it), irInt(2))
     }
 
     @PluginTestReplaceInAlso("map + map2")
-    fun IrBuilderWithScope.testMapPutAllList() = withLet(newMutableMap) {
+    fun IrBuilderWithScope.testMapPutAllList() = withAlso(newMutableMap) {
         +stdlib.collections.MutableMap.putAllIterable(irGet(it), pairList2)
     }
 
     @PluginTestReplaceInAlso("map + map2")
-    fun IrBuilderWithScope.testMapPutAllMap() = withLet(newMutableMap) {
+    fun IrBuilderWithScope.testMapPutAllMap() = withAlso(newMutableMap) {
         +stdlib.collections.MutableMap.putAll(irGet(it), map2)
     }
 
     @PluginTestReplaceInAlso("map + (20 to 21)")
-    fun IrBuilderWithScope.testMapPutAllMakeMap() = withLet(newMutableMap) {
+    fun IrBuilderWithScope.testMapPutAllMakeMap() = withAlso(newMutableMap) {
         +stdlib.collections.MutableMap.putAll(irGet(it), mapOf(irInt(20) to irInt(21)), context.irBuiltIns.intType, context.irBuiltIns.intType)
     }
 
     @PluginTestReplaceInAlso("emptyMap<Int, Int>()")
-    fun IrBuilderWithScope.testMapClear() = withLet(newMutableMap) {
+    fun IrBuilderWithScope.testMapClear() = withAlso(newMutableMap) {
         +stdlib.collections.MutableMap.clear(irGet(it))
     }
 }

@@ -138,9 +138,12 @@ object Kotlin : RootPackage("kotlin") {
 
         //TODO Array<>.toList()
 
+        //TODO Map.getValue
         //TODO List toVararg?  Can I use toTypedArray for everything or do I need to use toIntArray etc for primitives?
+        //TODO operators on read-only.  (i.e. set + set2)
         //TODO Numbers & math?
         //TODO extensive tests
+        //TODO error, require, common exceptions
 
         fun test(m: kotlin.collections.MutableMap<Int, Int>) {
             m.putAll(listOf(1 to 2))

@@ -12,4 +12,6 @@ class ListTests : BaseIrPluginTest() {
 
     @TestFunction("list.toMutableList()")
     val IrBuilderWithScope.newMutableList by testFunction()
+
+    //TODO tests
 }
