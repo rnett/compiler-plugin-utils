@@ -6,10 +6,13 @@ import com.tschuchort.compiletesting.SourceFile
 import org.jetbrains.kotlin.compiler.plugin.ComponentRegistrar
 import kotlin.reflect.KClass
 
-fun compileTests(vararg klasses: KClass<out BaseIrPluginTest>): KotlinCompilation.Result = compile(
-    klasses.map { SourceFile.kotlin(it.getTestObjectName() + ".kt", it.generateTestObjectSrc()) },
-    TestPlugin(*klasses)
-)
+fun compileTests(vararg klasses: Pair<BaseIrPluginTest, KClass<out BaseIrPluginTest>>): Pair<KotlinCompilation.Result, List<Pair<String, String>>> {
+    val files = klasses.map { (it.second.getTestObjectName() + ".kt") to it.second.generateTestObjectSrc(it.first) }
+    return compile(
+        files.map { SourceFile.kotlin(it.first, it.second) },
+        TestPlugin(klasses.map { it.second })
+    ) to files
+}
 
 fun compile(
     sourceFiles: List<SourceFile>,

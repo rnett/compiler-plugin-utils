@@ -29,6 +29,7 @@ import org.jetbrains.kotlin.ir.types.IrType
 import org.jetbrains.kotlin.ir.types.IrTypeArgument
 import org.jetbrains.kotlin.ir.types.impl.IrSimpleTypeImpl
 import org.jetbrains.kotlin.ir.types.typeWith
+import org.jetbrains.kotlin.ir.util.superTypes
 import org.jetbrains.kotlin.utils.addToStdlib.cast
 
 val CompilerConfiguration.messageCollector get() = get(CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY, MessageCollector.NONE)
@@ -63,6 +64,15 @@ fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitializer.() -> Unit):
         this.addMember(it)
         it.parent = this
     }
+}
+
+fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
+    raiseToOrNull(predicate) ?: error("Type doesn't match predicate, and no matching supertypes found")
+
+fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? {
+    if (predicate(this))
+        return this
+    return this.superTypes().firstOrNull(predicate)
 }
 
 //fun IrClassifierSymbol.typeWith(vararg arguments: IrTypeArgument): IrSimpleType = typeWith(arguments.toList())

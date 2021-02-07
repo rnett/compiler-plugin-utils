@@ -34,8 +34,6 @@ annotation class PluginTestReplaceIn(
     val irValueType: String = ""
 )
 
-fun PluginTestReplaceIn.toSpec() = TestGenSpec(expect, checkType, suffix, assertMethod, irValueType)
-
 
 /**
  * Like [PluginTestReplaceIn], for for functions that return [AlsoTest].
@@ -51,37 +49,14 @@ annotation class PluginTestReplaceInAlso(
     val irValueType: String = "",
 )
 
-fun PluginTestReplaceInAlso.toSpec() = TestGenSpec(expect, checkType, suffix, assertMethod, irValueType)
-
-class TestGenSpec(val expect: String, val checkType: String, val suffix: String, val assertMethod: String, irValueType: String) {
-    val irValueType = if (irValueType.isNotBlank()) irValueType else checkType
-
-    val oneArg = expect.isBlank()
-    fun generate() = buildString {
-
-        val irValue = (if (irValueType.isBlank()) "irValue()" else "irValue<$irValueType>()")
-
-        append(assertMethod)
-        append("(")
-        if (oneArg) {
-            append("$irValue$suffix")
-        } else {
-            append("$expect, $irValue$suffix")
-        }
-
-        appendLine(")")
-        if (checkType.isNotBlank()) {
-            appendLine("assertTrue($irValue is $checkType)")
-        }
-
-    }.trimEnd()
-}
+@Target(AnnotationTarget.FUNCTION)
+annotation class TestAnnotations(val annotations: Array<String>)
 
 /**
  * Generates a property w/ the same name, with the given initializer.
  */
 @Target(AnnotationTarget.PROPERTY)
-annotation class TestProperty(val src: String)
+annotation class TestProperty(val src: String, val type: String = "")
 
 
 /**

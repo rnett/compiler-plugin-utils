@@ -1,6 +1,7 @@
 package com.rnett.plugin
 
 import com.rnett.plugin.naming.ClassRef
+import com.rnett.plugin.naming.FunctionRef
 import com.rnett.plugin.naming.Reference
 import com.rnett.plugin.naming.TypeRef
 import com.rnett.plugin.naming.typeRef
@@ -16,6 +17,7 @@ import org.jetbrains.kotlin.ir.builders.*
 import org.jetbrains.kotlin.ir.builders.declarations.IrFunctionBuilder
 import org.jetbrains.kotlin.ir.builders.declarations.buildFun
 import org.jetbrains.kotlin.ir.declarations.*
+import org.jetbrains.kotlin.ir.expressions.IrExpressionBody
 import org.jetbrains.kotlin.ir.expressions.IrStatementOrigin
 import org.jetbrains.kotlin.ir.expressions.impl.IrConstImpl
 import org.jetbrains.kotlin.ir.expressions.impl.IrFunctionExpressionImpl
@@ -103,32 +105,38 @@ interface HasContext {
         endOffset: Int = UNDEFINED_OFFSET
     ) = IrConstImpl.constNull(startOffset, endOffset, type)
 
-    fun IrBuilderWithScope.buildLambda(
-        returnType: IrType,
-        funBuilder: IrFunctionBuilder.() -> Unit = {},
-        funApply: IrSimpleFunction.() -> Unit
-    ): IrSimpleFunction = factory.buildFun {
-        name = Name.special("<anonymous>")
-        this.returnType = returnType
-        this.origin = IrDeclarationOrigin.LOCAL_FUNCTION_FOR_LAMBDA
-        this.visibility = DescriptorVisibilities.LOCAL
-        funBuilder()
-    }.apply {
-        this.patchDeclarationParents(this@buildLambda.parent)
-        funApply()
-    }
+    fun IrBuilderWithScope.irCall(funcRef: FunctionRef) = irCall(funcRef.resolve())
+    fun IrBuilderWithScope.irCall(funcRef: FunctionRef, type: IrType) = irCall(funcRef.resolve(), type)
 
+    /**
+     * Return type must be specified at some point, but may be passed as null and specified later (or used w/ an expression body)
+     */
     fun IrBuilderWithScope.buildLambda(
+        returnType: IrType?,
         funBuilder: IrFunctionBuilder.() -> Unit = {},
         funApply: IrSimpleFunction.() -> Unit
     ): IrSimpleFunction = factory.buildFun {
         name = Name.special("<anonymous>")
+        if (returnType != null)
+            this.returnType = returnType
         this.origin = IrDeclarationOrigin.LOCAL_FUNCTION_FOR_LAMBDA
         this.visibility = DescriptorVisibilities.LOCAL
         funBuilder()
     }.apply {
         this.patchDeclarationParents(this@buildLambda.parent)
         funApply()
+
+        val returnTypeSet = try {
+            this.returnType
+            true
+        } catch (e: Throwable) {
+            false
+        }
+
+        val body = this.body
+        if (!returnTypeSet && body is IrExpressionBody) {
+            this.returnType = body.expression.type
+        }
     }
 
     fun lambdaArgument(

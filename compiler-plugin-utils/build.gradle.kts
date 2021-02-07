@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30-RC")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
 
     testImplementation(kotlin("test-junit5"))
 
@@ -16,7 +16,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 
     testImplementation(kotlin("reflect"))
-    testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30-RC")
+    testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
     testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.3.5")
 
     testCompileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
@@ -27,6 +27,7 @@ kotlin {
     sourceSets.all {
         languageSettings.apply {
             useExperimentalAnnotation("kotlin.contracts.ExperimentalContracts")
+//            languageVersion = "1.5"
         }
     }
 }

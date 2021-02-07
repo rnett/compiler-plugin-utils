@@ -11,13 +11,24 @@ import kotlin.test.assertEquals
 
 @OptIn(ExperimentalStdlibApi::class)
 @TestFactory
-fun MakeTests(klass: KClass<out BaseIrPluginTest>) = buildList<DynamicTest> {
-    val compileResult = compileTests(klass)
+fun MakeTests(tests: BaseIrPluginTest, klass: KClass<out BaseIrPluginTest>) = buildList<DynamicTest> {
+    val (compileResult, files) = compileTests(tests to klass)
 
     val objectClass = try {
         compileResult.classLoader.loadClass(klass.getTestObjectName())
     } catch (e: ClassNotFoundException) {
-        error("Couldn't compile.  Messages: " + compileResult.messages)
+        error(buildString {
+            appendLine("Couldn't compile.  Messages: ")
+            appendLine(compileResult.messages)
+            appendLine()
+            appendLine("-".repeat(20))
+            appendLine()
+            appendLine("Sources:")
+            files.forEach {
+                appendLine("----- ${it.first} -----")
+                appendLine(it.second)
+            }
+        })
     }
     val objectInstance = objectClass.kotlin.objectInstance ?: error("Object was not initialized.  Compiler messages: " + compileResult.messages)
 

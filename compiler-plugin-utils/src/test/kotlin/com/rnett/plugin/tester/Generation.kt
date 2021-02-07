@@ -1,34 +1,41 @@
 package com.rnett.plugin.tester
 
-import org.jetbrains.kotlin.utils.addToStdlib.firstIsInstanceOrNull
 import kotlin.reflect.KClass
-import kotlin.reflect.full.declaredFunctions
-import kotlin.reflect.full.declaredMembers
 import kotlin.reflect.full.findAnnotation
+import kotlin.reflect.full.superclasses
 
 fun KClass<out BaseIrPluginTest>.getTestObjectName() =
     findAnnotation<PluginTests>()?.testObjectName?.ifBlank { null }
         ?: simpleName
         ?: error("No specified test object name, and class does not have a valid simple name")
 
-fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(): String {
+fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(obj: BaseIrPluginTest): String {
     val klass = this
+    check(klass.isInstance(obj)) { "Passed object $obj was not an instance of passed class $klass" }
+
     return buildString {
 
         val indents = mutableListOf<String>()
         operator fun String.unaryPlus() = appendLine(this.prependIndent(indents.joinToString("")))
 
         fun withIndent(block: () -> Unit) {
-            indents += "\t"
+            indents += "    "
             block()
             indents.removeLast()
 
         }
 
-        val annotation = klass.annotations.firstIsInstanceOrNull<PluginTests>()
+        val annotation = klass.findAnnotation<PluginTests>()
         annotation?.imports?.forEach {
             +"import $it"
         }
+
+        klass.superclasses.forEach {
+            it.findAnnotation<PluginTests>()?.imports?.forEach {
+                +"import $it"
+            }
+        }
+
         appendLine()
         +"import kotlin.test.Test"
         +"import kotlin.test.assertEquals"
@@ -41,9 +48,14 @@ fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(): String {
         +"@com.rnett.plugin.tester.plugin.TestObject"
         +"object $name {"
         withIndent {
-            klass.declaredMembers.forEach { member ->
+            klass.members.forEach { member ->
                 member.findAnnotation<TestProperty>()?.let {
-                    +"val ${member.name} = ${it.src}"
+                    val type = if (it.type.isNotBlank())
+                        ": ${it.type}"
+                    else
+                        ""
+
+                    +"val ${member.name}$type = ${it.src}"
                 }
 
                 member.findAnnotation<TestFunction>()?.let {
@@ -55,31 +67,19 @@ fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(): String {
             +"fun <T> irValue(): T = error(\"Should be replaced by compiler\")"
             appendLine()
 
-            klass.declaredFunctions.forEach { func ->
-                func.findAnnotation<PluginReplace>()?.let {
-                    +"fun ${func.name}(${it.args}): ${it.returnType} = error(\"Should be replaced by compiler\")"
-                    appendLine()
-                }
+            val tests = BaseIrPluginTest::allTests.invoke(obj)
 
-                (func.findAnnotation<PluginTestReplaceIn>()?.toSpec()
-                    ?: func.findAnnotation<PluginTestReplaceInAlso>()?.toSpec()
-                        )?.let {
-                        val funcString = buildString {
-                            +"@Test"
-                            +"fun ${func.name}(){"
-                            withIndent {
-                                val body = it.generate()
-                                +"println(\"\"\"\tTest: ${func.name}\n$body\"\"\".trimIndent())"
-                                +body
-                            }
-                            +"}"
-                        }
-                        appendLine()
-                    }
+            tests.filterIsInstance<PluginTest.Replace>().forEach {
+                +"fun ${it.name}(${it.args}): ${it.returnType} = error(\"Should be replaced by compiler\")"
+                appendLine()
+            }
+
+            tests.forEach {
+                it.apply { generate() }
             }
 
         }
 
         +"}"
-    }
+    }.replace("\t", "    ")
 }

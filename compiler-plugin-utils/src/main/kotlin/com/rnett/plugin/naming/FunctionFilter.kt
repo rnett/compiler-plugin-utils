@@ -100,4 +100,9 @@ fun <T : IFunctionFilter> T.withFilter(filter: (IrFunction) -> Boolean) = apply 
     filter(filter)
 }
 
+fun <T : IFunctionFilter> T.withExtensionReceiverType(classRef: () -> ClassRef) = apply {
+    val ref = lazy(classRef)
+    extensionReceiver = { it.type.isClassifierOf(ref.value) }
+}
+
 inline operator fun <T : IFunctionFilter> T.invoke(builder: IFunctionFilter.() -> Unit) = apply(builder)

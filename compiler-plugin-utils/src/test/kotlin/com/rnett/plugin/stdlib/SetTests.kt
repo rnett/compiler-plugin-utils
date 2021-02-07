@@ -45,6 +45,18 @@ class SetTests : BaseIrPluginTest() {
     fun IrBuilderWithScope.testContainsAllBuildSet() =
         stdlib.collections.Set.containsAll(set, context.irBuiltIns.intType, setOf(1, 2, 3, 4).map { irInt(it) })
 
+    @PluginTestReplaceIn("set + list2")
+    fun IrBuilderWithScope.testSetPlusSet() = stdlib.collections.Set.plusIterable(set, list2)
+
+    @PluginTestReplaceIn("set + 21")
+    fun IrBuilderWithScope.testSetPlusElement() = stdlib.collections.Set.plusElement(set, irInt(21))
+
+    @PluginTestReplaceIn("set - list2")
+    fun IrBuilderWithScope.testSetMinusSet() = stdlib.collections.Set.minusIterable(set, list2)
+
+    @PluginTestReplaceIn("set - 2")
+    fun IrBuilderWithScope.testSetMinusElement() = stdlib.collections.Set.minusElement(set, irInt(2))
+
     // mutable set
 
     @PluginTestReplaceInAlso("set + 5")
@@ -81,4 +93,5 @@ class SetTests : BaseIrPluginTest() {
     fun IrBuilderWithScope.testSetClear() = withAlso(newMutableSet) {
         +stdlib.collections.MutableSet.clear(irGet(it))
     }
+
 }

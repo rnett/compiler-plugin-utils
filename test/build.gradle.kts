@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     implementation(project(":compiler-plugin-utils"))
-    implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30-RC")
+    implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
 }
 
 kotlin {

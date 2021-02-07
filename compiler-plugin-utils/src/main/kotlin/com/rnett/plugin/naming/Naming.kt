@@ -30,16 +30,24 @@ private inline fun <T> Iterable<T>.singleOrError(onMultiple: String, onNone: Str
 interface Reference<S : IrBindableSymbol<*, *>> {
     fun resolve(context: IrPluginContext): S
     fun resolveOrNull(context: IrPluginContext): S?
+    operator fun invoke(context: IrPluginContext): S = resolve(context)
 }
 
-fun FqName.descendant(id: String): FqName =
-    id.split('.')
+fun FqName.descendant(id: String): FqName {
+    if (id.isBlank())
+        return this
+
+    return id.split('.')
         .fold(this) { name, part ->
             name.child(Name.guessByFirstCharacter(part))
         }
+}
 
 sealed class BaseReference(protected val name: String, open val parent: Namespace?) {
     val fqName: FqName by lazy { parent?.fqName?.descendant(name) ?: FqName(name) }
+    override fun toString(): String {
+        return fqName.toString()
+    }
 }
 
 sealed class Namespace(name: String, parent: Namespace? = null, val isRoot: Boolean = false) : BaseReference(name, parent) {
@@ -92,10 +100,11 @@ class FunctionRefDelegate internal constructor(val parent: Namespace? = null) : 
 class FunctionRef internal constructor(name: String, parent: Namespace?, filter: IFunctionFilter) :
     BaseReference(name, parent), Reference<IrSimpleFunctionSymbol>, IFunctionFilter by filter {
     override fun resolve(context: IrPluginContext) =
-        context.referenceFunctions(fqName).singleOrError("Multiple function matches for $fqName", "No matches for $fqName") { matches(it.owner) }
+        context.referenceFunctions(fqName).distinct()
+            .singleOrError("Multiple function matches for $fqName", "No matches for $fqName") { matches(it.owner) }
 
     override fun resolveOrNull(context: IrPluginContext): IrSimpleFunctionSymbol? =
-        context.referenceFunctions(fqName).singleOrNull { matches(it.owner) }
+        context.referenceFunctions(fqName).distinct().singleOrNull { matches(it.owner) }
 
     inline operator fun getValue(thisRef: Any?, property: KProperty<*>) = this
 }
@@ -113,9 +122,11 @@ class PropertyRefDelegate internal constructor(val parent: Namespace? = null) : 
 class PropertyRef internal constructor(name: String, parent: Namespace? = null, filter: IPropertyFilter) :
     BaseReference(name, parent), Reference<IrPropertySymbol>, IPropertyFilter by filter {
     override fun resolve(context: IrPluginContext) =
-        context.referenceProperties(fqName).singleOrError("Multiple property matches for $fqName", "No matches for $fqName") { matches(it.owner) }
+        context.referenceProperties(fqName).distinct()
+            .singleOrError("Multiple property matches for $fqName", "No matches for $fqName") { matches(it.owner) }
 
-    override fun resolveOrNull(context: IrPluginContext): IrPropertySymbol? = context.referenceProperties(fqName).singleOrNull { matches(it.owner) }
+    override fun resolveOrNull(context: IrPluginContext): IrPropertySymbol? =
+        context.referenceProperties(fqName).distinct().singleOrNull { matches(it.owner) }
 
     inline operator fun getValue(thisRef: Any?, property: KProperty<*>) = this
 }
@@ -127,17 +138,18 @@ fun Namespace.property(filter: PropertyFilter.() -> Unit = {}) = PropertyRefDele
 
 
 class ConstructorRefDelegate internal constructor(val parent: ClassRef) : ConstructorFilter(), ReadOnlyProperty<Any?, ConstructorRef> {
-    override operator fun getValue(thisRef: Any?, property: KProperty<*>) = ConstructorRef(parent, this)
+    override operator fun getValue(thisRef: Any?, property: KProperty<*>) = value
+    val value = ConstructorRef(parent, this)
 }
 
 class ConstructorRef internal constructor(override val parent: ClassRef, filter: ConstructorFilter) :
     BaseReference("", parent), Reference<IrConstructorSymbol>, IConstructorFilter by filter {
     override fun resolve(context: IrPluginContext) =
-        context.referenceConstructors(fqName)
+        context.referenceConstructors(fqName).distinct()
             .singleOrError("Multiple constructor matches for $fqName", "No matches for $fqName") { matches(it.owner) }
 
     override fun resolveOrNull(context: IrPluginContext): IrConstructorSymbol? =
-        context.referenceConstructors(fqName).singleOrNull { matches(it.owner) }
+        context.referenceConstructors(fqName).distinct().singleOrNull { matches(it.owner) }
 
     inline operator fun getValue(thisRef: Any?, property: KProperty<*>) = this
 }
