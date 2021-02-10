@@ -1,22 +1,43 @@
 package com.rnett.plugin.resolve
 
 import org.jetbrains.kotlin.name.FqName
-import kotlin.reflect.KAnnotatedElement
+import kotlin.reflect.KCallable
+import kotlin.reflect.KClass
 
 //TODO implement.  I need to apply the compiler plugin to this.  I really need two libraries, one before compiler plugin one with it applied
 //TODO  or just one with it applied?  I think that's the way to go
 
 
 /**
- * Has to be called directly on the reference.
+ * Has to be called directly on the literal (i.e. not on a reference passed as a parameter).
+ * Will be replaced during compilation.
  */
-fun getFqName(element: KAnnotatedElement): FqName = error("Should be replaced by compiler plugin")
+@Suppress("unused")
+public fun getFqName(element: KCallable<*>): FqName = error("Should be replaced by compiler plugin")
 
 
 /**
- * Has to be called directly on the reference.
+ * Has to be called directly on the literal (i.e. not on a reference passed as a parameter).
+ * Will be replaced during compilation.
  */
-fun KAnnotatedElement.fqName(): FqName = error("Should be replaced by compiler plugin")
+@Suppress("unused")
+public fun getFqName(element: KClass<*>): FqName = error("Should be replaced by compiler plugin")
+
+
+/**
+ * Has to be called directly on the literal (i.e. not on a reference passed as a parameter).
+ * Will be replaced during compilation.
+ */
+@Suppress("unused")
+public fun KCallable<*>.fqName(): FqName = error("Should be replaced by compiler plugin")
+
+
+/**
+ * Has to be called directly on the literal (i.e. not on a reference passed as a parameter).
+ * Will be replaced during compilation.
+ */
+@Suppress("unused")
+public fun KClass<*>.fqName(): FqName = error("Should be replaced by compiler plugin")
 
 //
 ///**

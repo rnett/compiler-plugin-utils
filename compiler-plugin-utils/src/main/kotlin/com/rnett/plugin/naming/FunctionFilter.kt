@@ -4,25 +4,31 @@ import org.jetbrains.kotlin.ir.declarations.IrFunction
 import org.jetbrains.kotlin.ir.declarations.IrValueParameter
 import org.jetbrains.kotlin.ir.util.isVararg
 
-interface IFunctionFilter {
-    var numParameters: Int?
-    var numTypeParameters: Int?
-    var parameters: MutableMap<Int, (IrValueParameter) -> Boolean>
-    var hasExtensionReceiver: Boolean?
-    var extensionReceiver: ((IrValueParameter) -> Boolean)?
-    var hasDispatchReceiver: Boolean?
-    var hasVararg: Boolean?
-    var isExpect: Boolean?
-    fun matches(function: IrFunction): Boolean
+/**
+ * A filter for resolving IR functions
+ */
+public interface IFunctionFilter {
+    public var numParameters: Int?
+    public var numTypeParameters: Int?
+    public var parameters: MutableMap<Int, (IrValueParameter) -> Boolean>
+    public var hasExtensionReceiver: Boolean?
+    public var extensionReceiver: ((IrValueParameter) -> Boolean)?
+    public var hasDispatchReceiver: Boolean?
+    public var hasVararg: Boolean?
+    public var isExpect: Boolean?
+    public fun matches(function: IrFunction): Boolean
 
-    fun filter(filter: (IrFunction) -> Boolean)
+    public fun filter(filter: (IrFunction) -> Boolean)
 
-    operator fun Int.invoke(filter: (IrValueParameter) -> Boolean) {
+    public operator fun Int.invoke(filter: (IrValueParameter) -> Boolean) {
         parameters[this] = filter
     }
 }
 
-open class FunctionFilter internal constructor() : IFunctionFilter {
+/**
+ * Implementation of [IFunctionFilter]
+ */
+public open class FunctionFilter internal constructor() : IFunctionFilter {
 
     override var numParameters: Int? = null
     override var numTypeParameters: Int? = null
@@ -96,13 +102,19 @@ open class FunctionFilter internal constructor() : IFunctionFilter {
     }
 }
 
-fun <T : IFunctionFilter> T.withFilter(filter: (IrFunction) -> Boolean) = apply {
+/**
+ * Add a lambda filter
+ */
+public fun <T : IFunctionFilter> T.withFilter(filter: (IrFunction) -> Boolean): T = apply {
     filter(filter)
 }
 
-fun <T : IFunctionFilter> T.withExtensionReceiverType(classRef: () -> ClassRef) = apply {
+/**
+ * Only select functions with a matching (lazily resolved) extension receiver
+ */
+public fun <T : IFunctionFilter> T.withExtensionReceiverType(classRef: () -> ClassRef): T = apply {
     val ref = lazy(classRef)
     extensionReceiver = { it.type.isClassifierOf(ref.value) }
 }
 
-inline operator fun <T : IFunctionFilter> T.invoke(builder: IFunctionFilter.() -> Unit) = apply(builder)
+public inline operator fun <T : IFunctionFilter> T.invoke(builder: IFunctionFilter.() -> Unit): T = apply(builder)

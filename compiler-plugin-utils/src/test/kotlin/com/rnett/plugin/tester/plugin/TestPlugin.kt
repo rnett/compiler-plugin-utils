@@ -1,6 +1,6 @@
 package com.rnett.plugin.tester.plugin
 
-import com.rnett.plugin.messageCollector
+import com.rnett.plugin.ir.messageCollector
 import com.rnett.plugin.tester.BaseIrPluginTest
 import com.rnett.plugin.tester.getTestObjectName
 import org.jetbrains.kotlin.backend.common.extensions.IrGenerationExtension

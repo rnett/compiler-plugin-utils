@@ -1,11 +1,7 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.irTypeOf
-import com.rnett.plugin.tester.BaseIrPluginTest
-import com.rnett.plugin.tester.PluginTestReplaceIn
-import com.rnett.plugin.tester.PluginTests
-import com.rnett.plugin.tester.TestAnnotations
-import com.rnett.plugin.tester.TestProperty
+import com.rnett.plugin.ir.irTypeOf
+import com.rnett.plugin.tester.*
 import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.irGet
 import org.jetbrains.kotlin.ir.builders.irInt

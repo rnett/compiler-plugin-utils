@@ -24,9 +24,11 @@ dependencies {
 }
 
 kotlin {
+    explicitApi()
     sourceSets.all {
         languageSettings.apply {
             useExperimentalAnnotation("kotlin.contracts.ExperimentalContracts")
+            useExperimentalAnnotation("kotlin.RequiresOptIn")
 //            languageVersion = "1.5"
         }
     }

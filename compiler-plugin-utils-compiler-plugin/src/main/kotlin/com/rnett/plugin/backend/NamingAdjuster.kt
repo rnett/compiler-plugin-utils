@@ -13,20 +13,14 @@ import org.jetbrains.kotlin.ir.builders.irDelegatingConstructorCall
 import org.jetbrains.kotlin.ir.builders.irGetObject
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrFile
-import org.jetbrains.kotlin.ir.declarations.path
 import org.jetbrains.kotlin.ir.expressions.IrDelegatingConstructorCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 import org.jetbrains.kotlin.ir.expressions.impl.IrConstImpl
-import org.jetbrains.kotlin.ir.util.deepCopyWithSymbols
-import org.jetbrains.kotlin.ir.util.isAnonymousObject
-import org.jetbrains.kotlin.ir.util.isObject
-import org.jetbrains.kotlin.ir.util.isSubclassOf
-import org.jetbrains.kotlin.ir.util.primaryConstructor
+import org.jetbrains.kotlin.ir.util.*
 import org.jetbrains.kotlin.ir.visitors.IrElementTransformerVoid
 import org.jetbrains.kotlin.ir.visitors.transformChildrenVoid
 import org.jetbrains.kotlin.resolve.descriptorUtil.isAncestorOf
 import org.jetbrains.kotlin.utils.addToStdlib.lastIsInstanceOrNull
-import java.io.File
 
 class NamingAdjuster(val context: IrPluginContext, override val messageCollector: MessageCollector) : IrElementTransformerVoidWithContext(),
     FileLoweringPass, WithReporter {
@@ -41,12 +35,10 @@ class NamingAdjuster(val context: IrPluginContext, override val messageCollector
     val PackageWithName = context.referenceConstructors(Names.Package).single { it.owner.valueParameters.size == 1 }
     val PackageEmpty = context.referenceConstructors(Names.Package).single { it.owner.valueParameters.isEmpty() }
 
-    override lateinit var file: File
-    override lateinit var fileText: String
+    override lateinit var file: IrFile
 
     override fun lower(irFile: IrFile) {
-        file = File(irFile.path)
-        fileText = file.readText()
+        file = irFile
         irFile.transformChildrenVoid()
     }
 

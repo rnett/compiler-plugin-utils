@@ -12,19 +12,13 @@ import org.jetbrains.kotlin.ir.builders.irCall
 import org.jetbrains.kotlin.ir.builders.irString
 import org.jetbrains.kotlin.ir.declarations.IrDeclarationParent
 import org.jetbrains.kotlin.ir.declarations.IrFile
-import org.jetbrains.kotlin.ir.declarations.path
-import org.jetbrains.kotlin.ir.expressions.IrCall
-import org.jetbrains.kotlin.ir.expressions.IrDeclarationReference
-import org.jetbrains.kotlin.ir.expressions.IrExpression
-import org.jetbrains.kotlin.ir.expressions.IrFunctionReference
-import org.jetbrains.kotlin.ir.expressions.IrPropertyReference
+import org.jetbrains.kotlin.ir.expressions.*
 import org.jetbrains.kotlin.ir.util.copyValueArgumentsFrom
 import org.jetbrains.kotlin.ir.util.kotlinFqName
 import org.jetbrains.kotlin.ir.util.nameForIrSerialization
 import org.jetbrains.kotlin.ir.util.originalProperty
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.utils.addToStdlib.safeAs
-import java.io.File
 
 class GetFqNameResolver(val context: IrPluginContext, override val messageCollector: MessageCollector) : IrElementTransformerVoidWithContext(),
     FileLoweringPass, WithReporter {
@@ -47,12 +41,10 @@ class GetFqNameResolver(val context: IrPluginContext, override val messageCollec
         it.owner.valueParameters.size == 1 && it.owner.valueParameters.first().type.asString() == "kotlin.String"
     }
 
-    override lateinit var file: File
-    override lateinit var fileText: String
+    override lateinit var file: IrFile
 
     override fun lower(irFile: IrFile) {
-        file = File(irFile.path)
-        fileText = file.readText()
+        file = irFile
         irFile.transformChildrenVoid()
     }
 

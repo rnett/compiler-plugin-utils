@@ -1,6 +1,6 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.irTypeOf
+import com.rnett.plugin.ir.irTypeOf
 import com.rnett.plugin.tester.BaseIrPluginTest
 import com.rnett.plugin.tester.PluginTestReplaceIn
 import com.rnett.plugin.tester.TestProperty

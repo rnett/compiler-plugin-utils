@@ -3,23 +3,28 @@ package com.rnett.plugin.naming
 import org.jetbrains.kotlin.ir.backend.js.utils.asString
 import org.jetbrains.kotlin.ir.declarations.IrProperty
 import org.jetbrains.kotlin.ir.declarations.IrValueParameter
-
-interface IPropertyFilter {
-    var isDelegated: Boolean?
-    var hasBackingField: Boolean?
-    var fieldType: String?
-    var hasGetter: Boolean?
-    var getterType: String?
-    var hasSetter: Boolean?
-    var type: String?
-    var isExpect: Boolean?
-    var hasExtensionReceiver: Boolean?
-    var extensionReceiver: ((IrValueParameter) -> Boolean)?
-    fun filter(filter: (IrProperty) -> Boolean)
-    fun matches(property: IrProperty): Boolean
+/**
+ * A filter for resolving IR properties
+ */
+public interface IPropertyFilter {
+    public var isDelegated: Boolean?
+    public var hasBackingField: Boolean?
+    public var fieldType: String?
+    public var hasGetter: Boolean?
+    public var getterType: String?
+    public var hasSetter: Boolean?
+    public var type: String?
+    public var isExpect: Boolean?
+    public var hasExtensionReceiver: Boolean?
+    public var extensionReceiver: ((IrValueParameter) -> Boolean)?
+    public fun filter(filter: (IrProperty) -> Boolean)
+    public fun matches(property: IrProperty): Boolean
 }
 
-open class PropertyFilter internal constructor() : IPropertyFilter {
+/**
+ * Implementation of [IPropertyFilter]
+ */
+public open class PropertyFilter internal constructor() : IPropertyFilter {
     private var filter: (IrProperty) -> Boolean = { true }
     override fun filter(filter: (IrProperty) -> Boolean) {
         val old = this.filter
@@ -120,8 +125,8 @@ open class PropertyFilter internal constructor() : IPropertyFilter {
 
 }
 
-fun <T : IPropertyFilter> T.withFilter(filter: (IrProperty) -> Boolean) = apply {
+public fun <T : IPropertyFilter> T.withFilter(filter: (IrProperty) -> Boolean): T = apply {
     filter(filter)
 }
 
-inline operator fun <T : IPropertyFilter> T.invoke(builder: IPropertyFilter.() -> Unit) = apply(builder)
+public inline operator fun <T : IPropertyFilter> T.invoke(builder: IPropertyFilter.() -> Unit): T = apply(builder)

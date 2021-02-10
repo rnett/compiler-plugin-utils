@@ -1,66 +1,52 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.naming.Class
-import com.rnett.plugin.naming.ClassRef
-import com.rnett.plugin.naming.ConstructorRef
-import com.rnett.plugin.naming.FunctionRef
-import com.rnett.plugin.naming.PackageRef
-import com.rnett.plugin.naming.RootPackage
-import com.rnett.plugin.naming.constructor
-import com.rnett.plugin.naming.function
-import com.rnett.plugin.naming.isClassifierOf
-import com.rnett.plugin.naming.property
-import com.rnett.plugin.naming.withExtensionReceiverType
+import com.rnett.plugin.naming.*
 import org.jetbrains.kotlin.ir.backend.js.utils.asString
-import org.jetbrains.kotlin.ir.types.IrType
-import org.jetbrains.kotlin.ir.types.isByte
-import org.jetbrains.kotlin.ir.types.isDouble
-import org.jetbrains.kotlin.ir.types.isFloat
-import org.jetbrains.kotlin.ir.types.isInt
-import org.jetbrains.kotlin.ir.types.isLong
-import org.jetbrains.kotlin.ir.types.isNullableAny
-import org.jetbrains.kotlin.ir.types.isShort
+import org.jetbrains.kotlin.ir.types.*
 
 //TODO be able to auto-generate name hierarchies for classes/packages.  Needs FIR for the actual generation though
 
-object Kotlin : RootPackage("kotlin") {
-    object Reflect : PackageRef() {
-        val typeOf by function("typeOf")
-        val KType by Class("KType")
+/**
+ * A collection of References from Kotlin's standard library.  Accessible in IR from [com.rnett.plugin.ir.HasContext.stdlib]
+ */
+public object Kotlin : RootPackage("kotlin") {
+    public object Reflect : PackageRef() {
+        public val typeOf: FunctionRef by function("typeOf")
+        public val KType: ClassRef by Class("KType")
     }
 
-    object Any : ClassRef() {
-        val hashCodeRef by function("hashCode")
-        val toStringRef by function("toString")
+    public object Any : ClassRef() {
+        public val hashCodeRef: FunctionRef by function("hashCode")
+        public val toStringRef: FunctionRef by function("toString")
     }
 
-    object String : ClassRef()
+    public object String : ClassRef()
 
-    val nullableHashCode by function("hashCode") {
+    public val nullableHashCode: FunctionRef by function("hashCode") {
         numParameters = 0
     }
-    val nullableToString by function("toString") {
+    public val nullableToString: FunctionRef by function("toString") {
         numParameters = 0
     }
 
-    object Collections : PackageRef() {
-        val listOfVararg by function("listOf") { hasVararg = true }
-        val mapOfVararg by function("mapOf") { hasVararg = true }
-        val setOfVararg by function("setOf") { hasVararg = true }
+    public object Collections : PackageRef() {
+        public val listOfVararg: FunctionRef by function("listOf") { hasVararg = true }
+        public val mapOfVararg: FunctionRef by function("mapOf") { hasVararg = true }
+        public val setOfVararg: FunctionRef by function("setOf") { hasVararg = true }
 
-        val mutableListOfVararg by function("mutableListOf") { hasVararg = true }
-        val mutableMapOfVararg by function("mutableMapOf") { hasVararg = true }
-        val mutableSetOfVararg by function("mutableSetOf") { hasVararg = true }
+        public val mutableListOfVararg: FunctionRef by function("mutableListOf") { hasVararg = true }
+        public val mutableMapOfVararg: FunctionRef by function("mutableMapOf") { hasVararg = true }
+        public val mutableSetOfVararg: FunctionRef by function("mutableSetOf") { hasVararg = true }
 
-        val listOfEmpty by function("listOf") { numParameters = 0 }
-        val mapOfEmpty by function("mapOf") { numParameters = 0 }
-        val setOfEmpty by function("setOf") { numParameters = 0 }
+        public val listOfEmpty: FunctionRef by function("listOf") { numParameters = 0 }
+        public val mapOfEmpty: FunctionRef by function("mapOf") { numParameters = 0 }
+        public val setOfEmpty: FunctionRef by function("setOf") { numParameters = 0 }
 
-        val mutableListOfEmpty by function("mutableListOf") { numParameters = 0 }
-        val mutableMapOfEmpty by function("mutableMapOf") { numParameters = 0 }
-        val mutableSetOfEmpty by function("mutableSetOf") { numParameters = 0 }
+        public val mutableListOfEmpty: FunctionRef by function("mutableListOf") { numParameters = 0 }
+        public val mutableMapOfEmpty: FunctionRef by function("mutableMapOf") { numParameters = 0 }
+        public val mutableSetOfEmpty: FunctionRef by function("mutableSetOf") { numParameters = 0 }
 
-        val iterablePlusIterableToList by function("plus") {
+        public val iterablePlusIterableToList: FunctionRef by function("plus") {
             val iterableType by lazy { Iterable }
             extensionReceiver = {
                 it.type.isClassifierOf(iterableType)
@@ -71,29 +57,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val iterablePlusElementToList by function("plus") {
-            val iterableType by lazy { Iterable }
-            extensionReceiver = {
-                it.type.isClassifierOf(iterableType)
-            }
-            numParameters = 1
-            parameters[0] = {
-                it.type.asString() == "T"
-            }
-        }
-
-        val iterableMinusIterableToList by function("minus") {
-            val iterableType by lazy { Iterable }
-            extensionReceiver = {
-                it.type.isClassifierOf(iterableType)
-            }
-            numParameters = 1
-            parameters[0] = {
-                it.type.isClassifierOf(iterableType)
-            }
-        }
-
-        val iterableMinusElementToList by function("minus") {
+        public val iterablePlusElementToList: FunctionRef by function("plus") {
             val iterableType by lazy { Iterable }
             extensionReceiver = {
                 it.type.isClassifierOf(iterableType)
@@ -104,7 +68,29 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val setPlusIterableToSet by function("plus") {
+        public val iterableMinusIterableToList: FunctionRef by function("minus") {
+            val iterableType by lazy { Iterable }
+            extensionReceiver = {
+                it.type.isClassifierOf(iterableType)
+            }
+            numParameters = 1
+            parameters[0] = {
+                it.type.isClassifierOf(iterableType)
+            }
+        }
+
+        public val iterableMinusElementToList: FunctionRef by function("minus") {
+            val iterableType by lazy { Iterable }
+            extensionReceiver = {
+                it.type.isClassifierOf(iterableType)
+            }
+            numParameters = 1
+            parameters[0] = {
+                it.type.asString() == "T"
+            }
+        }
+
+        public val setPlusIterableToSet: FunctionRef by function("plus") {
             val setType by lazy { Set }
             val iterableType by lazy { Iterable }
             extensionReceiver = {
@@ -116,7 +102,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val setPlusElementToSet by function("plus") {
+        public val setPlusElementToSet: FunctionRef by function("plus") {
             val setType by lazy { Set }
             extensionReceiver = {
                 it.type.isClassifierOf(setType)
@@ -127,7 +113,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val setMinusIterableToSet by function("minus") {
+        public val setMinusIterableToSet: FunctionRef by function("minus") {
             val setType by lazy { Set }
             val iterableType by lazy { Iterable }
             extensionReceiver = {
@@ -139,7 +125,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val setMinusElementToSet by function("minus") {
+        public val setMinusElementToSet: FunctionRef by function("minus") {
             val setType by lazy { Set }
             extensionReceiver = {
                 it.type.isClassifierOf(setType)
@@ -150,7 +136,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val mapPlusIterablePairs by function("plus") {
+        public val mapPlusIterablePairs: FunctionRef by function("plus") {
             val mapType by lazy { Map }
             val iterableType by lazy { Iterable }
             extensionReceiver = {
@@ -162,7 +148,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val mapPlusMap by function("plus") {
+        public val mapPlusMap: FunctionRef by function("plus") {
             val mapType by lazy { Map }
             extensionReceiver = {
                 it.type.isClassifierOf(mapType)
@@ -173,7 +159,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val mapPlusElementPair by function("plus") {
+        public val mapPlusElementPair: FunctionRef by function("plus") {
             val mapType by lazy { Map }
             val pairType by lazy { Pair }
             extensionReceiver = {
@@ -185,7 +171,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val mapMinusIterableKeys by function("minus") {
+        public val mapMinusIterableKeys: FunctionRef by function("minus") {
             val mapType by lazy { Map }
             val iterableType by lazy { Iterable }
             extensionReceiver = {
@@ -197,7 +183,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        val mapMinusKey by function("minus") {
+        public val mapMinusKey: FunctionRef by function("minus") {
             val mapType by lazy { Map }
             extensionReceiver = {
                 it.type.isClassifierOf(mapType)
@@ -208,153 +194,149 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        object Map : ClassRef() {
-            val size by property()
-            val isEmpty by function()
-            val containsKey by function()
-            val containsValue by function()
-            val get by function()
+        public object Map : ClassRef() {
+            public val size: PropertyRef by property()
+            public val isEmpty: FunctionRef by function()
+            public val containsKey: FunctionRef by function()
+            public val containsValue: FunctionRef by function()
+            public val get: FunctionRef by function()
 
-            val keys by property()
-            val values by property()
-            val entries by property()
+            public val keys: PropertyRef by property()
+            public val values: PropertyRef by property()
+            public val entries: PropertyRef by property()
         }
 
-        object MutableMap : ClassRef() {
-            val Map = Collections.Map
+        public object MutableMap : ClassRef() {
+            public val Map: Map = Collections.Map
 
-            val put by function()
-            val remove by function {
+            public val put: FunctionRef by function()
+            public val remove: FunctionRef by function {
                 numParameters = 1
             }
 
-            val putAll by function()
-            val putAllIterable by Collections.function("putAll") {
+            public val putAll: FunctionRef by function()
+            public val putAllIterable: FunctionRef by Collections.function("putAll") {
                 hasExtensionReceiver = true
                 parameters[0] = {
                     it.type.asString() == "kotlin.collections.Iterable<kotlin.Pair<K,V>>"
                 }
             }
-            val clear by function()
+            public val clear: FunctionRef by function()
         }
 
-        object Set : ClassRef() {
-            val size by property()
-            val isEmpty by function()
-            val contains by function()
-            val iterator by function()
+        public object Set : ClassRef() {
+            public val size: PropertyRef by property()
+            public val isEmpty: FunctionRef by function()
+            public val contains: FunctionRef by function()
+            public val iterator: FunctionRef by function()
 
-            val containsAll by function()
+            public val containsAll: FunctionRef by function()
         }
 
-        object MutableSet : ClassRef() {
-            val Set = Collections.Set
+        public object MutableSet : ClassRef() {
+            public val Set: Set = Collections.Set
 
-            val add by function { numParameters = 1 }
-            val remove by function()
-            val addAll by function { numParameters = 1 }
-            val removeAll by function()
-            val clear by function()
+            public val add: FunctionRef by function { numParameters = 1 }
+            public val remove: FunctionRef by function()
+            public val addAll: FunctionRef by function { numParameters = 1 }
+            public val removeAll: FunctionRef by function()
+            public val clear: FunctionRef by function()
         }
 
-        object List : ClassRef() {
-            val size by property()
-            val isEmpty by function()
-            val contains by function()
-            val iterator by function()
+        public object List : ClassRef() {
+            public val size: PropertyRef by property()
+            public val isEmpty: FunctionRef by function()
+            public val contains: FunctionRef by function()
+            public val iterator: FunctionRef by function()
 
-            val get by function()
-            val indexOf by function()
+            public val get: FunctionRef by function()
+            public val indexOf: FunctionRef by function()
         }
 
-        object MutableList : ClassRef() {
-            val List = Collections.List
+        public object MutableList : ClassRef() {
+            public val List: List = Collections.List
 
-            val add by function { numParameters = 1 }
-            val remove by function()
-            val addAll by function { numParameters = 1 }
-            val removeAll by function()
-            val clear by function()
-            val set by function()
+            public val add: FunctionRef by function { numParameters = 1 }
+            public val remove: FunctionRef by function()
+            public val addAll: FunctionRef by function { numParameters = 1 }
+            public val removeAll: FunctionRef by function()
+            public val clear: FunctionRef by function()
+            public val set: FunctionRef by function()
         }
 
-        val Iterable by Class()
+        public val Iterable: ClassRef by Class()
 
-        val Collection by Class()
+        public val Collection: ClassRef by Class()
 
-        val iterableToList by function("toList").withExtensionReceiverType { Iterable }
-        val iterableToMutableList by function("toMutableList").withExtensionReceiverType { Iterable }
-        val mapToList by function("toList").withExtensionReceiverType { Map }
-        val iterableToMap by function("toMap") {
+        public val iterableToList: FunctionRef by function("toList").withExtensionReceiverType { Iterable }
+        public val iterableToMutableList: FunctionRef by function("toMutableList").withExtensionReceiverType { Iterable }
+        public val mapToList: FunctionRef by function("toList").withExtensionReceiverType { Map }
+        public val iterableToMap: FunctionRef by function("toMap") {
             numParameters = 0
         }.withExtensionReceiverType { Iterable }
 
-        val collectionToTypedArray by function("toTypedArray") {
+        public val collectionToTypedArray: FunctionRef by function("toTypedArray") {
             extensionReceiver = { it.type.asString() == "kotlin.collections.Collection<T>" }
         }
 
-        val arrayToList by function("toList").withExtensionReceiverType { Array }
+        public val arrayToList: FunctionRef by function("toList").withExtensionReceiverType { Array }
 
-        val arrayToMutableList by function("toMutableList").withExtensionReceiverType { Array }
+        public val arrayToMutableList: FunctionRef by function("toMutableList").withExtensionReceiverType { Array }
 
-        val mapGetValue by function("getValue") {
+        public val mapGetValue: FunctionRef by function("getValue") {
             numParameters = 1
         }.withExtensionReceiverType { Map }
-        val mapGetOrDefault by function("getOrDefault").withExtensionReceiverType { Map }
-        val mapGetOrElse by function("getOrElse").withExtensionReceiverType { Map }
-        val mutableMapGetOrPut by function("getOrPut") {
+        public val mapGetOrDefault: FunctionRef by function("getOrDefault").withExtensionReceiverType { Map }
+        public val mapGetOrElse: FunctionRef by function("getOrElse").withExtensionReceiverType { Map }
+        public val mutableMapGetOrPut: FunctionRef by function("getOrPut") {
             numParameters = 2
         }.withExtensionReceiverType { MutableMap }
 
         //TODO not in stdlib yet (same for getOrElseNullable)
-//        val mutableMapGetOrPutNullable by function("getOrPutNullable"){
+//        public val mutableMapGetOrPutNullable: FunctionRef by function("getOrPutNullable"){
 //            numParameters = 2
 //        }.withExtensionReceiverType{ MutableMap }
 
     }
 
-    val to by function()
-    val Pair by Class()
+    public val to: FunctionRef by function()
+    public val Pair: ClassRef by Class()
 
-    val Array by Class()
+    public val Array: ClassRef by Class()
 
-    val error by function()
+    public val error: FunctionRef by function()
 
-    val Annotation by Class()
+    public val Annotation: ClassRef by Class()
 
-    val let by function()
-    val also by function()
-    val run by function {
+    public val let: FunctionRef by function()
+    public val also: FunctionRef by function()
+    public val run: FunctionRef by function {
         hasExtensionReceiver = true
     }
-    val apply by function()
-    val with by function()
+    public val apply: FunctionRef by function()
+    public val with: FunctionRef by function()
 
-    fun test() {
-        val i = 3
-    }
-
-    object Number : ClassRef() {
-        val toDouble by function()
-        val toFloat by function()
-        val toLong by function()
-        val toInt by function()
-        val toChar by function()
-        val toShort by function()
-        val toByte by function()
+    public object Number : ClassRef() {
+        public val toDouble: FunctionRef by function()
+        public val toFloat: FunctionRef by function()
+        public val toLong: FunctionRef by function()
+        public val toInt: FunctionRef by function()
+        public val toChar: FunctionRef by function()
+        public val toShort: FunctionRef by function()
+        public val toByte: FunctionRef by function()
     }
 
     private fun isMathable(otherType: IrType) =
-        otherType.isByte() || otherType.isShort() || otherType.isInt() ||
-                otherType.isLong() || otherType.isFloat() || otherType.isDouble()
+            otherType.isByte() || otherType.isShort() || otherType.isInt() ||
+                    otherType.isLong() || otherType.isFloat() || otherType.isDouble()
 
     private fun requireMathable(otherType: IrType) =
-        require(isMathable(otherType)) { "Can only do math with Byte, Short, Int, Long, Float, and Double, got $otherType" }
+            require(isMathable(otherType)) { "Can only do math with Byte, Short, Int, Long, Float, and Double, got $otherType" }
 
-    interface Mathable {
-        val klass: ClassRef
+    public interface Mathable {
+        public val klass: ClassRef
 
-        fun plus(otherType: IrType): FunctionRef {
+        public fun plus(otherType: IrType): FunctionRef {
             requireMathable(otherType)
             return klass.function("plus") {
                 numParameters = 1
@@ -364,7 +346,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        fun minus(otherType: IrType): FunctionRef {
+        public fun minus(otherType: IrType): FunctionRef {
             requireMathable(otherType)
             return klass.function("minus") {
                 numParameters = 1
@@ -374,7 +356,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        fun times(otherType: IrType): FunctionRef {
+        public fun times(otherType: IrType): FunctionRef {
             requireMathable(otherType)
             return klass.function("times") {
                 numParameters = 1
@@ -384,7 +366,7 @@ object Kotlin : RootPackage("kotlin") {
             }
         }
 
-        fun div(otherType: IrType): FunctionRef {
+        public fun div(otherType: IrType): FunctionRef {
             requireMathable(otherType)
             return klass.function("div") {
                 numParameters = 1
@@ -395,109 +377,108 @@ object Kotlin : RootPackage("kotlin") {
         }
     }
 
-    object Byte : ClassRef(), Mathable {
+    public object Byte : ClassRef(), Mathable {
         override val klass: ClassRef = this
     }
 
-    object Short : ClassRef(), Mathable {
+    public object Short : ClassRef(), Mathable {
         override val klass: ClassRef = this
     }
 
-    object Int : ClassRef(), Mathable {
+    public object Int : ClassRef(), Mathable {
         override val klass: ClassRef = this
     }
 
-    object Long : ClassRef(), Mathable {
+    public object Long : ClassRef(), Mathable {
         override val klass: ClassRef = this
     }
 
-    object Float : ClassRef(), Mathable {
+    public object Float : ClassRef(), Mathable {
         override val klass: ClassRef = this
     }
 
-    object Double : ClassRef(), Mathable {
+    public object Double : ClassRef(), Mathable {
         override val klass: ClassRef = this
     }
 
-    val Throwable by Class()
+    public val Throwable: ClassRef by Class()
 
-    val Error = JavaLang.Error
-    val Exception = JavaLang.Exception
-    val RuntimeException = JavaLang.RuntimeException
-    val IllegalArgumentException = JavaLang.IllegalArgumentException
-    val IllegalStateException = JavaLang.IllegalStateException
-    val UnsupportedOperationException = JavaLang.UnsupportedOperationException
-    val AssertionError = JavaLang.AssertionError
+    public val Error: JavaLang.Error = JavaLang.Error
+    public val Exception: JavaLang.Exception = JavaLang.Exception
+    public val RuntimeException: JavaLang.RuntimeException = JavaLang.RuntimeException
+    public val IllegalArgumentException: JavaLang.IllegalArgumentException = JavaLang.IllegalArgumentException
+    public val IllegalStateException: JavaLang.IllegalStateException = JavaLang.IllegalStateException
+    public val UnsupportedOperationException: JavaLang.UnsupportedOperationException = JavaLang.UnsupportedOperationException
+    public val AssertionError: JavaLang.AssertionError = JavaLang.AssertionError
 
-    val NoSuchElementException = JavaUtil.NoSuchElementException
-    val IndexOutOfBoundsException = JavaLang.IndexOutOfBoundsException
-    val ClassCastException = JavaLang.ClassCastException
-    val NullPointerException = JavaLang.NullPointerException
+    public val NoSuchElementException: JavaUtil.NoSuchElementException = JavaUtil.NoSuchElementException
+    public val IndexOutOfBoundsException: JavaLang.IndexOutOfBoundsException = JavaLang.IndexOutOfBoundsException
+    public val ClassCastException: JavaLang.ClassCastException = JavaLang.ClassCastException
+    public val NullPointerException: JavaLang.NullPointerException = JavaLang.NullPointerException
 
     //TODO List toVararg?  Can I use toTypedArray for everything or do I need to use toIntArray etc for primitives?
     //TODO String
     //TODO javadoc comments w/ required types/signatures
-    //TODO make it easier to escape the generated hierarchy, i.e. for the exception classes.  Easiest is to make RootPackage open instead of abstract
 }
 
-interface ExceptionClass {
-    val klass: ClassRef
-    val newEmpty: ConstructorRef
+public interface ExceptionClass {
+    public val klass: ClassRef
+    public val newEmpty: ConstructorRef
         get() = klass.constructor {
             numParameters = 0
-        }.value
+        }
 
-    val newWithMessage: ConstructorRef
+    public val newWithMessage: ConstructorRef
         get() = klass.constructor {
             numParameters = 1
             parameters[0] = {
                 it.type.isClassifierOf(Kotlin.String)
             }
-        }.value
+        }
 }
 
-interface ExceptionClassWithCause : ExceptionClass {
-    val newWithMessageAndClause: ConstructorRef
+public interface ExceptionClassWithCause : ExceptionClass {
+    public val newWithMessageAndClause: ConstructorRef
         get() = klass.constructor {
             numParameters = 2
-        }.value
+        }
 
-    val newWithClause: ConstructorRef
+    public val newWithClause: ConstructorRef
         get() = klass.constructor {
             numParameters = 1
             parameters[0] = {
                 it.type.isClassifierOf(Kotlin.Throwable)
             }
-        }.value
+        }
 }
 
-object JavaLang : RootPackage("java.lang") {
+public object JavaLang : RootPackage("java.lang") {
 
-    object Error : ClassRef(), ExceptionClassWithCause {
+    public object Error : ClassRef(), ExceptionClassWithCause {
         override val klass: ClassRef = this
     }
 
-    object Exception : ClassRef(), ExceptionClassWithCause {
+    public object Exception : ClassRef(), ExceptionClassWithCause {
         override val klass: ClassRef = this
     }
 
-    object RuntimeException : ClassRef(), ExceptionClassWithCause {
+    public object RuntimeException : ClassRef(), ExceptionClassWithCause {
         override val klass: ClassRef = this
     }
 
-    object IllegalArgumentException : ClassRef(), ExceptionClassWithCause {
+    public object IllegalArgumentException : ClassRef(), ExceptionClassWithCause {
         override val klass: ClassRef = this
     }
 
-    object IllegalStateException : ClassRef(), ExceptionClassWithCause {
+    public object IllegalStateException : ClassRef(), ExceptionClassWithCause {
         override val klass: ClassRef = this
     }
 
-    object UnsupportedOperationException : ClassRef(), ExceptionClassWithCause {
+    public object UnsupportedOperationException : ClassRef(), ExceptionClassWithCause {
         override val klass: ClassRef = this
     }
 
-    object AssertionError : ClassRef(), ExceptionClassWithCause {
+    public object AssertionError : ClassRef(), ExceptionClassWithCause {
         override val klass: ClassRef = this
 
         override val newWithMessage: ConstructorRef
@@ -506,29 +487,29 @@ object JavaLang : RootPackage("java.lang") {
                 parameters[0] = {
                     it.type.isNullableAny()
                 }
-            }.value
+            }
 
         override val newWithClause: ConstructorRef
             get() = newWithMessage
     }
 
-    object IndexOutOfBoundsException : ClassRef(), ExceptionClass {
+    public object IndexOutOfBoundsException : ClassRef(), ExceptionClass {
         override val klass: ClassRef = this
     }
 
-    object ClassCastException : ClassRef(), ExceptionClass {
+    public object ClassCastException : ClassRef(), ExceptionClass {
         override val klass: ClassRef = this
     }
 
-    object NullPointerException : ClassRef(), ExceptionClass {
+    public object NullPointerException : ClassRef(), ExceptionClass {
         override val klass: ClassRef = this
     }
 }
 
-object JavaUtil : RootPackage("java.util") {
+public object JavaUtil : RootPackage("java.util") {
 
 
-    object NoSuchElementException : ClassRef(), ExceptionClass {
+    public object NoSuchElementException : ClassRef(), ExceptionClass {
         override val klass: ClassRef = this
     }
 

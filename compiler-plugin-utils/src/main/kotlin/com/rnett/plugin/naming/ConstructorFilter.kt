@@ -4,22 +4,28 @@ import org.jetbrains.kotlin.ir.declarations.IrConstructor
 import org.jetbrains.kotlin.ir.declarations.IrValueParameter
 import org.jetbrains.kotlin.ir.util.isVararg
 
-interface IConstructorFilter {
-    var numParameters: Int?
-    var parameters: MutableMap<Int, (IrValueParameter) -> Boolean>
-    var hasVararg: Boolean?
-    var isPrimary: Boolean?
-    var isExpect: Boolean?
-    fun matches(function: IrConstructor): Boolean
+/**
+ * A filter for resolving IR constructors.
+ */
+public interface IConstructorFilter {
+    public var numParameters: Int?
+    public var parameters: MutableMap<Int, (IrValueParameter) -> Boolean>
+    public var hasVararg: Boolean?
+    public var isPrimary: Boolean?
+    public var isExpect: Boolean?
+    public fun matches(function: IrConstructor): Boolean
 
-    fun filter(filter: (IrConstructor) -> Boolean)
+    public fun filter(filter: (IrConstructor) -> Boolean)
 
-    operator fun Int.invoke(filter: (IrValueParameter) -> Boolean) {
+    public operator fun Int.invoke(filter: (IrValueParameter) -> Boolean) {
         parameters[this] = filter
     }
 }
 
-open class ConstructorFilter internal constructor() : IConstructorFilter {
+/**
+ * Implementation of [IConstructorFilter]
+ */
+public open class ConstructorFilter internal constructor() : IConstructorFilter {
 
     override var numParameters: Int? = null
     override var parameters: MutableMap<Int, (IrValueParameter) -> Boolean> = mutableMapOf()
@@ -71,8 +77,8 @@ open class ConstructorFilter internal constructor() : IConstructorFilter {
     }
 }
 
-fun <T : IConstructorFilter> T.withFilter(filter: (IrConstructor) -> Boolean) = apply {
+public fun <T : IConstructorFilter> T.withFilter(filter: (IrConstructor) -> Boolean): T = apply {
     filter(filter)
 }
 
-inline operator fun <T : IConstructorFilter> T.invoke(builder: IConstructorFilter.() -> Unit) = apply(builder)
+public inline operator fun <T : IConstructorFilter> T.invoke(builder: IConstructorFilter.() -> Unit): T = apply(builder)

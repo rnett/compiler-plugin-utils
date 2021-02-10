@@ -1,6 +1,6 @@
 package com.rnett.plugin.tester.plugin
 
-import com.rnett.plugin.IrTransformer
+import com.rnett.plugin.ir.IrTransformer
 import com.rnett.plugin.tester.BaseIrPluginTest
 import com.rnett.plugin.tester.PluginTestContext
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
