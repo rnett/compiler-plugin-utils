@@ -1,10 +1,6 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.tester.BaseIrPluginTest
-import com.rnett.plugin.tester.PluginTestReplaceIn
-import com.rnett.plugin.tester.PluginTestReplaceInAlso
-import com.rnett.plugin.tester.TestFunction
-import com.rnett.plugin.tester.TestProperty
+import com.rnett.plugin.tester.*
 import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.irGet
 import org.jetbrains.kotlin.ir.builders.irInt
@@ -89,5 +85,15 @@ class ListTests : BaseIrPluginTest() {
     @PluginTestReplaceInAlso("listOf(10, 2, 3)")
     fun IrBuilderWithScope.testListSet() = withAlso(newMutableList) {
         +stdlib.collections.MutableList.set(irGet(it), irInt(0), irInt(10))
+    }
+
+    @PluginTestReplaceInAlso("listOf(1, 2)")
+    fun IrBuilderWithScope.testListRemoveLast() = withAlso(newMutableList) {
+        +stdlib.collections.MutableList.removeLast(irGet(it))
+    }
+
+    @PluginTestReplaceInAlso("listOf(2, 3)")
+    fun IrBuilderWithScope.testListRemoveFirst() = withAlso(newMutableList) {
+        +stdlib.collections.MutableList.removeFirst(irGet(it))
     }
 }

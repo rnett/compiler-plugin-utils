@@ -292,6 +292,10 @@ public object Kotlin : RootPackage("kotlin") {
             numParameters = 2
         }.withExtensionReceiverType { MutableMap }
 
+        public val mutableListRemoveLast: FunctionRef by function("removeLast").withExtensionReceiverType { MutableList }
+
+        public val mutableListRemoveFirst: FunctionRef by function("removeFirst").withExtensionReceiverType { MutableList }
+
         //TODO not in stdlib yet (same for getOrElseNullable)
 //        public val mutableMapGetOrPutNullable: FunctionRef by function("getOrPutNullable"){
 //            numParameters = 2

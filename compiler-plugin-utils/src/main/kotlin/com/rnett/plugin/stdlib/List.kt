@@ -1,6 +1,7 @@
 package com.rnett.plugin.stdlib
 
 import com.rnett.plugin.ir.withDispatchReceiver
+import com.rnett.plugin.ir.withExtensionReceiver
 import com.rnett.plugin.ir.withValueArguments
 import com.rnett.plugin.naming.ClassRef
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
@@ -188,5 +189,20 @@ public open class MutableListBuilders(collections: CollectionsBuilders, builder:
                 .withDispatchReceiver(receiver.checkType())
                 .withValueArguments(index, item)
     }
-    //TODO removeLast
+
+    public fun removeLast(
+            receiver: IrExpression,
+            startOffset: Int = UNDEFINED_OFFSET,
+            endOffset: Int = UNDEFINED_OFFSET
+    ): IrCall = buildStatement(startOffset, endOffset) {
+        irCall(Kotlin.Collections.mutableListRemoveLast).withExtensionReceiver(receiver.checkType())
+    }
+
+    public fun removeFirst(
+            receiver: IrExpression,
+            startOffset: Int = UNDEFINED_OFFSET,
+            endOffset: Int = UNDEFINED_OFFSET
+    ): IrCall = buildStatement(startOffset, endOffset) {
+        irCall(Kotlin.Collections.mutableListRemoveFirst).withExtensionReceiver(receiver.checkType())
+    }
 }
