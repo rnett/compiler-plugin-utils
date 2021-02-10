@@ -26,57 +26,61 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
     public val Any: AnyBuilders by lazy { AnyBuilders(builder, context) }
 
     public fun to(
-            first: IrExpression,
-            firstType: IrType,
-            second: IrExpression,
-            secondType: IrType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        first: IrExpression,
+        firstType: IrType,
+        second: IrExpression,
+        secondType: IrType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = buildStatement(startOffset, endOffset) {
         irCall(Kotlin.to())
-                .withTypeArguments(firstType, secondType)
-                .withExtensionReceiver(first)
-                .withValueArguments(second)
+            .withTypeArguments(firstType, secondType)
+            .withExtensionReceiver(first)
+            .withValueArguments(second)
     }
 
     public fun to(
-            first: IrExpression,
-            second: IrExpression,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        first: IrExpression,
+        second: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = buildStatement(startOffset, endOffset) {
         irCall(Kotlin.to())
-                .withExtensionReceiver(first)
-                .withValueArguments(second)
+            .withExtensionReceiver(first)
+            .withValueArguments(second)
     }
 
     public inner class ReflectBuilders {
-        public fun typeOf(type: IrType, startOffset: Int = UNDEFINED_OFFSET, endOffset: Int = UNDEFINED_OFFSET): IrCall =
-                buildStatement(startOffset, endOffset) {
-                    irCall(Kotlin.Reflect.typeOf(), Kotlin.Reflect.KType().typeWith())
-                            .withTypeArguments(type)
-                }
+        public fun typeOf(
+            type: IrType,
+            startOffset: Int = UNDEFINED_OFFSET,
+            endOffset: Int = UNDEFINED_OFFSET
+        ): IrCall =
+            buildStatement(startOffset, endOffset) {
+                irCall(Kotlin.Reflect.typeOf(), Kotlin.Reflect.KType().typeWith())
+                    .withTypeArguments(type)
+            }
     }
 
     public val reflect: ReflectBuilders = ReflectBuilders()
 
     public fun let(
-            receiver: IrExpression,
-            returnType: IrType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
+        receiver: IrExpression,
+        returnType: IrType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.let()).apply {
-                    extensionReceiver = receiver
-                    putTypeArgument(0, receiver.type)
-                    putTypeArgument(1, returnType)
-                    putValueArgument(0, lambdaArgument(
-                            buildLambda(returnType) {
-                                withBuilder {
-                                    val param = addValueParameter("it", receiver.type)
-                                    this@buildLambda.body = irBlockBody {
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.let()).apply {
+                extensionReceiver = receiver
+                putTypeArgument(0, receiver.type)
+                putTypeArgument(1, returnType)
+                putValueArgument(0, lambdaArgument(
+                    buildLambda(returnType) {
+                        withBuilder {
+                            val param = addValueParameter("it", receiver.type)
+                            this@buildLambda.body = irBlockBody {
                                 body(param)
                             }
                         }
@@ -86,21 +90,21 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         }
 
     public fun letExpr(
-            receiver: IrExpression,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: (IrExpression) -> IrExpression
+        receiver: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: (IrExpression) -> IrExpression
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.let()).apply {
-                    extensionReceiver = receiver
-                    putTypeArgument(0, receiver.type)
-                    putValueArgument(0, lambdaArgument(
-                            buildLambda(null) {
-                                withBuilder {
-                                    val param = addValueParameter("it", receiver.type)
-                                    val ret = body(irGet(param))
-                                    this@buildLambda.body = irExprBody(ret)
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.let()).apply {
+                extensionReceiver = receiver
+                putTypeArgument(0, receiver.type)
+                putValueArgument(0, lambdaArgument(
+                    buildLambda(null) {
+                        withBuilder {
+                            val param = addValueParameter("it", receiver.type)
+                            val ret = body(irGet(param))
+                            this@buildLambda.body = irExprBody(ret)
                         }
                     }
                 ))
@@ -108,22 +112,22 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         }
 
     public fun run(
-            receiver: IrExpression,
-            returnType: IrType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
+        receiver: IrExpression,
+        returnType: IrType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.run()).apply {
-                    extensionReceiver = receiver
-                    putTypeArgument(0, receiver.type)
-                    putTypeArgument(1, returnType)
-                    putValueArgument(0, lambdaArgument(
-                            buildLambda(returnType) {
-                                withBuilder {
-                                    val param = addExtensionReceiver(receiver.type)
-                                    this@buildLambda.body = irBlockBody {
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.run()).apply {
+                extensionReceiver = receiver
+                putTypeArgument(0, receiver.type)
+                putTypeArgument(1, returnType)
+                putValueArgument(0, lambdaArgument(
+                    buildLambda(returnType) {
+                        withBuilder {
+                            val param = addExtensionReceiver(receiver.type)
+                            this@buildLambda.body = irBlockBody {
                                 body(param)
                             }
                         }
@@ -133,21 +137,21 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         }
 
     public fun runExpr(
-            receiver: IrExpression,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: (IrExpression) -> IrExpression
+        receiver: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: (IrExpression) -> IrExpression
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.run()).apply {
-                    extensionReceiver = receiver
-                    putTypeArgument(0, receiver.type)
-                    putValueArgument(0, lambdaArgument(
-                            buildLambda(null) {
-                                withBuilder {
-                                    val param = addExtensionReceiver(receiver.type)
-                                    val ret = body(irGet(param))
-                                    this@buildLambda.body = irExprBody(ret)
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.run()).apply {
+                extensionReceiver = receiver
+                putTypeArgument(0, receiver.type)
+                putValueArgument(0, lambdaArgument(
+                    buildLambda(null) {
+                        withBuilder {
+                            val param = addExtensionReceiver(receiver.type)
+                            val ret = body(irGet(param))
+                            this@buildLambda.body = irExprBody(ret)
                         }
                     }
                 ))
@@ -155,22 +159,22 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         }
 
     public fun with(
-            expr: IrExpression,
-            returnType: IrType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
+        expr: IrExpression,
+        returnType: IrType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.with()).apply {
-                    putTypeArgument(0, expr.type)
-                    putTypeArgument(1, returnType)
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.with()).apply {
+                putTypeArgument(0, expr.type)
+                putTypeArgument(1, returnType)
 
-                    putValueArgument(0, expr)
-                    putValueArgument(1, lambdaArgument(
-                            buildLambda(returnType) {
-                                withBuilder {
-                                    val param = addExtensionReceiver(expr.type)
+                putValueArgument(0, expr)
+                putValueArgument(1, lambdaArgument(
+                    buildLambda(returnType) {
+                        withBuilder {
+                            val param = addExtensionReceiver(expr.type)
                             this@buildLambda.body = irBlockBody {
                                 body(param)
                             }
@@ -181,52 +185,52 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         }
 
     public fun withExpr(
-            expr: IrExpression,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: (IrExpression) -> IrExpression
+        expr: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: (IrExpression) -> IrExpression
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.with()).apply {
-                    putTypeArgument(0, expr.type)
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.with()).apply {
+                putTypeArgument(0, expr.type)
 
-                    putValueArgument(0, expr)
-                    putValueArgument(
-                            1, lambdaArgument(
-                            buildLambda(null) {
-                                withBuilder {
-                                    val param = addExtensionReceiver(expr.type)
+                putValueArgument(0, expr)
+                putValueArgument(
+                    1, lambdaArgument(
+                        buildLambda(null) {
+                            withBuilder {
+                                val param = addExtensionReceiver(expr.type)
                                 val ret = body(irGet(param))
                                 this@buildLambda.body = irExprBody(ret)
                             }
                         }
-                ))
+                    ))
             }
         }
 
     public fun withUnit(
-            expr: IrExpression,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            blockBodyBuilder: IrBlockBodyBuilder.(IrValueParameter) -> Unit
+        expr: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        blockBodyBuilder: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall = with(expr, context.irBuiltIns.unitType, startOffset, endOffset, blockBodyBuilder)
 
     public fun also(
-            receiver: IrExpression,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
+        receiver: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.also(), receiver.type).apply {
-                    extensionReceiver = receiver
-                    putTypeArgument(0, receiver.type)
-                    putValueArgument(0, lambdaArgument(
-                            buildLambda(context.irBuiltIns.unitType) {
-                                withBuilder {
-                                    val param = addValueParameter("it", receiver.type)
-                                    this@buildLambda.body = irBlockBody {
-                                        body(param)
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.also(), receiver.type).apply {
+                extensionReceiver = receiver
+                putTypeArgument(0, receiver.type)
+                putValueArgument(0, lambdaArgument(
+                    buildLambda(context.irBuiltIns.unitType) {
+                        withBuilder {
+                            val param = addValueParameter("it", receiver.type)
+                            this@buildLambda.body = irBlockBody {
+                                body(param)
                             }
                         }
                     }
@@ -235,27 +239,27 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         }
 
     public fun apply(
-            receiver: IrExpression,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
+        receiver: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
-            buildStatement(startOffset, endOffset) {
-                irCall(Kotlin.apply(), receiver.type).apply {
-                    extensionReceiver = receiver
-                    putTypeArgument(0, receiver.type)
-                    putValueArgument(0, lambdaArgument(
-                            buildLambda(context.irBuiltIns.unitType) {
-                                withBuilder {
-                                    val param = addExtensionReceiver(receiver.type)
-                                    this@buildLambda.body = irBlockBody {
-                                        body(param)
+        buildStatement(startOffset, endOffset) {
+            irCall(Kotlin.apply(), receiver.type).apply {
+                extensionReceiver = receiver
+                putTypeArgument(0, receiver.type)
+                putValueArgument(0, lambdaArgument(
+                    buildLambda(context.irBuiltIns.unitType) {
+                        withBuilder {
+                            val param = addExtensionReceiver(receiver.type)
+                            this@buildLambda.body = irBlockBody {
+                                body(param)
                             }
-                                }
-                            }
-                    ))
-                }
+                        }
+                    }
+                ))
             }
+        }
 
 
     @Suppress("unused")
@@ -273,32 +277,92 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
     public val Error: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.Error, builder, context) }
 
     @Suppress("unused")
-    public val Exception: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.Exception, builder, context) }
+    public val Exception: ExceptionBuildersWithCause by lazy {
+        ExceptionBuildersWithCause(
+            Kotlin.Exception,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val RuntimeException: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.RuntimeException, builder, context) }
+    public val RuntimeException: ExceptionBuildersWithCause by lazy {
+        ExceptionBuildersWithCause(
+            Kotlin.RuntimeException,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val IllegalArgumentException: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.IllegalArgumentException, builder, context) }
+    public val IllegalArgumentException: ExceptionBuildersWithCause by lazy {
+        ExceptionBuildersWithCause(
+            Kotlin.IllegalArgumentException,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val IllegalStateException: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.IllegalStateException, builder, context) }
+    public val IllegalStateException: ExceptionBuildersWithCause by lazy {
+        ExceptionBuildersWithCause(
+            Kotlin.IllegalStateException,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val UnsupportedOperationException: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.UnsupportedOperationException, builder, context) }
+    public val UnsupportedOperationException: ExceptionBuildersWithCause by lazy {
+        ExceptionBuildersWithCause(
+            Kotlin.UnsupportedOperationException,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val AssertionError: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.AssertionError, builder, context) }
+    public val AssertionError: ExceptionBuildersWithCause by lazy {
+        ExceptionBuildersWithCause(
+            Kotlin.AssertionError,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val NoSuchElementException: ExceptionBuilders by lazy { ExceptionBuilders(Kotlin.NoSuchElementException, builder, context) }
+    public val NoSuchElementException: ExceptionBuilders by lazy {
+        ExceptionBuilders(
+            Kotlin.NoSuchElementException,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val IndexOutOfBoundsException: ExceptionBuilders by lazy { ExceptionBuilders(Kotlin.IndexOutOfBoundsException, builder, context) }
+    public val IndexOutOfBoundsException: ExceptionBuilders by lazy {
+        ExceptionBuilders(
+            Kotlin.IndexOutOfBoundsException,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val ClassCastException: ExceptionBuilders by lazy { ExceptionBuilders(Kotlin.ClassCastException, builder, context) }
+    public val ClassCastException: ExceptionBuilders by lazy {
+        ExceptionBuilders(
+            Kotlin.ClassCastException,
+            builder,
+            context
+        )
+    }
 
     @Suppress("unused")
-    public val NullPointerException: ExceptionBuilders by lazy { ExceptionBuilders(Kotlin.NullPointerException, builder, context) }
+    public val NullPointerException: ExceptionBuilders by lazy {
+        ExceptionBuilders(
+            Kotlin.NullPointerException,
+            builder,
+            context
+        )
+    }
 }

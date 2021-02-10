@@ -3,6 +3,7 @@ package com.rnett.plugin.naming
 import org.jetbrains.kotlin.ir.backend.js.utils.asString
 import org.jetbrains.kotlin.ir.declarations.IrProperty
 import org.jetbrains.kotlin.ir.declarations.IrValueParameter
+
 /**
  * A filter for resolving IR properties
  */

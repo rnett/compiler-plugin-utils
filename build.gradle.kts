@@ -10,7 +10,7 @@ plugins {
 
 allprojects {
     group = "com.github.rnett.compiler-plugin-utils"
-    version = "1.0-SNAPSHOT"
+    version = "0.1.0"
 
     repositories {
         maven("https://dl.bintray.com/kotlin/kotlin-eap")

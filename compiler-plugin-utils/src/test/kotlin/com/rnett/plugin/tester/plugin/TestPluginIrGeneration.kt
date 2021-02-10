@@ -8,7 +8,10 @@ import org.jetbrains.kotlin.cli.common.messages.MessageCollector
 import org.jetbrains.kotlin.ir.declarations.IrModuleFragment
 import kotlin.reflect.KClass
 
-class TestPluginIrGeneration(val messageCollector: MessageCollector, val generatedClassMap: Map<String, KClass<out BaseIrPluginTest>>) :
+class TestPluginIrGeneration(
+    val messageCollector: MessageCollector,
+    val generatedClassMap: Map<String, KClass<out BaseIrPluginTest>>
+) :
     IrGenerationExtension {
     override fun generate(moduleFragment: IrModuleFragment, pluginContext: IrPluginContext) {
         TestPluginIrTransformer(pluginContext, messageCollector, generatedClassMap).lower(moduleFragment)

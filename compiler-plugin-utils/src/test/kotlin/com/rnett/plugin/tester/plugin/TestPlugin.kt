@@ -17,7 +17,10 @@ class TestPlugin(klasses: List<KClass<out BaseIrPluginTest>>) : ComponentRegistr
     }
 
     override fun registerProjectComponents(project: MockProject, configuration: CompilerConfiguration) {
-        IrGenerationExtension.registerExtension(project, TestPluginIrGeneration(configuration.messageCollector, generatedClassMap))
+        IrGenerationExtension.registerExtension(
+            project,
+            TestPluginIrGeneration(configuration.messageCollector, generatedClassMap)
+        )
     }
 
 }

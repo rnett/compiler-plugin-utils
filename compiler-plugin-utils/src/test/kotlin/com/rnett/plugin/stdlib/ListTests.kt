@@ -27,7 +27,11 @@ class ListTests : BaseIrPluginTest() {
     @PluginTestReplaceIn("2 in list")
     fun IrBuilderWithScope.testListContains() = stdlib.collections.List.contains(list, irInt(2))
 
-    @PluginTestReplaceIn("list.iterator().asSequence().toList()", suffix = ".asSequence().toList()", irValueType = "Iterator<Int>")
+    @PluginTestReplaceIn(
+        "list.iterator().asSequence().toList()",
+        suffix = ".asSequence().toList()",
+        irValueType = "Iterator<Int>"
+    )
     fun IrBuilderWithScope.testListIterator() = stdlib.collections.List.iterator(list)
 
     @PluginTestReplaceIn("list.indexOf(2)")

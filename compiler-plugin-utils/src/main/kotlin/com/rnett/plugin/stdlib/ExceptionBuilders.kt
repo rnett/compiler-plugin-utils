@@ -8,28 +8,50 @@ import org.jetbrains.kotlin.ir.builders.irCallConstructor
 import org.jetbrains.kotlin.ir.expressions.IrConstructorCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 
-public open class ExceptionBuilders(protected open val klass: ExceptionClass, builder: IrBuilderWithScope, context: IrPluginContext) :
-        MethodBuilder(builder, context) {
+public open class ExceptionBuilders(
+    protected open val klass: ExceptionClass,
+    builder: IrBuilderWithScope,
+    context: IrPluginContext
+) :
+    MethodBuilder(builder, context) {
 
-    public fun new(startOffset: Int = UNDEFINED_OFFSET, endOffset: Int = UNDEFINED_OFFSET): IrConstructorCall = buildStatement(startOffset, endOffset) {
-        irCallConstructor(klass.newEmpty(), listOf())
-    }
+    public fun new(startOffset: Int = UNDEFINED_OFFSET, endOffset: Int = UNDEFINED_OFFSET): IrConstructorCall =
+        buildStatement(startOffset, endOffset) {
+            irCallConstructor(klass.newEmpty(), listOf())
+        }
 
-    public fun newWithMessage(message: IrExpression, startOffset: Int = UNDEFINED_OFFSET, endOffset: Int = UNDEFINED_OFFSET): IrConstructorCall =
-            buildStatement(startOffset, endOffset) {
-                irCallConstructor(klass.newWithMessage(), listOf()).withValueArguments(message)
-            }
+    public fun newWithMessage(
+        message: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
+    ): IrConstructorCall =
+        buildStatement(startOffset, endOffset) {
+            irCallConstructor(klass.newWithMessage(), listOf()).withValueArguments(message)
+        }
 }
 
-public class ExceptionBuildersWithCause(override val klass: ExceptionClassWithCause, builder: IrBuilderWithScope, context: IrPluginContext) :
-        ExceptionBuilders(klass, builder, context) {
-    public fun newWithMessageAndCause(message: IrExpression, cause: IrExpression, startOffset: Int = UNDEFINED_OFFSET, endOffset: Int = UNDEFINED_OFFSET): IrConstructorCall =
-            buildStatement(startOffset, endOffset) {
-                irCallConstructor(klass.newWithMessageAndClause(), listOf()).withValueArguments(message, cause)
-            }
+public class ExceptionBuildersWithCause(
+    override val klass: ExceptionClassWithCause,
+    builder: IrBuilderWithScope,
+    context: IrPluginContext
+) :
+    ExceptionBuilders(klass, builder, context) {
+    public fun newWithMessageAndCause(
+        message: IrExpression,
+        cause: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
+    ): IrConstructorCall =
+        buildStatement(startOffset, endOffset) {
+            irCallConstructor(klass.newWithMessageAndClause(), listOf()).withValueArguments(message, cause)
+        }
 
-    public fun newWithCause(cause: IrExpression, startOffset: Int = UNDEFINED_OFFSET, endOffset: Int = UNDEFINED_OFFSET): IrConstructorCall =
-            buildStatement(startOffset, endOffset) {
-                irCallConstructor(klass.newWithClause(), listOf()).withValueArguments(cause)
-            }
+    public fun newWithCause(
+        cause: IrExpression,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
+    ): IrConstructorCall =
+        buildStatement(startOffset, endOffset) {
+            irCallConstructor(klass.newWithClause(), listOf()).withValueArguments(cause)
+        }
 }

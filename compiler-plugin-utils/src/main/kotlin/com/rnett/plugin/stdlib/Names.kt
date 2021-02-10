@@ -331,11 +331,11 @@ public object Kotlin : RootPackage("kotlin") {
     }
 
     private fun isMathable(otherType: IrType) =
-            otherType.isByte() || otherType.isShort() || otherType.isInt() ||
-                    otherType.isLong() || otherType.isFloat() || otherType.isDouble()
+        otherType.isByte() || otherType.isShort() || otherType.isInt() ||
+                otherType.isLong() || otherType.isFloat() || otherType.isDouble()
 
     private fun requireMathable(otherType: IrType) =
-            require(isMathable(otherType)) { "Can only do math with Byte, Short, Int, Long, Float, and Double, got $otherType" }
+        require(isMathable(otherType)) { "Can only do math with Byte, Short, Int, Long, Float, and Double, got $otherType" }
 
     public interface Mathable {
         public val klass: ClassRef
@@ -412,7 +412,8 @@ public object Kotlin : RootPackage("kotlin") {
     public val RuntimeException: JavaLang.RuntimeException = JavaLang.RuntimeException
     public val IllegalArgumentException: JavaLang.IllegalArgumentException = JavaLang.IllegalArgumentException
     public val IllegalStateException: JavaLang.IllegalStateException = JavaLang.IllegalStateException
-    public val UnsupportedOperationException: JavaLang.UnsupportedOperationException = JavaLang.UnsupportedOperationException
+    public val UnsupportedOperationException: JavaLang.UnsupportedOperationException =
+        JavaLang.UnsupportedOperationException
     public val AssertionError: JavaLang.AssertionError = JavaLang.AssertionError
 
     public val NoSuchElementException: JavaUtil.NoSuchElementException = JavaUtil.NoSuchElementException

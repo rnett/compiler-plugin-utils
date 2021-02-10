@@ -31,15 +31,33 @@ class ExceptionTests : BaseIrPluginTest() {
             @Suppress("UNCHECKED_CAST")
             prop as KProperty1<StdlibBuilders, ExceptionBuildersWithCause>
 
-            replaceIn("test${name}MessageAndCauseMessage", "\"Message\"", suffix = ".message", checkType = name, irValueType = name) {
+            replaceIn(
+                "test${name}MessageAndCauseMessage",
+                "\"Message\"",
+                suffix = ".message",
+                checkType = name,
+                irValueType = name
+            ) {
                 prop.get(stdlib).newWithMessageAndCause("Message".asConst(), stdlib.Error.new())
             }
 
-            replaceIn("test${name}MessageAndCauseCause", "Error::class", suffix = ".cause!!::class", checkType = name, irValueType = name) {
+            replaceIn(
+                "test${name}MessageAndCauseCause",
+                "Error::class",
+                suffix = ".cause!!::class",
+                checkType = name,
+                irValueType = name
+            ) {
                 prop.get(stdlib).newWithMessageAndCause("Message".asConst(), stdlib.Error.new())
             }
 
-            replaceIn("test${name}Cause", "Error::class", suffix = ".cause!!::class", checkType = name, irValueType = name) {
+            replaceIn(
+                "test${name}Cause",
+                "Error::class",
+                suffix = ".cause!!::class",
+                checkType = name,
+                irValueType = name
+            ) {
                 prop.get(stdlib).newWithCause(stdlib.Error.new())
             }
         }

@@ -33,9 +33,15 @@ public object StarRef : TypeProjectionRef() {
 }
 
 //TODO handle annotations
-public data class TypeRef(public val classifier: ClassRef, public val nullable: Boolean, public val arguments: List<TypeProjectionRef>, public val variance: TypeRefVariance) :
-        TypeProjectionRef() {
-    override fun toIrTypeArg(context: IrPluginContext): IrTypeArgument = makeTypeProjection(toIrType(context), variance.toIr())
+public data class TypeRef(
+    public val classifier: ClassRef,
+    public val nullable: Boolean,
+    public val arguments: List<TypeProjectionRef>,
+    public val variance: TypeRefVariance
+) :
+    TypeProjectionRef() {
+    override fun toIrTypeArg(context: IrPluginContext): IrTypeArgument =
+        makeTypeProjection(toIrType(context), variance.toIr())
 
     override fun toString(): String = toString(false)
 
@@ -56,7 +62,7 @@ public data class TypeRef(public val classifier: ClassRef, public val nullable: 
     }
 
     public fun toIrType(context: IrPluginContext): IrType =
-            classifier.resolve(context).typeWith(arguments.map { it.toIrTypeArg(context) }).withHasQuestionMark(nullable)
+        classifier.resolve(context).typeWith(arguments.map { it.toIrTypeArg(context) }).withHasQuestionMark(nullable)
 
     public fun resolve(context: IrPluginContext): IrType = toIrType(context)
 }

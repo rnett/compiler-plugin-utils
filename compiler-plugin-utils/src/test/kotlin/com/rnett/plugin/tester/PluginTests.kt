@@ -30,10 +30,15 @@ fun MakeTests(tests: BaseIrPluginTest, klass: KClass<out BaseIrPluginTest>) = bu
             }
         })
     }
-    val objectInstance = objectClass.kotlin.objectInstance ?: error("Object was not initialized.  Compiler messages: " + compileResult.messages)
+    val objectInstance = objectClass.kotlin.objectInstance
+        ?: error("Object was not initialized.  Compiler messages: " + compileResult.messages)
 
     add(DynamicTest.dynamicTest("Compile") {
-        assertEquals(KotlinCompilation.ExitCode.OK, compileResult.exitCode, "In-plugin tests failed: " + compileResult.messages)
+        assertEquals(
+            KotlinCompilation.ExitCode.OK,
+            compileResult.exitCode,
+            "In-plugin tests failed: " + compileResult.messages
+        )
     })
 
     addAll(objectClass.kotlin.functions.filter { it.annotations.any { it is Test } }.map {

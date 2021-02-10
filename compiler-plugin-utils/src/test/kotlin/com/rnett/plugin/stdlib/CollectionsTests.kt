@@ -33,7 +33,11 @@ class CollectionsTests : BaseIrPluginTest() {
 
     @PluginTestReplaceIn("mapOf(1 to 2, 3 to 4)", "Map<Int, Int>")
     fun IrBuilderWithScope.testMap() =
-        stdlib.collections.mapOf(context.irBuiltIns.intType, context.irBuiltIns.intType, mapOf(irInt(1) to irInt(2), irInt(3) to irInt(4)))
+        stdlib.collections.mapOf(
+            context.irBuiltIns.intType,
+            context.irBuiltIns.intType,
+            mapOf(irInt(1) to irInt(2), irInt(3) to irInt(4))
+        )
 
 
     @PluginTestReplaceIn("listOf(1, 2)", "MutableList<Int>")
@@ -48,7 +52,11 @@ class CollectionsTests : BaseIrPluginTest() {
 
     @PluginTestReplaceIn("mapOf(1 to 2, 3 to 4)", "MutableMap<Int, Int>")
     fun IrBuilderWithScope.testMutableMap() =
-        stdlib.collections.mutableMapOf(context.irBuiltIns.intType, context.irBuiltIns.intType, mapOf(irInt(1) to irInt(2), irInt(3) to irInt(4)))
+        stdlib.collections.mutableMapOf(
+            context.irBuiltIns.intType,
+            context.irBuiltIns.intType,
+            mapOf(irInt(1) to irInt(2), irInt(3) to irInt(4))
+        )
 
 
     @PluginTestReplaceIn("pairList", "List<*>")
@@ -103,7 +111,12 @@ class CollectionTests : BaseIrPluginTest() {
     @TestProperty("listOf(1, 2, 3)")
     val IrBuilderWithScope.list by testProperty()
 
-    @PluginTestReplaceIn("", suffix = ".contentEquals(list.toTypedArray())", assertMethod = "assertTrue", irValueType = "Array<Int>")
+    @PluginTestReplaceIn(
+        "",
+        suffix = ".contentEquals(list.toTypedArray())",
+        assertMethod = "assertTrue",
+        irValueType = "Array<Int>"
+    )
     fun IrBuilderWithScope.testToTypedArray() =
         stdlib.collections.Collection.toTypedArray(list, context.irBuiltIns.intType)
 }

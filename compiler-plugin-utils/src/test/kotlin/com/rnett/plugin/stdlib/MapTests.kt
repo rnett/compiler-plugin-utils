@@ -1,10 +1,6 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.tester.BaseIrPluginTest
-import com.rnett.plugin.tester.PluginTestReplaceIn
-import com.rnett.plugin.tester.PluginTestReplaceInAlso
-import com.rnett.plugin.tester.TestFunction
-import com.rnett.plugin.tester.TestProperty
+import com.rnett.plugin.tester.*
 import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.irGet
 import org.jetbrains.kotlin.ir.builders.irInt
@@ -122,7 +118,12 @@ class MapTests : BaseIrPluginTest() {
 
     @PluginTestReplaceInAlso("map + (20 to 21)")
     fun IrBuilderWithScope.testMapPutAllMakeMap() = withAlso(newMutableMap) {
-        +stdlib.collections.MutableMap.putAll(irGet(it), mapOf(irInt(20) to irInt(21)), context.irBuiltIns.intType, context.irBuiltIns.intType)
+        +stdlib.collections.MutableMap.putAll(
+            irGet(it),
+            mapOf(irInt(20) to irInt(21)),
+            context.irBuiltIns.intType,
+            context.irBuiltIns.intType
+        )
     }
 
     @PluginTestReplaceInAlso("emptyMap<Int, Int>()")

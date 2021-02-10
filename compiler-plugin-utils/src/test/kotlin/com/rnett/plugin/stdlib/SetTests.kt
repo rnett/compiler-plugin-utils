@@ -1,10 +1,6 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.tester.BaseIrPluginTest
-import com.rnett.plugin.tester.PluginTestReplaceIn
-import com.rnett.plugin.tester.PluginTestReplaceInAlso
-import com.rnett.plugin.tester.TestFunction
-import com.rnett.plugin.tester.TestProperty
+import com.rnett.plugin.tester.*
 import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.irGet
 import org.jetbrains.kotlin.ir.builders.irInt
@@ -35,7 +31,11 @@ class SetTests : BaseIrPluginTest() {
     @PluginTestReplaceIn("2 in set")
     fun IrBuilderWithScope.testSetContains() = stdlib.collections.Set.contains(set, irInt(2))
 
-    @PluginTestReplaceIn("set.iterator().asSequence().toList()", suffix = ".asSequence().toList()", irValueType = "Iterator<Int>")
+    @PluginTestReplaceIn(
+        "set.iterator().asSequence().toList()",
+        suffix = ".asSequence().toList()",
+        irValueType = "Iterator<Int>"
+    )
     fun IrBuilderWithScope.testSetIterator() = stdlib.collections.Set.iterator(set)
 
     @PluginTestReplaceIn("set.containsAll(list)")

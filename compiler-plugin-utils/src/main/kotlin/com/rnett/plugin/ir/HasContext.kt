@@ -43,63 +43,63 @@ public interface HasContext {
     public fun ClassRef.resolveTypeWith(vararg arguments: IrType): IrSimpleType = resolve().typeWith(*arguments)
 
     public fun Boolean.asConst(
-            type: IrType = context.irBuiltIns.booleanType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.booleanType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Boolean> = IrConstImpl.boolean(startOffset, endOffset, type, this)
 
     public fun Byte.asConst(
-            type: IrType = context.irBuiltIns.byteType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.byteType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Byte> = IrConstImpl.byte(startOffset, endOffset, type, this)
 
     public fun Char.asConst(
-            type: IrType = context.irBuiltIns.charType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.charType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Char> = IrConstImpl.char(startOffset, endOffset, type, this)
 
     public fun Double.asConst(
-            type: IrType = context.irBuiltIns.doubleType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.doubleType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Double> = IrConstImpl.double(startOffset, endOffset, type, this)
 
     public fun Float.asConst(
-            type: IrType = context.irBuiltIns.floatType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.floatType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Float> = IrConstImpl.float(startOffset, endOffset, type, this)
 
     public fun Int.asConst(
-            type: IrType = context.irBuiltIns.intType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.intType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Int> = IrConstImpl.int(startOffset, endOffset, type, this)
 
     public fun Long.asConst(
-            type: IrType = context.irBuiltIns.longType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.longType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Long> = IrConstImpl.long(startOffset, endOffset, type, this)
 
     public fun Short.asConst(
-            type: IrType = context.irBuiltIns.shortType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.shortType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Short> = IrConstImpl.short(startOffset, endOffset, type, this)
 
     public fun String.asConst(
-            type: IrType = context.irBuiltIns.stringType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType = context.irBuiltIns.stringType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<String> = IrConstImpl.string(startOffset, endOffset, type, this)
 
     public fun nullConst(
-            type: IrType,
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+        type: IrType,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrConst<Nothing?> = IrConstImpl.constNull(startOffset, endOffset, type)
 
     public fun IrBuilderWithScope.irCall(funcRef: FunctionRef): IrCall = irCall(funcRef.resolve())
@@ -111,9 +111,9 @@ public interface HasContext {
      * Will be automatically set if the lambda has an expression body and it wasn't set in [funBuilder] or [funApply]
      */
     public fun IrBuilderWithScope.buildLambda(
-            returnType: IrType?,
-            funBuilder: IrFunctionBuilder.() -> Unit = {},
-            funApply: IrSimpleFunction.() -> Unit
+        returnType: IrType?,
+        funBuilder: IrFunctionBuilder.() -> Unit = {},
+        funApply: IrSimpleFunction.() -> Unit
     ): IrSimpleFunction = factory.buildFun {
         name = Name.special("<anonymous>")
         if (returnType != null)
@@ -142,41 +142,46 @@ public interface HasContext {
      * Creates a [IrFunctionExpressionImpl] from the given function, auto-inferring the type if not specified
      */
     public fun lambdaArgument(
-            lambda: IrSimpleFunction,
-            type: IrType = run {
-                val base = if (lambda.isSuspend)
-                    context.irBuiltIns.suspendFunction(lambda.allParameters.size)
-                else
-                    context.irBuiltIns.function(lambda.allParameters.size)
+        lambda: IrSimpleFunction,
+        type: IrType = run {
+            val base = if (lambda.isSuspend)
+                context.irBuiltIns.suspendFunction(lambda.allParameters.size)
+            else
+                context.irBuiltIns.function(lambda.allParameters.size)
 
-                base.typeWith(lambda.allParameters.map { it.type } + lambda.returnType)
-            },
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET
+            base.typeWith(lambda.allParameters.map { it.type } + lambda.returnType)
+        },
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
     ): IrFunctionExpression = IrFunctionExpressionImpl(
-            startOffset,
-            endOffset,
-            type,
-            lambda,
-            IrStatementOrigin.LAMBDA
+        startOffset,
+        endOffset,
+        type,
+        lambda,
+        IrStatementOrigin.LAMBDA
     )
 
-    public fun createIrBuilder(symbol: IrSymbol, startOffset: Int = UNDEFINED_OFFSET, endOffset: Int = UNDEFINED_OFFSET): DeclarationIrBuilder =
-            DeclarationIrBuilder(context, symbol, startOffset, endOffset)
+    public fun createIrBuilder(
+        symbol: IrSymbol,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET
+    ): DeclarationIrBuilder =
+        DeclarationIrBuilder(context, symbol, startOffset, endOffset)
 
-    public fun IrSymbolOwner.createIrBuilderAt(): DeclarationIrBuilder = DeclarationIrBuilder(context, symbol, startOffset, endOffset)
+    public fun IrSymbolOwner.createIrBuilderAt(): DeclarationIrBuilder =
+        DeclarationIrBuilder(context, symbol, startOffset, endOffset)
 
     public fun <T : IrElement> IrSymbolOwner.buildStatement(
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            origin: IrStatementOrigin? = null,
-            block: IrSingleStatementBuilder.() -> T
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        origin: IrStatementOrigin? = null,
+        block: IrSingleStatementBuilder.() -> T
     ): T {
         return createIrBuilderAt().buildStatement(startOffset, endOffset, origin, block)
     }
 
     public fun <T> IrSymbolOwner.withBuilder(
-            block: DeclarationIrBuilder.() -> T
+        block: DeclarationIrBuilder.() -> T
     ): T = createIrBuilderAt().run(block)
 
     @ObsoleteDescriptorBasedAPI

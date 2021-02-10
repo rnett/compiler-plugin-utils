@@ -11,9 +11,12 @@ import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
 import org.jetbrains.kotlin.ir.declarations.IrFile
 import org.jetbrains.kotlin.ir.declarations.IrPackageFragment
 
-public abstract class IrTransformer(override val context: IrPluginContext, public val messageCollector: MessageCollector) :
-        IrElementTransformerVoidWithContext(), FileLoweringPass,
-        HasContext, KnowsCurrentFile {
+public abstract class IrTransformer(
+    override val context: IrPluginContext,
+    public val messageCollector: MessageCollector
+) :
+    IrElementTransformerVoidWithContext(), FileLoweringPass,
+    HasContext, KnowsCurrentFile {
 
     final override lateinit var file: IrFile
         private set
@@ -37,11 +40,13 @@ public abstract class IrTransformer(override val context: IrPluginContext, publi
     }
 
     protected inline fun <T : IrElement> buildInCurrent(
-            startOffset: Int = UNDEFINED_OFFSET,
-            endOffset: Int = UNDEFINED_OFFSET,
-            build: IrSingleStatementBuilder.() -> T
-    ): T = IrSingleStatementBuilder(context, `access$currentScope`?.scope
-            ?: error("Not in a scope"), startOffset, endOffset).build(build)
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+        build: IrSingleStatementBuilder.() -> T
+    ): T = IrSingleStatementBuilder(
+        context, `access$currentScope`?.scope
+            ?: error("Not in a scope"), startOffset, endOffset
+    ).build(build)
 
     @PublishedApi
     internal val `access$currentScope`: ScopeWithIr?

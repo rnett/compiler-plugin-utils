@@ -247,13 +247,15 @@ abstract class BaseIrPluginTest : HasContext {
     internal var testContext: PluginTestContext? = null
 
     override val context: IrPluginContext get() = testContext?.context ?: error("Context has not been initialized yet")
-    private val messageCollector: MessageCollector get() = testContext?.messageCollector ?: error("Context has not been initialized yet")
+    private val messageCollector: MessageCollector
+        get() = testContext?.messageCollector ?: error("Context has not been initialized yet")
     protected val testObject: IrClass get() = testContext?.testObject ?: error("Context has not been initialized yet")
 
     @TestFactory
     fun Tests() = MakeTests(this, this::class)
 
-    protected fun withAlso(expression: IrExpression, block: IrBlockBodyBuilder.(IrValueParameter) -> Unit) = AlsoTest(expression, block)
+    protected fun withAlso(expression: IrExpression, block: IrBlockBodyBuilder.(IrValueParameter) -> Unit) =
+        AlsoTest(expression, block)
 
     protected fun testProperty() = ReadOnlyProperty<IrBuilderWithScope, IrCall> { builder, prop ->
         with(builder) {
@@ -263,7 +265,11 @@ abstract class BaseIrPluginTest : HasContext {
 
     protected fun testFunction() = ReadOnlyProperty<IrBuilderWithScope, IrFunctionAccessExpression> { builder, prop ->
         with(builder) {
-            irCall(testObject.functions.single { it.name.asString() == prop.name }).withDispatchReceiver(irGetObject(testObject.symbol))
+            irCall(testObject.functions.single { it.name.asString() == prop.name }).withDispatchReceiver(
+                irGetObject(
+                    testObject.symbol
+                )
+            )
         }
     }
 
@@ -435,9 +441,10 @@ abstract class BaseIrPluginTest : HasContext {
         }
     }
 
-    fun addFunctionWithReturn(name: String, returnType: IrType, body: IrBuilderWithScope.() -> IrExpression) = addFunction(name, returnType) {
-        +irReturn(body())
-    }
+    fun addFunctionWithReturn(name: String, returnType: IrType, body: IrBuilderWithScope.() -> IrExpression) =
+        addFunction(name, returnType) {
+            +irReturn(body())
+        }
 
     fun replaceFunction(name: String, body: IrBlockBodyBuilder.() -> Unit) {
         testObject.functions.single { it.name == Name.identifier(name) }.apply {

@@ -30,7 +30,8 @@ class TestPluginIrTransformer(
 ) : IrTransformer(context, messageCollector) {
     override fun visitClassNew(declaration: IrClass): IrStatement {
         if (declaration.hasAnnotation(FqName("com.rnett.plugin.tester.plugin.TestObject"))) {
-            val klass = generatedClassMap[declaration.name.asString()] ?: error("No test class found for name ${declaration.name.asString()}")
+            val klass = generatedClassMap[declaration.name.asString()]
+                ?: error("No test class found for name ${declaration.name.asString()}")
             constructClass(klass, context, messageCollector, declaration).buildAllTests()
         }
         return super.visitClassNew(declaration)

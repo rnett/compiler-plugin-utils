@@ -47,9 +47,9 @@ public fun FqName.descendant(id: String): FqName {
         return this
 
     return id.split('.')
-            .fold(this) { name, part ->
-                name.child(Name.guessByFirstCharacter(part))
-            }
+        .fold(this) { name, part ->
+            name.child(Name.guessByFirstCharacter(part))
+        }
 }
 
 public sealed class BaseReference(protected val name: String, internal open val parent: Namespace?) {
@@ -62,7 +62,8 @@ public sealed class BaseReference(protected val name: String, internal open val 
 /**
  * A namespace that defiens a FqName.  Either a class or package for now.
  */
-public sealed class Namespace(name: String, parent: Namespace? = null, protected val isRoot: Boolean = false) : BaseReference(name, parent) {
+public sealed class Namespace(name: String, parent: Namespace? = null, protected val isRoot: Boolean = false) :
+    BaseReference(name, parent) {
     init {
         if (name.isBlank() && !isRoot)
             error("Can not create a non-root Namespace with a blank name.")
@@ -85,7 +86,8 @@ public open class RootPackage(name: String) : Namespace(name, null, true)
  *
  * For an example, see [com.rnett.plugin.stdlib.Kotlin.Collections].
  */
-public abstract class PackageRef @PublishedApi internal constructor(name: String, parent: Namespace?) : Namespace(name, parent) {
+public abstract class PackageRef @PublishedApi internal constructor(name: String, parent: Namespace?) :
+    Namespace(name, parent) {
     public constructor(name: String) : this(name, null)
 
     /**
@@ -107,7 +109,8 @@ public fun Class(fqName: FqName): ClassRef = object : ClassRef(fqName.asString()
 /**
  * Create a [ClassRef] from a class reference.  [ref] must be a literal, it can not be a variable.
  */
-public fun Class(@Suppress("UNUSED_PARAMETER") ref: KClass<*>): ClassRef = error("Should be replaced by compiler plugin")
+public fun Class(@Suppress("UNUSED_PARAMETER") ref: KClass<*>): ClassRef =
+    error("Should be replaced by compiler plugin")
 
 /**
  * Create a [ClassRef] with the given name, with the current [Namespace] as its parent.
@@ -120,7 +123,7 @@ public fun Namespace.Class(name: String): ClassRef = object : ClassRef(name, thi
  */
 @NameDSL
 public fun Namespace.Class(): PropertyDelegateProvider<Any?, ClassRef> =
-        PropertyDelegateProvider<Any?, ClassRef> { _, property -> this@Class.Class(property.name) }
+    PropertyDelegateProvider<Any?, ClassRef> { _, property -> this@Class.Class(property.name) }
 
 //TODO support inheritance: get all props, but with new parent?  Do I even want new parent?
 
@@ -151,21 +154,23 @@ public abstract class ClassRef(name: String, parent: Namespace?) : Namespace(nam
 /**
  * A delegate to get a [FunctionRef] with the property's name
  */
-public class FunctionRefDelegate internal constructor(private val parent: Namespace? = null) : FunctionFilter(), ReadOnlyProperty<Any?, FunctionRef> {
-    override operator fun getValue(thisRef: Any?, property: KProperty<*>): FunctionRef = FunctionRef(property.name, parent, this)
+public class FunctionRefDelegate internal constructor(private val parent: Namespace? = null) : FunctionFilter(),
+    ReadOnlyProperty<Any?, FunctionRef> {
+    override operator fun getValue(thisRef: Any?, property: KProperty<*>): FunctionRef =
+        FunctionRef(property.name, parent, this)
 }
 
 /**
  * A function reference that gets the function matching the name and filter.
  */
 public class FunctionRef internal constructor(name: String, parent: Namespace?, filter: IFunctionFilter) :
-        BaseReference(name, parent), Reference<IrSimpleFunctionSymbol>, IFunctionFilter by filter {
+    BaseReference(name, parent), Reference<IrSimpleFunctionSymbol>, IFunctionFilter by filter {
     override fun resolve(context: IrPluginContext): IrSimpleFunctionSymbol =
-            context.referenceFunctions(fqName).distinct()
-                    .singleOrError("Multiple function matches for $fqName", "No matches for $fqName") { matches(it.owner) }
+        context.referenceFunctions(fqName).distinct()
+            .singleOrError("Multiple function matches for $fqName", "No matches for $fqName") { matches(it.owner) }
 
     override fun resolveOrNull(context: IrPluginContext): IrSimpleFunctionSymbol? =
-            context.referenceFunctions(fqName).distinct().singleOrNull { matches(it.owner) }
+        context.referenceFunctions(fqName).distinct().singleOrNull { matches(it.owner) }
 
     public inline operator fun getValue(thisRef: Any?, property: KProperty<*>): FunctionRef = this
 }
@@ -174,35 +179,38 @@ public class FunctionRef internal constructor(name: String, parent: Namespace?, 
  * Get a function from a function literal.  Can only be called on literals, not variables.
  */
 public fun function(
-        @Suppress("UNUSED_PARAMETER") ref: KFunction<*>,
-        @Suppress("UNUSED_PARAMETER") filter: FunctionFilter.() -> Unit = {},
+    @Suppress("UNUSED_PARAMETER") ref: KFunction<*>,
+    @Suppress("UNUSED_PARAMETER") filter: FunctionFilter.() -> Unit = {},
 ): FunctionRef = error("Should be replaced by compiler plugin")
 
 /**
  * Get a function with [fqName], matching [filter]
  */
 public fun function(fqName: FqName, filter: FunctionFilter.() -> Unit = {}): FunctionRef =
-        FunctionRef(fqName.asString(), null, FunctionFilter().apply(filter))
+    FunctionRef(fqName.asString(), null, FunctionFilter().apply(filter))
 
 /**
  * Get a function in the current [Namespace] with the given name, matching [filter]
  */
 @NameDSL
 public fun Namespace.function(name: String, filter: FunctionFilter.() -> Unit = {}): FunctionRef =
-        FunctionRef(name, this, FunctionFilter().apply(filter))
+    FunctionRef(name, this, FunctionFilter().apply(filter))
 
 /**
  * Get a function delegate in the current [Namespace] with the property's name, matching [filter]
  */
 @NameDSL
-public fun Namespace.function(filter: FunctionFilter.() -> Unit = {}): FunctionRefDelegate = FunctionRefDelegate(this).apply(filter)
+public fun Namespace.function(filter: FunctionFilter.() -> Unit = {}): FunctionRefDelegate =
+    FunctionRefDelegate(this).apply(filter)
 
 
 /**
  * A delegate to get a [PropertyRef] with the property's name
  */
-public class PropertyRefDelegate internal constructor(private val parent: Namespace? = null) : PropertyFilter(), ReadOnlyProperty<Any?, PropertyRef> {
-    override operator fun getValue(thisRef: Any?, property: KProperty<*>): PropertyRef = PropertyRef(property.name, parent, this)
+public class PropertyRefDelegate internal constructor(private val parent: Namespace? = null) : PropertyFilter(),
+    ReadOnlyProperty<Any?, PropertyRef> {
+    override operator fun getValue(thisRef: Any?, property: KProperty<*>): PropertyRef =
+        PropertyRef(property.name, parent, this)
 }
 
 
@@ -210,13 +218,13 @@ public class PropertyRefDelegate internal constructor(private val parent: Namesp
  * A property reference that gets the property matching the name and filter.
  */
 public class PropertyRef internal constructor(name: String, parent: Namespace? = null, filter: IPropertyFilter) :
-        BaseReference(name, parent), Reference<IrPropertySymbol>, IPropertyFilter by filter {
+    BaseReference(name, parent), Reference<IrPropertySymbol>, IPropertyFilter by filter {
     override fun resolve(context: IrPluginContext): IrPropertySymbol =
-            context.referenceProperties(fqName).distinct()
-                    .singleOrError("Multiple property matches for $fqName", "No matches for $fqName") { matches(it.owner) }
+        context.referenceProperties(fqName).distinct()
+            .singleOrError("Multiple property matches for $fqName", "No matches for $fqName") { matches(it.owner) }
 
     override fun resolveOrNull(context: IrPluginContext): IrPropertySymbol? =
-            context.referenceProperties(fqName).distinct().singleOrNull { matches(it.owner) }
+        context.referenceProperties(fqName).distinct().singleOrNull { matches(it.owner) }
 
     public inline operator fun getValue(thisRef: Any?, property: KProperty<*>): PropertyRef = this
 }
@@ -225,40 +233,44 @@ public class PropertyRef internal constructor(name: String, parent: Namespace? =
  * Get a property from a property literal.  Can only be called on literals, not variables.
  */
 public fun property(
-        @Suppress("UNUSED_PARAMETER") ref: KProperty<*>,
-        @Suppress("UNUSED_PARAMETER") filter: PropertyFilter.() -> Unit = {},
+    @Suppress("UNUSED_PARAMETER") ref: KProperty<*>,
+    @Suppress("UNUSED_PARAMETER") filter: PropertyFilter.() -> Unit = {},
 ): PropertyRef = error("Should be replaced by compiler plugin")
 
 /**
  * Get a property with [fqName], matching [filter]
  */
 public fun property(fqName: FqName, filter: PropertyFilter.() -> Unit = {}): PropertyRef =
-        PropertyRef(fqName.asString(), null, PropertyFilter().apply(filter))
+    PropertyRef(fqName.asString(), null, PropertyFilter().apply(filter))
 
 /**
  * Get a property in the current [Namespace] with the given name, matching [filter]
  */
 @NameDSL
 public fun Namespace.property(name: String, filter: PropertyFilter.() -> Unit = {}): PropertyRef =
-        PropertyRef(name, this, PropertyFilter().apply(filter))
+    PropertyRef(name, this, PropertyFilter().apply(filter))
 
 /**
  * Get a property delegate in the current [Namespace] with the property's name, matching [filter]
  */
 @NameDSL
-public fun Namespace.property(filter: PropertyFilter.() -> Unit = {}): PropertyRefDelegate = PropertyRefDelegate(this).apply(filter)
+public fun Namespace.property(filter: PropertyFilter.() -> Unit = {}): PropertyRefDelegate =
+    PropertyRefDelegate(this).apply(filter)
 
 /**
  * A constructor reference that gets the constructor of the parent class matching the filter.
  */
-public class ConstructorRef internal constructor(override val parent: ClassRef, filter: ConstructorFilter = ConstructorFilter()) :
-        BaseReference("", parent), Reference<IrConstructorSymbol>, IConstructorFilter by filter {
+public class ConstructorRef internal constructor(
+    override val parent: ClassRef,
+    filter: ConstructorFilter = ConstructorFilter()
+) :
+    BaseReference("", parent), Reference<IrConstructorSymbol>, IConstructorFilter by filter {
     override fun resolve(context: IrPluginContext): IrConstructorSymbol =
-            context.referenceConstructors(fqName).distinct()
-                    .singleOrError("Multiple constructor matches for $fqName", "No matches for $fqName") { matches(it.owner) }
+        context.referenceConstructors(fqName).distinct()
+            .singleOrError("Multiple constructor matches for $fqName", "No matches for $fqName") { matches(it.owner) }
 
     override fun resolveOrNull(context: IrPluginContext): IrConstructorSymbol? =
-            context.referenceConstructors(fqName).distinct().singleOrNull { matches(it.owner) }
+        context.referenceConstructors(fqName).distinct().singleOrNull { matches(it.owner) }
 
     public inline operator fun getValue(thisRef: Any?, property: KProperty<*>): ConstructorRef = this
 }
@@ -267,42 +279,44 @@ public class ConstructorRef internal constructor(override val parent: ClassRef, 
  * Get a constructor from the given class literal matching [filter].  Must be called with a literal.
  */
 public fun constructor(
-        @Suppress("UNUSED_PARAMETER") ref: KClass<*>,
-        @Suppress("UNUSED_PARAMETER") filter: ConstructorFilter.() -> Unit = {},
+    @Suppress("UNUSED_PARAMETER") ref: KClass<*>,
+    @Suppress("UNUSED_PARAMETER") filter: ConstructorFilter.() -> Unit = {},
 ): ConstructorRef = error("Should be replaced by compiler plugin")
 
 /**
  * Get a constructor from the class with [fqClassName], matching [filter].
  */
 public fun constructor(fqClassName: FqName, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
-        ConstructorRef(Class(fqClassName), ConstructorFilter().apply(filter))
+    ConstructorRef(Class(fqClassName), ConstructorFilter().apply(filter))
 
 /**
  * Get a constructor from this [ClassRef] that matches [filter].
  */
 @NameDSL
-public fun ClassRef.constructor(filter: IConstructorFilter.() -> Unit): ConstructorRef = ConstructorRef(this).apply(filter)
+public fun ClassRef.constructor(filter: IConstructorFilter.() -> Unit): ConstructorRef =
+    ConstructorRef(this).apply(filter)
 
 
 /**
  * Get the primary constructor from the given class literal matching [filter].  Must be called with a literal.
  */
 public fun primaryConstructor(
-        @Suppress("UNUSED_PARAMETER") ref: KClass<*>,
-        @Suppress("UNUSED_PARAMETER") filter: ConstructorFilter.() -> Unit = {},
+    @Suppress("UNUSED_PARAMETER") ref: KClass<*>,
+    @Suppress("UNUSED_PARAMETER") filter: ConstructorFilter.() -> Unit = {},
 ): ConstructorRef = error("Should be replaced by compiler plugin")
 
 /**
  * Get the primary constructor from the class with [fqClassName], matching [filter].
  */
 public fun primaryConstructor(fqClassName: FqName, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
-        ConstructorRef(Class(fqClassName), ConstructorFilter().apply(filter).apply { isPrimary = true })
+    ConstructorRef(Class(fqClassName), ConstructorFilter().apply(filter).apply { isPrimary = true })
 
 /**
  * Get the primary constructor from this [ClassRef] that matches [filter].
  */
 @NameDSL
-public fun ClassRef.primaryConstructor(filter: IConstructorFilter.() -> Unit = {}): ConstructorRef = constructor(filter).apply { isPrimary = true }
+public fun ClassRef.primaryConstructor(filter: IConstructorFilter.() -> Unit = {}): ConstructorRef =
+    constructor(filter).apply { isPrimary = true }
 
 /**
  * Get a constructor for the class with [className] in this [PackageRef], matching [filter].
@@ -310,7 +324,7 @@ public fun ClassRef.primaryConstructor(filter: IConstructorFilter.() -> Unit = {
 @Suppress("unused")
 @NameDSL
 public fun PackageRef.constructor(className: String, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
-        ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter))
+    ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter))
 
 /**
  * Get the primary constructor for the class with [className] in this [PackageRef], matching [filter].
@@ -318,18 +332,21 @@ public fun PackageRef.constructor(className: String, filter: ConstructorFilter.(
 @Suppress("unused")
 @NameDSL
 public fun PackageRef.primaryConstructor(className: String, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
-        ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter).apply { isPrimary = true })
+    ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter).apply { isPrimary = true })
 
 /**
  * Get a constructor for the class with [className] in this [RootPackage], matching [filter].
  */
 @NameDSL
 public fun RootPackage.constructor(className: String, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
-        ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter))
+    ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter))
 
 /**
  * Get the primary constructor for the class with [className] in this [RootPackage], matching [filter].
  */
 @NameDSL
-public fun RootPackage.primaryConstructor(className: String, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
-        ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter).apply { isPrimary = true })
+public fun RootPackage.primaryConstructor(
+    className: String,
+    filter: ConstructorFilter.() -> Unit = {}
+): ConstructorRef =
+    ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter).apply { isPrimary = true })
