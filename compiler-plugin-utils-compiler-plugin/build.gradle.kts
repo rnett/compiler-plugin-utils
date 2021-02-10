@@ -3,6 +3,8 @@ plugins {
     kotlin("kapt")
     `maven-publish` apply true
     id("com.github.johnrengelman.shadow") apply true
+    id("com.vanniktech.maven.publish")
+    id("org.jetbrains.dokka")
 }
 
 dependencies {
@@ -19,18 +21,5 @@ tasks {
     }
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
-    }
-}
-val sourcesJar = tasks.create<Jar>("sourcesJar") {
-    classifier = "sources"
-    from(kotlin.sourceSets["main"].kotlin.srcDirs)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("default") {
-            from(components["java"])
-            artifact(sourcesJar)
-        }
     }
 }

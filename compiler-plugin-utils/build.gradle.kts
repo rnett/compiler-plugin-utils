@@ -2,7 +2,9 @@ plugins {
     kotlin("jvm")
     kotlin("kapt")
     `maven-publish` apply true
+    id("com.vanniktech.maven.publish")
     id("com.rnett.compiler-plugin-utils") version "1.0-SNAPSHOT"
+    id("org.jetbrains.dokka")
 }
 
 dependencies {
@@ -39,20 +41,6 @@ tasks.test {
 
     testLogging {
         events("passed", "skipped", "failed")
-    }
-}
-
-val sourcesJar = tasks.create<Jar>("sourcesJar") {
-    classifier = "sources"
-    from(kotlin.sourceSets["main"].kotlin.srcDirs)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("default") {
-            from(components["java"])
-            artifact(sourcesJar)
-        }
     }
 }
 

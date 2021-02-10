@@ -4,10 +4,12 @@ plugins {
     id("com.gradle.plugin-publish") version "0.11.0" apply false
     id("com.github.johnrengelman.shadow") version "5.2.0" apply false
     id("com.github.gmazzo.buildconfig") version "2.0.2" apply false
+    id("com.vanniktech.maven.publish") version "0.14.0" apply false
+    id("org.jetbrains.dokka") version "1.4.20" apply false
 }
 
 allprojects {
-    group = "com.rnett.compiler-plugin-utils"
+    group = "com.github.rnett.compiler-plugin-utils"
     version = "1.0-SNAPSHOT"
 
     repositories {
@@ -25,6 +27,10 @@ allprojects {
 
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
+
+    setProperty("GROUP", group)
+    setProperty("POM_ARTIFACT_ID", name)
+    setProperty("VERSION_NAME", version)
 
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {

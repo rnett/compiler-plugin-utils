@@ -5,6 +5,7 @@ pluginManagement {
         mavenCentral()
 
         maven("https://plugins.gradle.org/m2/")
+        jcenter()
         gradlePluginPortal()
         mavenLocal()
     }
