@@ -21,6 +21,10 @@ public abstract class IrTransformer(
 
     override val file: IrFile get() = currentFile
 
+    override fun lower(irFile: IrFile) {
+        visitFile(irFile)
+    }
+
     override fun visitPackageFragment(declaration: IrPackageFragment): IrPackageFragment {
         // supports adding declarations to file during passes
         if (declaration is IrFile) {
