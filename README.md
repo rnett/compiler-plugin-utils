@@ -8,7 +8,7 @@ Utilities for writing Kotlin compiler plugins.
 ### Artifacts
 
 * Library: `com.github.rnett.compiler-plugin-utils:compiler-plugin-utils`
-* Compiler plugin: `com.github.rnett.compiler-plugin-utils`
+* Compiler plugin (actually the gradle plugin for it): `com.github.rnett.compiler-plugin-utils`
 
 The compiler plugin is optional, but is required for some features (it is explicitly noted when required).
 

@@ -3,7 +3,7 @@ plugins {
     kotlin("kapt")
     `maven-publish` apply true
     id("com.vanniktech.maven.publish")
-    //id("com.github.rnett.compiler-plugin-utils")
+    id("com.github.rnett.compiler-plugin-utils")
     id("org.jetbrains.dokka")
 }
 
