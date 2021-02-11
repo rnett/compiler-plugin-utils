@@ -10,5 +10,5 @@ pluginManagement {
         mavenLocal()
     }
 }
-rootProject.name = "compiler-plugin-utils-plugins"
+rootProject.name = "plugins"
 include("compiler-plugin-utils-compiler-plugin", "compiler-plugin-utils-gradle-plugin")

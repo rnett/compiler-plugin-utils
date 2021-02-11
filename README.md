@@ -1,7 +1,7 @@
 # Kotlin Compiler Plugin Utils
 
 ![Maven Central](https://img.shields.io/maven-central/v/com.github.rnett.compiler-plugin-utils/compiler-plugin-utils)
-![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/com.github.rnett.compiler-plugin-utils/compiler-plugin-utils?server=https%3A%2F%2Foss.sonatype.org)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/com.github.rnett.compiler-plugin-utils/compiler-plugin-utils?server=https%3A%2F%2Foss.sonatype.org)](https://oss.sonatype.org/content/repositories/snapshots/com/github/rnett/compiler-plugin-utils/)
 
 Utilities for writing Kotlin compiler plugins.
 
@@ -11,6 +11,8 @@ Utilities for writing Kotlin compiler plugins.
 * Compiler plugin: `com.github.rnett.compiler-plugin-utils`
 
 The compiler plugin is optional, but is required for some features (it is explicitly noted when required).
+
+Releases are on maven central, snapshots are on `https://oss.sonatype.org/content/repositories/snapshots`.
 
 ### [KDocs]()
 

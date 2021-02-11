@@ -22,3 +22,22 @@ subprojects {
         }
     }
 }
+
+tasks.create("publish") {
+    group = "publishing"
+    dependsOn(
+        ":compiler-plugin-utils:publish",
+        gradle.includedBuild("plugins").task(":compiler-plugin-utils-compiler-plugin:publish"),
+        gradle.includedBuild("plugins").task(":compiler-plugin-utils-gradle-plugin:publish")
+    )
+}
+
+tasks.create("publishToMavenLocal") {
+    group = "publishing"
+    dependsOn(
+        ":compiler-plugin-utils:publishToMavenLocal",
+        gradle.includedBuild("plugins").task(":compiler-plugin-utils-compiler-plugin:publishToMavenLocal"),
+        gradle.includedBuild("plugins").task(":compiler-plugin-utils-gradle-plugin:publishToMavenLocal")
+    )
+}
+

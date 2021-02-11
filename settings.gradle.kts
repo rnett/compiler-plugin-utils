@@ -1,10 +1,6 @@
 pluginManagement {
     repositories {
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
-
         mavenCentral()
-
-        maven("https://plugins.gradle.org/m2/")
         jcenter()
         gradlePluginPortal()
         mavenLocal()
@@ -12,4 +8,4 @@ pluginManagement {
 }
 includeBuild("plugins")
 rootProject.name = "compiler-plugin-utils"
-include("compiler-plugin-utils", "compiler-plugin-utils-compiler-plugin", "compiler-plugin-utils-gradle-plugin")
+include("compiler-plugin-utils")
