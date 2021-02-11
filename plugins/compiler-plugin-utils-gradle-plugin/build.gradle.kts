@@ -34,7 +34,3 @@ gradlePlugin {
         }
     }
 }
-
-tasks.getByName("compileKotlin") {
-    dependsOn(":compiler-plugin-utils-compiler-plugin:publishToMavenLocal")
-}
