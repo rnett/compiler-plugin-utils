@@ -8,15 +8,25 @@ plugins {
     id("org.jetbrains.dokka") version "1.4.20" apply false
     signing
 }
-//
-//allprojects {
-//    apply(plugin = "org.gradle.signing")
-//    signing {
-//        setRequired({
-//            (project.extra["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("publish")
-//        })
-//    }
-//}
+
+allprojects {
+    apply(plugin = "org.gradle.signing")
+    signing {
+        if (!(project.extra["isReleaseVersion"] as Boolean)) {
+            this.isRequired = false
+        }
+        if (project.hasProperty("RELEASE_SIGNING_ENABLED") && project.property("RELEASE_SIGNING_ENABLED").let {
+                if (it is Boolean)
+                    it == false
+                else if (it is String)
+                    it == "false"
+                else
+                    false
+            }) {
+            this.isRequired = false
+        }
+    }
+}
 
 apply("../common.gradle.kts")
 
