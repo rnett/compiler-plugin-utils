@@ -6,7 +6,17 @@ plugins {
     id("com.github.gmazzo.buildconfig") version "2.0.2" apply false
     id("com.vanniktech.maven.publish") version "0.14.0" apply false
     id("org.jetbrains.dokka") version "1.4.20" apply false
+    signing
 }
+//
+//allprojects {
+//    apply(plugin = "org.gradle.signing")
+//    signing {
+//        setRequired({
+//            (project.extra["isReleaseVersion"] as Boolean) && gradle.taskGraph.hasTask("publish")
+//        })
+//    }
+//}
 
 apply("../common.gradle.kts")
 

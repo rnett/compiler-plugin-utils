@@ -1,6 +1,8 @@
 allprojects {
-    group = "com.github.rnett.compiler-plugin-utils"
     version = "0.1.0"
+
+    group = "com.github.rnett.compiler-plugin-utils"
+    extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
 
     repositories {
         maven("https://dl.bintray.com/kotlin/kotlin-eap")
@@ -19,6 +21,6 @@ allprojects {
     setProperty("VERSION_NAME", version)
 
     if (version.toString().endsWith("-SNAPSHOT")) {
-        setProperty("RELEASE_SIGNING_ENABLED", false)
+        setProperty("RELEASE_SIGNING_ENABLED", "false")
     }
 }
