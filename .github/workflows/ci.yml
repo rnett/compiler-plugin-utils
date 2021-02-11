@@ -24,7 +24,7 @@ jobs:
   publish:
     name: Publish
     if: github.event_name == 'push' && contains(github.ref, 'main')
-#    needs: [ build ]
+    #    needs: [ build ]
     runs-on: ubuntu-latest
 
     steps:
@@ -47,4 +47,4 @@ jobs:
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-        run: ./gradlew publish --no-daemon --no-parallel -Dsigning.keyId=${{ secrets.OSSRH_GPG_ID }} -DmavenCentralRepositoryUsername=$SONATYPE_USERNAME -DmavenCentralRepositoryPassword=$SONATYPE_PASSWORD
+        run: ./gradlew publish --no-daemon --no-parallel -Dsigning.keyId=${{ secrets.OSSRH_GPG_ID }} -Dsigning.secretKeyRingFile=~/.gnupg/secring.gpg -DmavenCentralRepositoryUsername=$SONATYPE_USERNAME -DmavenCentralRepositoryPassword=$SONATYPE_PASSWORD
