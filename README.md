@@ -1,6 +1,5 @@
 # Kotlin Compiler Plugin Utils
 
----
 ![Maven Central](https://img.shields.io/maven-central/v/com.github.rnett.compiler-plugin-utils/compiler-plugin-utils)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/com.github.rnett.compiler-plugin-utils/compiler-plugin-utils?server=https%3A%2F%2Foss.sonatype.org)
 
@@ -17,16 +16,12 @@ The compiler plugin is optional, but is required for some features (it is explic
 
 ## Features
 
----
-
 Stdlib is fully tested, as is Naming. IR utilities are mostly tested.
 
 The usage of Naming and some of the IR utilities can be seen in
 the [stdlib code](compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/stdlib).
 
 ### IR Utilities
-
----
 
 The `com.rnett.plugin.ir` package contains a number of utilities for working with IR. This includes basic utilities such
 as `CompilerConfiguration.messageCollector`, `IrClass.addAnonymousInitializer`, `IrType.raiseTo`,
@@ -46,8 +41,6 @@ current file without running into `ConcurrentModificationException` (it does so 
 declaration list, and then on newly added declarations until no more are added).
 
 ### Naming
-
----
 
 The `com.rnett.plugin.naming` package provides ways to get `FqName`s and IR symbols for declarations. It primarily
 provides a structured method based on nested objects, but also provides direct access. Each of these reference types
@@ -86,7 +79,6 @@ another method for resolving classes.
 
 ### Stdlib
 
----
 The `com.rnett.plugin.stdlib` package provides builders for common standard library functions, using the Naming and IR
 Utilities features (and providing good examples of how to use them). Collections, `toString` and `hashCode`, `typeOf`,
 scope functions, numbers, and common exceptions are included. All builder methods are tested. Note that unlike for

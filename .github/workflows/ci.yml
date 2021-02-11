@@ -42,10 +42,10 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
       - id: export-secret-key
         name: Export secret key
-        run: gpg --keyring secring.gpg --export-secret-key ${{ OSSRH_GPG_ID }} > secring.gpg
+        run: gpg --keyring secring.gpg --export-secret-key ${{ secrets.OSSRH_GPG_ID }} > secring.gpg
       - name: Publish
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-        run: ./gradlew publish --no-daemon --no-parallel  -Dsigning.keyId=${{ OSSRH_GPG_ID }} \
+        run: ./gradlew publish --no-daemon --no-parallel  -Dsigning.keyId=${{ secrets.OSSRH_GPG_ID }} \
           -DmavenCentralRepositoryUsername=$SONATYPE_USERNAME -DmavenCentralRepositoryPassword=$SONATYPE_PASSWORD
