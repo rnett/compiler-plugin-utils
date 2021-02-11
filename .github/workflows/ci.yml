@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: ls
       - name: Build and Test
         run: ./gradlew build
   publish:
@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: ls
       - name: Test
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
