@@ -24,7 +24,7 @@ jobs:
   publish:
     name: Publish
     if: github.event_name == 'push' && contains(github.ref, 'main')
-    needs: [ build ]
+#    needs: [ build ]
     runs-on: ubuntu-latest
 
     steps:
@@ -42,7 +42,7 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
       - id: export-secret-key
         name: Export secret key
-        run: gpg --keyring secring.gpg --export-secret-key ${{ secrets.OSSRH_GPG_ID }} > secring.gpg
+        run: gpg --export-secret-key ${{ secrets.OSSRH_GPG_ID }} > secring.gpg
       - name: Publish
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
