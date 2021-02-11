@@ -47,4 +47,4 @@ jobs:
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-        run: ./gradlew publish --no-daemon --no-parallel -Dsigning.keyId=${{ secrets.OSSRH_GPG_ID }} -Dsigning.secretKeyRingFile=~/.gnupg/secring.gpg -Dsigning.password=${{ secrets.OSSRH_GPG_KEY_PASSWORD }} -DmavenCentralRepositoryUsername=$SONATYPE_USERNAME -DmavenCentralRepositoryPassword=$SONATYPE_PASSWORD
+        run: ./gradlew publish --no-daemon --no-parallel -Dsigning.keyId=${{ secrets.OSSRH_GPG_ID }} -Dsigning.secretKeyRingFile=/home/runner/.gnupg/secring.gpg -Dsigning.password=${{ secrets.OSSRH_GPG_KEY_PASSWORD }} -DmavenCentralRepositoryUsername=$SONATYPE_USERNAME -DmavenCentralRepositoryPassword=$SONATYPE_PASSWORD
