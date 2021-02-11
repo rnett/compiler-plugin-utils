@@ -42,7 +42,7 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
       - id: export-secret-key
         name: Export secret key
-        run: gpg --export-secret-key ${{ secrets.OSSRH_GPG_ID }} > secring.gpg
+        run: gpg --export-secret-key ${{ secrets.OSSRH_GPG_ID }} > ~/.gnupg/secring.gpg
       - name: Publish
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
