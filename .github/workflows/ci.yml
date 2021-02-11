@@ -22,7 +22,6 @@ jobs:
           java-version: 15
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - uses: actions/checkout@v2
       - name: Build and Test
         run: ./gradlew build
   publish:
@@ -39,7 +38,6 @@ jobs:
           java-version: 15
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - uses: actions/checkout@v2
       - name: Test
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
