@@ -3,7 +3,7 @@ plugins {
     kotlin("kapt")
     `maven-publish` apply true
     id("com.vanniktech.maven.publish")
-    id("com.rnett.compiler-plugin-utils") version "1.0-SNAPSHOT"
+    id("com.github.rnett.compiler-plugin-utils")
     id("org.jetbrains.dokka")
 }
 
@@ -42,8 +42,4 @@ tasks.test {
     testLogging {
         events("passed", "skipped", "failed")
     }
-}
-
-tasks.getByName("compileKotlin") {
-    dependsOn(":compiler-plugin-utils-compiler-plugin:publishToMavenLocal")
 }

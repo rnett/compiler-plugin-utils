@@ -27,7 +27,7 @@ buildConfig {
 gradlePlugin {
     plugins {
         create("compilerPluginUtilsPlugin") {
-            id = "com.rnett.compiler-plugin-utils"
+            id = project.group.toString()
             displayName = "Compiler Plugin Utils Plugin"
             description = "Compiler Plugin Utils Plugin"
             implementationClass = "com.rnett.plugin.GradlePlugin"

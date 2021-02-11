@@ -8,7 +8,7 @@ plugins {
     id("org.jetbrains.dokka") version "1.4.20" apply false
 }
 
-apply("./common.gradle.kts")
+apply("../common.gradle.kts")
 
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
