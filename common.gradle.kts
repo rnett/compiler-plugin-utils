@@ -19,8 +19,4 @@ allprojects {
     setProperty("GROUP", group)
     setProperty("POM_ARTIFACT_ID", name)
     setProperty("VERSION_NAME", version)
-
-    if (version.toString().endsWith("-SNAPSHOT")) {
-        setProperty("RELEASE_SIGNING_ENABLED", "false")
-    }
 }
