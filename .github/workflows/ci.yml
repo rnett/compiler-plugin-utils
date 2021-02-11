@@ -31,9 +31,9 @@ jobs:
       - name: ls
         run: echo $(ls)
       - name: pwd
-      run: echo $(pwd)
-        - name: Build and Test
-          run: ./gradlew build
+        run: echo $(pwd)
+      - name: Build and Test
+        run: ./gradlew build
   publish:
     name: Publish
     if: github.event_name == 'push' && contains(github.ref, 'main')
