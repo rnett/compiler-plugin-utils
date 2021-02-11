@@ -1,7 +1,6 @@
 package com.rnett.plugin
 
 import com.rnett.plugin.naming.*
-import com.rnett.plugin.resolve.fqName
 import org.jetbrains.kotlin.name.FqName
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals

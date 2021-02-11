@@ -79,6 +79,8 @@ public sealed class Namespace(name: String, parent: Namespace? = null, protected
  */
 public open class RootPackage(name: String) : Namespace(name, null, true)
 
+//TODO see about making parent non-nullable and using a new subclass to denote compiler plugin replacement
+
 /**
  * A package reference.  Should be the superclass of an object inside another [Namespace].
  * The parent will be auto-filled (at compile time), as will the name if not set.  The parent will be the enclosing object, which must be a [Namespace].
@@ -86,7 +88,7 @@ public open class RootPackage(name: String) : Namespace(name, null, true)
  *
  * For an example, see [com.rnett.plugin.stdlib.Kotlin.Collections].
  */
-public abstract class PackageRef @PublishedApi internal constructor(name: String, parent: Namespace?) :
+public abstract class PackageRef(name: String, parent: Namespace?) :
     Namespace(name, parent) {
     public constructor(name: String) : this(name, null)
 

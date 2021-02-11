@@ -8,6 +8,7 @@ import org.jetbrains.kotlin.cli.common.messages.MessageCollector
 import org.jetbrains.kotlin.ir.IrElement
 import org.jetbrains.kotlin.ir.UNDEFINED_OFFSET
 import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
+import org.jetbrains.kotlin.ir.declarations.IrDeclaration
 import org.jetbrains.kotlin.ir.declarations.IrFile
 import org.jetbrains.kotlin.ir.declarations.IrPackageFragment
 
@@ -18,21 +19,17 @@ public abstract class IrTransformer(
     IrElementTransformerVoidWithContext(), FileLoweringPass,
     HasContext, KnowsCurrentFile {
 
-    final override lateinit var file: IrFile
-        private set
-
-    override fun lower(irFile: IrFile) {
-        file = irFile
-        irFile.transformChildrenVoid()
-    }
+    override val file: IrFile get() = currentFile
 
     override fun visitPackageFragment(declaration: IrPackageFragment): IrPackageFragment {
         // supports adding declarations to file during passes
         if (declaration is IrFile) {
             var declarations = declaration.declarations.toSet()
+            val seenDeclarations = mutableSetOf<IrDeclaration>()
             while (declarations.isNotEmpty()) {
+                seenDeclarations.addAll(declarations)
                 declarations.forEach { it.transformChildrenVoid() }
-                declarations = declaration.declarations.toSet() - declarations
+                declarations = declaration.declarations.toSet() - seenDeclarations
             }
             return declaration
         }

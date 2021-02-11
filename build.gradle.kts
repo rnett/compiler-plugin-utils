@@ -13,10 +13,6 @@ apply("./common.gradle.kts")
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
-    setProperty("GROUP", group)
-    setProperty("POM_ARTIFACT_ID", name)
-    setProperty("VERSION_NAME", version)
-
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             jvmTarget = "1.8"

@@ -1,4 +1,4 @@
-package com.rnett.plugin.resolve
+package com.rnett.plugin.naming
 
 import org.jetbrains.kotlin.name.FqName
 import kotlin.reflect.KCallable
