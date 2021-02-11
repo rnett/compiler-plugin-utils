@@ -28,10 +28,7 @@ jobs:
     needs: [ setup ]
 
     steps:
-      - name: ls
-        run: echo $(ls)
-      - name: pwd
-        run: echo $(pwd)
+      - uses: actions/checkout@v2
       - name: Build and Test
         run: ./gradlew build
   publish:
@@ -41,8 +38,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Grant execute permission for gradlew
-        run: ls
+      - uses: actions/checkout@v2
       - name: Test
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
