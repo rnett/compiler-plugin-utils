@@ -28,7 +28,7 @@ jobs:
   publish:
     name: Publish
     if: github.event_name == 'push' && contains(github.ref, 'main')
-    needs: [ setup, build ]
+    needs: [ build ]
     runs-on: ubuntu-latest
 
     steps:
