@@ -45,6 +45,9 @@ jobs:
         run: gpg --export-secret-key ${{ secrets.OSSRH_GPG_ID }} > ~/.gnupg/secring.gpg
       - name: Publish
         env:
-          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-        run: ./gradlew publish --no-daemon --no-parallel -Psigning.keyId=${{ secrets.OSSRH_GPG_ID }} -Psigning.secretKeyRingFile=/home/runner/.gnupg/secring.gpg -Psigning.password=${{ secrets.OSSRH_GPG_KEY_PASSWORD }} -PmavenCentralRepositoryUsername=$SONATYPE_USERNAME -PmavenCentralRepositoryPassword=$SONATYPE_PASSWORD
+          ORG_GRADLE_PROJECT_mavenCentralRepositoryPassword: ${{ secrets.SONATYPE_PASSWORD }}
+          ORG_GRADLE_PROJECT_mavenCentralRepositoryUsername: ${{ secrets.SONATYPE_USERNAME }}
+          ORG_GRADLE_PROJECT_signing.keyId: ${{ secrets.OSSRH_GPG_ID }}
+          ORG_GRADLE_PROJECT_signing.secretKeyRingFile: /home/runner/.gnupg/secring.gpg
+          ORG_GRADLE_PROJECT_signing.password: ${{ secrets.OSSRH_GPG_KEY_PASSWORD }}
+        run: ./gradlew publish --no-daemon --no-parallel
