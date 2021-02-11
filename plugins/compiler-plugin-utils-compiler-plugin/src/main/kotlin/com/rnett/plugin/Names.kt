@@ -6,8 +6,8 @@ object Names {
     val Class = FqName("com.rnett.plugin.naming.ClassRef")
     val Package = FqName("com.rnett.plugin.naming.PackageRef")
 
-    val getFqName = FqName("com.rnett.plugin.resolve.getFqName")
-    val getFqNameExt = FqName("com.rnett.plugin.resolve.fqName")
+    val getFqName = FqName("com.rnett.plugin.naming.getFqName")
+    val getFqNameExt = FqName("com.rnett.plugin.naming.fqName")
     val FqNameClass = FqName("org.jetbrains.kotlin.name.FqName")
 
     val ClassFunc = FqName("com.rnett.plugin.naming.Class")

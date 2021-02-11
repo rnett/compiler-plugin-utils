@@ -28,13 +28,20 @@ public abstract class IrTransformer(
     override fun visitPackageFragment(declaration: IrPackageFragment): IrPackageFragment {
         // supports adding declarations to file during passes
         if (declaration is IrFile) {
-            var declarations = declaration.declarations.toSet()
             val seenDeclarations = mutableSetOf<IrDeclaration>()
-            while (declarations.isNotEmpty()) {
-                seenDeclarations.addAll(declarations)
-                declarations.forEach { it.transformChildrenVoid() }
-                declarations = declaration.declarations.toSet() - seenDeclarations
-            }
+            do {
+                var seenNew = false
+                declaration.declarations.forEachIndexed { idx, it ->
+                    if (it !in seenDeclarations) {
+                        seenNew = true
+                        val new = it.transform(this, null)
+                        if (new is IrDeclaration) {
+                            seenDeclarations += new
+                            declaration.declarations[idx] = new
+                        }
+                    }
+                }
+            } while (seenNew)
             return declaration
         }
         return super.visitPackageFragment(declaration)

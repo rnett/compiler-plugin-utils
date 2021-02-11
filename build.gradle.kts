@@ -11,25 +11,6 @@ plugins {
 
 apply("./common.gradle.kts")
 
-//allprojects {
-//    apply(plugin = "org.gradle.signing")
-//    signing {
-//        if (!(project.extra["isReleaseVersion"] as Boolean)) {
-//            this.isRequired = false
-//        }
-//        if (project.hasProperty("RELEASE_SIGNING_ENABLED") && project.property("RELEASE_SIGNING_ENABLED").let {
-//                if (it is Boolean)
-//                    it == false
-//                else if (it is String)
-//                    it == "false"
-//                else
-//                    false
-//            }) {
-//            this.isRequired = false
-//        }
-//    }
-//}
-
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
 
