@@ -80,7 +80,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Install GPG key
-        uses: rnett/load-gpg-key@v1
+        uses: rnett/load-gpg-key@v1.3
         with:
           gpg-key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           export-secring: true
