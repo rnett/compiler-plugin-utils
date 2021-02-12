@@ -14,7 +14,9 @@ The compiler plugin is optional, but is required for some features (it is explic
 
 Releases are on maven central, snapshots are on `https://oss.sonatype.org/content/repositories/snapshots`.
 
-### [KDocs]()
+### [Docs](https://rnett.github.io/compiler-plugin-utils/release/compiler-plugin-utils)
+
+[Latest SNAPSHOT build](https://rnett.github.io/compiler-plugin-utils/snapshot/compiler-plugin-utils/)
 
 ## Features
 
