@@ -48,7 +48,9 @@ jobs:
           git config --global user.signingkey ${{ secrets.OSSRH_GPG_ID }}
           git config --global --list
       - name: Get version
-        run: "export PROJECT_VERSION=$(./gradlew properties | grep version: | cut -d ' ' -f2)"
+        run: |
+        "export PROJECT_VERSION=$(./gradlew properties | grep version: | cut -d ' ' -f2)"
+        echo "PROJECT_VERSION=$PROJECT_VERSION" >> $GITHUB_ENV
       - name: Generate HTML Docs
         run: ./gradlew dokkaHtml
       - name: Make gh-pages repo
@@ -59,7 +61,7 @@ jobs:
           rm -rf "$PROJECT_VERSION"
           cp -r ../compiler-plugin-utils/build/dokka/html/* ./"$PROJECT_VERSION"
           git stage -A
-          git commit -S -m "Docs for $PROJECT_VERSION"
+          git commit -q -S -m "Docs for $PROJECT_VERSION"
           git push https://${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git
 
   publish:
