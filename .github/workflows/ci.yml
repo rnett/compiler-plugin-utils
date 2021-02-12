@@ -85,4 +85,4 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_mavenCentralRepositoryPassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_mavenCentralRepositoryUsername: ${{ secrets.SONATYPE_USERNAME }}
-        run: ./gradlew publish --no-daemon --no-parallel -Psigning.keyId=${{ secrets.OSSRH_GPG_ID }} -Psigning.secretKeyRingFile=/home/runner/.gnupg/secring.gpg -Psigning.password=${{ secrets.OSSRH_GPG_KEY_PASSWORD }}
+        run: ./gradlew publish -Porg.gradle.jvmargs="-Xmx2048m -XX:MaxPermSize=512m" --no-daemon --no-parallel -Psigning.keyId=${{ secrets.OSSRH_GPG_ID }} -Psigning.secretKeyRingFile=/home/runner/.gnupg/secring.gpg -Psigning.password=${{ secrets.OSSRH_GPG_KEY_PASSWORD }}
