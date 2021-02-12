@@ -50,7 +50,10 @@ jobs:
           git config --global --list
       - name: Get version
         run: |
-          echo "PROJECT_VERSION=$(./gradlew properties | grep version: | cut -d ' ' -f2)" >> $GITHUB_ENV
+          PROJECT_VERSION=$(./gradlew properties | grep version: | cut -d ' ' -f2)
+          if [[ "PROJECT_VERSION" == *-SNAPSHOT ]]; then MAIN_DIR=release; else MAIN_DIR=snapshot; fi
+          echo "MAIN_DIR=MAIN_DIR" >> $GITHUB_ENV
+          echo "PROJECT_VERSION=$PROJECT_VERSION" >> $GITHUB_ENV
       - name: Generate HTML Docs
         run: ./gradlew dokkaHtml
       - name: Make gh-pages repo
@@ -59,7 +62,9 @@ jobs:
           cd gh-pages
           git checkout gh-pages
           rm -rf "$PROJECT_VERSION"
-          cp -r ../compiler-plugin-utils/build/dokka/html/* ./"$PROJECT_VERSION"
+          cp -r ../compiler-plugin-utils/build/dokka/html ./"$PROJECT_VERSION"
+          rm -rf "$MAIN_DIR"
+          cp -r ../compiler-plugin-utils/build/dokka/html ./"$MAIN_DIR"
           git stage -A
           git commit -q -S -m "Docs for $PROJECT_VERSION"
           git push https://rnett:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git gh-pages
