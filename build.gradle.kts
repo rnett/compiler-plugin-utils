@@ -40,4 +40,3 @@ tasks.create("publishToMavenLocal") {
         gradle.includedBuild("plugins").task(":compiler-plugin-utils-gradle-plugin:publishToMavenLocal")
     )
 }
-
