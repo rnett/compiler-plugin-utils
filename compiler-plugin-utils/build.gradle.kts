@@ -1,3 +1,5 @@
+import java.net.URL
+
 plugins {
     kotlin("jvm")
     kotlin("kapt")
@@ -23,6 +25,25 @@ dependencies {
 
     testCompileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
     kaptTest("com.google.auto.service:auto-service:1.0-rc6")
+}
+
+val sourceLinkBranch: String by project
+
+tasks.dokkaHtml{
+    moduleName.set("Compiler Plugin Utils")
+    moduleVersion.set(version.toString())
+
+    dokkaSourceSets{
+        all {
+            includes.from("docs.md")
+
+            sourceLink{
+                localDirectory.set(file("src/main/kotlin"))
+                remoteUrl.set(URL("https://github.com/rnett/compiler-plugin-utils/blob/$sourceLinkBranch/compiler-plugin-utils/src/main/kotlin"))
+                remoteLineSuffix.set("#L")
+            }
+        }
+    }
 }
 
 kotlin {

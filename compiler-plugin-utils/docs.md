@@ -1,31 +1,10 @@
-# Kotlin Compiler Plugin Utils
-
-![Maven Central](https://img.shields.io/maven-central/v/com.github.rnett.compiler-plugin-utils/compiler-plugin-utils)
-[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/com.github.rnett.compiler-plugin-utils/compiler-plugin-utils?server=https%3A%2F%2Foss.sonatype.org)](https://oss.sonatype.org/content/repositories/snapshots/com/github/rnett/compiler-plugin-utils/)
+# Module Compiler Plugin Utils
 
 Utilities for writing Kotlin compiler plugins.
 
-### Artifacts
+[GitHub](https://github.com/rnett/compiler-plugin-utils)
 
-* Library: `com.github.rnett.compiler-plugin-utils:compiler-plugin-utils`
-* Compiler plugin (actually the gradle plugin for it): `com.github.rnett.compiler-plugin-utils`
-
-The compiler plugin is optional, but is required for some features (it is explicitly noted when required).
-
-Releases are on maven central, snapshots are on `https://oss.sonatype.org/content/repositories/snapshots`.
-
-### [Docs](https://rnett.github.io/compiler-plugin-utils/release/compiler-plugin-utils)
-
-[For latest SNAPSHOT build](https://rnett.github.io/compiler-plugin-utils/snapshot/compiler-plugin-utils/)
-
-## Features
-
-Stdlib is fully tested, as is Naming. IR utilities are mostly tested.
-
-The usage of Naming and some of the IR utilities can be seen in
-the [stdlib code](compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/stdlib).
-
-### IR Utilities
+# Package com.rnett.plugin.ir
 
 The `com.rnett.plugin.ir` package contains a number of utilities for working with IR. This includes basic utilities such
 as `CompilerConfiguration.messageCollector`, `IrClass.addAnonymousInitializer`, `IrType.raiseTo`,
@@ -44,7 +23,7 @@ or `IrElementTransformerVoidWithContext`. In addition to implementing `IrElement
 current file without running into `ConcurrentModificationException` (it does so by running transforms on a copy of the
 declaration list, and then on newly added declarations until no more are added).
 
-### Naming
+# Package com.rnett.plugin.naming
 
 The `com.rnett.plugin.naming` package provides ways to get `FqName`s and IR symbols for declarations. It primarily
 provides a structured method based on nested objects, but also provides direct access. Each of these reference types
@@ -53,18 +32,18 @@ references all accept filters (essentially `(IrSimpleFunction) -> Boolean` lambd
 helper methods for common conditions) to disambiguate overloads. Some utility functions are provided in `HasContext` for
 working with references in IR, such as `irCall(FunctionRef)` or `ClassRef.resolveTypeWith`.
 
-#### Structured
+## Structured
 
 The structured name resolution can be seen in
-the [stdlib names](compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/stdlib/Names.kt). Objects
-extending `RootPackage`, `PackageRef`, and `ClassRef` can be nested, each auto-detecting the name from the object named
-and adding its parent's name as a prefix to its own.  **This requires the compiler plugin** since there is
+the [stdlib names](https://github.com/rnett/compiler-plugin-utils/tree/main/src/main/kotlin/com/rnett/plugin/stdlib/Names.kt)
+. Objects extending `RootPackage`, `PackageRef`, and `ClassRef` can be nested, each auto-detecting the name from the
+object named and adding its parent's name as a prefix to its own.  **This requires the compiler plugin** since there is
 no `inner object` or object delegation. However, if both `name`
 and `parent` are specified the compiler plugin is unnecessary. Property, function, and constructor references can be
 created inside of class or package references (with constructor references in packages requiring the class name). Note
 that just like in IR, extension receivers are not part of an element's `FqName`, only dispatch receivers.
 
-#### Direct
+## Direct
 
 Methods to directly get references are also provided for classes, functions, properties, and constructors. Literal
 versions are also provided, that take a class, function, property, or class literal, respectively.  **Using the literal
@@ -73,7 +52,7 @@ The `getFqName(literal)` and `literal.fqName()` functions work similarly, **and 
 that all of these literal functions only work with literal arguments for the declaration being resolved (thus the name),
 not variables or parameters.
 
-#### Types
+## Types
 
 `typeOf()`-like type resolution methods are also provided. They enable getting a `TypeRef` from a type literal
 with `typeRef<T>()`, which can be resolved to an `IrType` later with an `IrPluginContext` or `HasContext`. They can also
@@ -81,7 +60,7 @@ be compared to `IrType`s without resolving using `eq`. Methods using `eq` such a
 and `IrType.isClassifierOf<T>()` are also provided. The `classifier` of a `TypeRef` is a `ClassRef`, which provides
 another method for resolving classes.
 
-### Stdlib
+# Package com.rnett.plugin.stdlib
 
 The `com.rnett.plugin.stdlib` package provides builders for common standard library functions, using the Naming and IR
 Utilities features (and providing good examples of how to use them). Collections, `toString` and `hashCode`, `typeOf`,
@@ -93,3 +72,4 @@ and `hashCode`. The receiver arguments are type checked (in IR) in most cases, t
 **Note that using a lot of these functions is a bad idea.**  If you find yourself generating a lot of code using these
 methods, you should probably create a utility function and call it from IR instead. The number of builders is there to
 provide breadth, not depth.
+
