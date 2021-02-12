@@ -56,7 +56,7 @@ jobs:
           cd gh-pages
           git checkout gh-pages
           rm -rf "$PROJECT_VERSION"
-          cp ../compiler-plugin-utils/dokka/html ./"$PROJECT_VERSION"
+          cp ../compiler-plugin-utils/build/dokka/html ./"$PROJECT_VERSION"
           git stage -A
           git commit -S -m "Docs for $PROJECT_VERSION"
           git push
