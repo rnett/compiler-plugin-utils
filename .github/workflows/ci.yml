@@ -42,8 +42,9 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
       - name: Configure git
         run: |
+          git config --global credential.helper store
           git config --global user.email JNett96@gmail.com
-          git config --global user.name Ryan Nett
+          git config --global user.name "Ryan Nett"
           git config --global user.password ${{ github.token }}
           git config --global user.signingkey ${{ secrets.OSSRH_GPG_ID }}
           git config --global --list
