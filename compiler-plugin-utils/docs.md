@@ -2,7 +2,7 @@
 
 Utilities for writing Kotlin compiler plugins.
 
-[GitHub](https://github.com/rnett/compiler-plugin-utils)
+[GitHub + Overview](https://github.com/rnett/compiler-plugin-utils)
 
 # Package com.rnett.plugin.ir
 
