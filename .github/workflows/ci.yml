@@ -46,6 +46,7 @@ jobs:
           git config --global user.name Ryan Nett
           git config --global user.password ${{ github.token }}
           git config --global user.signingkey ${{ secrets.OSSRH_GPG_ID }}
+          git config --global --list
       - name: Get version
         run: "export PROJECT_VERSION=$(./gradlew properties | grep version: | cut -d ' ' -f2)"
       - name: Generate HTML Docs
@@ -59,7 +60,7 @@ jobs:
           cp -r ../compiler-plugin-utils/build/dokka/html/* ./"$PROJECT_VERSION"
           git stage -A
           git commit -S -m "Docs for $PROJECT_VERSION"
-          git push
+          git push https://${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git
 
   publish:
     name: Publish
