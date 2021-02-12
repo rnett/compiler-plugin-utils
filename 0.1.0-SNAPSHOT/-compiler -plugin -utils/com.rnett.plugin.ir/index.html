@@ -1,0 +1,370 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.rnett.plugin.ir</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+    <link href="../../styles/style.css" rel="Stylesheet">
+    <link href="../../styles/logo-styles.css" rel="Stylesheet">
+    <link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
+    <link href="../../styles/main.css" rel="Stylesheet">
+    <script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+    <script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+    <script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+    <script type="text/javascript" src="../../scripts/main.js" async="async"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn">
+        <div id="logo"></div>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+        <script type="text/javascript" src="../../scripts/pages.js"></script>
+        <script type="text/javascript" src="../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="com.rnett.plugin.ir////PointingToDeclaration//496114957">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../index.html">Compiler Plugin Utils</a>/<a href="index.html">com.rnett.plugin.ir</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Package com.</span><wbr></wbr><span>rnett.</span><wbr></wbr><span>plugin.</span><wbr></wbr><span>ir</span></h1>
+            <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><p class="paragraph">The <code>com.rnett.plugin.ir</code> package contains a number of utilities for working with IR. This includes basic utilities such as <code>CompilerConfiguration.messageCollector</code>, <code>IrClass.addAnonymousInitializer</code>, <code>IrType.raiseTo</code>, and <code>IrClass.typeWith(List&lt;IrTypeArgument&gt;)</code>, all of which are available as extension functions.</p><p class="paragraph">Many utilities require a <code>IrPluginContext</code>, so in lieu of multiple receivers, they are put in <code>HasContext</code> which has a <code>val context: IrPluginContext</code>. It can be easily implemented by <code>IrElementTransformer</code>s. Of special note are the <code>IrBuilderWithScope.buildLambda</code> and <code>lambdaArgument</code> functions.</p><p class="paragraph"><code>KnowsCurrentFile</code> is a similar interface, but requires a <code>IrFile</code> and provides extensions for getting message locations from <code>IrElement</code>s using said file.</p><p class="paragraph">Both of these are implemented by <code>IrTransformer</code>, which is usable as a replacement for <code>IrElementTransformerVoid</code> or <code>IrElementTransformerVoidWithContext</code>. In addition to implementing <code>IrElementTransformerVoidWithContext</code> , <code>KnowsCurrentFile</code>, and <code>HasContext</code>, it modifies the file transformer so that new declarations can be added to the current file without running into <code>ConcurrentModificationException</code> (it does so by running transforms on a copy of the declaration list, and then on newly added declarations until no more are added).</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="%5Bcom.rnett.plugin.ir%2FHasContext%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" anchor-label="HasContext" id="%5Bcom.rnett.plugin.ir%2FHasContext%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-has-context/index.html">HasContext</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2FHasContext%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="-has-context/index.html">HasContext</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2FHasContext%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" anchor-label="HasContext" id="%5Bcom.rnett.plugin.ir%2FHasContext%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bcom.rnett.plugin.ir%2FHasContext%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" anchor-label="HasContext" id="%5Bcom.rnett.plugin.ir%2FHasContext%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>A bunch of things using <a href="-has-context/context.html">context</a> that should mostly be moved to multiple receivers</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2FIrTransformer%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" anchor-label="IrTransformer" id="%5Bcom.rnett.plugin.ir%2FIrTransformer%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-ir-transformer/index.html">IrTransformer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2FIrTransformer%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">abstract class <a href="-ir-transformer/index.html">IrTransformer</a>(context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>, messageCollector: <span data-unresolved-link="org.jetbrains.kotlin.cli.common.messages/MessageCollector///PointingToDeclaration/">MessageCollector</span>) : <span data-unresolved-link="org.jetbrains.kotlin.backend.common/IrElementTransformerVoidWithContext///PointingToDeclaration/">IrElementTransformerVoidWithContext</span>, <span data-unresolved-link="org.jetbrains.kotlin.backend.common/FileLoweringPass///PointingToDeclaration/">FileLoweringPass</span>, <a href="-has-context/index.html">HasContext</a>, <a href="-knows-current-file/index.html">KnowsCurrentFile</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2FKnowsCurrentFile%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" anchor-label="KnowsCurrentFile" id="%5Bcom.rnett.plugin.ir%2FKnowsCurrentFile%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-knows-current-file/index.html">KnowsCurrentFile</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2FKnowsCurrentFile%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="-knows-current-file/index.html">KnowsCurrentFile</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2FKnowsCurrentFile%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" anchor-label="KnowsCurrentFile" id="%5Bcom.rnett.plugin.ir%2FKnowsCurrentFile%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bcom.rnett.plugin.ir%2FKnowsCurrentFile%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" anchor-label="KnowsCurrentFile" id="%5Bcom.rnett.plugin.ir%2FKnowsCurrentFile%2F%2F%2FPointingToDeclaration%2F%5D%2FClasslikes%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Utility methods for working with a <span data-unresolved-link="org.jetbrains.kotlin.cli.common.messages/MessageCollector///PointingToDeclaration/">MessageCollector</span> when the current file is available</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="%5Bcom.rnett.plugin.ir%2F%2FaddAnonymousInitializer%2Forg.jetbrains.kotlin.ir.declarations.IrClass%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer%2Ckotlin.Unit%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="addAnonymousInitializer" id="%5Bcom.rnett.plugin.ir%2F%2FaddAnonymousInitializer%2Forg.jetbrains.kotlin.ir.declarations.IrClass%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer%2Ckotlin.Unit%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="add-anonymous-initializer.html">addAnonymousInitializer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FaddAnonymousInitializer%2Forg.jetbrains.kotlin.ir.declarations.IrClass%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer%2Ckotlin.Unit%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrClass///PointingToDeclaration/">IrClass</span>.<a href="add-anonymous-initializer.html">addAnonymousInitializer</a>(builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrAnonymousInitializer///PointingToDeclaration/">IrAnonymousInitializer</span>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrAnonymousInitializer///PointingToDeclaration/">IrAnonymousInitializer</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FbuildStatement%2Forg.jetbrains.kotlin.ir.builders.IrGeneratorWithScope%23kotlin.Int%23kotlin.Int%23org.jetbrains.kotlin.ir.expressions.IrStatementOrigin%3F%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder%2CTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.IrElement%5D%29%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="buildStatement" id="%5Bcom.rnett.plugin.ir%2F%2FbuildStatement%2Forg.jetbrains.kotlin.ir.builders.IrGeneratorWithScope%23kotlin.Int%23kotlin.Int%23org.jetbrains.kotlin.ir.expressions.IrStatementOrigin%3F%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder%2CTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.IrElement%5D%29%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="build-statement.html">buildStatement</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FbuildStatement%2Forg.jetbrains.kotlin.ir.builders.IrGeneratorWithScope%23kotlin.Int%23kotlin.Int%23org.jetbrains.kotlin.ir.expressions.IrStatementOrigin%3F%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder%2CTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.IrElement%5D%29%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="build-statement.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir/IrElement///PointingToDeclaration/">IrElement</span>&gt; <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrGeneratorWithScope///PointingToDeclaration/">IrGeneratorWithScope</span>.<a href="build-statement.html">buildStatement</a>(startOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET, endOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET, origin: <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrStatementOrigin///PointingToDeclaration/">IrStatementOrigin</span>? = null, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrSingleStatementBuilder///PointingToDeclaration/">IrSingleStatementBuilder</span>.() -&gt; <a href="build-statement.html">T</a>): <a href="build-statement.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FcreateIrBuilder%2Forg.jetbrains.kotlin.ir.builders.IrGeneratorContext%23org.jetbrains.kotlin.ir.symbols.IrSymbol%23kotlin.Int%23kotlin.Int%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="createIrBuilder" id="%5Bcom.rnett.plugin.ir%2F%2FcreateIrBuilder%2Forg.jetbrains.kotlin.ir.builders.IrGeneratorContext%23org.jetbrains.kotlin.ir.symbols.IrSymbol%23kotlin.Int%23kotlin.Int%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="create-ir-builder.html">createIrBuilder</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FcreateIrBuilder%2Forg.jetbrains.kotlin.ir.builders.IrGeneratorContext%23org.jetbrains.kotlin.ir.symbols.IrSymbol%23kotlin.Int%23kotlin.Int%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrGeneratorContext///PointingToDeclaration/">IrGeneratorContext</span>.<a href="create-ir-builder.html">createIrBuilder</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSymbol///PointingToDeclaration/">IrSymbol</span>, startOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET, endOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET): <span data-unresolved-link="org.jetbrains.kotlin.backend.common.lower/DeclarationIrBuilder///PointingToDeclaration/">DeclarationIrBuilder</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FirTypeOf%2Fcom.rnett.plugin.ir.HasContext%23%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FirTypeOf%2Forg.jetbrains.kotlin.backend.common.extensions.IrPluginContext%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="irTypeOf" id="%5Bcom.rnett.plugin.ir%2F%2FirTypeOf%2Fcom.rnett.plugin.ir.HasContext%23%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FirTypeOf%2Forg.jetbrains.kotlin.backend.common.extensions.IrPluginContext%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="ir-type-of.html">irTypeOf</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FirTypeOf%2Fcom.rnett.plugin.ir.HasContext%23%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FirTypeOf%2Forg.jetbrains.kotlin.backend.common.extensions.IrPluginContext%23%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="ir-type-of.html">T</a>&gt; <a href="-has-context/index.html">HasContext</a>.<a href="ir-type-of.html">irTypeOf</a>(): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">inline fun &lt;<a href="ir-type-of.html">T</a>&gt; <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>.<a href="ir-type-of.html">irTypeOf</a>(): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FirVararg%2Forg.jetbrains.kotlin.ir.builders.IrBuilderWithScope%23org.jetbrains.kotlin.ir.types.IrType%23kotlin.collections.Iterable%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="irVararg" id="%5Bcom.rnett.plugin.ir%2F%2FirVararg%2Forg.jetbrains.kotlin.ir.builders.IrBuilderWithScope%23org.jetbrains.kotlin.ir.types.IrType%23kotlin.collections.Iterable%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="ir-vararg.html">irVararg</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FirVararg%2Forg.jetbrains.kotlin.ir.builders.IrBuilderWithScope%23org.jetbrains.kotlin.ir.types.IrType%23kotlin.collections.Iterable%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>.<a href="ir-vararg.html">irVararg</a>(elementType: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>, elements: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterable/index.html">Iterable</a>&lt;<span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>&gt;): <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrVararg///PointingToDeclaration/">IrVararg</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FputTypeArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.types.IrType%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FputTypeArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Borg.jetbrains.kotlin.ir.types.IrType%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="putTypeArguments" id="%5Bcom.rnett.plugin.ir%2F%2FputTypeArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.types.IrType%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FputTypeArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Borg.jetbrains.kotlin.ir.types.IrType%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="put-type-arguments.html">putTypeArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FputTypeArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.types.IrType%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FputTypeArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Borg.jetbrains.kotlin.ir.types.IrType%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-type-arguments.html">putTypeArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?&gt;)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-type-arguments.html">putTypeArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FputValueArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FputValueArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="putValueArguments" id="%5Bcom.rnett.plugin.ir%2F%2FputValueArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FputValueArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="put-value-arguments.html">putValueArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FputValueArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FputValueArguments%2Forg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%23kotlin.Array%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-value-arguments.html">putValueArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>?&gt;)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-value-arguments.html">putValueArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>?)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseTo" id="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="raise-to.html">raiseTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to.html">raiseTo</a>(predicate: (<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseTo" id="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseTo" id="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that matches the predicate.</div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to.html">raiseTo</a>(classifier: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseTo" id="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseTo" id="%5Bcom.rnett.plugin.ir%2F%2FraiseTo%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that has the given classifier.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseToOrNull" id="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="raise-to-or-null.html">raiseToOrNull</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to-or-null.html">raiseToOrNull</a>(predicate: (<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseToOrNull" id="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseToOrNull" id="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23kotlin.Function1%5Borg.jetbrains.kotlin.ir.types.IrType%2Ckotlin.Boolean%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that matches the predicate, or null if none do.</div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to-or-null.html">raiseToOrNull</a>(classifier: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseToOrNull" id="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="raiseToOrNull" id="%5Bcom.rnett.plugin.ir%2F%2FraiseToOrNull%2Forg.jetbrains.kotlin.ir.types.IrType%23org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that matches the predicate, or null if none do.</div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FtypeWith%2Forg.jetbrains.kotlin.ir.declarations.IrClass%23kotlin.collections.List%5Borg.jetbrains.kotlin.ir.types.IrTypeArgument%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FtypeWith%2Forg.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%23kotlin.collections.List%5Borg.jetbrains.kotlin.ir.types.IrTypeArgument%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="typeWith" id="%5Bcom.rnett.plugin.ir%2F%2FtypeWith%2Forg.jetbrains.kotlin.ir.declarations.IrClass%23kotlin.collections.List%5Borg.jetbrains.kotlin.ir.types.IrTypeArgument%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FtypeWith%2Forg.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%23kotlin.collections.List%5Borg.jetbrains.kotlin.ir.types.IrTypeArgument%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="type-with.html">typeWith</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FtypeWith%2Forg.jetbrains.kotlin.ir.declarations.IrClass%23kotlin.collections.List%5Borg.jetbrains.kotlin.ir.types.IrTypeArgument%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FtypeWith%2Forg.jetbrains.kotlin.ir.symbols.IrClassifierSymbol%23kotlin.collections.List%5Borg.jetbrains.kotlin.ir.types.IrTypeArgument%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrClass///PointingToDeclaration/">IrClass</span>.<a href="type-with.html">typeWith</a>(arguments: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrTypeArgument///PointingToDeclaration/">IrTypeArgument</span>&gt;): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrSimpleType///PointingToDeclaration/">IrSimpleType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>.<a href="type-with.html">typeWith</a>(arguments: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrTypeArgument///PointingToDeclaration/">IrTypeArgument</span>&gt;): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrSimpleType///PointingToDeclaration/">IrSimpleType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FwithDispatchReceiver%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23org.jetbrains.kotlin.ir.expressions.IrExpression%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="withDispatchReceiver" id="%5Bcom.rnett.plugin.ir%2F%2FwithDispatchReceiver%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23org.jetbrains.kotlin.ir.expressions.IrExpression%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-dispatch-receiver.html">withDispatchReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FwithDispatchReceiver%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23org.jetbrains.kotlin.ir.expressions.IrExpression%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-dispatch-receiver.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-dispatch-receiver.html">T</a>.<a href="with-dispatch-receiver.html">withDispatchReceiver</a>(receiver: <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>?): <a href="with-dispatch-receiver.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FwithExtensionReceiver%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23org.jetbrains.kotlin.ir.expressions.IrExpression%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="withExtensionReceiver" id="%5Bcom.rnett.plugin.ir%2F%2FwithExtensionReceiver%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23org.jetbrains.kotlin.ir.expressions.IrExpression%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-extension-receiver.html">withExtensionReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FwithExtensionReceiver%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23org.jetbrains.kotlin.ir.expressions.IrExpression%3F%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-extension-receiver.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-extension-receiver.html">T</a>.<a href="with-extension-receiver.html">withExtensionReceiver</a>(receiver: <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>?): <a href="with-extension-receiver.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FwithTypeArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.types.IrType%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FwithTypeArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Borg.jetbrains.kotlin.ir.types.IrType%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="withTypeArguments" id="%5Bcom.rnett.plugin.ir%2F%2FwithTypeArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.types.IrType%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FwithTypeArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Borg.jetbrains.kotlin.ir.types.IrType%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-type-arguments.html">withTypeArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FwithTypeArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.types.IrType%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FwithTypeArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Borg.jetbrains.kotlin.ir.types.IrType%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-type-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-type-arguments.html">T</a>.<a href="with-type-arguments.html">withTypeArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?&gt;): <a href="with-type-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun &lt;<a href="with-type-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-type-arguments.html">T</a>.<a href="with-type-arguments.html">withTypeArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?): <a href="with-type-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="%5Bcom.rnett.plugin.ir%2F%2FwithValueArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FwithValueArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" anchor-label="withValueArguments" id="%5Bcom.rnett.plugin.ir%2F%2FwithValueArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FwithValueArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-value-arguments.html">withValueArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FwithValueArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Bkotlin.Pair%5Bkotlin.String%2Corg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%5D%2FPointingToDeclaration%2F%2C+com.rnett.plugin.ir%2F%2FwithValueArguments%2FTypeParam%28bounds%3D%5Borg.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression%5B*%5D%5D%29%23kotlin.Array%5Borg.jetbrains.kotlin.ir.expressions.IrExpression%3F%5D%2FPointingToDeclaration%2F%5D%2FFunctions%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-value-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-value-arguments.html">T</a>.<a href="with-value-arguments.html">withValueArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>?&gt;): <a href="with-value-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun &lt;<a href="with-value-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-value-arguments.html">T</a>.<a href="with-value-arguments.html">withValueArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>?): <a href="with-value-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="%5Bcom.rnett.plugin.ir%2F%2FmessageCollector%2Forg.jetbrains.kotlin.config.CompilerConfiguration%23%2FPointingToDeclaration%2F%5D%2FProperties%2F496114957" anchor-label="messageCollector" id="%5Bcom.rnett.plugin.ir%2F%2FmessageCollector%2Forg.jetbrains.kotlin.config.CompilerConfiguration%23%2FPointingToDeclaration%2F%5D%2FProperties%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="message-collector.html">messageCollector</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="%5Bcom.rnett.plugin.ir%2F%2FmessageCollector%2Forg.jetbrains.kotlin.config.CompilerConfiguration%23%2FPointingToDeclaration%2F%5D%2FProperties%2F496114957"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="%5Bcom.rnett.plugin.ir%2F%2FmessageCollector%2Forg.jetbrains.kotlin.config.CompilerConfiguration%23%2FPointingToDeclaration%2F%5D%2FProperties%2F496114957" anchor-label="messageCollector" id="%5Bcom.rnett.plugin.ir%2F%2FmessageCollector%2Forg.jetbrains.kotlin.config.CompilerConfiguration%23%2FPointingToDeclaration%2F%5D%2FProperties%2F496114957" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <span data-unresolved-link="org.jetbrains.kotlin.config/CompilerConfiguration///PointingToDeclaration/">CompilerConfiguration</span>.<a href="message-collector.html">messageCollector</a>: <span data-unresolved-link="org.jetbrains.kotlin.cli.common.messages/MessageCollector///PointingToDeclaration/">MessageCollector</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2020 Copyright</span><span class="pull-right"><span>Sponsored and developed by dokka</span><a href="https://github.com/Kotlin/dokka"><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
