@@ -72,7 +72,7 @@ jobs:
   publish:
     name: Publish
     if: github.event_name == 'push' && contains(github.ref, 'main')
-    needs: [ build ]
+#    needs: [ build ]
     runs-on: ubuntu-latest
 
     steps:
@@ -84,7 +84,7 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       - name: Install GPG key
-        uses: rnett/load-gpg-key@v1.1
+        uses: rnett/load-gpg-key@v1.2
         with:
           gpg-key: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           export-secring: true
