@@ -48,6 +48,8 @@ jobs:
           git config --global user.signingkey ${{ secrets.OSSRH_GPG_ID }}
       - name: Get version
         run: "export PROJECT_VERSION=$(./gradlew properties | grep version: | cut -d ' ' -f2)"
+      - name: Generate HTML Docs
+        run: ./gradlew dokkaHtml
       - name: Make gh-pages repo
         run: |
           git clone --single-branch --branch gh-pages https://github.com/${GITHUB_REPOSITORY}.git gh-pages
