@@ -51,7 +51,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: rnett/publish-docs@v1.4
         with:
-          from: build/dokka/html
+          from: compiler-plugin-utils/build/dokka/html
           publish-to: version+latest
           version: ${{ steps.get_version.outputs.match }}
           restore: 'false'

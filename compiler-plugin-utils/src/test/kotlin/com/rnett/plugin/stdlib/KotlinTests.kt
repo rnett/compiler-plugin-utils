@@ -79,6 +79,4 @@ class KotlinTests : BaseIrPluginTest() {
             +stdlib.Int.plus(irGet(it), irInt(10))
         }
 
-    //TODO finish tests (use unused inspection)
-
 }
