@@ -1,5 +1,6 @@
 package com.rnett.plugin.ir
 
+import com.rnett.plugin.naming.ClassRef
 import org.jetbrains.kotlin.backend.common.lower.DeclarationIrBuilder
 import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector

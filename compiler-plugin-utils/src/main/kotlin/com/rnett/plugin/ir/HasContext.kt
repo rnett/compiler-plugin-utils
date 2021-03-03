@@ -20,7 +20,9 @@ import org.jetbrains.kotlin.ir.symbols.IrBindableSymbol
 import org.jetbrains.kotlin.ir.symbols.IrSymbol
 import org.jetbrains.kotlin.ir.types.IrSimpleType
 import org.jetbrains.kotlin.ir.types.IrType
+import org.jetbrains.kotlin.ir.types.isSubtypeOfClass
 import org.jetbrains.kotlin.ir.types.typeWith
+import org.jetbrains.kotlin.ir.util.isSubclassOf
 import org.jetbrains.kotlin.ir.util.patchDeclarationParents
 import org.jetbrains.kotlin.name.Name
 import org.jetbrains.kotlin.types.KotlinType
@@ -104,6 +106,9 @@ public interface HasContext {
 
     public fun IrBuilderWithScope.irCall(funcRef: FunctionRef): IrCall = irCall(funcRef.resolve())
     public fun IrBuilderWithScope.irCall(funcRef: FunctionRef, type: IrType): IrCall = irCall(funcRef.resolve(), type)
+
+    public fun IrClass.isSubclassOf(klass: ClassRef): Boolean = isSubclassOf(klass().owner)
+    public fun IrType.isSubclassOf(klass: ClassRef): Boolean = this.isSubtypeOfClass(klass())
 
     /**
      * Builds a local function to be used as a lambda, likely with [lambdaArgument]
