@@ -45,9 +45,30 @@ public class CollectionsBuilders(
         elementType: IrType,
         items: Iterable<IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
-        endOffset: Int = UNDEFINED_OFFSET
+        endOffset: Int = UNDEFINED_OFFSET,
     ): IrCall = buildStatement(startOffset, endOffset) {
         irCall(Kotlin.Collections.setOfVararg())
+            .withTypeArguments(elementType)
+            .withValueArguments(irVararg(elementType, items))
+    }
+
+    public fun listOfNotNull(
+        elementType: IrType,
+        items: Iterable<IrExpression>,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+    ): IrCall = buildStatement(startOffset, endOffset) {
+        irCall(Kotlin.Collections.listOfNotNullVararg())
+            .withValueArguments(irVararg(elementType, items))
+    }
+
+    public fun setOfNotNull(
+        elementType: IrType,
+        items: Iterable<IrExpression>,
+        startOffset: Int = UNDEFINED_OFFSET,
+        endOffset: Int = UNDEFINED_OFFSET,
+    ): IrCall = buildStatement(startOffset, endOffset) {
+        irCall(Kotlin.Collections.setOfNotNullVararg())
             .withTypeArguments(elementType)
             .withValueArguments(irVararg(elementType, items))
     }
@@ -57,7 +78,7 @@ public class CollectionsBuilders(
         valueType: IrType,
         items: Map<IrExpression, IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
-        endOffset: Int = UNDEFINED_OFFSET
+        endOffset: Int = UNDEFINED_OFFSET,
     ): IrCall = buildStatement(startOffset, endOffset) {
         irCall(Kotlin.Collections.mapOfVararg())
             .withTypeArguments(keyType, valueType)

@@ -6,6 +6,7 @@ import com.rnett.plugin.tester.PluginTestReplaceIn
 import com.rnett.plugin.tester.TestProperty
 import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.irInt
+import org.jetbrains.kotlin.ir.builders.irNull
 
 class CollectionsTests : BaseIrPluginTest() {
 
@@ -29,6 +30,15 @@ class CollectionsTests : BaseIrPluginTest() {
     @PluginTestReplaceIn("setOf(1, 2)", "Set<Int>")
     fun IrBuilderWithScope.testSet() =
         stdlib.collections.setOf(context.irBuiltIns.intType, listOf(irInt(1), irInt(2)))
+
+    @PluginTestReplaceIn("listOfNotNull(null, 1, 2, null)", "List<Int>")
+    fun IrBuilderWithScope.testListNotNull() =
+        stdlib.collections.listOfNotNull(context.irBuiltIns.intType, listOf(irNull(), irInt(1), irInt(2), irNull()))
+
+
+    @PluginTestReplaceIn("setOf(null, 1, 2, null)", "Set<Int>")
+    fun IrBuilderWithScope.testSetNotNull() =
+        stdlib.collections.setOf(context.irBuiltIns.intType, listOf(irNull(), irInt(1), irInt(2), irNull()))
 
 
     @PluginTestReplaceIn("mapOf(1 to 2, 3 to 4)", "Map<Int, Int>")

@@ -1,8 +1,26 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.naming.*
+import com.rnett.plugin.naming.Class
+import com.rnett.plugin.naming.ClassRef
+import com.rnett.plugin.naming.ConstructorRef
+import com.rnett.plugin.naming.FunctionRef
+import com.rnett.plugin.naming.PackageRef
+import com.rnett.plugin.naming.PropertyRef
+import com.rnett.plugin.naming.RootPackage
+import com.rnett.plugin.naming.constructor
+import com.rnett.plugin.naming.function
+import com.rnett.plugin.naming.isClassifierOf
+import com.rnett.plugin.naming.property
+import com.rnett.plugin.naming.withExtensionReceiverType
 import org.jetbrains.kotlin.ir.backend.js.utils.asString
-import org.jetbrains.kotlin.ir.types.*
+import org.jetbrains.kotlin.ir.types.IrType
+import org.jetbrains.kotlin.ir.types.isByte
+import org.jetbrains.kotlin.ir.types.isDouble
+import org.jetbrains.kotlin.ir.types.isFloat
+import org.jetbrains.kotlin.ir.types.isInt
+import org.jetbrains.kotlin.ir.types.isLong
+import org.jetbrains.kotlin.ir.types.isNullableAny
+import org.jetbrains.kotlin.ir.types.isShort
 
 //TODO be able to auto-generate name hierarchies for classes/packages.  Needs FIR for the actual generation though
 
@@ -30,6 +48,10 @@ public object Kotlin : RootPackage("kotlin") {
     }
 
     public object Collections : PackageRef() {
+
+        public val listOfNotNullVararg: FunctionRef by function("listOfNotNull") { hasVararg = true }
+        public val setOfNotNullVararg: FunctionRef by function("setOfNotNull") { hasVararg = true }
+
         public val listOfVararg: FunctionRef by function("listOf") { hasVararg = true }
         public val mapOfVararg: FunctionRef by function("mapOf") { hasVararg = true }
         public val setOfVararg: FunctionRef by function("setOf") { hasVararg = true }
