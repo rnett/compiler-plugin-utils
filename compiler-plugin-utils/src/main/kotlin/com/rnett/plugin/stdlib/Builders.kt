@@ -13,7 +13,6 @@ import org.jetbrains.kotlin.ir.builders.declarations.addValueParameter
 import org.jetbrains.kotlin.ir.builders.irBlockBody
 import org.jetbrains.kotlin.ir.builders.irCall
 import org.jetbrains.kotlin.ir.builders.irExprBody
-import org.jetbrains.kotlin.ir.builders.irGet
 import org.jetbrains.kotlin.ir.declarations.IrValueParameter
 import org.jetbrains.kotlin.ir.expressions.IrCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
@@ -98,7 +97,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
-        body: DeclarationIrBuilder.(IrExpression) -> IrExpression,
+        body: DeclarationIrBuilder.(IrValueParameter) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
             irCall(Kotlin.let()).apply {
@@ -108,7 +107,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
                     buildLambda(null) {
                         withBuilder {
                             val param = addValueParameter("it", receiver.type)
-                            val ret = body(irGet(param))
+                            val ret = body(param)
                             this@buildLambda.body = irExprBody(ret)
                         }
                     }
@@ -145,7 +144,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
-        body: DeclarationIrBuilder.(IrExpression) -> IrExpression,
+        body: DeclarationIrBuilder.(IrValueParameter) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
             irCall(Kotlin.run()).apply {
@@ -155,7 +154,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
                     buildLambda(null) {
                         withBuilder {
                             val param = addExtensionReceiver(receiver.type)
-                            val ret = body(irGet(param))
+                            val ret = body(param)
                             this@buildLambda.body = irExprBody(ret)
                         }
                     }
@@ -193,7 +192,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         expr: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
-        body: DeclarationIrBuilder.(IrExpression) -> IrExpression,
+        body: DeclarationIrBuilder.(IrValueParameter) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
             irCall(Kotlin.with()).apply {
@@ -205,7 +204,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
                         buildLambda(null) {
                             withBuilder {
                                 val param = addExtensionReceiver(expr.type)
-                                val ret = body(irGet(param))
+                                val ret = body(param)
                                 this@buildLambda.body = irExprBody(ret)
                             }
                         }
