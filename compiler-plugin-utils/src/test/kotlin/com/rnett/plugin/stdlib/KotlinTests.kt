@@ -1,7 +1,11 @@
 package com.rnett.plugin.stdlib
 
 import com.rnett.plugin.ir.irTypeOf
-import com.rnett.plugin.tester.*
+import com.rnett.plugin.tester.BaseIrPluginTest
+import com.rnett.plugin.tester.PluginTestReplaceIn
+import com.rnett.plugin.tester.PluginTests
+import com.rnett.plugin.tester.TestAnnotations
+import com.rnett.plugin.tester.TestProperty
 import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.irGet
 import org.jetbrains.kotlin.ir.builders.irInt
@@ -26,7 +30,7 @@ class KotlinTests : BaseIrPluginTest() {
     @PluginTestReplaceIn("int.let{ it + 10 }")
     fun IrBuilderWithScope.testLetExpr() =
         stdlib.letExpr(int) {
-            stdlib.Int.plus(it, irInt(10))
+            stdlib.Int.plus(irGet(it), irInt(10))
         }
 
     @PluginTestReplaceIn("int.let{ it + 10 }")
@@ -39,7 +43,7 @@ class KotlinTests : BaseIrPluginTest() {
     @PluginTestReplaceIn("int.run{ this + 10 }")
     fun IrBuilderWithScope.testRunExpr() =
         stdlib.runExpr(int) {
-            stdlib.Int.plus(it, irInt(10))
+            stdlib.Int.plus(irGet(it), irInt(10))
         }
 
     @PluginTestReplaceIn("int.run{ this + 10 }")
@@ -52,7 +56,7 @@ class KotlinTests : BaseIrPluginTest() {
     @PluginTestReplaceIn("with(int){ this + 10 }")
     fun IrBuilderWithScope.testWithExpr() =
         stdlib.withExpr(int) {
-            stdlib.Int.plus(it, irInt(10))
+            stdlib.Int.plus(irGet(it), irInt(10))
         }
 
     @PluginTestReplaceIn("with(int){ this + 10 }")
