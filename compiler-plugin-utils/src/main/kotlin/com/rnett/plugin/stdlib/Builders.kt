@@ -93,7 +93,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
-        body: (IrExpression) -> IrExpression
+        body: DeclarationIrBuilder.(IrExpression) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
             irCall(Kotlin.let()).apply {
@@ -140,7 +140,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
-        body: (IrExpression) -> IrExpression
+        body: DeclarationIrBuilder.(IrExpression) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
             irCall(Kotlin.run()).apply {
@@ -188,7 +188,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         expr: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
-        body: (IrExpression) -> IrExpression
+        body: DeclarationIrBuilder.(IrExpression) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
             irCall(Kotlin.with()).apply {
