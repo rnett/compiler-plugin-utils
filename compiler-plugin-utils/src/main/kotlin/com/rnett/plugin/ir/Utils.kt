@@ -15,6 +15,7 @@ import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
 import org.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
+import org.jetbrains.kotlin.ir.declarations.IrTypeParametersContainer
 import org.jetbrains.kotlin.ir.declarations.addMember
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 import org.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression
@@ -24,6 +25,7 @@ import org.jetbrains.kotlin.ir.expressions.impl.IrVarargImpl
 import org.jetbrains.kotlin.ir.expressions.putValueArgument
 import org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol
 import org.jetbrains.kotlin.ir.symbols.IrSymbol
+import org.jetbrains.kotlin.ir.symbols.IrTypeParameterSymbol
 import org.jetbrains.kotlin.ir.symbols.impl.IrAnonymousInitializerSymbolImpl
 import org.jetbrains.kotlin.ir.types.IrSimpleType
 import org.jetbrains.kotlin.ir.types.IrType
@@ -32,6 +34,7 @@ import org.jetbrains.kotlin.ir.types.classifierOrNull
 import org.jetbrains.kotlin.ir.types.impl.IrSimpleTypeImpl
 import org.jetbrains.kotlin.ir.types.typeOrNull
 import org.jetbrains.kotlin.ir.types.typeWith
+import org.jetbrains.kotlin.ir.util.substitute
 import org.jetbrains.kotlin.ir.util.superTypes
 import org.jetbrains.kotlin.utils.addToStdlib.assertedCast
 import org.jetbrains.kotlin.utils.addToStdlib.cast
@@ -56,7 +59,7 @@ public fun IrBuilderWithScope.irVararg(elementType: IrType, elements: Iterable<I
 public fun IrGeneratorContext.createIrBuilder(
     symbol: IrSymbol,
     startOffset: Int = UNDEFINED_OFFSET,
-    endOffset: Int = UNDEFINED_OFFSET
+    endOffset: Int = UNDEFINED_OFFSET,
 ): DeclarationIrBuilder =
     DeclarationIrBuilder(this, symbol, startOffset, endOffset)
 
@@ -64,7 +67,7 @@ public inline fun <T : IrElement> IrGeneratorWithScope.buildStatement(
     startOffset: Int = UNDEFINED_OFFSET,
     endOffset: Int = UNDEFINED_OFFSET,
     origin: IrStatementOrigin? = null,
-    builder: IrSingleStatementBuilder.() -> T
+    builder: IrSingleStatementBuilder.() -> T,
 ): T {
     contract { callsInPlace(builder, InvocationKind.EXACTLY_ONCE) }
     return IrSingleStatementBuilder(context, scope, startOffset, endOffset, origin).build(builder)
@@ -85,26 +88,57 @@ public inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitialize
 }
 
 /**
+ * Get the supertypes of a type, substituting type parameters for their values where known and not `*`.
+ *
+ * I.e. if you have `class A<T>: B<T>`, the supertype of `A<Int>` would be `B<Int>`, not `B<T of A>` like with [superTypes].
+ */
+public fun IrType.supertypesWithSubstitution(): List<IrType> {
+    if (this !is IrSimpleType)
+        return superTypes()
+
+    val paramMap = this.classifier.owner.cast<IrTypeParametersContainer>().typeParameters
+        .map { it.symbol }.zip(this.arguments.map { it.typeOrNull }).filter { it.second != null }
+        .toMap() as Map<IrTypeParameterSymbol, IrType>
+
+    return superTypes().map { it.substitute(paramMap) }
+}
+
+/**
  * Gets the lowest superclass or this that matches the predicate.
  * Helpful for discovering the type parameters of supertypes.
  */
 public inline fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
     raiseToOrNull(predicate) ?: error("Type doesn't match predicate, and no matching supertypes found")
 
-
 /**
  * Gets the lowest superclass or this that matches the predicate, or null if none do.
  * Helpful for discovering the type parameters of supertypes.
+ *
+ * Uses [supertypesWithSubstitution]
  */
 public inline fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? {
     if (predicate(this))
         return this
-    return this.superTypes().firstOrNull(predicate)
+
+    val queue = ArrayDeque<IrType>()
+    queue += this.supertypesWithSubstitution()
+
+    while (queue.isNotEmpty()) {
+        val current = queue.removeFirst()
+        if (predicate(current))
+            return current
+
+        queue += current.supertypesWithSubstitution()
+    }
+
+    return null
 }
 
 /**
  * Gets the lowest superclass or this that has the given classifier.
  * Helpful for discovering the type parameters of supertypes.
+ *
+ * Uses [supertypesWithSubstitution]
  */
 public fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNull(classifier)
     ?: error("Type doesn't have classifier $classifier, and none of it's supertypes do")
@@ -113,6 +147,8 @@ public fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNul
 /**
  * Gets the lowest superclass or this that matches the predicate, or null if none do.
  * Helpful for discovering the type parameters of supertypes.
+ *
+ * Uses [supertypesWithSubstitution]
  */
 public fun IrType.raiseToOrNull(classifier: IrClassifierSymbol): IrType? =
     raiseToOrNull { it.classifierOrNull == classifier }
