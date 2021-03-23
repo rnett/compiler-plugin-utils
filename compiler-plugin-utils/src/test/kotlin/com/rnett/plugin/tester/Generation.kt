@@ -9,7 +9,7 @@ fun KClass<out BaseIrPluginTest>.getTestObjectName() =
         ?: simpleName
         ?: error("No specified test object name, and class does not have a valid simple name")
 
-fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(obj: BaseIrPluginTest): String {
+fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(obj: BaseIrPluginTest, forJs: Boolean = false): String {
     val klass = this
     check(klass.isInstance(obj)) { "Passed object $obj was not an instance of passed class $klass" }
 
@@ -36,16 +36,24 @@ fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(obj: BaseIrPluginTest
             }
         }
 
-        appendLine()
-        +"import kotlin.test.Test"
-        +"import kotlin.test.assertEquals"
-        +"import kotlin.test.assertTrue"
-        appendLine()
+        if (forJs) {
+            appendLine()
+            +"fun assertEquals(a: Any?, b: Any?) = Unit"
+            +"fun assertTrue(t: Boolean) = Unit"
+            appendLine()
+        } else {
+            appendLine()
+            +"import kotlin.test.Test"
+            +"import kotlin.test.assertEquals"
+            +"import kotlin.test.assertTrue"
+            appendLine()
+        }
 
         val name = getTestObjectName()
 
 
-        +"@com.rnett.plugin.tester.plugin.TestObject"
+        if (!forJs)
+            +"@com.rnett.plugin.tester.plugin.TestObject"
         +"object $name {"
         withIndent {
             klass.members.forEach { member ->
@@ -75,7 +83,7 @@ fun <T : BaseIrPluginTest> KClass<T>.generateTestObjectSrc(obj: BaseIrPluginTest
             }
 
             tests.forEach {
-                it.apply { generate() }
+                it.apply { generate(forJs) }
             }
 
         }

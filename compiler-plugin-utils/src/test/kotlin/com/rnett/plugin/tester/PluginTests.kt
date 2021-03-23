@@ -9,10 +9,30 @@ import kotlin.reflect.full.functions
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+//TODO make the JS tests run things.  Gen and run a main method?
+
 @OptIn(ExperimentalStdlibApi::class)
 @TestFactory
 fun MakeTests(tests: BaseIrPluginTest, klass: KClass<out BaseIrPluginTest>) = buildList<DynamicTest> {
-    val (compileResult, files) = compileTests(tests to klass)
+    val (compileResult, jsResult, files) = compileTests(tests to klass)
+
+    add(DynamicTest.dynamicTest("Jvm Compile") {
+        assertEquals(
+            KotlinCompilation.ExitCode.OK,
+            compileResult.exitCode,
+            "In-plugin tests failed: " + compileResult.messages
+        )
+    })
+
+    if (jsResult != null) {
+        add(DynamicTest.dynamicTest("JS Compile") {
+            assertEquals(
+                KotlinCompilation.ExitCode.OK,
+                jsResult.exitCode,
+                "In-plugin tests failed: " + jsResult.messages
+            )
+        })
+    }
 
     val objectClass = try {
         compileResult.classLoader.loadClass(klass.getTestObjectName())
@@ -32,14 +52,6 @@ fun MakeTests(tests: BaseIrPluginTest, klass: KClass<out BaseIrPluginTest>) = bu
     }
     val objectInstance = objectClass.kotlin.objectInstance
         ?: error("Object was not initialized.  Compiler messages: " + compileResult.messages)
-
-    add(DynamicTest.dynamicTest("Compile") {
-        assertEquals(
-            KotlinCompilation.ExitCode.OK,
-            compileResult.exitCode,
-            "In-plugin tests failed: " + compileResult.messages
-        )
-    })
 
     addAll(objectClass.kotlin.functions.filter { it.annotations.any { it is Test } }.map {
         DynamicTest.dynamicTest(it.name) {

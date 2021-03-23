@@ -6,8 +6,16 @@ import com.rnett.plugin.stdlib.Kotlin
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
-import org.jetbrains.kotlin.ir.builders.*
+import org.jetbrains.kotlin.ir.builders.IrBlockBodyBuilder
+import org.jetbrains.kotlin.ir.builders.IrBlockBuilder
+import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.declarations.addFunction
+import org.jetbrains.kotlin.ir.builders.irBlockBody
+import org.jetbrains.kotlin.ir.builders.irCall
+import org.jetbrains.kotlin.ir.builders.irComposite
+import org.jetbrains.kotlin.ir.builders.irGetObject
+import org.jetbrains.kotlin.ir.builders.irGetObjectValue
+import org.jetbrains.kotlin.ir.builders.irReturn
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrValueParameter
 import org.jetbrains.kotlin.ir.expressions.IrCall
@@ -25,7 +33,11 @@ import java.lang.reflect.InvocationTargetException
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KClass
 import kotlin.reflect.KFunction
-import kotlin.reflect.full.*
+import kotlin.reflect.full.extensionReceiverParameter
+import kotlin.reflect.full.findAnnotation
+import kotlin.reflect.full.functions
+import kotlin.reflect.full.isSubtypeOf
+import kotlin.reflect.full.isSupertypeOf
 import kotlin.reflect.typeOf
 import kotlin.test.fail
 
@@ -55,7 +67,7 @@ inline fun <reified T> KFunction<*>.requireReturnType(annotation: KClass<out Ann
 data class PluginTestContext(
     val context: IrPluginContext,
     val messageCollector: MessageCollector,
-    val testObject: IrClass
+    val testObject: IrClass,
 )
 
 fun StringBuilder.appendLineWithIndent(indent: String = "    ", builder: StringBuilder.() -> Unit) = appendLine(
@@ -66,12 +78,12 @@ fun StringBuilder.appendLineWithIndent(indent: String = "    ", builder: StringB
 abstract class PluginTest {
     abstract val annotations: List<String>
 
-    abstract fun StringBuilder.generate()
+    abstract fun StringBuilder.generate(forJs: Boolean = false)
 
     data class Run(val body: () -> Unit) : PluginTest() {
         override val annotations: List<String> = emptyList()
 
-        override fun StringBuilder.generate() {
+        override fun StringBuilder.generate(forJs: Boolean) {
         }
     }
 
@@ -80,10 +92,10 @@ abstract class PluginTest {
         val returnType: String = "Unit",
         val args: String = "",
         override val annotations: List<String> = emptyList(),
-        val body: IrBuilderWithScope.() -> IrExpression
+        val body: IrBuilderWithScope.() -> IrExpression,
     ) : PluginTest() {
 
-        override fun StringBuilder.generate() {
+        override fun StringBuilder.generate(forJs: Boolean) {
             appendLine("fun ${name}(${args}): ${returnType} = error(\"Should be replaced by compiler\")")
             appendLine()
         }
@@ -97,15 +109,16 @@ abstract class PluginTest {
         val suffix: String = "",
         val assertMethod: String = "assertEquals",
         irValueType: String? = null,
-        override val annotations: List<String> = emptyList()
+        override val annotations: List<String> = emptyList(),
     ) : PluginTest() {
 
         val irValueType = if (!irValueType.isNullOrBlank()) irValueType else checkType
 
         val oneArg = expect.isBlank()
 
-        override fun StringBuilder.generate() {
-            appendLine("@Test")
+        override fun StringBuilder.generate(forJs: Boolean) {
+            if (!forJs)
+                appendLine("@Test")
             annotations.forEach {
                 appendLine("@$it")
             }
@@ -173,7 +186,7 @@ abstract class PluginTest {
         assertMethod: String = "assertEquals",
         irValueType: String? = null,
         annotations: List<String> = emptyList(),
-        val body: IrBuilderWithScope.() -> IrExpression
+        val body: IrBuilderWithScope.() -> IrExpression,
     ) : HasSpec(name, expect, checkType, suffix, assertMethod, irValueType, annotations)
 
     class ReplaceInAlso(
@@ -184,7 +197,7 @@ abstract class PluginTest {
         assertMethod: String = "assertEquals",
         irValueType: String? = null,
         annotations: List<String> = emptyList(),
-        val body: IrBuilderWithScope.() -> AlsoTest
+        val body: IrBuilderWithScope.() -> AlsoTest,
     ) : HasSpec(name, expect, checkType, suffix, assertMethod, irValueType, annotations)
 }
 
@@ -200,7 +213,7 @@ class TestGenerator(val tests: MutableList<PluginTest>) {
         returnType: String = "Unit",
         args: String = "",
         annotations: List<String> = emptyList(),
-        body: IrBuilderWithScope.() -> IrExpression
+        body: IrBuilderWithScope.() -> IrExpression,
     ) = +PluginTest.Replace(name, returnType, args, annotations, body)
 
     fun replaceIn(
@@ -211,7 +224,7 @@ class TestGenerator(val tests: MutableList<PluginTest>) {
         assertMethod: String = "assertEquals",
         irValueType: String? = null,
         annotations: List<String> = emptyList(),
-        body: IrBuilderWithScope.() -> IrExpression
+        body: IrBuilderWithScope.() -> IrExpression,
     ) = +PluginTest.ReplaceIn(name, expect, checkType, suffix, assertMethod, irValueType, annotations, body)
 
     fun replaceInAlso(
@@ -222,7 +235,7 @@ class TestGenerator(val tests: MutableList<PluginTest>) {
         assertMethod: String = "assertEquals",
         irValueType: String? = null,
         annotations: List<String> = emptyList(),
-        body: IrBuilderWithScope.() -> AlsoTest
+        body: IrBuilderWithScope.() -> AlsoTest,
     ) = +PluginTest.ReplaceInAlso(name, expect, checkType, suffix, assertMethod, irValueType, annotations, body)
 
     fun replaceInAlso(
@@ -234,7 +247,7 @@ class TestGenerator(val tests: MutableList<PluginTest>) {
         assertMethod: String = "assertEquals",
         irValueType: String? = null,
         annotations: List<String> = emptyList(),
-        body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
+        body: IrBlockBodyBuilder.(IrValueParameter) -> Unit,
     ) = +PluginTest.ReplaceInAlso(name, expect, checkType, suffix, assertMethod, irValueType, annotations) {
         AlsoTest(receiver, body)
     }

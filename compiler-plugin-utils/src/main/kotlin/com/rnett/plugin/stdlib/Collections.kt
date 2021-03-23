@@ -37,7 +37,7 @@ public class CollectionsBuilders(
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = buildStatement(startOffset, endOffset) {
-        irCall(Kotlin.Collections.listOfVararg())
+        irCall(Kotlin.Collections.listOfVararg(), Kotlin.Collections.List.resolveTypeWith(elementType))
             .withTypeArguments(elementType)
             .withValueArguments(irVararg(elementType, items))
     }
@@ -48,7 +48,7 @@ public class CollectionsBuilders(
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
     ): IrCall = buildStatement(startOffset, endOffset) {
-        irCall(Kotlin.Collections.setOfVararg())
+        irCall(Kotlin.Collections.setOfVararg(), Kotlin.Collections.Set.resolveTypeWith(elementType))
             .withTypeArguments(elementType)
             .withValueArguments(irVararg(elementType, items))
     }
@@ -59,7 +59,7 @@ public class CollectionsBuilders(
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
     ): IrCall = buildStatement(startOffset, endOffset) {
-        irCall(Kotlin.Collections.listOfNotNullVararg())
+        irCall(Kotlin.Collections.listOfNotNullVararg(), Kotlin.Collections.List.resolveTypeWith(elementType))
             .withTypeArguments(elementType)
             .withValueArguments(irVararg(elementType, items))
     }
@@ -70,7 +70,7 @@ public class CollectionsBuilders(
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
     ): IrCall = buildStatement(startOffset, endOffset) {
-        irCall(Kotlin.Collections.setOfNotNullVararg())
+        irCall(Kotlin.Collections.setOfNotNullVararg(), Kotlin.Collections.Set.resolveTypeWith(elementType))
             .withTypeArguments(elementType)
             .withValueArguments(irVararg(elementType, items))
     }
@@ -82,7 +82,7 @@ public class CollectionsBuilders(
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET,
     ): IrCall = buildStatement(startOffset, endOffset) {
-        irCall(Kotlin.Collections.mapOfVararg())
+        irCall(Kotlin.Collections.mapOfVararg(), Kotlin.Collections.Map.resolveTypeWith(keyType, valueType))
             .withTypeArguments(keyType, valueType)
             .withValueArguments(
                 irVararg(
@@ -141,7 +141,7 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.Collections.listOfEmpty()).withTypeArguments(elementType)
+            irCall(Kotlin.Collections.listOfEmpty(), Kotlin.Collections.List.resolveTypeWith(elementType)).withTypeArguments(elementType)
         }
 
     public fun emptySet(
@@ -150,7 +150,7 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.Collections.setOfEmpty()).withTypeArguments(elementType)
+            irCall(Kotlin.Collections.setOfEmpty(), Kotlin.Collections.Set.resolveTypeWith(elementType)).withTypeArguments(elementType)
         }
 
     public fun emptyMap(
@@ -160,7 +160,7 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.Collections.mapOfEmpty()).withTypeArguments(keyType, valueType)
+            irCall(Kotlin.Collections.mapOfEmpty(), Kotlin.Collections.Map.resolveTypeWith(keyType, valueType)).withTypeArguments(keyType, valueType)
         }
 
     public fun emptyMutableList(
@@ -169,7 +169,8 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.Collections.mutableListOfEmpty()).withTypeArguments(elementType)
+            irCall(Kotlin.Collections.mutableListOfEmpty(),
+                Kotlin.Collections.MutableList.resolveTypeWith(elementType)).withTypeArguments(elementType)
         }
 
     public fun emptyMutableSet(
@@ -178,7 +179,7 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.Collections.mutableSetOfEmpty()).withTypeArguments(elementType)
+            irCall(Kotlin.Collections.mutableSetOfEmpty(), Kotlin.Collections.MutableSet.resolveTypeWith(elementType)).withTypeArguments(elementType)
         }
 
     public fun emptyMutableMap(
@@ -188,7 +189,9 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.Collections.mutableMapOfEmpty()).withTypeArguments(keyType, valueType)
+            irCall(Kotlin.Collections.mutableMapOfEmpty(), Kotlin.Collections.MutableMap.resolveTypeWith(keyType, valueType)).withTypeArguments(
+                keyType,
+                valueType)
         }
 }
 

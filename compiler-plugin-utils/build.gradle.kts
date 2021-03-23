@@ -2,6 +2,7 @@ import java.net.URL
 
 plugins {
     kotlin("jvm")
+    kotlin("js") apply false
     kotlin("kapt")
     `maven-publish` apply true
     id("com.vanniktech.maven.publish")
@@ -22,6 +23,9 @@ dependencies {
     testImplementation(kotlin("reflect"))
     testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
     testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.3.5")
+
+    testRuntimeOnly(kotlin("stdlib-js"))
+    testImplementation(kotlin("test-js"))
 
     testCompileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
     kaptTest("com.google.auto.service:auto-service:1.0-rc6")

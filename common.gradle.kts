@@ -7,7 +7,9 @@ allprojects {
     repositories {
         maven("https://dl.bintray.com/kotlin/kotlin-eap")
         mavenCentral()
-        maven("https://oss.jfrog.org/artifactory/oss-snapshot-local/")
+        maven("https://oss.jfrog.org/artifactory/oss-snapshot-local/") {
+            mavenContent { snapshotsOnly() }
+        }
         google()
         jcenter()
         mavenLocal()
