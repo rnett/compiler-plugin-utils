@@ -38,6 +38,7 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = buildStatement(startOffset, endOffset) {
         irCall(Kotlin.Collections.listOfVararg())
+            .withTypeArguments(elementType)
             .withValueArguments(irVararg(elementType, items))
     }
 
@@ -59,6 +60,7 @@ public class CollectionsBuilders(
         endOffset: Int = UNDEFINED_OFFSET,
     ): IrCall = buildStatement(startOffset, endOffset) {
         irCall(Kotlin.Collections.listOfNotNullVararg())
+            .withTypeArguments(elementType)
             .withValueArguments(irVararg(elementType, items))
     }
 

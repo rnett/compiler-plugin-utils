@@ -1,5 +1,6 @@
 package com.rnett.plugin.stdlib
 
+import com.rnett.plugin.ir.irJsExprBody
 import com.rnett.plugin.ir.withExtensionReceiver
 import com.rnett.plugin.ir.withTypeArguments
 import com.rnett.plugin.ir.withValueArguments
@@ -12,7 +13,6 @@ import org.jetbrains.kotlin.ir.builders.declarations.addExtensionReceiver
 import org.jetbrains.kotlin.ir.builders.declarations.addValueParameter
 import org.jetbrains.kotlin.ir.builders.irBlockBody
 import org.jetbrains.kotlin.ir.builders.irCall
-import org.jetbrains.kotlin.ir.builders.irExprBody
 import org.jetbrains.kotlin.ir.declarations.IrValueParameter
 import org.jetbrains.kotlin.ir.expressions.IrCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
@@ -108,7 +108,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
                         withBuilder {
                             val param = addValueParameter("it", receiver.type)
                             val ret = body(param)
-                            this@buildLambda.body = irExprBody(ret)
+                            this@buildLambda.body = irJsExprBody(ret)
                         }
                     }
                 ))
@@ -155,7 +155,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
                         withBuilder {
                             val param = addExtensionReceiver(receiver.type)
                             val ret = body(param)
-                            this@buildLambda.body = irExprBody(ret)
+                            this@buildLambda.body = irJsExprBody(ret)
                         }
                     }
                 ))
@@ -205,7 +205,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
                             withBuilder {
                                 val param = addExtensionReceiver(expr.type)
                                 val ret = body(param)
-                                this@buildLambda.body = irExprBody(ret)
+                                this@buildLambda.body = irJsExprBody(ret)
                             }
                         }
                     ))

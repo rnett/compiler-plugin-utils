@@ -12,6 +12,8 @@ import org.jetbrains.kotlin.ir.builders.irInt
 import org.jetbrains.kotlin.ir.builders.irReturn
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 
+//TODO JS tests, as things are different (i.e. listOfNotNull requires the type param)
+
 @PluginTests(imports = arrayOf("kotlin.reflect.typeOf"))
 class KotlinTests : BaseIrPluginTest() {
 

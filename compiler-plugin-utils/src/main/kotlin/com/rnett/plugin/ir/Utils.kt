@@ -12,11 +12,14 @@ import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
 import org.jetbrains.kotlin.ir.builders.IrGeneratorContext
 import org.jetbrains.kotlin.ir.builders.IrGeneratorWithScope
 import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
+import org.jetbrains.kotlin.ir.builders.irBlockBody
+import org.jetbrains.kotlin.ir.builders.irReturn
 import org.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
 import org.jetbrains.kotlin.ir.declarations.IrTypeParametersContainer
 import org.jetbrains.kotlin.ir.declarations.addMember
+import org.jetbrains.kotlin.ir.expressions.IrBlockBody
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 import org.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression
 import org.jetbrains.kotlin.ir.expressions.IrStatementOrigin
@@ -218,3 +221,12 @@ public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg args: Ir
 public fun IrType.typeArgument(index: Int): IrType =
     assertedCast<IrSimpleType> { "$this is not a simple type" }.arguments[0].typeOrNull
         ?: error("Type argument $index of $this is not a type (is it a wildcard?)")
+
+/**
+ * JS backend doesn't support IrExprBody yet.
+ *
+ * TODO deprecate once it does.
+ */
+public inline fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrBlockBody = irBlockBody {
+    +irReturn(expression)
+}

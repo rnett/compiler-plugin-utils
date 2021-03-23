@@ -1,5 +1,6 @@
 package com.rnett.plugin.stdlib
 
+import com.rnett.plugin.ir.irJsExprBody
 import com.rnett.plugin.ir.raiseToOrNull
 import com.rnett.plugin.ir.withDispatchReceiver
 import com.rnett.plugin.ir.withExtensionReceiver
@@ -8,7 +9,10 @@ import com.rnett.plugin.naming.ClassRef
 import com.rnett.plugin.naming.isClassifierOf
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.ir.UNDEFINED_OFFSET
-import org.jetbrains.kotlin.ir.builders.*
+import org.jetbrains.kotlin.ir.builders.IrBlockBodyBuilder
+import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
+import org.jetbrains.kotlin.ir.builders.irBlockBody
+import org.jetbrains.kotlin.ir.builders.irCall
 import org.jetbrains.kotlin.ir.expressions.IrCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 import org.jetbrains.kotlin.ir.expressions.IrFunctionAccessExpression
@@ -161,7 +165,7 @@ public open class MapBuilders(
             .withExtensionReceiver(receiver.checkType())
             .withValueArguments(key, lambdaArgument(buildLambda(null) {
                 withBuilder {
-                    body = irExprBody(otherwise().also { this@buildLambda.returnType = it.type })
+                    body = irJsExprBody(otherwise().also { this@buildLambda.returnType = it.type })
                 }
             }))
     }
@@ -330,7 +334,7 @@ public open class MutableMapBuilders(
             .withExtensionReceiver(receiver.checkType())
             .withValueArguments(key, lambdaArgument(buildLambda(null) {
                 withBuilder {
-                    body = irExprBody(otherwise().also { this@buildLambda.returnType = it.type })
+                    body = irJsExprBody(otherwise().also { this@buildLambda.returnType = it.type })
                 }
             }))
     }
@@ -366,7 +370,7 @@ public open class MutableMapBuilders(
 //            .withExtensionReceiver(receiver.checkType())
 //            .withValueArguments(key, lambdaArgument(buildLambda(null) {
 //                withBuilder {
-//                    body = irExprBody(otherwise().also { this@buildLambda.returnType = it.type })
+//                    body = irJsExprBody(otherwise().also { this@buildLambda.returnType = it.type })
 //                }
 //            }))
 //    }

@@ -35,11 +35,9 @@ class CollectionsTests : BaseIrPluginTest() {
     fun IrBuilderWithScope.testListNotNull() =
         stdlib.collections.listOfNotNull(context.irBuiltIns.intType, listOf(irNull(), irInt(1), irInt(2), irNull()))
 
-
-    @PluginTestReplaceIn("setOf(null, 1, 2, null)", "Set<Int>")
+    @PluginTestReplaceIn("setOfNotNull(null, 1, 2, null)", "Set<Int>")
     fun IrBuilderWithScope.testSetNotNull() =
-        stdlib.collections.setOf(context.irBuiltIns.intType, listOf(irNull(), irInt(1), irInt(2), irNull()))
-
+        stdlib.collections.setOfNotNull(context.irBuiltIns.intType, listOf(irNull(), irInt(1), irInt(2), irNull()))
 
     @PluginTestReplaceIn("mapOf(1 to 2, 3 to 4)", "Map<Int, Int>")
     fun IrBuilderWithScope.testMap() =
