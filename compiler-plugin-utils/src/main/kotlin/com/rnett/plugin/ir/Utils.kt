@@ -20,10 +20,12 @@ import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
 import org.jetbrains.kotlin.ir.declarations.IrTypeParametersContainer
 import org.jetbrains.kotlin.ir.declarations.addMember
 import org.jetbrains.kotlin.ir.expressions.IrBlockBody
+import org.jetbrains.kotlin.ir.expressions.IrCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 import org.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression
 import org.jetbrains.kotlin.ir.expressions.IrStatementOrigin
 import org.jetbrains.kotlin.ir.expressions.IrVararg
+import org.jetbrains.kotlin.ir.expressions.impl.IrCallImpl
 import org.jetbrains.kotlin.ir.expressions.impl.IrVarargImpl
 import org.jetbrains.kotlin.ir.expressions.putValueArgument
 import org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol
@@ -39,6 +41,7 @@ import org.jetbrains.kotlin.ir.types.typeOrNull
 import org.jetbrains.kotlin.ir.types.typeWith
 import org.jetbrains.kotlin.ir.util.substitute
 import org.jetbrains.kotlin.ir.util.superTypes
+import org.jetbrains.kotlin.ir.util.typeSubstitutionMap
 import org.jetbrains.kotlin.utils.addToStdlib.assertedCast
 import org.jetbrains.kotlin.utils.addToStdlib.cast
 import kotlin.contracts.InvocationKind
@@ -197,26 +200,44 @@ public fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(receiver: I
 public fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(receiver: IrExpression?): T =
     apply { dispatchReceiver = receiver }
 
+/**
+ * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
+ */
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-public fun IrMemberAccessExpression<*>.putTypeArguments(vararg namedArgs: Pair<String, IrType?>) {
+public fun IrMemberAccessExpression<*>.putTypeArguments(vararg namedArgs: Pair<String, IrType?>, substitute: Boolean = this is IrCall) {
     val paramDescriptors =
         this.symbol.descriptor.cast<CallableDescriptor>().typeParameters.associateBy { it.name.asString() }
     namedArgs.forEach {
         putTypeArgument(paramDescriptors[it.first]?.index ?: error("No such type parameter ${it.first}"), it.second)
     }
-}
-
-public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg namedArgs: Pair<String, IrType?>): T =
-    apply { putTypeArguments(*namedArgs) }
-
-public fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?) {
-    args.forEachIndexed { i, it ->
-        putTypeArgument(i, it)
+    if (substitute && this is IrCall) {
+        substituteTypeParams()
     }
 }
 
-public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg args: IrType?): T =
-    apply { putTypeArguments(*args) }
+/**
+ * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
+ */
+public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg namedArgs: Pair<String, IrType?>, substitute: Boolean = this is IrCall): T =
+    apply { putTypeArguments(*namedArgs, substitute = substitute) }
+
+/**
+ * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
+ */
+public fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, substitute: Boolean = this is IrCall) {
+    args.forEachIndexed { i, it ->
+        putTypeArgument(i, it)
+    }
+    if (substitute && this is IrCall) {
+        substituteTypeParams()
+    }
+}
+
+/**
+ * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
+ */
+public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg args: IrType?, substitute: Boolean = this is IrCall): T =
+    apply { putTypeArguments(*args, substitute = substitute) }
 
 public fun IrType.typeArgument(index: Int): IrType =
     assertedCast<IrSimpleType> { "$this is not a simple type" }.arguments[0].typeOrNull
@@ -229,4 +250,11 @@ public fun IrType.typeArgument(index: Int): IrType =
  */
 public inline fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrBlockBody = irBlockBody {
     +irReturn(expression)
+}
+
+/**
+ * Substitute the set type parameters into the return type.
+ */
+public fun IrCall.substituteTypeParams(): IrCall = cast<IrCallImpl>().also {
+    it.type = it.type.substitute(it.typeSubstitutionMap)
 }

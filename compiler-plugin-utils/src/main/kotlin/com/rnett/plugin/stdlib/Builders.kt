@@ -37,7 +37,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = buildStatement(startOffset, endOffset) {
-        irCall(Kotlin.to())
+        irCall(Kotlin.to(), Kotlin.Pair.resolveTypeWith(firstType, secondType))
             .withTypeArguments(firstType, secondType)
             .withExtensionReceiver(first)
             .withValueArguments(second)
@@ -49,7 +49,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = buildStatement(startOffset, endOffset) {
-        irCall(Kotlin.to())
+        irCall(Kotlin.to(), Kotlin.Pair.resolveTypeWith(first.type, second.type))
             .withExtensionReceiver(first)
             .withValueArguments(second)
     }
@@ -76,7 +76,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.let()).apply {
+            irCall(Kotlin.let(), returnType).apply {
                 extensionReceiver = receiver
                 putTypeArgument(0, receiver.type)
                 putTypeArgument(1, returnType)
@@ -100,18 +100,17 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         body: DeclarationIrBuilder.(IrValueParameter) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.let()).apply {
+            val lambda = buildLambda(null) {
+                withBuilder {
+                    val param = addValueParameter("it", receiver.type)
+                    val ret = body(param)
+                    this@buildLambda.body = irJsExprBody(ret)
+                }
+            }
+            irCall(Kotlin.let(), lambda.returnType).apply {
                 extensionReceiver = receiver
                 putTypeArgument(0, receiver.type)
-                putValueArgument(0, lambdaArgument(
-                    buildLambda(null) {
-                        withBuilder {
-                            val param = addValueParameter("it", receiver.type)
-                            val ret = body(param)
-                            this@buildLambda.body = irJsExprBody(ret)
-                        }
-                    }
-                ))
+                putValueArgument(0, lambdaArgument(lambda))
             }
         }
 
@@ -123,7 +122,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.run()).apply {
+            irCall(Kotlin.run(), returnType).apply {
                 extensionReceiver = receiver
                 putTypeArgument(0, receiver.type)
                 putTypeArgument(1, returnType)
@@ -147,18 +146,17 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         body: DeclarationIrBuilder.(IrValueParameter) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.run()).apply {
+            val lambda = buildLambda(null) {
+                withBuilder {
+                    val param = addExtensionReceiver(receiver.type)
+                    val ret = body(param)
+                    this@buildLambda.body = irJsExprBody(ret)
+                }
+            }
+            irCall(Kotlin.run(), lambda.returnType).apply {
                 extensionReceiver = receiver
                 putTypeArgument(0, receiver.type)
-                putValueArgument(0, lambdaArgument(
-                    buildLambda(null) {
-                        withBuilder {
-                            val param = addExtensionReceiver(receiver.type)
-                            val ret = body(param)
-                            this@buildLambda.body = irJsExprBody(ret)
-                        }
-                    }
-                ))
+                putValueArgument(0, lambdaArgument(lambda))
             }
         }
 
@@ -170,7 +168,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         body: IrBlockBodyBuilder.(IrValueParameter) -> Unit
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.with()).apply {
+            irCall(Kotlin.with(), returnType).apply {
                 putTypeArgument(0, expr.type)
                 putTypeArgument(1, returnType)
 
@@ -195,20 +193,19 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
         body: DeclarationIrBuilder.(IrValueParameter) -> IrExpression,
     ): IrCall =
         buildStatement(startOffset, endOffset) {
-            irCall(Kotlin.with()).apply {
+            val lambda = buildLambda(null) {
+                withBuilder {
+                    val param = addExtensionReceiver(expr.type)
+                    val ret = body(param)
+                    this@buildLambda.body = irJsExprBody(ret)
+                }
+            }
+            irCall(Kotlin.with(), lambda.returnType).apply {
                 putTypeArgument(0, expr.type)
 
                 putValueArgument(0, expr)
                 putValueArgument(
-                    1, lambdaArgument(
-                        buildLambda(null) {
-                            withBuilder {
-                                val param = addExtensionReceiver(expr.type)
-                                val ret = body(param)
-                                this@buildLambda.body = irJsExprBody(ret)
-                            }
-                        }
-                    ))
+                    1, lambdaArgument(lambda))
             }
         }
 

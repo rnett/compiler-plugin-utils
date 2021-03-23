@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\compiler-plugin-utils\src\main\kotlin\com\rnett\plugin\stdlib\Builders.kt">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

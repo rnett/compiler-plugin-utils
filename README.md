@@ -20,20 +20,17 @@ Releases are on maven central, snapshots are on `https://oss.sonatype.org/conten
 
 ## Features
 
-Stdlib is fully tested, as is Naming. IR utilities are mostly tested.
+Stdlib is fully tested on JVM, as is Naming. IR utilities are mostly tested.
 
-The usage of Naming and some of the IR utilities can be seen in
-the [stdlib code](compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/stdlib).
+The usage of Naming and some of the IR utilities can be seen in the [stdlib code](compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/stdlib).
+
+Using the Stdlib builders on JS may cause `Not found Idx for public kotlin/to|9142910121690433229[0]` like errors. These are because the return types of `irCall`s are not sufficiently specified. Make an issue here and I'll see what I can do. Testing JS linking is not feasible ATM, so I can't guarantee you won't run into these, but they shouldn't happen too often. As a workaround, you can use the IR utility `inferReturnType` or implement something similar yourself.
 
 ### IR Utilities
 
-The `com.rnett.plugin.ir` package contains a number of utilities for working with IR. This includes basic utilities such
-as `CompilerConfiguration.messageCollector`, `IrClass.addAnonymousInitializer`, `IrType.raiseTo`,
-and `IrClass.typeWith(List<IrTypeArgument>)`, all of which are available as extension functions.
+The `com.rnett.plugin.ir` package contains a number of utilities for working with IR. This includes basic utilities such as `CompilerConfiguration.messageCollector`, `IrClass.addAnonymousInitializer`, `IrType.raiseTo`, and `IrClass.typeWith(List<IrTypeArgument>)`, all of which are available as extension functions.
 
-Many utilities require a `IrPluginContext`, so in lieu of multiple receivers, they are put in `HasContext` which has
-a `val context: IrPluginContext`. It can be easily implemented by `IrElementTransformer`s. Of special note are
-the `IrBuilderWithScope.buildLambda` and `lambdaArgument` functions.
+Many utilities require a `IrPluginContext`, so in lieu of multiple receivers, they are put in `HasContext` which has a `val context: IrPluginContext`. It can be easily implemented by `IrElementTransformer`s. Of special note are the `IrBuilderWithScope.buildLambda` and `lambdaArgument` functions.
 
 `KnowsCurrentFile` is a similar interface, but requires a `IrFile` and provides extensions for getting message locations
 from `IrElement`s using said file.
