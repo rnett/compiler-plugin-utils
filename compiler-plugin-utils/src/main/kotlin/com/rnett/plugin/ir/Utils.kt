@@ -240,7 +240,7 @@ public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg args: Ir
     apply { putTypeArguments(*args, substitute = substitute) }
 
 public fun IrType.typeArgument(index: Int): IrType =
-    assertedCast<IrSimpleType> { "$this is not a simple type" }.arguments[0].typeOrNull
+    assertedCast<IrSimpleType> { "$this is not a simple type" }.arguments[index].typeOrNull
         ?: error("Type argument $index of $this is not a type (is it a wildcard?)")
 
 /**
