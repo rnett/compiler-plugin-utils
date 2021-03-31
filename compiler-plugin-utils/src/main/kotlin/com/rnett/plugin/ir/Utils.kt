@@ -272,5 +272,7 @@ public inline fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrB
  * Substitute the set type parameters into the return type.
  */
 public fun IrCall.substituteTypeParams(): IrCall = cast<IrCallImpl>().also {
-    it.type = it.type.substitute(it.typeSubstitutionMap)
+    //TODO detect type params from args
+    if (it.typeArgumentsCount == it.symbol.owner.typeParameters.size)
+        it.type = it.type.substitute(it.typeSubstitutionMap)
 }
