@@ -14,12 +14,10 @@ dependencies {
     kapt("com.google.auto.service:auto-service:1.0-rc6")
 }
 
-tasks {
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-        kotlinOptions.freeCompilerArgs += "-Xjvm-default=enable"
-    }
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+        useIR = true
+        freeCompilerArgs = listOf("-Xjvm-default=compatibility")
     }
 }
