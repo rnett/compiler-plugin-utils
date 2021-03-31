@@ -273,6 +273,6 @@ public inline fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrB
  */
 public fun IrCall.substituteTypeParams(): IrCall = cast<IrCallImpl>().also {
     //TODO detect type params from args
-    if (it.typeArgumentsCount == it.symbol.owner.typeParameters.size)
+    if ((0 until typeArgumentsCount).none { getTypeArgument(it) == null })
         it.type = it.type.substitute(it.typeSubstitutionMap)
 }
