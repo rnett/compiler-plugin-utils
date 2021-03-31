@@ -110,6 +110,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
             irCall(Kotlin.let(), lambda.returnType).apply {
                 extensionReceiver = receiver
                 putTypeArgument(0, receiver.type)
+                putTypeArgument(1, lambda.returnType)
                 putValueArgument(0, lambdaArgument(lambda))
             }
         }
@@ -156,6 +157,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
             irCall(Kotlin.run(), lambda.returnType).apply {
                 extensionReceiver = receiver
                 putTypeArgument(0, receiver.type)
+                putTypeArgument(1, lambda.returnType)
                 putValueArgument(0, lambdaArgument(lambda))
             }
         }
@@ -202,6 +204,7 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
             }
             irCall(Kotlin.with(), lambda.returnType).apply {
                 putTypeArgument(0, expr.type)
+                putTypeArgument(1, lambda.returnType)
 
                 putValueArgument(0, expr)
                 putValueArgument(
