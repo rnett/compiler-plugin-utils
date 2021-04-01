@@ -1,5 +1,6 @@
 package com.rnett.plugin.ir
 
+import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.backend.common.lower.DeclarationIrBuilder
 import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
@@ -13,13 +14,14 @@ import org.jetbrains.kotlin.ir.builders.IrGeneratorContext
 import org.jetbrains.kotlin.ir.builders.IrGeneratorWithScope
 import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
 import org.jetbrains.kotlin.ir.builders.irBlockBody
+import org.jetbrains.kotlin.ir.builders.irExprBody
 import org.jetbrains.kotlin.ir.builders.irReturn
 import org.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
 import org.jetbrains.kotlin.ir.declarations.IrTypeParametersContainer
 import org.jetbrains.kotlin.ir.declarations.addMember
-import org.jetbrains.kotlin.ir.expressions.IrBlockBody
+import org.jetbrains.kotlin.ir.expressions.IrBody
 import org.jetbrains.kotlin.ir.expressions.IrCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
 import org.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression
@@ -42,6 +44,7 @@ import org.jetbrains.kotlin.ir.types.typeWith
 import org.jetbrains.kotlin.ir.util.substitute
 import org.jetbrains.kotlin.ir.util.superTypes
 import org.jetbrains.kotlin.ir.util.typeSubstitutionMap
+import org.jetbrains.kotlin.platform.js.isJs
 import org.jetbrains.kotlin.utils.addToStdlib.assertedCast
 import org.jetbrains.kotlin.utils.addToStdlib.cast
 import kotlin.contracts.InvocationKind
@@ -259,13 +262,20 @@ public fun IrType.typeArgument(index: Int): IrType =
     assertedCast<IrSimpleType> { "$this is not a simple type" }.arguments[index].typeOrNull
         ?: error("Type argument $index of $this is not a type (is it a wildcard?)")
 
+
 /**
  * JS backend doesn't support IrExprBody yet.
  *
  * TODO deprecate once it does.
  */
-public inline fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrBlockBody = irBlockBody {
-    +irReturn(expression)
+public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrBody {
+    if (context is IrPluginContext && !(context as IrPluginContext).platform.isJs()) {
+        return irExprBody(expression)
+    } else {
+        return irBlockBody {
+            +irReturn(expression)
+        }
+    }
 }
 
 /**
