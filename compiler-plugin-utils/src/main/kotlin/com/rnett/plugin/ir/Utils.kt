@@ -15,7 +15,6 @@ import org.jetbrains.kotlin.ir.builders.IrGeneratorWithScope
 import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
 import org.jetbrains.kotlin.ir.builders.irBlockBody
 import org.jetbrains.kotlin.ir.builders.irExprBody
-import org.jetbrains.kotlin.ir.builders.irReturn
 import org.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
@@ -28,9 +27,11 @@ import org.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression
 import org.jetbrains.kotlin.ir.expressions.IrStatementOrigin
 import org.jetbrains.kotlin.ir.expressions.IrVararg
 import org.jetbrains.kotlin.ir.expressions.impl.IrCallImpl
+import org.jetbrains.kotlin.ir.expressions.impl.IrReturnImpl
 import org.jetbrains.kotlin.ir.expressions.impl.IrVarargImpl
 import org.jetbrains.kotlin.ir.expressions.putValueArgument
 import org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol
+import org.jetbrains.kotlin.ir.symbols.IrReturnTargetSymbol
 import org.jetbrains.kotlin.ir.symbols.IrSymbol
 import org.jetbrains.kotlin.ir.symbols.IrTypeParameterSymbol
 import org.jetbrains.kotlin.ir.symbols.impl.IrAnonymousInitializerSymbolImpl
@@ -41,6 +42,7 @@ import org.jetbrains.kotlin.ir.types.classifierOrNull
 import org.jetbrains.kotlin.ir.types.impl.IrSimpleTypeImpl
 import org.jetbrains.kotlin.ir.types.typeOrNull
 import org.jetbrains.kotlin.ir.types.typeWith
+import org.jetbrains.kotlin.ir.util.render
 import org.jetbrains.kotlin.ir.util.substitute
 import org.jetbrains.kotlin.ir.util.superTypes
 import org.jetbrains.kotlin.ir.util.typeSubstitutionMap
@@ -268,15 +270,22 @@ public fun IrType.typeArgument(index: Int): IrType =
  *
  * TODO deprecate once it does.
  */
-public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrBody {
+public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, type: IrType = expression.type): IrBody =
     if (context is IrPluginContext && !(context as IrPluginContext).platform.isJs()) {
-        return irExprBody(expression)
+        irExprBody(expression)
     } else {
-        return irBlockBody {
-            +irReturn(expression)
+        irBlockBody {
+            +IrReturnImpl(
+                startOffset,
+                endOffset,
+                type,
+                scope.scopeOwnerSymbol.assertedCast<IrReturnTargetSymbol> {
+                    "Function scope expected: ${scope.scopeOwnerSymbol.owner.render()}"
+                },
+                expression
+            )
         }
     }
-}
 
 /**
  * Substitute the set type parameters into the return type.
