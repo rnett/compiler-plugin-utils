@@ -1,13 +1,10 @@
 pluginManagement {
     repositories {
-        maven("https://dl.bintray.com/kotlin/kotlin-eap")
-
         mavenCentral()
-
-        maven("https://plugins.gradle.org/m2/")
-        jcenter()
         gradlePluginPortal()
-        mavenLocal()
+        maven("https://oss.sonatype.org/content/repositories/snapshots") {
+            mavenContent { snapshotsOnly() }
+        }
     }
 }
 rootProject.name = "plugins"

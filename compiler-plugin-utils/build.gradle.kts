@@ -11,7 +11,7 @@ plugins {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.32")
 
     testImplementation(kotlin("test-junit5"))
 
@@ -21,7 +21,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 
     testImplementation(kotlin("reflect"))
-    testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.30")
+    testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.4.32")
     testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.3.5")
 
     testRuntimeOnly(kotlin("stdlib-js"))
@@ -41,6 +41,7 @@ tasks.dokkaHtml{
     dokkaSourceSets{
         all {
             includes.from("docs.md")
+            this.includeNonPublic.set(false)
 
             sourceLink{
                 localDirectory.set(file("src/main/kotlin"))

@@ -1,9 +1,10 @@
 pluginManagement {
     repositories {
         mavenCentral()
-        jcenter()
         gradlePluginPortal()
-        mavenLocal()
+        maven("https://oss.sonatype.org/content/repositories/snapshots") {
+            mavenContent { snapshotsOnly() }
+        }
     }
 }
 includeBuild("plugins")
