@@ -34,31 +34,20 @@ dependencies {
 
 val sourceLinkBranch: String by project
 
-tasks.dokkaHtml{
+tasks.dokkaHtml {
     moduleName.set("Compiler Plugin Utils")
     moduleVersion.set(version.toString())
 
-    dokkaSourceSets{
+    dokkaSourceSets {
         all {
             includes.from("docs.md")
             this.includeNonPublic.set(false)
 
-            sourceLink{
+            sourceLink {
                 localDirectory.set(file("src/main/kotlin"))
                 remoteUrl.set(URL("https://github.com/rnett/compiler-plugin-utils/blob/$sourceLinkBranch/compiler-plugin-utils/src/main/kotlin"))
                 remoteLineSuffix.set("#L")
             }
-        }
-    }
-}
-
-kotlin {
-    explicitApi()
-    sourceSets.all {
-        languageSettings.apply {
-            useExperimentalAnnotation("kotlin.contracts.ExperimentalContracts")
-            useExperimentalAnnotation("kotlin.RequiresOptIn")
-//            languageVersion = "1.5"
         }
     }
 }

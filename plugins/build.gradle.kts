@@ -12,13 +12,18 @@ plugins {
 apply("../common.gradle.kts")
 
 subprojects {
-    apply(plugin = "org.jetbrains.kotlin.jvm")
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "1.8"
-            useIR = true
-            freeCompilerArgs = listOf("-Xjvm-default=compatibility")
+    afterEvaluate {
+        extensions.getByType<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>().target {
+            compilations.configureEach {
+                kotlinOptions {
+                    jvmTarget = "1.8"
+                    useIR = true
+                }
+                compileJavaTaskProvider.get().apply {
+                    targetCompatibility = "1.8"
+                    sourceCompatibility = "1.8"
+                }
+            }
         }
     }
 }

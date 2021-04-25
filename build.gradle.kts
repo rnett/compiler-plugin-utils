@@ -12,22 +12,29 @@ plugins {
 apply("./common.gradle.kts")
 
 subprojects {
-    apply(plugin = "org.jetbrains.kotlin.jvm")
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "1.8"
-            useIR = true
-            freeCompilerArgs = listOf("-Xjvm-default=compatibility")
+    afterEvaluate {
+        extensions.getByType<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>().target {
+            compilations.configureEach {
+                kotlinOptions {
+                    jvmTarget = "1.8"
+                    useIR = true
+                }
+                compileJavaTaskProvider.get().apply {
+                    targetCompatibility = "1.8"
+                    sourceCompatibility = "1.8"
+                }
+            }
         }
     }
 }
 
 tasks.create("documentation") {
     group = "documentation"
-    dependsOn(":compiler-plugin-utils:dokkaHtml",
+    dependsOn(
+        ":compiler-plugin-utils:dokkaHtml",
         gradle.includedBuild("plugins").task(":compiler-plugin-utils-compiler-plugin:dokkaHtml"),
-        gradle.includedBuild("plugins").task(":compiler-plugin-utils-gradle-plugin:dokkaHtml"))
+        gradle.includedBuild("plugins").task(":compiler-plugin-utils-gradle-plugin:dokkaHtml")
+    )
 }
 
 tasks.create("publish") {
