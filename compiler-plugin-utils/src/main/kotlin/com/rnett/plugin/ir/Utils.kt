@@ -9,38 +9,17 @@ import org.jetbrains.kotlin.descriptors.CallableDescriptor
 import org.jetbrains.kotlin.ir.IrElement
 import org.jetbrains.kotlin.ir.ObsoleteDescriptorBasedAPI
 import org.jetbrains.kotlin.ir.UNDEFINED_OFFSET
-import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
-import org.jetbrains.kotlin.ir.builders.IrGeneratorContext
-import org.jetbrains.kotlin.ir.builders.IrGeneratorWithScope
-import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
-import org.jetbrains.kotlin.ir.builders.irBlockBody
-import org.jetbrains.kotlin.ir.builders.irExprBody
-import org.jetbrains.kotlin.ir.builders.irReturn
-import org.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer
-import org.jetbrains.kotlin.ir.declarations.IrClass
-import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
-import org.jetbrains.kotlin.ir.declarations.IrTypeParametersContainer
-import org.jetbrains.kotlin.ir.declarations.addMember
-import org.jetbrains.kotlin.ir.expressions.IrBody
-import org.jetbrains.kotlin.ir.expressions.IrCall
-import org.jetbrains.kotlin.ir.expressions.IrExpression
-import org.jetbrains.kotlin.ir.expressions.IrMemberAccessExpression
-import org.jetbrains.kotlin.ir.expressions.IrStatementOrigin
-import org.jetbrains.kotlin.ir.expressions.IrVararg
+import org.jetbrains.kotlin.ir.builders.*
+import org.jetbrains.kotlin.ir.declarations.*
+import org.jetbrains.kotlin.ir.expressions.*
 import org.jetbrains.kotlin.ir.expressions.impl.IrCallImpl
 import org.jetbrains.kotlin.ir.expressions.impl.IrVarargImpl
-import org.jetbrains.kotlin.ir.expressions.putValueArgument
 import org.jetbrains.kotlin.ir.symbols.IrClassifierSymbol
 import org.jetbrains.kotlin.ir.symbols.IrSymbol
 import org.jetbrains.kotlin.ir.symbols.IrTypeParameterSymbol
 import org.jetbrains.kotlin.ir.symbols.impl.IrAnonymousInitializerSymbolImpl
-import org.jetbrains.kotlin.ir.types.IrSimpleType
-import org.jetbrains.kotlin.ir.types.IrType
-import org.jetbrains.kotlin.ir.types.IrTypeArgument
-import org.jetbrains.kotlin.ir.types.classifierOrNull
+import org.jetbrains.kotlin.ir.types.*
 import org.jetbrains.kotlin.ir.types.impl.IrSimpleTypeImpl
-import org.jetbrains.kotlin.ir.types.typeOrNull
-import org.jetbrains.kotlin.ir.types.typeWith
 import org.jetbrains.kotlin.ir.util.substitute
 import org.jetbrains.kotlin.ir.util.superTypes
 import org.jetbrains.kotlin.ir.util.typeSubstitutionMap
@@ -177,7 +156,10 @@ public fun IrClass.typeWith(arguments: List<IrTypeArgument>): IrSimpleType = thi
 //fun IrClass.typeWith(vararg arguments: IrTypeArgument) = this.symbol.typeWith(arguments.toList())
 
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-public fun IrMemberAccessExpression<*>.putValueArguments(vararg namedArgs: Pair<String, IrExpression?>, substitute: Boolean = this is IrCall) {
+public fun IrMemberAccessExpression<*>.putValueArguments(
+    vararg namedArgs: Pair<String, IrExpression?>,
+    substitute: Boolean = this is IrCall
+) {
     val paramDescriptors =
         this.symbol.descriptor.cast<CallableDescriptor>().valueParameters.associateBy { it.name.asString() }
     namedArgs.forEach {
@@ -194,7 +176,10 @@ public fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
 ): T =
     apply { putValueArguments(*namedArgs, substitute = substitute) }
 
-public fun IrMemberAccessExpression<*>.putValueArguments(vararg args: IrExpression?, substitute: Boolean = this is IrCall) {
+public fun IrMemberAccessExpression<*>.putValueArguments(
+    vararg args: IrExpression?,
+    substitute: Boolean = this is IrCall
+) {
     args.forEachIndexed { i, it ->
         putValueArgument(i, it)
     }
@@ -202,17 +187,26 @@ public fun IrMemberAccessExpression<*>.putValueArguments(vararg args: IrExpressi
         substituteTypeParams()
 }
 
-public fun <T : IrMemberAccessExpression<*>> T.withValueArguments(vararg args: IrExpression?, substitute: Boolean = this is IrCall): T =
+public fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
+    vararg args: IrExpression?,
+    substitute: Boolean = this is IrCall
+): T =
     apply { putValueArguments(*args, substitute = substitute) }
 
-public fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(receiver: IrExpression?, substitute: Boolean = this is IrCall): T =
+public fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(
+    receiver: IrExpression?,
+    substitute: Boolean = this is IrCall
+): T =
     apply {
         extensionReceiver = receiver
         if (substitute && this is IrCall)
             substituteTypeParams()
     }
 
-public fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(receiver: IrExpression?, substitute: Boolean = this is IrCall): T =
+public fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(
+    receiver: IrExpression?,
+    substitute: Boolean = this is IrCall
+): T =
     apply {
         dispatchReceiver = receiver
         if (substitute && this is IrCall)
@@ -223,7 +217,10 @@ public fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(receiver: Ir
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-public fun IrMemberAccessExpression<*>.putTypeArguments(vararg namedArgs: Pair<String, IrType?>, substitute: Boolean = this is IrCall) {
+public fun IrMemberAccessExpression<*>.putTypeArguments(
+    vararg namedArgs: Pair<String, IrType?>,
+    substitute: Boolean = this is IrCall
+) {
     val paramDescriptors =
         this.symbol.descriptor.cast<CallableDescriptor>().typeParameters.associateBy { it.name.asString() }
     namedArgs.forEach {
@@ -237,7 +234,10 @@ public fun IrMemberAccessExpression<*>.putTypeArguments(vararg namedArgs: Pair<S
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg namedArgs: Pair<String, IrType?>, substitute: Boolean = this is IrCall): T =
+public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
+    vararg namedArgs: Pair<String, IrType?>,
+    substitute: Boolean = this is IrCall
+): T =
     apply { putTypeArguments(*namedArgs, substitute = substitute) }
 
 /**
@@ -255,7 +255,10 @@ public fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, su
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(vararg args: IrType?, substitute: Boolean = this is IrCall): T =
+public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
+    vararg args: IrType?,
+    substitute: Boolean = this is IrCall
+): T =
     apply { putTypeArguments(*args, substitute = substitute) }
 
 public fun IrType.typeArgument(index: Int): IrType =
@@ -266,10 +269,10 @@ public fun IrType.typeArgument(index: Int): IrType =
 /**
  * JS backend doesn't support IrExprBody yet.
  *
- * TODO deprecate once it does.
+ * TODO deprecate once it does and KT-46316 is fixed.
  */
-public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression): IrBody =
-    if (context is IrPluginContext && !(context as IrPluginContext).platform.isJs()) {
+public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJvm: Boolean = false): IrBody =
+    if (context is IrPluginContext && !(context as IrPluginContext).platform.isJs() && useExprOnJvm) {
         irExprBody(expression)
     } else {
         irBlockBody {
