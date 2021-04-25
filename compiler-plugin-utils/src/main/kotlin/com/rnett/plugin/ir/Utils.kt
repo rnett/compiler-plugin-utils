@@ -29,13 +29,13 @@ import org.jetbrains.kotlin.utils.addToStdlib.cast
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
-public val CompilerConfiguration.messageCollector: MessageCollector
+val CompilerConfiguration.messageCollector: MessageCollector
     get() = get(
         CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY,
         MessageCollector.NONE
     )
 
-public fun IrBuilderWithScope.irVararg(elementType: IrType, elements: Iterable<IrExpression>): IrVararg =
+fun IrBuilderWithScope.irVararg(elementType: IrType, elements: Iterable<IrExpression>): IrVararg =
     IrVarargImpl(
         startOffset,
         endOffset,
@@ -44,14 +44,14 @@ public fun IrBuilderWithScope.irVararg(elementType: IrType, elements: Iterable<I
         elements.toList()
     )
 
-public fun IrGeneratorContext.createIrBuilder(
+fun IrGeneratorContext.createIrBuilder(
     symbol: IrSymbol,
     startOffset: Int = UNDEFINED_OFFSET,
     endOffset: Int = UNDEFINED_OFFSET,
 ): DeclarationIrBuilder =
     DeclarationIrBuilder(this, symbol, startOffset, endOffset)
 
-public inline fun <T : IrElement> IrGeneratorWithScope.buildStatement(
+inline fun <T : IrElement> IrGeneratorWithScope.buildStatement(
     startOffset: Int = UNDEFINED_OFFSET,
     endOffset: Int = UNDEFINED_OFFSET,
     origin: IrStatementOrigin? = null,
@@ -62,7 +62,7 @@ public inline fun <T : IrElement> IrGeneratorWithScope.buildStatement(
 }
 
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-public inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitializer.() -> Unit): IrAnonymousInitializer {
+inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitializer.() -> Unit): IrAnonymousInitializer {
     contract { callsInPlace(builder, InvocationKind.EXACTLY_ONCE) }
     return this.factory.createAnonymousInitializer(
         UNDEFINED_OFFSET,
@@ -80,7 +80,7 @@ public inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitialize
  *
  * I.e. if you have `class A<T>: B<T>`, the supertype of `A<Int>` would be `B<Int>`, not `B<T of A>` like with [superTypes].
  */
-public fun IrType.supertypesWithSubstitution(): List<IrType> {
+fun IrType.supertypesWithSubstitution(): List<IrType> {
     if (this !is IrSimpleType)
         return superTypes()
 
@@ -95,7 +95,7 @@ public fun IrType.supertypesWithSubstitution(): List<IrType> {
  * Gets the lowest superclass or this that matches the predicate.
  * Helpful for discovering the type parameters of supertypes.
  */
-public inline fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
+inline fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
     raiseToOrNull(predicate) ?: error("Type doesn't match predicate, and no matching supertypes found")
 
 /**
@@ -104,7 +104,7 @@ public inline fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
  *
  * Uses [supertypesWithSubstitution]
  */
-public inline fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? {
+inline fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? {
     if (predicate(this))
         return this
 
@@ -128,7 +128,7 @@ public inline fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? 
  *
  * Uses [supertypesWithSubstitution]
  */
-public fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNull(classifier)
+fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNull(classifier)
     ?: error("Type doesn't have classifier $classifier, and none of it's supertypes do")
 
 
@@ -138,12 +138,12 @@ public fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNul
  *
  * Uses [supertypesWithSubstitution]
  */
-public fun IrType.raiseToOrNull(classifier: IrClassifierSymbol): IrType? =
+fun IrType.raiseToOrNull(classifier: IrClassifierSymbol): IrType? =
     raiseToOrNull { it.classifierOrNull == classifier }
 
 //fun IrClassifierSymbol.typeWith(vararg arguments: IrTypeArgument): IrSimpleType = typeWith(arguments.toList())
 
-public fun IrClassifierSymbol.typeWith(arguments: List<IrTypeArgument>): IrSimpleType =
+fun IrClassifierSymbol.typeWith(arguments: List<IrTypeArgument>): IrSimpleType =
     IrSimpleTypeImpl(
         this,
         false,
@@ -151,12 +151,12 @@ public fun IrClassifierSymbol.typeWith(arguments: List<IrTypeArgument>): IrSimpl
         emptyList()
     )
 
-public fun IrClass.typeWith(arguments: List<IrTypeArgument>): IrSimpleType = this.symbol.typeWith(arguments)
+fun IrClass.typeWith(arguments: List<IrTypeArgument>): IrSimpleType = this.symbol.typeWith(arguments)
 
 //fun IrClass.typeWith(vararg arguments: IrTypeArgument) = this.symbol.typeWith(arguments.toList())
 
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-public fun IrMemberAccessExpression<*>.putValueArguments(
+fun IrMemberAccessExpression<*>.putValueArguments(
     vararg namedArgs: Pair<String, IrExpression?>,
     substitute: Boolean = this is IrCall
 ) {
@@ -170,13 +170,13 @@ public fun IrMemberAccessExpression<*>.putValueArguments(
         substituteTypeParams()
 }
 
-public fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
+fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
     vararg namedArgs: Pair<String, IrExpression?>,
     substitute: Boolean = this is IrCall,
 ): T =
     apply { putValueArguments(*namedArgs, substitute = substitute) }
 
-public fun IrMemberAccessExpression<*>.putValueArguments(
+fun IrMemberAccessExpression<*>.putValueArguments(
     vararg args: IrExpression?,
     substitute: Boolean = this is IrCall
 ) {
@@ -187,13 +187,13 @@ public fun IrMemberAccessExpression<*>.putValueArguments(
         substituteTypeParams()
 }
 
-public fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
+fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
     vararg args: IrExpression?,
     substitute: Boolean = this is IrCall
 ): T =
     apply { putValueArguments(*args, substitute = substitute) }
 
-public fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(
+fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(
     receiver: IrExpression?,
     substitute: Boolean = this is IrCall
 ): T =
@@ -203,7 +203,7 @@ public fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(
             substituteTypeParams()
     }
 
-public fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(
+fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(
     receiver: IrExpression?,
     substitute: Boolean = this is IrCall
 ): T =
@@ -217,7 +217,7 @@ public fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-public fun IrMemberAccessExpression<*>.putTypeArguments(
+fun IrMemberAccessExpression<*>.putTypeArguments(
     vararg namedArgs: Pair<String, IrType?>,
     substitute: Boolean = this is IrCall
 ) {
@@ -234,7 +234,7 @@ public fun IrMemberAccessExpression<*>.putTypeArguments(
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
+fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
     vararg namedArgs: Pair<String, IrType?>,
     substitute: Boolean = this is IrCall
 ): T =
@@ -243,7 +243,7 @@ public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-public fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, substitute: Boolean = this is IrCall) {
+fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, substitute: Boolean = this is IrCall) {
     args.forEachIndexed { i, it ->
         putTypeArgument(i, it)
     }
@@ -255,13 +255,13 @@ public fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, su
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
+fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
     vararg args: IrType?,
     substitute: Boolean = this is IrCall
 ): T =
     apply { putTypeArguments(*args, substitute = substitute) }
 
-public fun IrType.typeArgument(index: Int): IrType =
+fun IrType.typeArgument(index: Int): IrType =
     assertedCast<IrSimpleType> { "$this is not a simple type" }.arguments[index].typeOrNull
         ?: error("Type argument $index of $this is not a type (is it a wildcard?)")
 
@@ -271,7 +271,7 @@ public fun IrType.typeArgument(index: Int): IrType =
  *
  * TODO deprecate once it does and KT-46316 is fixed.
  */
-public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJvm: Boolean = false): IrBody =
+fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJvm: Boolean = false): IrBody =
     if (context is IrPluginContext && !(context as IrPluginContext).platform.isJs() && useExprOnJvm) {
         irExprBody(expression)
     } else {
@@ -283,7 +283,7 @@ public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJv
 /**
  * Substitute the set type parameters into the return type.
  */
-public fun IrCall.substituteTypeParams(): IrCall = cast<IrCallImpl>().also {
+fun IrCall.substituteTypeParams(): IrCall = cast<IrCallImpl>().also {
     //TODO detect type params from args
     if ((0 until typeArgumentsCount).none { getTypeArgument(it) == null })
         it.type = it.type.substitute(it.typeSubstitutionMap)

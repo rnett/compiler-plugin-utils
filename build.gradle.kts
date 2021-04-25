@@ -13,15 +13,21 @@ apply("./common.gradle.kts")
 
 subprojects {
     afterEvaluate {
-        extensions.getByType<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>().target {
-            compilations.configureEach {
-                kotlinOptions {
-                    jvmTarget = "1.8"
-                    useIR = true
-                }
-                compileJavaTaskProvider.get().apply {
-                    targetCompatibility = "1.8"
-                    sourceCompatibility = "1.8"
+        extensions.getByType<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>().apply {
+            sourceSets.all {
+                languageSettings.useExperimentalAnnotation("kotlin.contracts.ExperimentalContracts")
+            }
+
+            target {
+                compilations.configureEach {
+                    kotlinOptions {
+                        jvmTarget = "1.8"
+                        useIR = true
+                    }
+                    compileJavaTaskProvider.get().apply {
+                        targetCompatibility = "1.8"
+                        sourceCompatibility = "1.8"
+                    }
                 }
             }
         }
