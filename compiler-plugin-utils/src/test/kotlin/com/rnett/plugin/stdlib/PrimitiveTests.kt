@@ -41,10 +41,10 @@ abstract class MathableTests : BaseIrPluginTest() {
     @PluginTestReplaceIn("receiver / double")
     fun IrBuilderWithScope.testDivDouble() = builder.div(receiver, double)
 
-    @PluginTestReplaceIn("receiver.toByte()")
+    @PluginTestReplaceIn("receiver.toInt().toByte()")
     fun IrBuilderWithScope.testToByte() = builder.toByte(receiver)
 
-    @PluginTestReplaceIn("receiver.toShort()")
+    @PluginTestReplaceIn("receiver.toInt().toShort()")
     fun IrBuilderWithScope.testToShort() = builder.toShort(receiver)
 
     @PluginTestReplaceIn("receiver.toInt()")

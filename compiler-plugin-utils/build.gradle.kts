@@ -25,8 +25,8 @@ dependencies {
     testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.3.5")
 
     testRuntimeOnly(kotlin("stdlib-js"))
-    //TODO this isn't being found.  Need common?
-    testImplementation(kotlin("test-js"))
+    //TODO this isn't being found.  Can't resolve w/ attributes
+//    testRuntimeOnly(kotlin("test-js"))
 
     testCompileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
     kaptTest("com.google.auto.service:auto-service:1.0-rc6")

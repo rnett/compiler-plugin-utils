@@ -13,8 +13,8 @@ import kotlin.test.assertEquals
 
 @OptIn(ExperimentalStdlibApi::class)
 @TestFactory
-fun MakeTests(tests: BaseIrPluginTest, klass: KClass<out BaseIrPluginTest>) = buildList<DynamicTest> {
-    val (compileResult, jsResult, files) = compileTests(tests to klass)
+fun MakeTests(tests: BaseIrPluginTest, klass: KClass<out BaseIrPluginTest>, doJs: Boolean = false) = buildList<DynamicTest> {
+    val (compileResult, jsResult, files) = compileTests(tests to klass, doJs = doJs)
 
     add(DynamicTest.dynamicTest("Jvm Compile") {
         assertEquals(
