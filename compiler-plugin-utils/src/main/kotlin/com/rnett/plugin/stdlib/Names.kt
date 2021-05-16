@@ -21,6 +21,7 @@ import org.jetbrains.kotlin.ir.types.isInt
 import org.jetbrains.kotlin.ir.types.isLong
 import org.jetbrains.kotlin.ir.types.isNullableAny
 import org.jetbrains.kotlin.ir.types.isShort
+import org.jetbrains.kotlin.ir.util.render
 
 //TODO be able to auto-generate name hierarchies for classes/packages.  Needs FIR for the actual generation though
 
@@ -31,6 +32,10 @@ public object Kotlin : RootPackage("kotlin") {
     public object Reflect : PackageRef() {
         public val typeOf: FunctionRef by function("typeOf")
         public val KType: ClassRef by Class("KType")
+
+        public object KClass : ClassRef() {
+            public val isInstance: FunctionRef by function()
+        }
     }
 
     public object Any : ClassRef() {
@@ -427,21 +432,31 @@ public object Kotlin : RootPackage("kotlin") {
         override val klass: ClassRef = this
     }
 
-    public val Throwable: ClassRef by Class()
+    public object Throwable : ClassRef(), ExceptionClassWithCause {
+        override val klass: ClassRef = this
 
-    public val Error: JavaLang.Error = JavaLang.Error
-    public val Exception: JavaLang.Exception = JavaLang.Exception
-    public val RuntimeException: JavaLang.RuntimeException = JavaLang.RuntimeException
-    public val IllegalArgumentException: JavaLang.IllegalArgumentException = JavaLang.IllegalArgumentException
-    public val IllegalStateException: JavaLang.IllegalStateException = JavaLang.IllegalStateException
-    public val UnsupportedOperationException: JavaLang.UnsupportedOperationException =
-        JavaLang.UnsupportedOperationException
-    public val AssertionError: JavaLang.AssertionError = JavaLang.AssertionError
+    }
 
-    public val NoSuchElementException: JavaUtil.NoSuchElementException = JavaUtil.NoSuchElementException
-    public val IndexOutOfBoundsException: JavaLang.IndexOutOfBoundsException = JavaLang.IndexOutOfBoundsException
-    public val ClassCastException: JavaLang.ClassCastException = JavaLang.ClassCastException
-    public val NullPointerException: JavaLang.NullPointerException = JavaLang.NullPointerException
+    public val throwablePrintStackTrace: FunctionRef = function("printStackTrace") {
+        numParameters = 0
+        extensionReceiver = {
+            it.type.render() == "kotlin.Throwable"
+        }
+    }
+
+//    public val Error: JavaLang.Error = JavaLang.Error
+//    public val Exception: JavaLang.Exception = JavaLang.Exception
+//    public val RuntimeException: JavaLang.RuntimeException = JavaLang.RuntimeException
+//    public val IllegalArgumentException: JavaLang.IllegalArgumentException = JavaLang.IllegalArgumentException
+//    public val IllegalStateException: JavaLang.IllegalStateException = JavaLang.IllegalStateException
+//    public val UnsupportedOperationException: JavaLang.UnsupportedOperationException =
+//        JavaLang.UnsupportedOperationException
+//    public val AssertionError: JavaLang.AssertionError = JavaLang.AssertionError
+//
+//    public val NoSuchElementException: JavaUtil.NoSuchElementException = JavaUtil.NoSuchElementException
+//    public val IndexOutOfBoundsException: JavaLang.IndexOutOfBoundsException = JavaLang.IndexOutOfBoundsException
+//    public val ClassCastException: JavaLang.ClassCastException = JavaLang.ClassCastException
+//    public val NullPointerException: JavaLang.NullPointerException = JavaLang.NullPointerException
 
     //TODO List toVararg?  Can I use toTypedArray for everything or do I need to use toIntArray etc for primitives?
     //TODO String
@@ -462,9 +477,17 @@ public interface ExceptionClass {
                 it.type.isClassifierOf(Kotlin.String)
             }
         }
+
+    public val cause: PropertyRef
+        get() = klass.property("cause")
+
+    public val message: PropertyRef
+        get() = klass.property("message")
 }
 
 public interface ExceptionClassWithCause : ExceptionClass {
+
+
     public val newWithMessageAndClause: ConstructorRef
         get() = klass.constructor {
             numParameters = 2

@@ -1,9 +1,11 @@
 package com.rnett.plugin.stdlib
 
+import com.rnett.plugin.ir.withDispatchReceiver
 import com.rnett.plugin.ir.withValueArguments
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.ir.UNDEFINED_OFFSET
 import org.jetbrains.kotlin.ir.builders.IrBuilderWithScope
+import org.jetbrains.kotlin.ir.builders.irCall
 import org.jetbrains.kotlin.ir.builders.irCallConstructor
 import org.jetbrains.kotlin.ir.expressions.IrConstructorCall
 import org.jetbrains.kotlin.ir.expressions.IrExpression
@@ -27,6 +29,18 @@ public open class ExceptionBuilders(
     ): IrConstructorCall =
         buildStatement(startOffset, endOffset) {
             irCallConstructor(klass.newWithMessage(), listOf()).withValueArguments(message)
+        }
+
+    public fun getMessage(exception: IrExpression, startOffset: Int, endOffset: Int): IrExpression =
+        buildStatement(startOffset, endOffset) {
+            irCall(klass.message().owner.getter!!)
+                .withDispatchReceiver(exception)
+        }
+
+    public fun getCause(exception: IrExpression, startOffset: Int, endOffset: Int): IrExpression =
+        buildStatement(startOffset, endOffset) {
+            irCall(klass.cause().owner.getter!!)
+                .withDispatchReceiver(exception)
         }
 }
 

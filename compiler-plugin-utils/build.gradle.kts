@@ -32,6 +32,10 @@ dependencies {
     kaptTest("com.google.auto.service:auto-service:1.0-rc6")
 }
 
+kotlin {
+    this.explicitApi()
+}
+
 val sourceLinkBranch: String by project
 
 tasks.dokkaHtml {

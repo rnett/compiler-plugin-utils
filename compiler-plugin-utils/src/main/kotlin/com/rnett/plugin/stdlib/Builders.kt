@@ -64,6 +64,22 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
                 irCall(Kotlin.Reflect.typeOf(), Kotlin.Reflect.KType().typeWith())
                     .withTypeArguments(type)
             }
+
+        public inner class KClassBuilders {
+            public fun isInstance(
+                value: IrExpression,
+                startOffset: Int = UNDEFINED_OFFSET,
+                endOffset: Int = UNDEFINED_OFFSET
+            ): IrCall =
+                buildStatement(startOffset, endOffset) {
+                    irCall(Kotlin.Reflect.KClass.isInstance)
+                        .withValueArguments(value)
+                }
+        }
+
+        public val KClass: KClassBuilders = KClassBuilders()
+
+
     }
 
     public val reflect: ReflectBuilders = ReflectBuilders()
@@ -208,7 +224,8 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
 
                 putValueArgument(0, expr)
                 putValueArgument(
-                    1, lambdaArgument(lambda))
+                    1, lambdaArgument(lambda)
+                )
             }
         }
 
@@ -276,97 +293,101 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
     public val Float: MathableBuilders by lazy { MathableBuilders(Kotlin.Float, builder, context) }
     public val Double: MathableBuilders by lazy { MathableBuilders(Kotlin.Double, builder, context) }
 
+
+    public val Throwable: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.Throwable, builder, context) }
+
+    //TODO deprecated because of expect class/typealias resolve issues
     // exception classes are tested via reflection
-
-    public val Error: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.Error, builder, context) }
-
-    @Suppress("unused")
-    public val Exception: ExceptionBuildersWithCause by lazy {
-        ExceptionBuildersWithCause(
-            Kotlin.Exception,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val RuntimeException: ExceptionBuildersWithCause by lazy {
-        ExceptionBuildersWithCause(
-            Kotlin.RuntimeException,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val IllegalArgumentException: ExceptionBuildersWithCause by lazy {
-        ExceptionBuildersWithCause(
-            Kotlin.IllegalArgumentException,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val IllegalStateException: ExceptionBuildersWithCause by lazy {
-        ExceptionBuildersWithCause(
-            Kotlin.IllegalStateException,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val UnsupportedOperationException: ExceptionBuildersWithCause by lazy {
-        ExceptionBuildersWithCause(
-            Kotlin.UnsupportedOperationException,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val AssertionError: ExceptionBuildersWithCause by lazy {
-        ExceptionBuildersWithCause(
-            Kotlin.AssertionError,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val NoSuchElementException: ExceptionBuilders by lazy {
-        ExceptionBuilders(
-            Kotlin.NoSuchElementException,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val IndexOutOfBoundsException: ExceptionBuilders by lazy {
-        ExceptionBuilders(
-            Kotlin.IndexOutOfBoundsException,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val ClassCastException: ExceptionBuilders by lazy {
-        ExceptionBuilders(
-            Kotlin.ClassCastException,
-            builder,
-            context
-        )
-    }
-
-    @Suppress("unused")
-    public val NullPointerException: ExceptionBuilders by lazy {
-        ExceptionBuilders(
-            Kotlin.NullPointerException,
-            builder,
-            context
-        )
-    }
+//
+//    public val Error: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.Error, builder, context) }
+//
+//    @Suppress("unused")
+//    public val Exception: ExceptionBuildersWithCause by lazy {
+//        ExceptionBuildersWithCause(
+//            Kotlin.Exception,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val RuntimeException: ExceptionBuildersWithCause by lazy {
+//        ExceptionBuildersWithCause(
+//            Kotlin.RuntimeException,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val IllegalArgumentException: ExceptionBuildersWithCause by lazy {
+//        ExceptionBuildersWithCause(
+//            Kotlin.IllegalArgumentException,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val IllegalStateException: ExceptionBuildersWithCause by lazy {
+//        ExceptionBuildersWithCause(
+//            Kotlin.IllegalStateException,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val UnsupportedOperationException: ExceptionBuildersWithCause by lazy {
+//        ExceptionBuildersWithCause(
+//            Kotlin.UnsupportedOperationException,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val AssertionError: ExceptionBuildersWithCause by lazy {
+//        ExceptionBuildersWithCause(
+//            Kotlin.AssertionError,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val NoSuchElementException: ExceptionBuilders by lazy {
+//        ExceptionBuilders(
+//            Kotlin.NoSuchElementException,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val IndexOutOfBoundsException: ExceptionBuilders by lazy {
+//        ExceptionBuilders(
+//            Kotlin.IndexOutOfBoundsException,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val ClassCastException: ExceptionBuilders by lazy {
+//        ExceptionBuilders(
+//            Kotlin.ClassCastException,
+//            builder,
+//            context
+//        )
+//    }
+//
+//    @Suppress("unused")
+//    public val NullPointerException: ExceptionBuilders by lazy {
+//        ExceptionBuilders(
+//            Kotlin.NullPointerException,
+//            builder,
+//            context
+//        )
+//    }
 }
