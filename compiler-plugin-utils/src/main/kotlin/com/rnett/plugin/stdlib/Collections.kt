@@ -16,24 +16,24 @@ import org.jetbrains.kotlin.ir.types.IrType
 import org.jetbrains.kotlin.ir.types.isSubtypeOf
 import org.jetbrains.kotlin.ir.types.typeWith
 
-class CollectionsBuilders(
+public class CollectionsBuilders(
     internal val stdlib: StdlibBuilders,
     builder: IrBuilderWithScope,
     context: IrPluginContext
 ) : MethodBuilder(builder, context) {
-    val Iterable: IterableBuilders by lazy { IterableBuilders(builder, context) }
-    val Collection: CollectionBuilders by lazy { CollectionBuilders(builder, context) }
+    public val Iterable: IterableBuilders by lazy { IterableBuilders(builder, context) }
+    public val Collection: CollectionBuilders by lazy { CollectionBuilders(builder, context) }
 
-    val Map: MapBuilders by lazy { MapBuilders(this, builder, context) }
-    val MutableMap: MutableMapBuilders by lazy { MutableMapBuilders(this, builder, context) }
+    public val Map: MapBuilders by lazy { MapBuilders(this, builder, context) }
+    public val MutableMap: MutableMapBuilders by lazy { MutableMapBuilders(this, builder, context) }
 
-    val List: ListBuilders by lazy { ListBuilders(this, builder, context) }
-    val MutableList: MutableListBuilders by lazy { MutableListBuilders(this, builder, context) }
+    public val List: ListBuilders by lazy { ListBuilders(this, builder, context) }
+    public val MutableList: MutableListBuilders by lazy { MutableListBuilders(this, builder, context) }
 
-    val Set: SetBuilders by lazy { SetBuilders(this, builder, context) }
-    val MutableSet: MutableSetBuilders by lazy { MutableSetBuilders(this, builder, context) }
+    public val Set: SetBuilders by lazy { SetBuilders(this, builder, context) }
+    public val MutableSet: MutableSetBuilders by lazy { MutableSetBuilders(this, builder, context) }
 
-    fun listOf(
+    public fun listOf(
         elementType: IrType,
         items: Iterable<IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -44,7 +44,7 @@ class CollectionsBuilders(
             .withValueArguments(irVararg(elementType, items))
     }
 
-    fun listOfVararg(
+    public fun listOfVararg(
         elementType: IrType,
         items: IrVararg,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -58,13 +58,13 @@ class CollectionsBuilders(
             .withValueArguments(items)
     }
 
-    fun listOfVararg(
+    public fun listOfVararg(
         items: IrVararg,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = listOfVararg(items.varargElementType, items, startOffset, endOffset)
 
-    fun setOf(
+    public fun setOf(
         elementType: IrType,
         items: Iterable<IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -75,7 +75,7 @@ class CollectionsBuilders(
             .withValueArguments(irVararg(elementType, items))
     }
 
-    fun listOfNotNull(
+    public fun listOfNotNull(
         elementType: IrType,
         items: Iterable<IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -86,7 +86,7 @@ class CollectionsBuilders(
             .withValueArguments(irVararg(elementType, items))
     }
 
-    fun setOfNotNull(
+    public fun setOfNotNull(
         elementType: IrType,
         items: Iterable<IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -97,7 +97,7 @@ class CollectionsBuilders(
             .withValueArguments(irVararg(elementType, items))
     }
 
-    fun mapOf(
+    public fun mapOf(
         keyType: IrType,
         valueType: IrType,
         items: Map<IrExpression, IrExpression>,
@@ -113,7 +113,7 @@ class CollectionsBuilders(
                 ))
     }
 
-    fun mutableListOf(
+    public fun mutableListOf(
         elementType: IrType,
         items: Iterable<IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -124,7 +124,7 @@ class CollectionsBuilders(
             .withValueArguments(irVararg(elementType, items))
     }
 
-    fun mutableSetOf(
+    public fun mutableSetOf(
         elementType: IrType,
         items: Iterable<IrExpression>,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -135,7 +135,7 @@ class CollectionsBuilders(
             .withValueArguments(irVararg(elementType, items))
     }
 
-    fun mutableMapOf(
+    public fun mutableMapOf(
         keyType: IrType,
         valueType: IrType,
         items: Map<IrExpression, IrExpression>,
@@ -157,7 +157,7 @@ class CollectionsBuilders(
             )
     }
 
-    fun emptyList(
+    public fun emptyList(
         elementType: IrType,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -166,7 +166,7 @@ class CollectionsBuilders(
             irCall(Kotlin.Collections.listOfEmpty(), Kotlin.Collections.List.resolveTypeWith(elementType)).withTypeArguments(elementType)
         }
 
-    fun emptySet(
+    public fun emptySet(
         elementType: IrType,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -175,7 +175,7 @@ class CollectionsBuilders(
             irCall(Kotlin.Collections.setOfEmpty(), Kotlin.Collections.Set.resolveTypeWith(elementType)).withTypeArguments(elementType)
         }
 
-    fun emptyMap(
+    public fun emptyMap(
         keyType: IrType,
         valueType: IrType,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -185,7 +185,7 @@ class CollectionsBuilders(
             irCall(Kotlin.Collections.mapOfEmpty(), Kotlin.Collections.Map.resolveTypeWith(keyType, valueType)).withTypeArguments(keyType, valueType)
         }
 
-    fun emptyMutableList(
+    public fun emptyMutableList(
         elementType: IrType,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -197,7 +197,7 @@ class CollectionsBuilders(
             ).withTypeArguments(elementType)
         }
 
-    fun emptyMutableSet(
+    public fun emptyMutableSet(
         elementType: IrType,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -206,7 +206,7 @@ class CollectionsBuilders(
             irCall(Kotlin.Collections.mutableSetOfEmpty(), Kotlin.Collections.MutableSet.resolveTypeWith(elementType)).withTypeArguments(elementType)
         }
 
-    fun emptyMutableMap(
+    public fun emptyMutableMap(
         keyType: IrType,
         valueType: IrType,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -220,9 +220,9 @@ class CollectionsBuilders(
         }
 }
 
-class ArrayBuilders(builder: IrBuilderWithScope, context: IrPluginContext) :
+public class ArrayBuilders(builder: IrBuilderWithScope, context: IrPluginContext) :
     TypedMethodBuilder(Kotlin.Array, builder, context) {
-    fun toList(
+    public fun toList(
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -230,7 +230,7 @@ class ArrayBuilders(builder: IrBuilderWithScope, context: IrPluginContext) :
         irCall(Kotlin.Collections.arrayToList()).withExtensionReceiver(receiver.checkType())
     }
 
-    fun toMutableList(
+    public fun toMutableList(
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -239,13 +239,13 @@ class ArrayBuilders(builder: IrBuilderWithScope, context: IrPluginContext) :
     }
 }
 
-open class IterableBuilders(
+public open class IterableBuilders(
     builder: IrBuilderWithScope,
     context: IrPluginContext,
     type: ClassRef = Kotlin.Collections.Iterable
 ) :
     TypedMethodBuilder(type, builder, context) {
-    fun toList(
+    public fun toList(
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -254,7 +254,7 @@ open class IterableBuilders(
             .withExtensionReceiver(receiver.checkType())
     }
 
-    fun toMutableList(
+    public fun toMutableList(
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -263,7 +263,7 @@ open class IterableBuilders(
             .withExtensionReceiver(receiver.checkType())
     }
 
-    fun toMap(
+    public fun toMap(
         receiver: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
@@ -272,7 +272,7 @@ open class IterableBuilders(
             .withExtensionReceiver(receiver.checkType())
     }
 
-    fun plusIterableToList(
+    public fun plusIterableToList(
         receiver: IrExpression,
         other: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -283,7 +283,7 @@ open class IterableBuilders(
             .withValueArguments(other)
     }
 
-    fun plusElementToList(
+    public fun plusElementToList(
         receiver: IrExpression,
         other: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -294,7 +294,7 @@ open class IterableBuilders(
             .withValueArguments(other)
     }
 
-    fun minusIterableToList(
+    public fun minusIterableToList(
         receiver: IrExpression,
         other: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -305,7 +305,7 @@ open class IterableBuilders(
             .withValueArguments(other)
     }
 
-    fun minusElementToList(
+    public fun minusElementToList(
         receiver: IrExpression,
         other: IrExpression,
         startOffset: Int = UNDEFINED_OFFSET,
@@ -318,13 +318,13 @@ open class IterableBuilders(
 
 }
 
-open class CollectionBuilders(
+public open class CollectionBuilders(
     builder: IrBuilderWithScope,
     context: IrPluginContext,
     type: ClassRef = Kotlin.Collections.Collection
 ) :
     IterableBuilders(builder, context, type) {
-    fun toTypedArray(
+    public fun toTypedArray(
         receiver: IrExpression,
         elementType: IrType,
         startOffset: Int = UNDEFINED_OFFSET,

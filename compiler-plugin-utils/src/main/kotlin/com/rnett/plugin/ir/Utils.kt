@@ -33,13 +33,13 @@ import org.jetbrains.kotlin.platform.js.isJs
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
-val CompilerConfiguration.messageCollector: MessageCollector
+public val CompilerConfiguration.messageCollector: MessageCollector
     get() = get(
         CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY,
         MessageCollector.NONE
     )
 
-fun IrBuilderWithScope.irVararg(elementType: IrType, elements: Iterable<IrExpression>): IrVararg =
+public fun IrBuilderWithScope.irVararg(elementType: IrType, elements: Iterable<IrExpression>): IrVararg =
     IrVarargImpl(
         startOffset,
         endOffset,
@@ -48,14 +48,14 @@ fun IrBuilderWithScope.irVararg(elementType: IrType, elements: Iterable<IrExpres
         elements.toList()
     )
 
-fun IrGeneratorContext.createIrBuilder(
+public fun IrGeneratorContext.createIrBuilder(
     symbol: IrSymbol,
     startOffset: Int = UNDEFINED_OFFSET,
     endOffset: Int = UNDEFINED_OFFSET,
 ): DeclarationIrBuilder =
     DeclarationIrBuilder(this, symbol, startOffset, endOffset)
 
-inline fun <T : IrElement> IrGeneratorWithScope.buildStatement(
+public inline fun <T : IrElement> IrGeneratorWithScope.buildStatement(
     startOffset: Int = UNDEFINED_OFFSET,
     endOffset: Int = UNDEFINED_OFFSET,
     origin: IrStatementOrigin? = null,
@@ -66,7 +66,7 @@ inline fun <T : IrElement> IrGeneratorWithScope.buildStatement(
 }
 
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitializer.() -> Unit): IrAnonymousInitializer {
+public inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitializer.() -> Unit): IrAnonymousInitializer {
     contract { callsInPlace(builder, InvocationKind.EXACTLY_ONCE) }
     return this.factory.createAnonymousInitializer(
         UNDEFINED_OFFSET,
@@ -84,7 +84,7 @@ inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitializer.() ->
  *
  * TODO deprecate once it does and KT-46316 is fixed.
  */
-fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJvm: Boolean = false): IrBody =
+public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJvm: Boolean = false): IrBody =
     if (context is IrPluginContext && !(context as IrPluginContext).platform.isJs() && useExprOnJvm) {
         irExprBody(expression)
     } else {
@@ -96,7 +96,7 @@ fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJvm: Bool
 /**
  * Get the arguments of an IrCall by their parameter names
  */
-fun IrCall.valueArgumentsByName(): Map<String, IrExpression?> {
+public fun IrCall.valueArgumentsByName(): Map<String, IrExpression?> {
     val byIndex = (0 until valueArgumentsCount).associateWith { getValueArgument(it) }
     val names = symbol.owner.valueParameters.map { it.name }
     return byIndex.mapKeys { names[it.key].asString() }

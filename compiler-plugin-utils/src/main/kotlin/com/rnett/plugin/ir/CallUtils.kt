@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.ir.util.typeSubstitutionMap
 import org.jetbrains.kotlin.utils.addToStdlib.cast
 
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-fun IrMemberAccessExpression<*>.putValueArguments(
+public fun IrMemberAccessExpression<*>.putValueArguments(
     vararg namedArgs: Pair<String, IrExpression?>,
     substitute: Boolean = this is IrCall
 ) {
@@ -27,13 +27,13 @@ fun IrMemberAccessExpression<*>.putValueArguments(
         substituteTypeParams()
 }
 
-fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
+public fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
     vararg namedArgs: Pair<String, IrExpression?>,
     substitute: Boolean = this is IrCall,
 ): T =
     apply { putValueArguments(*namedArgs, substitute = substitute) }
 
-fun IrMemberAccessExpression<*>.putValueArguments(
+public fun IrMemberAccessExpression<*>.putValueArguments(
     vararg args: IrExpression?,
     substitute: Boolean = this is IrCall
 ) {
@@ -44,13 +44,13 @@ fun IrMemberAccessExpression<*>.putValueArguments(
         substituteTypeParams()
 }
 
-fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
+public fun <T : IrMemberAccessExpression<*>> T.withValueArguments(
     vararg args: IrExpression?,
     substitute: Boolean = this is IrCall
 ): T =
     apply { putValueArguments(*args, substitute = substitute) }
 
-fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(
+public fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(
     receiver: IrExpression?,
     substitute: Boolean = this is IrCall
 ): T =
@@ -60,7 +60,7 @@ fun <T : IrMemberAccessExpression<*>> T.withExtensionReceiver(
             substituteTypeParams()
     }
 
-fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(
+public fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(
     receiver: IrExpression?,
     substitute: Boolean = this is IrCall
 ): T =
@@ -74,7 +74,7 @@ fun <T : IrMemberAccessExpression<*>> T.withDispatchReceiver(
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
 @OptIn(ObsoleteDescriptorBasedAPI::class)
-fun IrMemberAccessExpression<*>.putTypeArguments(
+public fun IrMemberAccessExpression<*>.putTypeArguments(
     vararg namedArgs: Pair<String, IrType?>,
     substitute: Boolean = this is IrCall
 ) {
@@ -91,7 +91,7 @@ fun IrMemberAccessExpression<*>.putTypeArguments(
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
+public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
     vararg namedArgs: Pair<String, IrType?>,
     substitute: Boolean = this is IrCall
 ): T =
@@ -100,7 +100,7 @@ fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, substitute: Boolean = this is IrCall) {
+public fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, substitute: Boolean = this is IrCall) {
     args.forEachIndexed { i, it ->
         putTypeArgument(i, it)
     }
@@ -112,7 +112,7 @@ fun IrMemberAccessExpression<*>.putTypeArguments(vararg args: IrType?, substitut
 /**
  * Set the type arguments of the call.  If [substitute] is `true` and [this] is an [IrCall], calls [substituteTypeParams].
  */
-fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
+public fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
     vararg args: IrType?,
     substitute: Boolean = this is IrCall
 ): T =
@@ -121,7 +121,7 @@ fun <T : IrMemberAccessExpression<*>> T.withTypeArguments(
 /**
  * Substitute the set type parameters into the return type.
  */
-fun IrCall.substituteTypeParams(): IrCall = cast<IrCallImpl>().also {
+public fun IrCall.substituteTypeParams(): IrCall = cast<IrCallImpl>().also {
     //TODO detect type params from args
     if ((0 until typeArgumentsCount).none { getTypeArgument(it) == null })
         it.type = it.type.substitute(it.typeSubstitutionMap)

@@ -14,12 +14,12 @@ import org.jetbrains.kotlin.ir.types.IrType
 import org.jetbrains.kotlin.ir.types.isSubtypeOf
 import org.jetbrains.kotlin.ir.types.isSubtypeOfClass
 
-abstract class MethodBuilder(protected val builder: IrBuilderWithScope, override val context: IrPluginContext) :
+public abstract class MethodBuilder(protected val builder: IrBuilderWithScope, override val context: IrPluginContext) :
     HasContext {
     /**
      * Build a statement using the underlying builder.  Should only be used for extensions.
      */
-    inline fun <T : IrElement> buildStatement(
+    public inline fun <T : IrElement> buildStatement(
         startOffset: Int,
         endOffset: Int,
         block: IrSingleStatementBuilder.() -> T
@@ -30,34 +30,34 @@ abstract class MethodBuilder(protected val builder: IrBuilderWithScope, override
         get() = builder
 }
 
-abstract class TypedMethodBuilder(
+public abstract class TypedMethodBuilder(
     protected val typeCheck: (IrType) -> Boolean,
     builder: IrBuilderWithScope,
     context: IrPluginContext,
     protected val message: (IrExpression) -> String = { "Expression $it did not pass type check, type was ${it.type}" }
 ) : MethodBuilder(builder, context) {
 
-    constructor(supertype: IrType, builder: IrBuilderWithScope, context: IrPluginContext) : this(
+    public constructor(supertype: IrType, builder: IrBuilderWithScope, context: IrPluginContext) : this(
         { it.isSubtypeOf(supertype, context.irBuiltIns) },
         builder,
         context,
         { "Expression $it is not a subtype of $supertype, was ${it.type}" }
     )
 
-    constructor(supertype: IrClassSymbol, builder: IrBuilderWithScope, context: IrPluginContext) : this(
+    public constructor(supertype: IrClassSymbol, builder: IrBuilderWithScope, context: IrPluginContext) : this(
         { it.isSubtypeOfClass(supertype) },
         builder,
         context,
         { "Expression $it is not a subtype of $supertype, was ${it.type}" }
     )
 
-    constructor(supertype: ClassRef, builder: IrBuilderWithScope, context: IrPluginContext) : this(
+    public constructor(supertype: ClassRef, builder: IrBuilderWithScope, context: IrPluginContext) : this(
         supertype(
             context
         ), builder, context
     )
 
-    constructor(
+    public constructor(
         supertype: IrClass,
         builder: IrBuilderWithScope,
         context: IrPluginContext

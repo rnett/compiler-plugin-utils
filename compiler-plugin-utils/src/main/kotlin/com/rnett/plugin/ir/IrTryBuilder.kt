@@ -17,7 +17,7 @@ import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
 
-fun IrBuilderWithScope.irTry(
+public fun IrBuilderWithScope.irTry(
     result: IrExpression,
     type: IrType,
     catches: List<IrCatch>,
@@ -25,17 +25,17 @@ fun IrBuilderWithScope.irTry(
 ): IrTry =
     IrTryImpl(startOffset, endOffset, type, result, catches, finally)
 
-fun IrBuilderWithScope.irTry(result: IrExpression, type: IrType = result.type): IrTry =
+public fun IrBuilderWithScope.irTry(result: IrExpression, type: IrType = result.type): IrTry =
     irTry(result, type, emptyList(), null)
 
 //TODO convert to extensions on IrTry.  Needs multiple receivers for builder
-class IrTryBuilder(private val builder: IrBuilderWithScope) {
+public class IrTryBuilder(private val builder: IrBuilderWithScope) {
     private val catches = mutableListOf<IrCatch>()
     private val caughtTypes = mutableSetOf<IrType>()
     private var finallyExpression: IrExpression? = null
 
     @OptIn(ExperimentalContracts::class)
-    fun irCatch(throwableType: IrType, body: IrBuilderWithScope.(IrVariable) -> IrExpression) {
+    public fun irCatch(throwableType: IrType, body: IrBuilderWithScope.(IrVariable) -> IrExpression) {
         contract { callsInPlace(body, InvocationKind.EXACTLY_ONCE) }
         if (!throwableType.isSubtypeOf(
                 builder.context.irBuiltIns.throwableType,
@@ -60,7 +60,7 @@ class IrTryBuilder(private val builder: IrBuilderWithScope) {
         catches += builder.irCatch(catchVariable, builder.body(catchVariable))
     }
 
-    fun irFinally(expression: IrExpression) {
+    public fun irFinally(expression: IrExpression) {
         if (finallyExpression != null)
             error("finally expression already set")
 
@@ -72,9 +72,9 @@ class IrTryBuilder(private val builder: IrBuilderWithScope) {
         builder.irTry(result, type, catches, finallyExpression)
 }
 
-inline fun IrBuilderWithScope.irTry(
+public inline fun IrBuilderWithScope.irTry(
     result: IrExpression,
     type: IrType = result.type,
     catches: IrTryBuilder.() -> Unit,
-) =
+): IrTry =
     IrTryBuilder(this).apply(catches).build(result, type)

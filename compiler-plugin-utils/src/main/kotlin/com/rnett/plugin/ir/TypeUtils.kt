@@ -18,9 +18,9 @@ import org.jetbrains.kotlin.utils.addToStdlib.cast
 import org.jetbrains.kotlin.utils.addToStdlib.safeAs
 
 
-fun IrType.hasTypeArgument(index: Int) = (safeAs<IrSimpleType>()?.arguments?.lastIndex ?: -1) >= index
+public fun IrType.hasTypeArgument(index: Int): Boolean = (safeAs<IrSimpleType>()?.arguments?.lastIndex ?: -1) >= index
 
-fun IrType.typeArgument(index: Int): IrType =
+public fun IrType.typeArgument(index: Int): IrType =
     assertedCast<IrSimpleType> { "$this is not a simple type" }.arguments[index].typeOrNull
         ?: error("Type argument $index of $this is not a type (is it a wildcard?)")
 
@@ -29,7 +29,7 @@ fun IrType.typeArgument(index: Int): IrType =
  *
  * I.e. if you have `class A<T>: B<T>`, the supertype of `A<Int>` would be `B<Int>`, not `B<T of A>` like with [superTypes].
  */
-fun IrType.supertypesWithSubstitution(): List<IrType> {
+public fun IrType.supertypesWithSubstitution(): List<IrType> {
     if (this !is IrSimpleType)
         return superTypes()
 
@@ -44,7 +44,7 @@ fun IrType.supertypesWithSubstitution(): List<IrType> {
  * Gets the lowest superclass or this that matches the predicate.
  * Helpful for discovering the type parameters of supertypes.
  */
-inline fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
+public inline fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
     raiseToOrNull(predicate) ?: error("Type doesn't match predicate, and no matching supertypes found")
 
 /**
@@ -53,7 +53,7 @@ inline fun IrType.raiseTo(predicate: (IrType) -> Boolean): IrType =
  *
  * Uses [supertypesWithSubstitution]
  */
-inline fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? {
+public inline fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? {
     if (predicate(this))
         return this
 
@@ -77,7 +77,7 @@ inline fun IrType.raiseToOrNull(predicate: (IrType) -> Boolean): IrType? {
  *
  * Uses [supertypesWithSubstitution]
  */
-fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNull(classifier)
+public fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNull(classifier)
     ?: error("Type doesn't have classifier $classifier, and none of it's supertypes do")
 
 
@@ -87,12 +87,12 @@ fun IrType.raiseTo(classifier: IrClassifierSymbol): IrType = raiseToOrNull(class
  *
  * Uses [supertypesWithSubstitution]
  */
-fun IrType.raiseToOrNull(classifier: IrClassifierSymbol): IrType? =
+public fun IrType.raiseToOrNull(classifier: IrClassifierSymbol): IrType? =
     raiseToOrNull { it.classifierOrNull == classifier }
 
 //fun IrClassifierSymbol.typeWith(vararg arguments: IrTypeArgument): IrSimpleType = typeWith(arguments.toList())
 
-fun IrClassifierSymbol.typeWith(arguments: List<IrTypeArgument>): IrSimpleType =
+public fun IrClassifierSymbol.typeWith(arguments: List<IrTypeArgument>): IrSimpleType =
     IrSimpleTypeImpl(
         this,
         false,
@@ -100,7 +100,7 @@ fun IrClassifierSymbol.typeWith(arguments: List<IrTypeArgument>): IrSimpleType =
         emptyList()
     )
 
-fun IrClass.typeWith(arguments: List<IrTypeArgument>): IrSimpleType = this.symbol.typeWith(arguments)
+public fun IrClass.typeWith(arguments: List<IrTypeArgument>): IrSimpleType = this.symbol.typeWith(arguments)
 
 //fun IrClass.typeWith(vararg arguments: IrTypeArgument) = this.symbol.typeWith(arguments.toList())
 
