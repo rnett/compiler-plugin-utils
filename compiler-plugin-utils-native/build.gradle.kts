@@ -1,5 +1,3 @@
-import java.net.URL
-
 plugins {
     kotlin("jvm")
     kotlin("js") apply false
@@ -45,26 +43,6 @@ tasks.register<Sync>("syncSource") {
         when (it) {
             "import org.jetbrains.kotlin.com.intellij.mock.MockProject" -> "import com.intellij.mock.MockProject"
             else -> it
-        }
-    }
-}
-
-val sourceLinkBranch: String by project
-
-tasks.dokkaHtml {
-    moduleName.set("Compiler Plugin Utils")
-    moduleVersion.set(version.toString())
-
-    dokkaSourceSets {
-        all {
-            includes.from("docs.md")
-            this.includeNonPublic.set(false)
-
-            sourceLink {
-                localDirectory.set(file("src/main/kotlin"))
-                remoteUrl.set(URL("https://github.com/rnett/compiler-plugin-utils/blob/$sourceLinkBranch/compiler-plugin-utils/src/main/kotlin"))
-                remoteLineSuffix.set("#L")
-            }
         }
     }
 }
