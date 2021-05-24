@@ -9,4 +9,4 @@ pluginManagement {
 }
 includeBuild("plugins")
 rootProject.name = "compiler-plugin-utils"
-include("compiler-plugin-utils")
+include("compiler-plugin-utils", "compiler-plugin-utils-native")
