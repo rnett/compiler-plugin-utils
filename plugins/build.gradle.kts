@@ -14,6 +14,9 @@ apply("../common.gradle.kts")
 subprojects {
     afterEvaluate {
         extensions.getByType<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>().target {
+            attributes {
+                attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 8)
+            }
             compilations.configureEach {
                 kotlinOptions {
                     jvmTarget = "1.8"
