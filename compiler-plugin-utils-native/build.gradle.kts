@@ -8,26 +8,10 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
+val kotlinVersion: String by extra
+
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler:1.5.0")
-
-    testImplementation(kotlin("test-junit5"))
-
-    testImplementation(platform("org.junit:junit-bom:5.7.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
-
-    testImplementation(kotlin("reflect"))
-    testImplementation("org.jetbrains.kotlin:kotlin-compiler:1.5.0")
-    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.3.5")
-
-    testRuntimeOnly(kotlin("stdlib-js"))
-    //TODO this isn't being found.  Can't resolve w/ attributes
-//    testRuntimeOnly(kotlin("test-js"))
-
-    testCompileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
-    kaptTest("com.google.auto.service:auto-service:1.0-rc6")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
 }
 
 kotlin {
@@ -44,13 +28,5 @@ tasks.register<Sync>("syncSource") {
             "import org.jetbrains.kotlin.com.intellij.mock.MockProject" -> "import com.intellij.mock.MockProject"
             else -> it
         }
-    }
-}
-
-tasks.test {
-    useJUnitPlatform()
-
-    testLogging {
-        events("passed", "skipped", "failed")
     }
 }

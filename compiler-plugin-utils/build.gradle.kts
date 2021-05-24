@@ -10,8 +10,10 @@ plugins {
     id("org.jetbrains.dokka")
 }
 
+val kotlinVersion: String by extra
+
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.5.0")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlinVersion")
 
     testImplementation(kotlin("test-junit5"))
 
@@ -21,8 +23,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
 
     testImplementation(kotlin("reflect"))
-    testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.5.0")
-    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.3.5")
+    testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlinVersion")
+    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.4.1")
 
     testRuntimeOnly(kotlin("stdlib-js"))
     //TODO this isn't being found.  Can't resolve w/ attributes

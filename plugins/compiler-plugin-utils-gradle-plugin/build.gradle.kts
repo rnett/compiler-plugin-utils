@@ -9,10 +9,12 @@ plugins {
     id("com.vanniktech.maven.publish")
 }
 
-dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.5.0")
+val kotlinVersion: String by extra
 
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.0")
+dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin-api:$kotlinVersion")
+
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
 
     compileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
     kapt("com.google.auto.service:auto-service:1.0-rc6")
