@@ -5,7 +5,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "5.2.0" apply false
     id("com.github.gmazzo.buildconfig") version "2.0.2" apply false
     id("com.vanniktech.maven.publish") version "0.14.0" apply false
-    id("org.jetbrains.dokka") version "1.4.30" apply false
+    id("org.jetbrains.dokka") version "1.4.32" apply false
     signing
 }
 
