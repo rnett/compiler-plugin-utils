@@ -67,7 +67,7 @@ public fun interface ValueRemapper {
 /**
  * Deep copy and replace references to values
  */
-public inline fun <reified T : IrElement> T.deepCopyAndRemapReferences(
+public inline fun <reified T : IrElement> T.deepCopyAndRemapValues(
     initialParent: IrDeclarationParent? = null,
     referenceRemapper: ValueRemapper
 ): T = deepCopyAndRemapReferences(initialParent, object : ReferenceRemapper() {
@@ -85,7 +85,7 @@ public fun interface FunctionRemapper {
 /**
  * Deep copy and replace references to values
  */
-public inline fun <reified T : IrElement> T.deepCopyAndRemapReferences(
+public inline fun <reified T : IrElement> T.deepCopyAndRemapFunctions(
     initialParent: IrDeclarationParent? = null,
     referenceRemapper: FunctionRemapper
 ): T = deepCopyAndRemapReferences(initialParent, object : ReferenceRemapper() {
