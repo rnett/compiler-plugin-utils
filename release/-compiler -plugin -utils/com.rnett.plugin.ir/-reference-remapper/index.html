@@ -22,514 +22,261 @@
           </div>
           <div class="cover ">
             <h1 class="cover"><span>Reference</span><wbr></wbr><span>Remapper</span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="index.html">ReferenceRemapper</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.util/SymbolRemapper.Empty///PointingToDeclaration/">SymbolRemapper.Empty</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A symbol remapper that only replaces references to symbols</p></div></div>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="index.html">ReferenceRemapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A symbol remapper that only replaces references to symbols.  Returning <code>null</code> will deep copy the symbol.</p></div></div>
           </div>
           <div class="tabbedcontent">
-            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Sources">Sources</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Sources">Sources</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
             <div class="tabs-section-body">
-              <h2 class="tabbedcontent">Constructors</h2>
-              <div class="table" data-togglable="Constructors"><a data-name="-500262133%2FConstructors%2F1226206554" anchor-label="ReferenceRemapper" id="-500262133%2FConstructors%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue TabbedContent">
-                    <div class=""><span class="inline-flex"><a href="-reference-remapper.html">ReferenceRemapper</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-500262133%2FConstructors%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <a href="-reference-remapper.html">ReferenceRemapper</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <h2 class="">Functions</h2>
-              <div class="table" data-togglable="Functions"><a data-name="-1820850816%2FFunctions%2F1226206554" anchor-label="getDeclaredClass" id="-1820850816%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+              <div class="table" data-togglable="Functions"><a data-name="-1276183519%2FFunctions%2F1226206554" anchor-label="getReferencedClass" id="-1276183519%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-class.html">getDeclaredClass</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1820850816%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-class.html">getReferencedClass</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1276183519%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-class.html">getDeclaredClass</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-class.html">getReferencedClass</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="-718742336%2FFunctions%2F1226206554" anchor-label="getDeclaredConstructor" id="-718742336%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="303206795%2FFunctions%2F1226206554" anchor-label="getReferencedClassifier" id="303206795%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-constructor.html">getDeclaredConstructor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-718742336%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-classifier.html">getReferencedClassifier</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="303206795%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-constructor.html">getDeclaredConstructor</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrConstructorSymbol///PointingToDeclaration/">IrConstructorSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrConstructorSymbol///PointingToDeclaration/">IrConstructorSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-classifier.html">getReferencedClassifier</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1145297632%2FFunctions%2F1226206554" anchor-label="getDeclaredEnumEntry" id="1145297632%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-313486856%2FFunctions%2F1226206554" anchor-label="getReferencedClassOrNull" id="-313486856%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-enum-entry.html">getDeclaredEnumEntry</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1145297632%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-class-or-null.html">getReferencedClassOrNull</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-313486856%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-enum-entry.html">getDeclaredEnumEntry</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrEnumEntrySymbol///PointingToDeclaration/">IrEnumEntrySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrEnumEntrySymbol///PointingToDeclaration/">IrEnumEntrySymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-class-or-null.html">getReferencedClassOrNull</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>?): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="946767456%2FFunctions%2F1226206554" anchor-label="getDeclaredExternalPackageFragment" id="946767456%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-582620703%2FFunctions%2F1226206554" anchor-label="getReferencedConstructor" id="-582620703%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-external-package-fragment.html">getDeclaredExternalPackageFragment</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="946767456%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-constructor.html">getReferencedConstructor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-582620703%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-external-package-fragment.html">getDeclaredExternalPackageFragment</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrExternalPackageFragmentSymbol///PointingToDeclaration/">IrExternalPackageFragmentSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrExternalPackageFragmentSymbol///PointingToDeclaration/">IrExternalPackageFragmentSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-constructor.html">getReferencedConstructor</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrConstructorSymbol///PointingToDeclaration/">IrConstructorSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrConstructorSymbol///PointingToDeclaration/">IrConstructorSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="-572370112%2FFunctions%2F1226206554" anchor-label="getDeclaredField" id="-572370112%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-1871798143%2FFunctions%2F1226206554" anchor-label="getReferencedEnumEntry" id="-1871798143%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-field.html">getDeclaredField</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-572370112%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-enum-entry.html">getReferencedEnumEntry</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1871798143%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-field.html">getDeclaredField</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFieldSymbol///PointingToDeclaration/">IrFieldSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFieldSymbol///PointingToDeclaration/">IrFieldSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-enum-entry.html">getReferencedEnumEntry</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrEnumEntrySymbol///PointingToDeclaration/">IrEnumEntrySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrEnumEntrySymbol///PointingToDeclaration/">IrEnumEntrySymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1718506356%2FFunctions%2F1226206554" anchor-label="getDeclaredFile" id="1718506356%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-27702815%2FFunctions%2F1226206554" anchor-label="getReferencedField" id="-27702815%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-file.html">getDeclaredFile</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1718506356%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-field.html">getReferencedField</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-27702815%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-file.html">getDeclaredFile</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFileSymbol///PointingToDeclaration/">IrFileSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFileSymbol///PointingToDeclaration/">IrFileSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-field.html">getReferencedField</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFieldSymbol///PointingToDeclaration/">IrFieldSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFieldSymbol///PointingToDeclaration/">IrFieldSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1500118762%2FFunctions%2F1226206554" anchor-label="getDeclaredFunction" id="1500118762%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="411724701%2FFunctions%2F1226206554" anchor-label="getReferencedFunction" id="411724701%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-function.html">getDeclaredFunction</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1500118762%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-function.html">getReferencedFunction</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="411724701%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-function.html">getDeclaredFunction</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSimpleFunctionSymbol///PointingToDeclaration/">IrSimpleFunctionSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSimpleFunctionSymbol///PointingToDeclaration/">IrSimpleFunctionSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-function.html">getReferencedFunction</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFunctionSymbol///PointingToDeclaration/">IrFunctionSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFunctionSymbol///PointingToDeclaration/">IrFunctionSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1610098010%2FFunctions%2F1226206554" anchor-label="getDeclaredLocalDelegatedProperty" id="1610098010%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-645778501%2FFunctions%2F1226206554" anchor-label="getReferencedLocalDelegatedProperty" id="-645778501%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-local-delegated-property.html">getDeclaredLocalDelegatedProperty</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1610098010%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-local-delegated-property.html">getReferencedLocalDelegatedProperty</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-645778501%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-local-delegated-property.html">getDeclaredLocalDelegatedProperty</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrLocalDelegatedPropertySymbol///PointingToDeclaration/">IrLocalDelegatedPropertySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrLocalDelegatedPropertySymbol///PointingToDeclaration/">IrLocalDelegatedPropertySymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-local-delegated-property.html">getReferencedLocalDelegatedProperty</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrLocalDelegatedPropertySymbol///PointingToDeclaration/">IrLocalDelegatedPropertySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrLocalDelegatedPropertySymbol///PointingToDeclaration/">IrLocalDelegatedPropertySymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="-851808382%2FFunctions%2F1226206554" anchor-label="getDeclaredProperty" id="-851808382%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-1091819165%2FFunctions%2F1226206554" anchor-label="getReferencedProperty" id="-1091819165%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-property.html">getDeclaredProperty</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-851808382%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-property.html">getReferencedProperty</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1091819165%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-property.html">getDeclaredProperty</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrPropertySymbol///PointingToDeclaration/">IrPropertySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrPropertySymbol///PointingToDeclaration/">IrPropertySymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-property.html">getReferencedProperty</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrPropertySymbol///PointingToDeclaration/">IrPropertySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrPropertySymbol///PointingToDeclaration/">IrPropertySymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1458390870%2FFunctions%2F1226206554" anchor-label="getDeclaredScript" id="1458390870%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="308210817%2FFunctions%2F1226206554" anchor-label="getReferencedReturnableBlock" id="308210817%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-script.html">getDeclaredScript</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1458390870%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-returnable-block.html">getReferencedReturnableBlock</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="308210817%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-script.html">getDeclaredScript</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrScriptSymbol///PointingToDeclaration/">IrScriptSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrScriptSymbol///PointingToDeclaration/">IrScriptSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-returnable-block.html">getReferencedReturnableBlock</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrReturnableBlockSymbol///PointingToDeclaration/">IrReturnableBlockSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrReturnableBlockSymbol///PointingToDeclaration/">IrReturnableBlockSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="-1320205632%2FFunctions%2F1226206554" anchor-label="getDeclaredTypeAlias" id="-1320205632%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="897653175%2FFunctions%2F1226206554" anchor-label="getReferencedScript" id="897653175%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-type-alias.html">getDeclaredTypeAlias</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1320205632%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-script.html">getReferencedScript</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="897653175%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-type-alias.html">getDeclaredTypeAlias</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeAliasSymbol///PointingToDeclaration/">IrTypeAliasSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeAliasSymbol///PointingToDeclaration/">IrTypeAliasSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-script.html">getReferencedScript</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrScriptSymbol///PointingToDeclaration/">IrScriptSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrScriptSymbol///PointingToDeclaration/">IrScriptSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1801275552%2FFunctions%2F1226206554" anchor-label="getDeclaredTypeParameter" id="1801275552%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="54104953%2FFunctions%2F1226206554" anchor-label="getReferencedSimpleFunction" id="54104953%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-type-parameter.html">getDeclaredTypeParameter</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1801275552%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-simple-function.html">getReferencedSimpleFunction</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="54104953%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-type-parameter.html">getDeclaredTypeParameter</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeParameterSymbol///PointingToDeclaration/">IrTypeParameterSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeParameterSymbol///PointingToDeclaration/">IrTypeParameterSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-simple-function.html">getReferencedSimpleFunction</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSimpleFunctionSymbol///PointingToDeclaration/">IrSimpleFunctionSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSimpleFunctionSymbol///PointingToDeclaration/">IrSimpleFunctionSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1016308988%2FFunctions%2F1226206554" anchor-label="getDeclaredValueParameter" id="1016308988%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-42334111%2FFunctions%2F1226206554" anchor-label="getReferencedTypeAlias" id="-42334111%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-value-parameter.html">getDeclaredValueParameter</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1016308988%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-type-alias.html">getReferencedTypeAlias</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-42334111%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-value-parameter.html">getDeclaredValueParameter</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrValueParameterSymbol///PointingToDeclaration/">IrValueParameterSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrValueParameterSymbol///PointingToDeclaration/">IrValueParameterSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-type-alias.html">getReferencedTypeAlias</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeAliasSymbol///PointingToDeclaration/">IrTypeAliasSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeAliasSymbol///PointingToDeclaration/">IrTypeAliasSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="-39190668%2FFunctions%2F1226206554" anchor-label="getDeclaredVariable" id="-39190668%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-1472240639%2FFunctions%2F1226206554" anchor-label="getReferencedValue" id="-1472240639%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="get-declared-variable.html">getDeclaredVariable</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-39190668%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-value.html">getReferencedValue</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1472240639%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">override fun <a href="get-declared-variable.html">getDeclaredVariable</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-value.html">getReferencedValue</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrValueSymbol///PointingToDeclaration/">IrValueSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrValueSymbol///PointingToDeclaration/">IrValueSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
                     </div>
                   </div>
                 </div>
-<a data-name="1288499269%2FFunctions%2F1226206554" anchor-label="getReferencedClass" id="1288499269%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+<a data-name="-279201451%2FFunctions%2F1226206554" anchor-label="getReferencedVariable" id="-279201451%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#1288499269%2FFunctions%2F1226206554">getReferencedClass</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1288499269%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="get-referenced-variable.html">getReferencedVariable</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-279201451%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#1288499269%2FFunctions%2F1226206554">getReferencedClass</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-449271633%2FFunctions%2F1226206554" anchor-label="getReferencedClassifier" id="-449271633%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-449271633%2FFunctions%2F1226206554">getReferencedClassifier</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-449271633%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#-449271633%2FFunctions%2F1226206554">getReferencedClassifier</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1279421780%2FFunctions%2F1226206554" anchor-label="getReferencedClassOrNull" id="1279421780%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#1279421780%2FFunctions%2F1226206554">getReferencedClassOrNull</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1279421780%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#1279421780%2FFunctions%2F1226206554">getReferencedClassOrNull</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>?): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="2135083013%2FFunctions%2F1226206554" anchor-label="getReferencedConstructor" id="2135083013%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#2135083013%2FFunctions%2F1226206554">getReferencedConstructor</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2135083013%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#2135083013%2FFunctions%2F1226206554">getReferencedConstructor</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrConstructorSymbol///PointingToDeclaration/">IrConstructorSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrConstructorSymbol///PointingToDeclaration/">IrConstructorSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="263729317%2FFunctions%2F1226206554" anchor-label="getReferencedEnumEntry" id="263729317%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#263729317%2FFunctions%2F1226206554">getReferencedEnumEntry</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="263729317%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#263729317%2FFunctions%2F1226206554">getReferencedEnumEntry</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrEnumEntrySymbol///PointingToDeclaration/">IrEnumEntrySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrEnumEntrySymbol///PointingToDeclaration/">IrEnumEntrySymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1757987323%2FFunctions%2F1226206554" anchor-label="getReferencedField" id="-1757987323%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-1757987323%2FFunctions%2F1226206554">getReferencedField</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1757987323%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#-1757987323%2FFunctions%2F1226206554">getReferencedField</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFieldSymbol///PointingToDeclaration/">IrFieldSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFieldSymbol///PointingToDeclaration/">IrFieldSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1199459135%2FFunctions%2F1226206554" anchor-label="getReferencedFunction" id="-1199459135%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-1199459135%2FFunctions%2F1226206554">getReferencedFunction</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1199459135%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#-1199459135%2FFunctions%2F1226206554">getReferencedFunction</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFunctionSymbol///PointingToDeclaration/">IrFunctionSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrFunctionSymbol///PointingToDeclaration/">IrFunctionSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="140386015%2FFunctions%2F1226206554" anchor-label="getReferencedLocalDelegatedProperty" id="140386015%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#140386015%2FFunctions%2F1226206554">getReferencedLocalDelegatedProperty</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="140386015%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#140386015%2FFunctions%2F1226206554">getReferencedLocalDelegatedProperty</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrLocalDelegatedPropertySymbol///PointingToDeclaration/">IrLocalDelegatedPropertySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrLocalDelegatedPropertySymbol///PointingToDeclaration/">IrLocalDelegatedPropertySymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1591964295%2FFunctions%2F1226206554" anchor-label="getReferencedProperty" id="1591964295%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#1591964295%2FFunctions%2F1226206554">getReferencedProperty</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1591964295%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#1591964295%2FFunctions%2F1226206554">getReferencedProperty</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrPropertySymbol///PointingToDeclaration/">IrPropertySymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrPropertySymbol///PointingToDeclaration/">IrPropertySymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="708667045%2FFunctions%2F1226206554" anchor-label="getReferencedReturnableBlock" id="708667045%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#708667045%2FFunctions%2F1226206554">getReferencedReturnableBlock</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="708667045%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#708667045%2FFunctions%2F1226206554">getReferencedReturnableBlock</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrReturnableBlockSymbol///PointingToDeclaration/">IrReturnableBlockSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrReturnableBlockSymbol///PointingToDeclaration/">IrReturnableBlockSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="246584539%2FFunctions%2F1226206554" anchor-label="getReferencedScript" id="246584539%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#246584539%2FFunctions%2F1226206554">getReferencedScript</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="246584539%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#246584539%2FFunctions%2F1226206554">getReferencedScript</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrScriptSymbol///PointingToDeclaration/">IrScriptSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrScriptSymbol///PointingToDeclaration/">IrScriptSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1341671069%2FFunctions%2F1226206554" anchor-label="getReferencedSimpleFunction" id="1341671069%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#1341671069%2FFunctions%2F1226206554">getReferencedSimpleFunction</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1341671069%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#1341671069%2FFunctions%2F1226206554">getReferencedSimpleFunction</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSimpleFunctionSymbol///PointingToDeclaration/">IrSimpleFunctionSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSimpleFunctionSymbol///PointingToDeclaration/">IrSimpleFunctionSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="2093193349%2FFunctions%2F1226206554" anchor-label="getReferencedTypeAlias" id="2093193349%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#2093193349%2FFunctions%2F1226206554">getReferencedTypeAlias</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2093193349%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#2093193349%2FFunctions%2F1226206554">getReferencedTypeAlias</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeAliasSymbol///PointingToDeclaration/">IrTypeAliasSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrTypeAliasSymbol///PointingToDeclaration/">IrTypeAliasSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="1092442149%2FFunctions%2F1226206554" anchor-label="getReferencedValue" id="1092442149%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#1092442149%2FFunctions%2F1226206554">getReferencedValue</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1092442149%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#1092442149%2FFunctions%2F1226206554">getReferencedValue</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrValueSymbol///PointingToDeclaration/">IrValueSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrValueSymbol///PointingToDeclaration/">IrValueSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
-                    </div>
-                  </div>
-                </div>
-<a data-name="-1890385287%2FFunctions%2F1226206554" anchor-label="getReferencedVariable" id="-1890385287%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
-                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
-                  <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="index.html#-1890385287%2FFunctions%2F1226206554">getReferencedVariable</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1890385287%2FFunctions%2F1226206554"></span>
-                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
-                        </span></span></div>
-                    <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="index.html#-1890385287%2FFunctions%2F1226206554">getReferencedVariable</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="get-referenced-variable.html">getReferencedVariable</a>(symbol: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
 </div>
 </div>
@@ -538,7 +285,16 @@
                 </div>
               </div>
               <h2 class="">Inheritors</h2>
-              <div class="table" data-togglable="Inheritors"><a data-name="-1785126302%2FInheritors%2F1226206554" anchor-label="ReferenceReplacements" id="-1785126302%2FInheritors%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+              <div class="table" data-togglable="Inheritors"><a data-name="-1257409975%2FInheritors%2F1226206554" anchor-label="ValueRemapper" id="-1257409975%2FInheritors%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="../-value-remapper/index.html">ValueRemapper</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1257409975%2FInheritors%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="-1785126302%2FInheritors%2F1226206554" anchor-label="ReferenceReplacements" id="-1785126302%2FInheritors%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
                     <div class=""><span class="inline-flex"><a href="../-reference-replacements/index.html">ReferenceReplacements</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1785126302%2FInheritors%2F1226206554"></span>
@@ -549,10 +305,10 @@
                 </div>
               </div>
               <h2 class="">Sources</h2>
-              <div class="table" data-togglable="Sources"><a data-name="-1088454353%2FSource%2F1226206554" anchor-label="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/SymbolReplacer.kt#L30" id="-1088454353%2FSource%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+              <div class="table" data-togglable="Sources"><a data-name="-1088454353%2FSource%2F1226206554" anchor-label="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/SymbolReplacer.kt#L74" id="-1088454353%2FSource%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/SymbolReplacer.kt#L30">jvm source</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1088454353%2FSource%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/SymbolReplacer.kt#L74">jvm source</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1088454353%2FSource%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
