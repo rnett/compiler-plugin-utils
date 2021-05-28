@@ -301,9 +301,9 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="../../com.rnett.plugin.ir/-has-context/lambda-argument.html">lambdaArgument</a>(lambda: <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrSimpleFunction///PointingToDeclaration/">IrSimpleFunction</span>, type: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span> = run {
             val base = if (lambda.isSuspend)
-                context.irBuiltIns.suspendFunction(lambda.allParameters.size)
+                context.symbols.suspendFunctionN(lambda.allParameters.size)
             else
-                context.irBuiltIns.function(lambda.allParameters.size)
+                context.symbols.functionN(lambda.allParameters.size)
 
             base.typeWith(lambda.allParameters.map { it.type } + lambda.returnType)
         }, startOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET, endOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET): <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrFunctionExpression///PointingToDeclaration/">IrFunctionExpression</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
