@@ -171,9 +171,9 @@ public interface HasContext {
         lambda: IrSimpleFunction,
         type: IrType = run {
             val base = if (lambda.isSuspend)
-                context.irBuiltIns.suspendFunction(lambda.allParameters.size)
+                context.symbols.suspendFunctionN(lambda.allParameters.size)
             else
-                context.irBuiltIns.function(lambda.allParameters.size)
+                context.symbols.functionN(lambda.allParameters.size)
 
             base.typeWith(lambda.allParameters.map { it.type } + lambda.returnType)
         },
