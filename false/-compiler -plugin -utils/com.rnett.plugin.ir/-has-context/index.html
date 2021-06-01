@@ -175,10 +175,15 @@
 
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open fun <a href="lambda-argument.html">lambdaArgument</a>(lambda: <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrSimpleFunction///PointingToDeclaration/">IrSimpleFunction</span>, type: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span> = run {
+            //TODO workaround for https://youtrack.jetbrains.com/issue/KT-46896
             val base = if (lambda.isSuspend)
-                context.irBuiltIns.suspendFunction(lambda.allParameters.size)
+                context.referenceClass(
+                    StandardNames.getSuspendFunctionClassId(lambda.allParameters.size).asSingleFqName()
+                )
+                    ?: error(&quot;suspend function type not found&quot;)
             else
-                context.irBuiltIns.function(lambda.allParameters.size)
+                context.referenceClass(StandardNames.getFunctionClassId(lambda.allParameters.size).asSingleFqName())
+                    ?: error(&quot;function type not found&quot;)
 
             base.typeWith(lambda.allParameters.map { it.type } + lambda.returnType)
         }, startOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET, endOffset: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a> = UNDEFINED_OFFSET): <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrFunctionExpression///PointingToDeclaration/">IrFunctionExpression</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
@@ -385,10 +390,10 @@
                 </div>
               </div>
               <h2 class="">Sources</h2>
-              <div class="table" data-togglable="Sources"><a data-name="1184555007%2FSource%2F1226206554" anchor-label="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/HasContext.kt#L49" id="1184555007%2FSource%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+              <div class="table" data-togglable="Sources"><a data-name="1184555007%2FSource%2F1226206554" anchor-label="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/HasContext.kt#L36" id="1184555007%2FSource%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/HasContext.kt#L49">jvm source</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1184555007%2FSource%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="https://github.com/rnett/compiler-plugin-utils/blob/main/compiler-plugin-utils/src/main/kotlin/com/rnett/plugin/ir/HasContext.kt#L36">jvm source</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1184555007%2FSource%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div></div>
