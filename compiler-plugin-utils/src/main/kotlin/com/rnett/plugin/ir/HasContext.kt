@@ -1,14 +1,11 @@
 package com.rnett.plugin.ir
 
-import com.rnett.plugin.naming.ClassRef
-import com.rnett.plugin.naming.FunctionRef
-import com.rnett.plugin.naming.Reference
-import com.rnett.plugin.naming.TypeRef
-import com.rnett.plugin.naming.typeRef
+import com.rnett.plugin.naming.*
 import com.rnett.plugin.stdlib.StdlibBuilders
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.backend.common.ir.allParameters
 import org.jetbrains.kotlin.backend.common.lower.DeclarationIrBuilder
+import org.jetbrains.kotlin.builtins.StandardNames
 import org.jetbrains.kotlin.descriptors.DescriptorVisibilities
 import org.jetbrains.kotlin.ir.IrElement
 import org.jetbrains.kotlin.ir.ObsoleteDescriptorBasedAPI
@@ -19,18 +16,8 @@ import org.jetbrains.kotlin.ir.builders.declarations.IrFunctionBuilder
 import org.jetbrains.kotlin.ir.builders.declarations.buildFun
 import org.jetbrains.kotlin.ir.builders.irCall
 import org.jetbrains.kotlin.ir.builders.parent
-import org.jetbrains.kotlin.ir.declarations.IrClass
-import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
-import org.jetbrains.kotlin.ir.declarations.IrFactory
-import org.jetbrains.kotlin.ir.declarations.IrSimpleFunction
-import org.jetbrains.kotlin.ir.declarations.IrSymbolOwner
-import org.jetbrains.kotlin.ir.expressions.IrBlockBody
-import org.jetbrains.kotlin.ir.expressions.IrCall
-import org.jetbrains.kotlin.ir.expressions.IrConst
-import org.jetbrains.kotlin.ir.expressions.IrExpressionBody
-import org.jetbrains.kotlin.ir.expressions.IrFunctionExpression
-import org.jetbrains.kotlin.ir.expressions.IrReturn
-import org.jetbrains.kotlin.ir.expressions.IrStatementOrigin
+import org.jetbrains.kotlin.ir.declarations.*
+import org.jetbrains.kotlin.ir.expressions.*
 import org.jetbrains.kotlin.ir.expressions.impl.IrConstImpl
 import org.jetbrains.kotlin.ir.expressions.impl.IrFunctionExpressionImpl
 import org.jetbrains.kotlin.ir.symbols.IrBindableSymbol
@@ -170,10 +157,15 @@ public interface HasContext {
     public fun lambdaArgument(
         lambda: IrSimpleFunction,
         type: IrType = run {
+            //TODO workaround for https://youtrack.jetbrains.com/issue/KT-46896
             val base = if (lambda.isSuspend)
-                context.irBuiltIns.suspendFunction(lambda.allParameters.size)
+                context.referenceClass(
+                    StandardNames.getSuspendFunctionClassId(lambda.allParameters.size).asSingleFqName()
+                )
+                    ?: error("suspend function type not found")
             else
-                context.irBuiltIns.function(lambda.allParameters.size)
+                context.referenceClass(StandardNames.getFunctionClassId(lambda.allParameters.size).asSingleFqName())
+                    ?: error("function type not found")
 
             base.typeWith(lambda.allParameters.map { it.type } + lambda.returnType)
         },
