@@ -149,14 +149,14 @@ jobs:
     if: ${{ always() && needs.create_staging_repository.result == 'success' && needs.find-version.outputs.snapshot == 'false' }}
     steps:
       - name: Discard
-        if: ${{ needs.publish-docs.result != 'success' }}
+        if: ${{ needs.publish.result != 'success' }}
         uses: nexus-actions/drop-nexus-staging-repo@v1
         with:
           username: rnett
           password: ${{ secrets.SONATYPE_PASSWORD }}
           staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
       - name: Release
-        if: ${{ needs.publish-docs.result == 'success' }}
+        if: ${{ needs.publish.result == 'success' }}
         uses: nexus-actions/release-nexus-staging-repo@v1.1
         with:
           username: rnett
