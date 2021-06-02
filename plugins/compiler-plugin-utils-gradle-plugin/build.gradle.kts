@@ -4,7 +4,7 @@ plugins {
     kotlin("kapt")
     `maven-publish`
     id("com.github.gmazzo.buildconfig")
-    id("com.gradle.plugin-publish")
+//    id("com.gradle.plugin-publish")
     id("org.jetbrains.dokka")
     id("com.vanniktech.maven.publish")
 }
