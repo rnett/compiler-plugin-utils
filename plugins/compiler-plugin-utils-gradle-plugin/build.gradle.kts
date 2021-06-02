@@ -2,7 +2,6 @@ plugins {
     kotlin("jvm")
     `java-gradle-plugin`
     kotlin("kapt")
-    `maven-publish`
     id("com.github.gmazzo.buildconfig")
 //    id("com.gradle.plugin-publish")
     id("org.jetbrains.dokka")
@@ -36,7 +35,7 @@ buildConfig {
 gradlePlugin {
     plugins {
         create("compilerPluginUtilsPlugin") {
-            id = project.group.toString()
+            id = "com.github.rnett.compiler-plugin-utils"
             displayName = "Compiler Plugin Utils Plugin"
             description = "Compiler Plugin Utils Plugin"
             implementationClass = "com.rnett.plugin.GradlePlugin"

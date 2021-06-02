@@ -56,6 +56,7 @@ tasks.create("publish") {
     group = "publishing"
     dependsOn(
         ":compiler-plugin-utils:publish",
+        ":compiler-plugin-utils-native:publish",
         gradle.includedBuild("plugins").task(":compiler-plugin-utils-compiler-plugin:publish"),
         gradle.includedBuild("plugins").task(":compiler-plugin-utils-gradle-plugin:publish")
     )
@@ -65,6 +66,7 @@ tasks.create("publishToMavenLocal") {
     group = "publishing"
     dependsOn(
         ":compiler-plugin-utils:publishToMavenLocal",
+        ":compiler-plugin-utils-native:publishToMavenLocal",
         gradle.includedBuild("plugins").task(":compiler-plugin-utils-compiler-plugin:publishToMavenLocal"),
         gradle.includedBuild("plugins").task(":compiler-plugin-utils-gradle-plugin:publishToMavenLocal")
     )
