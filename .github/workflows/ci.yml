@@ -60,7 +60,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: |
           chmod +x gradlew
-          chmod +x tests/gradlew
 
       - name: Get version
         if: github.ref == 'refs/heads/main'
