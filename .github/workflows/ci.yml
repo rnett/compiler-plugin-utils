@@ -69,6 +69,8 @@ jobs:
           regex: ' *version ?(?:=|:) ?"?([\w.\-_]+)"?'
           files: "build.gradle.kts,common.gradle.kts,gradle.properties,build.gradle"
           commands: "./gradlew properties"
+      - name: Print version
+        run: 'echo "Version: ${{ steps.get_version.outputs.match }}"'
 
   create_staging_repository:
     runs-on: ubuntu-latest
