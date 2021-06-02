@@ -123,14 +123,6 @@ jobs:
           ORG_GRADLE_PROJECT_sonatypeRepositoryId: ${{ needs.create_staging_repository.outputs.repository_id }}
           GRADLE_OPTS: -Xmx2048m -XX:MaxPermSize=512m
         run: ./gradlew publish --no-daemon --no-parallel
-      - name: Get version
-        if: github.ref == 'refs/heads/main'
-        id: get_version
-        uses: rnett/find-regex@v1.1
-        with:
-          regex: 'version ?(?:=|:) ?"?([\w.\-_]+)"?'
-          files: "gradle.properties,build.gradle.kts,build.gradle"
-          commands: "./gradlew properties"
 
       - name: Publish docs
         if: github.ref == 'refs/heads/main'
@@ -138,7 +130,7 @@ jobs:
         with:
           from: compiler-plugin-utils/build/dokka/html
           publish-to: $version,$latest
-          version: ${{ steps.get_version.outputs.match }}
+          version: ${{ needs.find-version.outputs.version }}
           restore: 'false'
 
       - name: Stop gradle daemon
