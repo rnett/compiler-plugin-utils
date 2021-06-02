@@ -7,6 +7,7 @@ import org.jetbrains.kotlin.ir.util.isVararg
 /**
  * A filter for resolving IR functions
  */
+@Deprecated("Will be superseded by reference generator")
 public interface IFunctionFilter {
     public var numParameters: Int?
     public var numTypeParameters: Int?
@@ -28,6 +29,7 @@ public interface IFunctionFilter {
 /**
  * Implementation of [IFunctionFilter]
  */
+@Deprecated("Will be superseded by reference generator")
 public open class FunctionFilter internal constructor() : IFunctionFilter {
 
     override var numParameters: Int? = null

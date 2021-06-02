@@ -7,8 +7,10 @@ import org.jetbrains.kotlin.ir.types.impl.IrStarProjectionImpl
 import org.jetbrains.kotlin.ir.types.impl.makeTypeProjection
 import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.types.Variance
+import java.util.*
 import kotlin.reflect.*
 
+@Deprecated("Will be superseded by reference generator")
 public enum class TypeRefVariance {
     In, Out, Invariant;
 
@@ -19,6 +21,7 @@ public enum class TypeRefVariance {
     }
 }
 
+@Deprecated("Will be superseded by reference generator")
 public sealed class TypeProjectionRef {
     public val isStar: Boolean get() = this is StarRef
     public abstract fun toIrTypeArg(context: IrPluginContext): IrTypeArgument
@@ -26,6 +29,7 @@ public sealed class TypeProjectionRef {
     public abstract fun toIrString(): String
 }
 
+@Deprecated("Will be superseded by reference generator")
 public object StarRef : TypeProjectionRef() {
     override fun toIrTypeArg(context: IrPluginContext): IrTypeArgument = IrStarProjectionImpl
     override fun toString(): String = "*"
@@ -33,6 +37,7 @@ public object StarRef : TypeProjectionRef() {
 }
 
 //TODO handle annotations
+@Deprecated("Will be superseded by reference generator")
 public data class TypeRef(
     public val classifier: ClassRef,
     public val nullable: Boolean,
@@ -49,7 +54,7 @@ public data class TypeRef(
 
     private fun toString(ir: Boolean): String = buildString {
         if (variance != TypeRefVariance.Invariant) {
-            append(variance.name.toLowerCase() + " ")
+            append(variance.name.lowercase(Locale.getDefault()) + " ")
         }
         append(classifier)
         if (arguments.isNotEmpty()) {
@@ -80,6 +85,7 @@ private fun makeTypeRef(proj: KTypeProjection): TypeProjectionRef {
     return makeTypeRef(proj.type!!, variance)
 }
 
+@Deprecated("Will be superseded by reference generator")
 @PublishedApi
 internal fun makeTypeRef(type: KType, variance: TypeRefVariance): TypeRef {
 
@@ -93,9 +99,11 @@ internal fun makeTypeRef(type: KType, variance: TypeRefVariance): TypeRef {
     return TypeRef(classRef, type.isMarkedNullable, arguments, variance)
 }
 
+@Deprecated("Will be superseded by reference generator")
 @OptIn(ExperimentalStdlibApi::class)
 public inline fun <reified T> typeRef(): TypeRef = makeTypeRef(typeOf<T>(), TypeRefVariance.Invariant)
 
+@Deprecated("Will be superseded by reference generator")
 public infix fun IrType.eq(other: TypeRef): Boolean {
     if (this.isMarkedNullable() != other.nullable)
         return false
@@ -112,10 +120,13 @@ public infix fun IrType.eq(other: TypeRef): Boolean {
     return this.arguments.zip(other.arguments).all { (ir, ref) -> ir eq ref }
 }
 
+@Deprecated("Will be superseded by reference generator")
 public inline fun <reified T> IrType.isType(): Boolean = this eq typeRef<T>()
 
+@Deprecated("Will be superseded by reference generator")
 public inline fun <reified T> IrType.isClassifierOf(): Boolean = this.isClassifierOf(typeRef<T>().classifier)
 
+@Deprecated("Will be superseded by reference generator")
 public fun IrType.isClassifierOf(classRef: ClassRef): Boolean = this.classFqName == classRef.fqName
 
 private infix fun IrTypeArgument.eq(ref: TypeProjectionRef): Boolean =

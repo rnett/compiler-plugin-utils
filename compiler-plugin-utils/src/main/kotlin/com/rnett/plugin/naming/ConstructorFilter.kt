@@ -7,6 +7,7 @@ import org.jetbrains.kotlin.ir.util.isVararg
 /**
  * A filter for resolving IR constructors.
  */
+@Deprecated("Will be superseded by reference generator")
 public interface IConstructorFilter {
     public var numParameters: Int?
     public var parameters: MutableMap<Int, (IrValueParameter) -> Boolean>
@@ -25,6 +26,7 @@ public interface IConstructorFilter {
 /**
  * Implementation of [IConstructorFilter]
  */
+@Deprecated("Will be superseded by reference generator")
 public open class ConstructorFilter internal constructor() : IConstructorFilter {
 
     override var numParameters: Int? = null

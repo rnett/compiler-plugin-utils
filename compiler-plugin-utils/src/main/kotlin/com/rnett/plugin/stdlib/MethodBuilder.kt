@@ -14,6 +14,7 @@ import org.jetbrains.kotlin.ir.types.IrType
 import org.jetbrains.kotlin.ir.types.isSubtypeOf
 import org.jetbrains.kotlin.ir.types.isSubtypeOfClass
 
+@Deprecated("Will be superseded by reference generator")
 public abstract class MethodBuilder(protected val builder: IrBuilderWithScope, override val context: IrPluginContext) :
     HasContext {
     /**
@@ -30,6 +31,7 @@ public abstract class MethodBuilder(protected val builder: IrBuilderWithScope, o
         get() = builder
 }
 
+@Deprecated("Will be superseded by reference generator")
 public abstract class TypedMethodBuilder(
     protected val typeCheck: (IrType) -> Boolean,
     builder: IrBuilderWithScope,

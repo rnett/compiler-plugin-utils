@@ -210,12 +210,16 @@ public interface HasContext {
     /**
      * Get the standard library builders
      */
-    public val IrBuilderWithScope.stdlib: StdlibBuilders get() = StdlibBuilders(this, this@HasContext.context)
+    @Deprecated("Will be superseded by reference generator")
+    public val IrBuilderWithScope.stdlib: StdlibBuilders
+        get() = StdlibBuilders(this, this@HasContext.context)
 
     /**
      * Get the standard library builders
      */
-    public val IrBuilderWithScope.kotlin: StdlibBuilders get() = stdlib
+    @Deprecated("Will be superseded by reference generator")
+    public val IrBuilderWithScope.kotlin: StdlibBuilders
+        get() = stdlib
 
 }
 

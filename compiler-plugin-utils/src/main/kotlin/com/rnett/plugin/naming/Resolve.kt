@@ -13,6 +13,7 @@ import kotlin.reflect.KClass
  * Will be replaced during compilation.
  */
 @Suppress("unused")
+@Deprecated("Will be superseded by reference generator")
 public fun getFqName(element: KCallable<*>): FqName = error("Should be replaced by compiler plugin")
 
 
@@ -21,6 +22,7 @@ public fun getFqName(element: KCallable<*>): FqName = error("Should be replaced 
  * Will be replaced during compilation.
  */
 @Suppress("unused")
+@Deprecated("Will be superseded by reference generator")
 public fun getFqName(element: KClass<*>): FqName = error("Should be replaced by compiler plugin")
 
 
@@ -29,6 +31,7 @@ public fun getFqName(element: KClass<*>): FqName = error("Should be replaced by 
  * Will be replaced during compilation.
  */
 @Suppress("unused")
+@Deprecated("Will be superseded by reference generator")
 public fun KCallable<*>.fqName(): FqName = error("Should be replaced by compiler plugin")
 
 
@@ -37,6 +40,7 @@ public fun KCallable<*>.fqName(): FqName = error("Should be replaced by compiler
  * Will be replaced during compilation.
  */
 @Suppress("unused")
+@Deprecated("Will be superseded by reference generator")
 public fun KClass<*>.fqName(): FqName = error("Should be replaced by compiler plugin")
 
 //

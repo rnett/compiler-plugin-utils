@@ -7,6 +7,7 @@ import org.jetbrains.kotlin.ir.declarations.IrValueParameter
 /**
  * A filter for resolving IR properties
  */
+@Deprecated("Will be superseded by reference generator")
 public interface IPropertyFilter {
     public var isDelegated: Boolean?
     public var hasBackingField: Boolean?
@@ -25,6 +26,7 @@ public interface IPropertyFilter {
 /**
  * Implementation of [IPropertyFilter]
  */
+@Deprecated("Will be superseded by reference generator")
 public open class PropertyFilter internal constructor() : IPropertyFilter {
     private var filter: (IrProperty) -> Boolean = { true }
     override fun filter(filter: (IrProperty) -> Boolean) {

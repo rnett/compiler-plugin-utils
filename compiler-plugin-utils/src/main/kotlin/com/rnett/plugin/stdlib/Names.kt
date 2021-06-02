@@ -1,26 +1,8 @@
 package com.rnett.plugin.stdlib
 
-import com.rnett.plugin.naming.Class
-import com.rnett.plugin.naming.ClassRef
-import com.rnett.plugin.naming.ConstructorRef
-import com.rnett.plugin.naming.FunctionRef
-import com.rnett.plugin.naming.PackageRef
-import com.rnett.plugin.naming.PropertyRef
-import com.rnett.plugin.naming.RootPackage
-import com.rnett.plugin.naming.constructor
-import com.rnett.plugin.naming.function
-import com.rnett.plugin.naming.isClassifierOf
-import com.rnett.plugin.naming.property
-import com.rnett.plugin.naming.withExtensionReceiverType
+import com.rnett.plugin.naming.*
 import org.jetbrains.kotlin.ir.backend.js.utils.asString
-import org.jetbrains.kotlin.ir.types.IrType
-import org.jetbrains.kotlin.ir.types.isByte
-import org.jetbrains.kotlin.ir.types.isDouble
-import org.jetbrains.kotlin.ir.types.isFloat
-import org.jetbrains.kotlin.ir.types.isInt
-import org.jetbrains.kotlin.ir.types.isLong
-import org.jetbrains.kotlin.ir.types.isNullableAny
-import org.jetbrains.kotlin.ir.types.isShort
+import org.jetbrains.kotlin.ir.types.*
 import org.jetbrains.kotlin.ir.util.render
 
 //TODO be able to auto-generate name hierarchies for classes/packages.  Needs FIR for the actual generation though
@@ -28,6 +10,7 @@ import org.jetbrains.kotlin.ir.util.render
 /**
  * A collection of References from Kotlin's standard library.  Accessible in IR from [com.rnett.plugin.ir.HasContext.stdlib]
  */
+@Deprecated("Will be superseded by reference generator")
 public object Kotlin : RootPackage("kotlin") {
     public object Reflect : PackageRef() {
         public val typeOf: FunctionRef by function("typeOf")
@@ -556,6 +539,7 @@ public object JavaLang : RootPackage("java.lang") {
     }
 }
 
+@Deprecated("Will be superseded by reference generator")
 public object JavaUtil : RootPackage("java.util") {
 
 

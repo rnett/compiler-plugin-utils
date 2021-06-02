@@ -22,6 +22,7 @@ import org.jetbrains.kotlin.ir.types.typeWith
 /**
  * The standard library builders, accessible from from [com.rnett.plugin.ir.HasContext.stdlib]
  */
+@Deprecated("Will be superseded by reference generator")
 public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContext) : MethodBuilder(builder, context) {
 
     public val collections: CollectionsBuilders by lazy { CollectionsBuilders(this, builder, context) }
@@ -294,7 +295,13 @@ public class StdlibBuilders(builder: IrBuilderWithScope, context: IrPluginContex
     public val Double: MathableBuilders by lazy { MathableBuilders(Kotlin.Double, builder, context) }
 
 
-    public val Throwable: ExceptionBuildersWithCause by lazy { ExceptionBuildersWithCause(Kotlin.Throwable, builder, context) }
+    public val Throwable: ExceptionBuildersWithCause by lazy {
+        ExceptionBuildersWithCause(
+            Kotlin.Throwable,
+            builder,
+            context
+        )
+    }
 
     //TODO deprecated because of expect class/typealias resolve issues
     // exception classes are tested via reflection

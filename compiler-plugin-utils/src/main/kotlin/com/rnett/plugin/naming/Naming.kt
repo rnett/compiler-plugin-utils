@@ -33,6 +33,7 @@ private inline fun <T> Iterable<T>.singleOrError(onMultiple: String, onNone: Str
 /**
  * A reference that is resolvable to an IR symbol via a [IrPluginContext]
  */
+@Deprecated("Will be superseded by reference generator")
 public interface Reference<S : IrBindableSymbol<*, *>> {
     public fun resolve(context: IrPluginContext): S
     public fun resolveOrNull(context: IrPluginContext): S?
@@ -62,6 +63,7 @@ public sealed class BaseReference(protected val name: String, internal open val 
 /**
  * A namespace that defiens a FqName.  Either a class or package for now.
  */
+@Deprecated("Will be superseded by reference generator")
 public sealed class Namespace(name: String, parent: Namespace? = null, protected val isRoot: Boolean = false) :
     BaseReference(name, parent) {
     init {
@@ -77,6 +79,7 @@ public sealed class Namespace(name: String, parent: Namespace? = null, protected
  *
  * For an example, see [com.rnett.plugin.stdlib.Kotlin].
  */
+@Deprecated("Will be superseded by reference generator")
 public open class RootPackage(name: String) : Namespace(name, null, true)
 
 //TODO see about making parent non-nullable and using a new subclass to denote compiler plugin replacement
@@ -88,6 +91,7 @@ public open class RootPackage(name: String) : Namespace(name, null, true)
  *
  * For an example, see [com.rnett.plugin.stdlib.Kotlin.Collections].
  */
+@Deprecated("Will be superseded by reference generator")
 public abstract class PackageRef(name: String, parent: Namespace?) :
     Namespace(name, parent) {
     public constructor(name: String) : this(name, null)
@@ -106,23 +110,27 @@ public abstract class PackageRef(name: String, parent: Namespace?) :
 /**
  * Create a [ClassRef] from a [FqName].  No parent is used.
  */
+@Deprecated("Will be superseded by reference generator")
 public fun Class(fqName: FqName): ClassRef = object : ClassRef(fqName.asString(), object : RootPackage("") {}) {}
 
 /**
  * Create a [ClassRef] from a class reference.  [ref] must be a literal, it can not be a variable.
  */
+@Deprecated("Will be superseded by reference generator")
 public fun Class(@Suppress("UNUSED_PARAMETER") ref: KClass<*>): ClassRef =
     error("Should be replaced by compiler plugin")
 
 /**
  * Create a [ClassRef] with the given name, with the current [Namespace] as its parent.
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun Namespace.Class(name: String): ClassRef = object : ClassRef(name, this) {}
 
 /**
  * Create a [ClassRef] with the property's name, with the current [Namespace] as its parent.
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun Namespace.Class(): PropertyDelegateProvider<Any?, ClassRef> =
     PropertyDelegateProvider<Any?, ClassRef> { _, property -> this@Class.Class(property.name) }
@@ -138,6 +146,7 @@ public fun Namespace.Class(): PropertyDelegateProvider<Any?, ClassRef> =
  *
  * For an example, see [com.rnett.plugin.stdlib.Kotlin.Collections.List].
  */
+@Deprecated("Will be superseded by reference generator")
 public abstract class ClassRef(name: String, parent: Namespace?) : Namespace(name, parent), Reference<IrClassSymbol> {
     public constructor(name: String) : this(name, null)
     public constructor() : this("")
@@ -156,6 +165,7 @@ public abstract class ClassRef(name: String, parent: Namespace?) : Namespace(nam
 /**
  * A delegate to get a [FunctionRef] with the property's name
  */
+@Deprecated("Will be superseded by reference generator")
 public class FunctionRefDelegate internal constructor(private val parent: Namespace? = null) : FunctionFilter(),
     ReadOnlyProperty<Any?, FunctionRef> {
     override operator fun getValue(thisRef: Any?, property: KProperty<*>): FunctionRef =
@@ -165,6 +175,7 @@ public class FunctionRefDelegate internal constructor(private val parent: Namesp
 /**
  * A function reference that gets the function matching the name and filter.
  */
+@Deprecated("Will be superseded by reference generator")
 public class FunctionRef internal constructor(name: String, parent: Namespace?, filter: IFunctionFilter) :
     BaseReference(name, parent), Reference<IrSimpleFunctionSymbol>, IFunctionFilter by filter {
     override fun resolve(context: IrPluginContext): IrSimpleFunctionSymbol =
@@ -180,6 +191,7 @@ public class FunctionRef internal constructor(name: String, parent: Namespace?, 
 /**
  * Get a function from a function literal.  Can only be called on literals, not variables.
  */
+@Deprecated("Will be superseded by reference generator")
 public fun function(
     @Suppress("UNUSED_PARAMETER") ref: KFunction<*>,
     @Suppress("UNUSED_PARAMETER") filter: FunctionFilter.() -> Unit = {},
@@ -188,12 +200,14 @@ public fun function(
 /**
  * Get a function with [fqName], matching [filter]
  */
+@Deprecated("Will be superseded by reference generator")
 public fun function(fqName: FqName, filter: FunctionFilter.() -> Unit = {}): FunctionRef =
     FunctionRef(fqName.asString(), null, FunctionFilter().apply(filter))
 
 /**
  * Get a function in the current [Namespace] with the given name, matching [filter]
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun Namespace.function(name: String, filter: FunctionFilter.() -> Unit = {}): FunctionRef =
     FunctionRef(name, this, FunctionFilter().apply(filter))
@@ -201,6 +215,7 @@ public fun Namespace.function(name: String, filter: FunctionFilter.() -> Unit = 
 /**
  * Get a function delegate in the current [Namespace] with the property's name, matching [filter]
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun Namespace.function(filter: FunctionFilter.() -> Unit = {}): FunctionRefDelegate =
     FunctionRefDelegate(this).apply(filter)
@@ -209,6 +224,7 @@ public fun Namespace.function(filter: FunctionFilter.() -> Unit = {}): FunctionR
 /**
  * A delegate to get a [PropertyRef] with the property's name
  */
+@Deprecated("Will be superseded by reference generator")
 public class PropertyRefDelegate internal constructor(private val parent: Namespace? = null) : PropertyFilter(),
     ReadOnlyProperty<Any?, PropertyRef> {
     override operator fun getValue(thisRef: Any?, property: KProperty<*>): PropertyRef =
@@ -219,6 +235,7 @@ public class PropertyRefDelegate internal constructor(private val parent: Namesp
 /**
  * A property reference that gets the property matching the name and filter.
  */
+@Deprecated("Will be superseded by reference generator")
 public class PropertyRef internal constructor(name: String, parent: Namespace? = null, filter: IPropertyFilter) :
     BaseReference(name, parent), Reference<IrPropertySymbol>, IPropertyFilter by filter {
     override fun resolve(context: IrPluginContext): IrPropertySymbol =
@@ -234,6 +251,7 @@ public class PropertyRef internal constructor(name: String, parent: Namespace? =
 /**
  * Get a property from a property literal.  Can only be called on literals, not variables.
  */
+@Deprecated("Will be superseded by reference generator")
 public fun property(
     @Suppress("UNUSED_PARAMETER") ref: KProperty<*>,
     @Suppress("UNUSED_PARAMETER") filter: PropertyFilter.() -> Unit = {},
@@ -242,12 +260,14 @@ public fun property(
 /**
  * Get a property with [fqName], matching [filter]
  */
+@Deprecated("Will be superseded by reference generator")
 public fun property(fqName: FqName, filter: PropertyFilter.() -> Unit = {}): PropertyRef =
     PropertyRef(fqName.asString(), null, PropertyFilter().apply(filter))
 
 /**
  * Get a property in the current [Namespace] with the given name, matching [filter]
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun Namespace.property(name: String, filter: PropertyFilter.() -> Unit = {}): PropertyRef =
     PropertyRef(name, this, PropertyFilter().apply(filter))
@@ -255,6 +275,7 @@ public fun Namespace.property(name: String, filter: PropertyFilter.() -> Unit = 
 /**
  * Get a property delegate in the current [Namespace] with the property's name, matching [filter]
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun Namespace.property(filter: PropertyFilter.() -> Unit = {}): PropertyRefDelegate =
     PropertyRefDelegate(this).apply(filter)
@@ -262,6 +283,7 @@ public fun Namespace.property(filter: PropertyFilter.() -> Unit = {}): PropertyR
 /**
  * A constructor reference that gets the constructor of the parent class matching the filter.
  */
+@Deprecated("Will be superseded by reference generator")
 public class ConstructorRef internal constructor(
     override val parent: ClassRef,
     filter: ConstructorFilter = ConstructorFilter()
@@ -280,6 +302,7 @@ public class ConstructorRef internal constructor(
 /**
  * Get a constructor from the given class literal matching [filter].  Must be called with a literal.
  */
+@Deprecated("Will be superseded by reference generator")
 public fun constructor(
     @Suppress("UNUSED_PARAMETER") ref: KClass<*>,
     @Suppress("UNUSED_PARAMETER") filter: ConstructorFilter.() -> Unit = {},
@@ -288,12 +311,14 @@ public fun constructor(
 /**
  * Get a constructor from the class with [fqClassName], matching [filter].
  */
+@Deprecated("Will be superseded by reference generator")
 public fun constructor(fqClassName: FqName, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
     ConstructorRef(Class(fqClassName), ConstructorFilter().apply(filter))
 
 /**
  * Get a constructor from this [ClassRef] that matches [filter].
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun ClassRef.constructor(filter: IConstructorFilter.() -> Unit): ConstructorRef =
     ConstructorRef(this).apply(filter)
@@ -302,6 +327,7 @@ public fun ClassRef.constructor(filter: IConstructorFilter.() -> Unit): Construc
 /**
  * Get the primary constructor from the given class literal matching [filter].  Must be called with a literal.
  */
+@Deprecated("Will be superseded by reference generator")
 public fun primaryConstructor(
     @Suppress("UNUSED_PARAMETER") ref: KClass<*>,
     @Suppress("UNUSED_PARAMETER") filter: ConstructorFilter.() -> Unit = {},
@@ -310,6 +336,7 @@ public fun primaryConstructor(
 /**
  * Get the primary constructor from the class with [fqClassName], matching [filter].
  */
+@Deprecated("Will be superseded by reference generator")
 public fun primaryConstructor(fqClassName: FqName, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
     ConstructorRef(Class(fqClassName), ConstructorFilter().apply(filter).apply { isPrimary = true })
 
@@ -323,6 +350,7 @@ public fun ClassRef.primaryConstructor(filter: IConstructorFilter.() -> Unit = {
 /**
  * Get a constructor for the class with [className] in this [PackageRef], matching [filter].
  */
+@Deprecated("Will be superseded by reference generator")
 @Suppress("unused")
 @NameDSL
 public fun PackageRef.constructor(className: String, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
@@ -331,6 +359,7 @@ public fun PackageRef.constructor(className: String, filter: ConstructorFilter.(
 /**
  * Get the primary constructor for the class with [className] in this [PackageRef], matching [filter].
  */
+@Deprecated("Will be superseded by reference generator")
 @Suppress("unused")
 @NameDSL
 public fun PackageRef.primaryConstructor(className: String, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
@@ -339,6 +368,7 @@ public fun PackageRef.primaryConstructor(className: String, filter: ConstructorF
 /**
  * Get a constructor for the class with [className] in this [RootPackage], matching [filter].
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun RootPackage.constructor(className: String, filter: ConstructorFilter.() -> Unit = {}): ConstructorRef =
     ConstructorRef(object : ClassRef(className, this) {}, ConstructorFilter().apply(filter))
@@ -346,6 +376,7 @@ public fun RootPackage.constructor(className: String, filter: ConstructorFilter.
 /**
  * Get the primary constructor for the class with [className] in this [RootPackage], matching [filter].
  */
+@Deprecated("Will be superseded by reference generator")
 @NameDSL
 public fun RootPackage.primaryConstructor(
     className: String,
