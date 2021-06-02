@@ -49,9 +49,9 @@ jobs:
           commands: "./gradlew properties"
       - name: Publish docs
         if: github.ref == 'refs/heads/main'
-        uses: rnett/publish-docs@v1.4
+        uses: rnett/publish-docs@v2.6
         with:
           from: compiler-plugin-utils/build/dokka/html
-          publish-to: version+latest
+          publish-to: $version,$latest
           version: ${{ steps.get_version.outputs.match }}
           restore: 'false'
