@@ -88,7 +88,7 @@ jobs:
           username: rnett
           password: ${{ secrets.SONATYPE_PASSWORD }}
           staging_profile_id: ${{ secrets.SONATYPE_PROFILE_ID }}
-          description: Krosstalk ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }}
+          description: compiler-plugin-utils ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }}
 
   publish:
     name: Publish
