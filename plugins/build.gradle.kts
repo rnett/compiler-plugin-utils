@@ -27,5 +27,12 @@ subprojects {
                 }
             }
         }
+
+        extensions.findByType<com.vanniktech.maven.publish.MavenPublishBaseExtension>()?.apply {
+            if (!version.toString().toLowerCase().endsWith("snapshot")) {
+                val stagingProfileId = project.findProperty("sonatypeRepositoryId")?.toString()
+                publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.DEFAULT, stagingProfileId)
+            }
+        }
     }
 }
