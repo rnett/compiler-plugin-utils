@@ -66,8 +66,8 @@ jobs:
         id: get_version
         uses: rnett/find-regex@v1.1
         with:
-          regex: 'version ?(?:=|:) ?"?([\w.\-_]+)"?'
-          files: "build.gradle.kts,gradle.properties,build.gradle"
+          regex: ' *version ?(?:=|:) ?"?([\w.\-_]+)"?'
+          files: "build.gradle.kts,common.gradle.kts,gradle.properties,build.gradle"
           commands: "./gradlew properties"
 
   create_staging_repository:
