@@ -28,9 +28,10 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/settings.gradle*', 'buildSrc/*.gradle*', '**/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-test-gradle-${{ hashFiles('**/settings.gradle*', 'buildSrc/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-
+            ${{ runner.os }}-test-gradle-
+            ${{ runner.os }}-publish-gradle-
 
       - name: Build and Test
         run: ./gradlew build -DRELEASE_SIGNING_ENABLED=false
@@ -38,8 +39,7 @@ jobs:
       - name: Stop gradle daemon
         run: ./gradlew --stop
 
-      - name: Cleanup Gradle Cache Posix
-        if: runner.os != 'Windows'
+      - name: Cleanup Gradle Cache
         run: |
           rm -f ~/.gradle/caches/*/*.lock
           rm -f ~/.gradle/caches/*/gc.properties
@@ -90,7 +90,7 @@ jobs:
           username: rnett
           password: ${{ secrets.SONATYPE_PASSWORD }}
           staging_profile_id: ${{ secrets.SONATYPE_PROFILE_ID }}
-          description: compiler-plugin-utils ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }}
+          description: ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }} - ${{ needs.find-version.outputs.version }}
 
   publish:
     name: Publish
@@ -112,9 +112,10 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/settings.gradle*', 'buildSrc/*.gradle*', '**/gradle-wrapper.properties') }}
+          key: ${{ runner.os }}-publish-gradle-${{ hashFiles('**/settings.gradle*', 'buildSrc/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-
+            ${{ runner.os }}-publish-gradle-
+            ${{ runner.os }}-test-gradle-
 
       - name: Publish
         if: github.ref == 'refs/heads/main'
@@ -163,3 +164,4 @@ jobs:
           password: ${{ secrets.SONATYPE_PASSWORD }}
           staging_repository_id: ${{ needs.create_staging_repository.outputs.repository_id }}
           close_only: 'true'
+          description: Closed ${{ github.repository }}/${{ github.workflow }}#${{ github.run_number }} - ${{ needs.find-version.outputs.version }}
