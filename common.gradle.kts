@@ -1,5 +1,5 @@
 allprojects {
-    version = "1.0.1"
+    version = "1.0.2-SNAPSHOT"
     extra["kotlinVersion"] = "1.5.20"
     group = "com.github.rnett.compiler-plugin-utils"
     extra["isReleaseVersion"] = !version.toString().endsWith("SNAPSHOT")
