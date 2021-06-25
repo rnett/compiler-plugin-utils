@@ -24,7 +24,7 @@ dependencies {
 
     testImplementation(kotlin("reflect"))
     testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlinVersion")
-    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.4.1")
+    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.4.2")
 
     testRuntimeOnly(kotlin("stdlib-js"))
     //TODO this isn't being found.  Can't resolve w/ attributes
