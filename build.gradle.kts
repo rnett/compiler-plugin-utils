@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.5.20" apply false
-    kotlin("kapt") version "1.5.20" apply false
+    kotlin("jvm") version "1.5.21" apply false
+    kotlin("kapt") version "1.5.21" apply false
     id("com.github.johnrengelman.shadow") version "7.0.0" apply false
     id("com.github.gmazzo.buildconfig") version "2.0.2" apply false
     id("com.vanniktech.maven.publish") version "0.15.1" apply false
