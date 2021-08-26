@@ -24,10 +24,10 @@ public interface KnowsCurrentFile {
         val range = file.fileEntry.getSourceRangeInfo(this.startOffset, this.endOffset)
         return CompilerMessageLocationWithRange.create(
             file.path,
-            range.startLineNumber,
-            range.startColumnNumber,
-            range.endLineNumber,
-            range.endColumnNumber,
+            range.startLineNumber + 1, //TODO do I need these +1s?
+            range.startColumnNumber + 1,
+            range.endLineNumber + 1,
+            range.endColumnNumber + 1,
             null
         )
     }
