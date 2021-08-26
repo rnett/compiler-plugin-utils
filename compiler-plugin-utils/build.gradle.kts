@@ -1,37 +1,31 @@
 import java.net.URL
 
 plugins {
-    kotlin("jvm")
-    kotlin("js") apply false
-    kotlin("kapt")
-    `maven-publish` apply true
-    id("com.vanniktech.maven.publish")
+    id(libs.plugins.kotlin.jvm.get().pluginId)
+    id(libs.plugins.kotlin.js.get().pluginId) apply false
+    id(libs.plugins.kapt.get().pluginId)
+
     id("com.github.rnett.compiler-plugin-utils")
-    id("org.jetbrains.dokka")
+
+    id(libs.plugins.publish.get().pluginId)
+    id(libs.plugins.dokka.get().pluginId)
 }
 
-val kotlinVersion: String by extra
-
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlinVersion")
+    compileOnly(libs.kotlin.compiler.embeddable)
 
     testImplementation(kotlin("test-junit5"))
 
-    testImplementation(platform("org.junit:junit-bom:5.7.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.7.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.0")
-
     testImplementation(kotlin("reflect"))
-    testImplementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlinVersion")
-    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.4.2")
+    testImplementation(libs.kotlin.compiler.embeddable)
+    testImplementation(libs.compile.testing)
 
     testRuntimeOnly(kotlin("stdlib-js"))
     //TODO this isn't being found.  Can't resolve w/ attributes
 //    testRuntimeOnly(kotlin("test-js"))
 
-    testCompileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
-    kaptTest("com.google.auto.service:auto-service:1.0-rc6")
+    testCompileOnly(libs.autoservice.annotations)
+    kaptTest(libs.autoservice)
 }
 
 kotlin {

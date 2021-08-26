@@ -1,17 +1,16 @@
 plugins {
-    kotlin("jvm")
-    kotlin("js") apply false
-    kotlin("kapt")
-    `maven-publish` apply true
-    id("com.vanniktech.maven.publish")
+    id(libs.plugins.kotlin.jvm.get().pluginId)
+    id(libs.plugins.kotlin.js.get().pluginId) apply false
+    id(libs.plugins.kapt.get().pluginId)
+
     id("com.github.rnett.compiler-plugin-utils")
-    id("org.jetbrains.dokka")
+
+    id(libs.plugins.publish.get().pluginId)
+    id(libs.plugins.dokka.get().pluginId)
 }
 
-val kotlinVersion: String by extra
-
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler:$kotlinVersion")
+    compileOnly(libs.kotlin.compiler)
 }
 
 kotlin {

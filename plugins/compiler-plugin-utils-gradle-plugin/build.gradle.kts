@@ -1,22 +1,20 @@
 plugins {
-    kotlin("jvm")
+    id(libs.plugins.kotlin.jvm.get().pluginId)
+    id(libs.plugins.kapt.get().pluginId)
+
     `java-gradle-plugin`
-    kotlin("kapt")
-    id("com.github.gmazzo.buildconfig")
-//    id("com.gradle.plugin-publish")
-    id("org.jetbrains.dokka")
-    id("com.vanniktech.maven.publish")
+    alias(libs.plugins.buildconfig)
+
+    id(libs.plugins.publish.get().pluginId)
+    id(libs.plugins.dokka.get().pluginId)
 }
-
-val kotlinVersion: String by extra
-
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin-api:$kotlinVersion")
+    implementation(libs.kgp.api)
 
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+    compileOnly(libs.kgp)
 
-    compileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
-    kapt("com.google.auto.service:auto-service:1.0-rc6")
+    compileOnly(libs.autoservice.annotations)
+    kapt(libs.autoservice)
 }
 
 java {

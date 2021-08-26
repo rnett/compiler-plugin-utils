@@ -1,10 +1,9 @@
 plugins {
-    kotlin("jvm") version "1.5.21" apply false
-    kotlin("kapt") version "1.5.21" apply false
-    id("com.github.johnrengelman.shadow") version "7.0.0" apply false
-    id("com.github.gmazzo.buildconfig") version "2.0.2" apply false
-    id("com.vanniktech.maven.publish") version "0.15.1" apply false
-    id("org.jetbrains.dokka") version "1.4.32" apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kapt) apply false
+
+    alias(libs.plugins.publish) apply false
+    alias(libs.plugins.dokka) apply false
     signing
 }
 
@@ -12,18 +11,24 @@ apply("../common.gradle.kts")
 
 subprojects {
     afterEvaluate {
-        extensions.getByType<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>().target {
-            attributes {
-                attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 8)
-            }
-            compilations.configureEach {
-                kotlinOptions {
-                    jvmTarget = "1.8"
-                    useIR = true
+        extensions.getByType<org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension>().apply {
+            sourceSets.all {
+                languageSettings {
+                    optIn("kotlin.RequiresOptIn")
                 }
-                compileJavaTaskProvider.get().apply {
-                    targetCompatibility = "1.8"
-                    sourceCompatibility = "1.8"
+            }
+            target {
+                attributes {
+                    attribute(TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 8)
+                }
+                compilations.configureEach {
+                    kotlinOptions {
+                        jvmTarget = "1.8"
+                    }
+                    compileJavaTaskProvider.get().apply {
+                        targetCompatibility = "1.8"
+                        sourceCompatibility = "1.8"
+                    }
                 }
             }
         }

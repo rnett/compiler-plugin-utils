@@ -1,17 +1,16 @@
 plugins {
-    kotlin("jvm")
-    kotlin("kapt")
-    `maven-publish` apply true
-    id("com.github.johnrengelman.shadow") apply true
-    id("com.vanniktech.maven.publish")
-    id("org.jetbrains.dokka")
+    id(libs.plugins.kotlin.jvm.get().pluginId)
+    id(libs.plugins.kapt.get().pluginId)
+
+    alias(libs.plugins.shadow)
+
+    id(libs.plugins.publish.get().pluginId)
+    id(libs.plugins.dokka.get().pluginId)
 }
 
-val kotlinVersion: String by extra
-
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-compiler-embeddable:$kotlinVersion")
+    compileOnly(libs.kotlin.compiler.embeddable)
 
-    compileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")
-    kapt("com.google.auto.service:auto-service:1.0-rc6")
+    compileOnly(libs.autoservice.annotations)
+    kapt(libs.autoservice)
 }
