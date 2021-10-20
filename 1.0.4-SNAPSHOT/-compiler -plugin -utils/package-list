@@ -296,14 +296,8 @@ $dokka.location:com.rnett.plugin.naming/TypeRef/toIrTypeArg/#org.jetbrains.kotli
 $dokka.location:com.rnett.plugin.naming/TypeRef/toString/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref/to-string.html
 $dokka.location:com.rnett.plugin.naming/TypeRef/variance/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref/variance.html
 $dokka.location:com.rnett.plugin.naming/TypeRefVariance.In///PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-in/index.html
-$dokka.location:com.rnett.plugin.naming/TypeRefVariance.In/name/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-in/name.html
-$dokka.location:com.rnett.plugin.naming/TypeRefVariance.In/ordinal/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-in/ordinal.html
 $dokka.location:com.rnett.plugin.naming/TypeRefVariance.Invariant///PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-invariant/index.html
-$dokka.location:com.rnett.plugin.naming/TypeRefVariance.Invariant/name/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-invariant/name.html
-$dokka.location:com.rnett.plugin.naming/TypeRefVariance.Invariant/ordinal/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-invariant/ordinal.html
 $dokka.location:com.rnett.plugin.naming/TypeRefVariance.Out///PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-out/index.html
-$dokka.location:com.rnett.plugin.naming/TypeRefVariance.Out/name/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-out/name.html
-$dokka.location:com.rnett.plugin.naming/TypeRefVariance.Out/ordinal/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/-out/ordinal.html
 $dokka.location:com.rnett.plugin.naming/TypeRefVariance///PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/index.html
 $dokka.location:com.rnett.plugin.naming/TypeRefVariance/toIr/#/PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.naming/-type-ref-variance/to-ir.html
 $dokka.location:com.rnett.plugin.stdlib////PointingToDeclaration/-compiler -plugin -utils/com.rnett.plugin.stdlib/index.html

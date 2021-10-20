@@ -2,7 +2,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>com.rnett.plugin.ir</title>
-<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
   <body>
     <div id="container">
       <div id="leftColumn"><a href="../../index.html">
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="cover ">
-            <h1 class="cover"><span>Package com.</span><wbr></wbr><span>rnett.</span><wbr></wbr><span>plugin.</span><wbr></wbr><span>ir</span></h1>
+            <h1 class="cover"><span><span>Package</span></span> <span>com.</span><wbr></wbr><span>rnett.</span><wbr></wbr><span>plugin.</span><wbr></wbr><span>ir</span></h1>
             <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><p class="paragraph">The <code>com.rnett.plugin.ir</code> package contains a number of utilities for working with IR. This includes basic utilities such as <code>CompilerConfiguration.messageCollector</code>, <code>IrClass.addAnonymousInitializer</code>, <code>IrType.raiseTo</code>, and <code>IrClass.typeWith(List&lt;IrTypeArgument&gt;)</code>, all of which are available as extension functions.</p><p class="paragraph">Many utilities require a <code>IrPluginContext</code>, so in lieu of multiple receivers, they are put in <code>HasContext</code> which has a <code>val context: IrPluginContext</code>. It can be easily implemented by <code>IrElementTransformer</code>s. Of special note are the <code>IrBuilderWithScope.buildLambda</code> and <code>lambdaArgument</code> functions.</p><p class="paragraph"><code>KnowsCurrentFile</code> is a similar interface, but requires a <code>IrFile</code> and provides extensions for getting message locations from <code>IrElement</code>s using said file.</p><p class="paragraph">Both of these are implemented by <code>IrTransformer</code>, which is usable as a replacement for <code>IrElementTransformerVoid</code> or <code>IrElementTransformerVoidWithContext</code>. In addition to implementing <code>IrElementTransformerVoidWithContext</code> , <code>KnowsCurrentFile</code>, and <code>HasContext</code>, it modifies the file transformer so that new declarations can be added to the current file without running into <code>ConcurrentModificationException</code> (it does so by running transforms on a copy of the declaration list, and then on newly added declarations until no more are added).</p></div></div>
           </div>
           <div class="tabbedcontent">
@@ -31,16 +31,16 @@
               <div class="table" data-togglable="Types"><a data-name="1522576680%2FClasslikes%2F1226206554" anchor-label="FunctionRemapper" id="1522576680%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-function-remapper/index.html">FunctionRemapper</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1522576680%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-function-remapper/index.html"><span>Function</span><wbr></wbr><span><span>Remapper</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1522576680%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun fun interface <a href="-function-remapper/index.html">FunctionRemapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun interface <a href="-function-remapper/index.html">FunctionRemapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1522576680%2FClasslikes%2F1226206554" anchor-label="FunctionRemapper" id="1522576680%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1522576680%2FClasslikes%2F1226206554" anchor-label="FunctionRemapper" id="1522576680%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Remap references to functions.</div></div>
+<div class="brief "><p class="paragraph">Remap references to functions.  Returning <code>null</code> will deep copy the symbol.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -48,7 +48,7 @@
 <a data-name="1184555007%2FClasslikes%2F1226206554" anchor-label="HasContext" id="1184555007%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-has-context/index.html">HasContext</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1184555007%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-has-context/index.html"><span>Has</span><wbr></wbr><span><span>Context</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1184555007%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -57,7 +57,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="-has-context/index.html">HasContext</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1184555007%2FClasslikes%2F1226206554" anchor-label="HasContext" id="1184555007%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1184555007%2FClasslikes%2F1226206554" anchor-label="HasContext" id="1184555007%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>A bunch of things using <a href="-has-context/context.html">context</a> that should mostly be moved to multiple receivers</div></div>
+<div class="brief "><p class="paragraph">A bunch of things using <a href="-has-context/context.html">context</a> that should mostly be moved to multiple receivers</p></div></div>
 </div>
                     </div>
                   </div>
@@ -65,7 +65,7 @@
 <a data-name="814127934%2FClasslikes%2F1226206554" anchor-label="IrTransformer" id="814127934%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-ir-transformer/index.html">IrTransformer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="814127934%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-ir-transformer/index.html"><span>Ir</span><wbr></wbr><span><span>Transformer</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="814127934%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -82,7 +82,7 @@
 <a data-name="2042710027%2FClasslikes%2F1226206554" anchor-label="IrTryBuilder" id="2042710027%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-ir-try-builder/index.html">IrTryBuilder</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2042710027%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-ir-try-builder/index.html"><span>Ir</span><wbr></wbr><span>Try</span><wbr></wbr><span><span>Builder</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2042710027%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -99,7 +99,7 @@
 <a data-name="488312903%2FClasslikes%2F1226206554" anchor-label="KnowsCurrentFile" id="488312903%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-knows-current-file/index.html">KnowsCurrentFile</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="488312903%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-knows-current-file/index.html"><span>Knows</span><wbr></wbr><span>Current</span><wbr></wbr><span><span>File</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="488312903%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -108,7 +108,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="-knows-current-file/index.html">KnowsCurrentFile</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="488312903%2FClasslikes%2F1226206554" anchor-label="KnowsCurrentFile" id="488312903%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="488312903%2FClasslikes%2F1226206554" anchor-label="KnowsCurrentFile" id="488312903%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Utility methods for working with a <span data-unresolved-link="org.jetbrains.kotlin.cli.common.messages/MessageCollector///PointingToDeclaration/">MessageCollector</span> when the current file is available</div></div>
+<div class="brief "><p class="paragraph">Utility methods for working with a <span data-unresolved-link="org.jetbrains.kotlin.cli.common.messages/MessageCollector///PointingToDeclaration/">MessageCollector</span> when the current file is available</p></div></div>
 </div>
                     </div>
                   </div>
@@ -116,7 +116,7 @@
 <a data-name="-1088454353%2FClasslikes%2F1226206554" anchor-label="ReferenceRemapper" id="-1088454353%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-reference-remapper/index.html">ReferenceRemapper</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1088454353%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-reference-remapper/index.html"><span>Reference</span><wbr></wbr><span><span>Remapper</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1088454353%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -125,7 +125,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="-reference-remapper/index.html">ReferenceRemapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1088454353%2FClasslikes%2F1226206554" anchor-label="ReferenceRemapper" id="-1088454353%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1088454353%2FClasslikes%2F1226206554" anchor-label="ReferenceRemapper" id="-1088454353%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>A symbol remapper that only replaces references to symbols.</div></div>
+<div class="brief "><p class="paragraph">A symbol remapper that only replaces references to symbols.  Returning <code>null</code> will deep copy the symbol.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -133,7 +133,7 @@
 <a data-name="-1785126302%2FClasslikes%2F1226206554" anchor-label="ReferenceReplacements" id="-1785126302%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-reference-replacements/index.html">ReferenceReplacements</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1785126302%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-reference-replacements/index.html"><span>Reference</span><wbr></wbr><span><span>Replacements</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1785126302%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -142,7 +142,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">class <a href="-reference-replacements/index.html">ReferenceReplacements</a> : <a href="-reference-remapper/index.html">ReferenceRemapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1785126302%2FClasslikes%2F1226206554" anchor-label="ReferenceReplacements" id="-1785126302%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1785126302%2FClasslikes%2F1226206554" anchor-label="ReferenceReplacements" id="-1785126302%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>A list of symbol replacements, providing a <a href="-reference-remapper/index.html">ReferenceRemapper</a>.</div></div>
+<div class="brief "><p class="paragraph">A list of symbol replacements, providing a <a href="-reference-remapper/index.html">ReferenceRemapper</a>.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -150,16 +150,16 @@
 <a data-name="-1257409975%2FClasslikes%2F1226206554" anchor-label="ValueRemapper" id="-1257409975%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-value-remapper/index.html">ValueRemapper</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1257409975%2FClasslikes%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-value-remapper/index.html"><span>Value</span><wbr></wbr><span><span>Remapper</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1257409975%2FClasslikes%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun fun interface <a href="-value-remapper/index.html">ValueRemapper</a> : <a href="-reference-remapper/index.html">ReferenceRemapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun interface <a href="-value-remapper/index.html">ValueRemapper</a> : <a href="-reference-remapper/index.html">ReferenceRemapper</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1257409975%2FClasslikes%2F1226206554" anchor-label="ValueRemapper" id="-1257409975%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1257409975%2FClasslikes%2F1226206554" anchor-label="ValueRemapper" id="-1257409975%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Remap value symbols.</div></div>
+<div class="brief "><p class="paragraph">Remap value symbols.  If given a <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span>, must return a <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrVariableSymbol///PointingToDeclaration/">IrVariableSymbol</span>.  Returning <code>null</code> will deep copy the symbol.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -169,7 +169,7 @@
               <div class="table" data-togglable="Functions"><a data-name="1011875783%2FFunctions%2F1226206554" anchor-label="addAnonymousInitializer" id="1011875783%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="add-anonymous-initializer.html">addAnonymousInitializer</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1011875783%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="add-anonymous-initializer.html"><span>add</span><wbr></wbr><span>Anonymous</span><wbr></wbr><span><span>Initializer</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1011875783%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -186,7 +186,7 @@
 <a data-name="1734192947%2FFunctions%2F1226206554" anchor-label="buildStatement" id="1734192947%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="build-statement.html">buildStatement</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1734192947%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="build-statement.html"><span>build</span><wbr></wbr><span><span>Statement</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1734192947%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -203,7 +203,7 @@
 <a data-name="-612061610%2FFunctions%2F1226206554" anchor-label="createIrBuilder" id="-612061610%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="create-ir-builder.html">createIrBuilder</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-612061610%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="create-ir-builder.html"><span>create</span><wbr></wbr><span>Ir</span><wbr></wbr><span><span>Builder</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-612061610%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -220,7 +220,7 @@
 <a data-name="-1636424602%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapFunctions" id="-1636424602%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="deep-copy-and-remap-functions.html">deepCopyAndRemapFunctions</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1636424602%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="deep-copy-and-remap-functions.html"><span>deep</span><wbr></wbr><span>Copy</span><wbr></wbr><span>And</span><wbr></wbr><span>Remap</span><wbr></wbr><span><span>Functions</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1636424602%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -229,7 +229,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="deep-copy-and-remap-functions.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir/IrElement///PointingToDeclaration/">IrElement</span>&gt; <a href="deep-copy-and-remap-functions.html">T</a>.<a href="deep-copy-and-remap-functions.html">deepCopyAndRemapFunctions</a>(initialParent: <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrDeclarationParent///PointingToDeclaration/">IrDeclarationParent</span>? = null, referenceRemapper: <a href="-function-remapper/index.html">FunctionRemapper</a>): <a href="deep-copy-and-remap-functions.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1636424602%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapFunctions" id="-1636424602%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1636424602%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapFunctions" id="-1636424602%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Deep copy and replace references to values.</div></div>
+<div class="brief "><p class="paragraph">Deep copy and replace references to values.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -237,7 +237,7 @@
 <a data-name="2088671841%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapReferences" id="2088671841%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="deep-copy-and-remap-references.html">deepCopyAndRemapReferences</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2088671841%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="deep-copy-and-remap-references.html"><span>deep</span><wbr></wbr><span>Copy</span><wbr></wbr><span>And</span><wbr></wbr><span>Remap</span><wbr></wbr><span><span>References</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2088671841%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -246,13 +246,13 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="deep-copy-and-remap-references.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir/IrElement///PointingToDeclaration/">IrElement</span>&gt; <a href="deep-copy-and-remap-references.html">T</a>.<a href="deep-copy-and-remap-references.html">deepCopyAndRemapReferences</a>(initialParent: <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrDeclarationParent///PointingToDeclaration/">IrDeclarationParent</span>? = null, referenceRemapper: <a href="-reference-remapper/index.html">ReferenceRemapper</a>): <a href="deep-copy-and-remap-references.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1258157626%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapReferences" id="1258157626%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1258157626%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapReferences" id="1258157626%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Deep copy and replace references to symbols</div></div>
+<div class="brief "><p class="paragraph">Deep copy and replace references to symbols</p></div></div>
 <div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="deep-copy-and-remap-references.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir/IrElement///PointingToDeclaration/">IrElement</span>&gt; <a href="deep-copy-and-remap-references.html">T</a>.<a href="deep-copy-and-remap-references.html">deepCopyAndRemapReferences</a>(initialParent: <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrDeclarationParent///PointingToDeclaration/">IrDeclarationParent</span>? = null, referenceReplacements: <a href="-reference-replacements/-builder/index.html">ReferenceReplacements.Builder</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="deep-copy-and-remap-references.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1567875149%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapReferences" id="-1567875149%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1567875149%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapReferences" id="-1567875149%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Deep copy and replace references</div></div>
+<div class="brief "><p class="paragraph">Deep copy and replace references</p></div></div>
 </div>
                     </div>
                   </div>
@@ -260,7 +260,7 @@
 <a data-name="1978026874%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapValues" id="1978026874%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="deep-copy-and-remap-values.html">deepCopyAndRemapValues</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1978026874%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="deep-copy-and-remap-values.html"><span>deep</span><wbr></wbr><span>Copy</span><wbr></wbr><span>And</span><wbr></wbr><span>Remap</span><wbr></wbr><span><span>Values</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1978026874%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -269,7 +269,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun &lt;<a href="deep-copy-and-remap-values.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir/IrElement///PointingToDeclaration/">IrElement</span>&gt; <a href="deep-copy-and-remap-values.html">T</a>.<a href="deep-copy-and-remap-values.html">deepCopyAndRemapValues</a>(initialParent: <span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrDeclarationParent///PointingToDeclaration/">IrDeclarationParent</span>? = null, referenceRemapper: <a href="-value-remapper/index.html">ValueRemapper</a>): <a href="deep-copy-and-remap-values.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1978026874%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapValues" id="1978026874%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1978026874%2FFunctions%2F1226206554" anchor-label="deepCopyAndRemapValues" id="1978026874%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Deep copy and replace references to values</div></div>
+<div class="brief "><p class="paragraph">Deep copy and replace references to values</p></div></div>
 </div>
                     </div>
                   </div>
@@ -277,7 +277,7 @@
 <a data-name="471227694%2FFunctions%2F1226206554" anchor-label="hasTypeArgument" id="471227694%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="has-type-argument.html">hasTypeArgument</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="471227694%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="has-type-argument.html"><span>has</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Argument</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="471227694%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -294,7 +294,7 @@
 <a data-name="1719517152%2FFunctions%2F1226206554" anchor-label="irJsExprBody" id="1719517152%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="ir-js-expr-body.html">irJsExprBody</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1719517152%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="ir-js-expr-body.html"><span>ir</span><wbr></wbr><span>Js</span><wbr></wbr><span>Expr</span><wbr></wbr><span><span>Body</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1719517152%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -303,7 +303,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>.<a href="ir-js-expr-body.html">irJsExprBody</a>(expression: <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>, useExprOnJvm: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = false): <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrBody///PointingToDeclaration/">IrBody</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1719517152%2FFunctions%2F1226206554" anchor-label="irJsExprBody" id="1719517152%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1719517152%2FFunctions%2F1226206554" anchor-label="irJsExprBody" id="1719517152%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>JS backend doesn't support IrExprBody yet.</div></div>
+<div class="brief "><p class="paragraph">JS backend doesn't support IrExprBody yet.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -311,7 +311,7 @@
 <a data-name="588694983%2FFunctions%2F1226206554" anchor-label="irTry" id="588694983%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="ir-try.html">irTry</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="588694983%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="ir-try.html"><span>ir</span><wbr></wbr><span><span>Try</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="588694983%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -328,7 +328,7 @@
 <a data-name="-889790434%2FFunctions%2F1226206554" anchor-label="irTypeOf" id="-889790434%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="ir-type-of.html">irTypeOf</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-889790434%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="ir-type-of.html"><span>ir</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Of</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-889790434%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -345,7 +345,7 @@
 <a data-name="504330438%2FFunctions%2F1226206554" anchor-label="irVararg" id="504330438%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="ir-vararg.html">irVararg</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="504330438%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="ir-vararg.html"><span>ir</span><wbr></wbr><span><span>Vararg</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="504330438%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -362,22 +362,16 @@
 <a data-name="1389455469%2FFunctions%2F1226206554" anchor-label="putTypeArguments" id="1389455469%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="put-type-arguments.html">putTypeArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1389455469%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="put-type-arguments.html"><span>put</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Arguments</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1389455469%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-type-arguments.html">putTypeArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?&gt;, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-type-arguments.html">putTypeArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?&gt;, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-type-arguments.html">putTypeArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1315823776%2FFunctions%2F1226206554" anchor-label="putTypeArguments" id="-1315823776%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1315823776%2FFunctions%2F1226206554" anchor-label="putTypeArguments" id="-1315823776%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Set the type arguments of the call.</div></div>
-<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;.<a href="put-type-arguments.html">putTypeArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-939376703%2FFunctions%2F1226206554" anchor-label="putTypeArguments" id="-939376703%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-939376703%2FFunctions%2F1226206554" anchor-label="putTypeArguments" id="-939376703%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Set the type arguments of the call.</div></div>
+<div class="brief "><p class="paragraph">Set the type arguments of the call.  If <a href="put-type-arguments.html">substitute</a> is <code>true</code> and <span data-unresolved-link="com.rnett.plugin.ir//&amp;lt;this&amp;gt;/#/PointingToCallableParameters(-1)/">this</span> is an <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrCall///PointingToDeclaration/">IrCall</span>, calls <a href="substitute-type-params.html">substituteTypeParams</a>.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -385,7 +379,7 @@
 <a data-name="-1059792523%2FFunctions%2F1226206554" anchor-label="putValueArguments" id="-1059792523%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="put-value-arguments.html">putValueArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1059792523%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="put-value-arguments.html"><span>put</span><wbr></wbr><span>Value</span><wbr></wbr><span><span>Arguments</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1059792523%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -402,7 +396,7 @@
 <a data-name="-123350298%2FFunctions%2F1226206554" anchor-label="raiseTo" id="-123350298%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="raise-to.html">raiseTo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-123350298%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="raise-to.html"><span>raise</span><wbr></wbr><span><span>To</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-123350298%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -411,13 +405,13 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to.html">raiseTo</a>(predicate: (<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1467410703%2FFunctions%2F1226206554" anchor-label="raiseTo" id="-1467410703%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1467410703%2FFunctions%2F1226206554" anchor-label="raiseTo" id="-1467410703%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that matches the predicate.</div></div>
+<div class="brief "><p class="paragraph">Gets the lowest superclass or this that matches the predicate. Helpful for discovering the type parameters of supertypes.</p></div></div>
 <div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to.html">raiseTo</a>(classifier: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1851605035%2FFunctions%2F1226206554" anchor-label="raiseTo" id="1851605035%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1851605035%2FFunctions%2F1226206554" anchor-label="raiseTo" id="1851605035%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that has the given classifier.</div></div>
+<div class="brief "><p class="paragraph">Gets the lowest superclass or this that has the given classifier. Helpful for discovering the type parameters of supertypes.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -425,22 +419,16 @@
 <a data-name="-924054830%2FFunctions%2F1226206554" anchor-label="raiseToOrNull" id="-924054830%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="raise-to-or-null.html">raiseToOrNull</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-924054830%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="raise-to-or-null.html"><span>raise</span><wbr></wbr><span>To</span><wbr></wbr><span>Or</span><wbr></wbr><span><span>Null</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-924054830%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to-or-null.html">raiseToOrNull</a>(predicate: (<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to-or-null.html">raiseToOrNull</a>(predicate: (<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to-or-null.html">raiseToOrNull</a>(classifier: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-327173413%2FFunctions%2F1226206554" anchor-label="raiseToOrNull" id="-327173413%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-327173413%2FFunctions%2F1226206554" anchor-label="raiseToOrNull" id="-327173413%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that matches the predicate, or null if none do.</div></div>
-<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="raise-to-or-null.html">raiseToOrNull</a>(classifier: <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassifierSymbol///PointingToDeclaration/">IrClassifierSymbol</span>): <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-1253531519%2FFunctions%2F1226206554" anchor-label="raiseToOrNull" id="-1253531519%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1253531519%2FFunctions%2F1226206554" anchor-label="raiseToOrNull" id="-1253531519%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Gets the lowest superclass or this that matches the predicate, or null if none do.</div></div>
+<div class="brief "><p class="paragraph">Gets the lowest superclass or this that matches the predicate, or null if none do. Helpful for discovering the type parameters of supertypes.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -448,7 +436,7 @@
 <a data-name="1012635797%2FFunctions%2F1226206554" anchor-label="ReferenceReplacements" id="1012635797%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="-reference-replacements.html">ReferenceReplacements</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1012635797%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="-reference-replacements.html"><span>Reference</span><wbr></wbr><span><span>Replacements</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1012635797%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -457,7 +445,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline fun <a href="-reference-replacements.html">ReferenceReplacements</a>(builder: <a href="-reference-replacements/-builder/index.html">ReferenceReplacements.Builder</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="-reference-replacements/index.html">ReferenceReplacements</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1012635797%2FFunctions%2F1226206554" anchor-label="ReferenceReplacements" id="1012635797%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1012635797%2FFunctions%2F1226206554" anchor-label="ReferenceReplacements" id="1012635797%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Build a list of symbol replacements</div></div>
+<div class="brief "><p class="paragraph">Build a list of symbol replacements</p></div></div>
 </div>
                     </div>
                   </div>
@@ -465,7 +453,7 @@
 <a data-name="-811498875%2FFunctions%2F1226206554" anchor-label="substituteTypeParams" id="-811498875%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="substitute-type-params.html">substituteTypeParams</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-811498875%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="substitute-type-params.html"><span>substitute</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Params</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-811498875%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -474,7 +462,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrCall///PointingToDeclaration/">IrCall</span>.<a href="substitute-type-params.html">substituteTypeParams</a>(): <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrCall///PointingToDeclaration/">IrCall</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-811498875%2FFunctions%2F1226206554" anchor-label="substituteTypeParams" id="-811498875%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-811498875%2FFunctions%2F1226206554" anchor-label="substituteTypeParams" id="-811498875%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Substitute the set type parameters into the return type.</div></div>
+<div class="brief "><p class="paragraph">Substitute the set type parameters into the return type.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -482,7 +470,7 @@
 <a data-name="1851720028%2FFunctions%2F1226206554" anchor-label="supertypesWithSubstitution" id="1851720028%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="supertypes-with-substitution.html">supertypesWithSubstitution</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1851720028%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="supertypes-with-substitution.html"><span>supertypes</span><wbr></wbr><span>With</span><wbr></wbr><span><span>Substitution</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1851720028%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -491,7 +479,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>.<a href="supertypes-with-substitution.html">supertypesWithSubstitution</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="1851720028%2FFunctions%2F1226206554" anchor-label="supertypesWithSubstitution" id="1851720028%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="1851720028%2FFunctions%2F1226206554" anchor-label="supertypesWithSubstitution" id="1851720028%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Get the supertypes of a type, substituting type parameters for their values where known and not <code>*</code>.</div></div>
+<div class="brief "><p class="paragraph">Get the supertypes of a type, substituting type parameters for their values where known and not <code>*</code>.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -499,7 +487,7 @@
 <a data-name="676805764%2FFunctions%2F1226206554" anchor-label="typeArgument" id="676805764%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="type-argument.html">typeArgument</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="676805764%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="type-argument.html"><span>type</span><wbr></wbr><span><span>Argument</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="676805764%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -516,7 +504,7 @@
 <a data-name="-1671960015%2FFunctions%2F1226206554" anchor-label="typeWith" id="-1671960015%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="type-with.html">typeWith</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1671960015%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="type-with.html"><span>type</span><wbr></wbr><span><span>With</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1671960015%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -533,7 +521,7 @@
 <a data-name="-2069991880%2FFunctions%2F1226206554" anchor-label="valueArgumentsByName" id="-2069991880%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="value-arguments-by-name.html">valueArgumentsByName</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2069991880%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="value-arguments-by-name.html"><span>value</span><wbr></wbr><span>Arguments</span><wbr></wbr><span>By</span><wbr></wbr><span><span>Name</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2069991880%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -542,7 +530,7 @@
   <div>
     <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrCall///PointingToDeclaration/">IrCall</span>.<a href="value-arguments-by-name.html">valueArgumentsByName</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>?&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-2069991880%2FFunctions%2F1226206554" anchor-label="valueArgumentsByName" id="-2069991880%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-2069991880%2FFunctions%2F1226206554" anchor-label="valueArgumentsByName" id="-2069991880%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Get the arguments of an IrCall by their parameter names</div></div>
+<div class="brief "><p class="paragraph">Get the arguments of an IrCall by their parameter names</p></div></div>
 </div>
                     </div>
                   </div>
@@ -550,7 +538,7 @@
 <a data-name="-497531751%2FFunctions%2F1226206554" anchor-label="withDispatchReceiver" id="-497531751%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="with-dispatch-receiver.html">withDispatchReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-497531751%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="with-dispatch-receiver.html"><span>with</span><wbr></wbr><span>Dispatch</span><wbr></wbr><span><span>Receiver</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-497531751%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -567,7 +555,7 @@
 <a data-name="-1555758802%2FFunctions%2F1226206554" anchor-label="withExtensionReceiver" id="-1555758802%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="with-extension-receiver.html">withExtensionReceiver</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1555758802%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="with-extension-receiver.html"><span>with</span><wbr></wbr><span>Extension</span><wbr></wbr><span><span>Receiver</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1555758802%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
@@ -584,22 +572,16 @@
 <a data-name="-1991032395%2FFunctions%2F1226206554" anchor-label="withTypeArguments" id="-1991032395%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="with-type-arguments.html">withTypeArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1991032395%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="with-type-arguments.html"><span>with</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Arguments</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1991032395%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
                       <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
 
   <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-type-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-type-arguments.html">T</a>.<a href="with-type-arguments.html">withTypeArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?&gt;, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall): <a href="with-type-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-type-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-type-arguments.html">T</a>.<a href="with-type-arguments.html">withTypeArguments</a>(vararg namedArgs: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>, <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?&gt;, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall): <a href="with-type-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun &lt;<a href="with-type-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-type-arguments.html">T</a>.<a href="with-type-arguments.html">withTypeArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall): <a href="with-type-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
   </div>
-<a data-name="-1810743049%2FFunctions%2F1226206554" anchor-label="withTypeArguments" id="-1810743049%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-1810743049%2FFunctions%2F1226206554" anchor-label="withTypeArguments" id="-1810743049%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Set the type arguments of the call.</div></div>
-<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-type-arguments.html">T</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrMemberAccessExpression///PointingToDeclaration/">IrMemberAccessExpression</span>&lt;*&gt;&gt; <a href="with-type-arguments.html">T</a>.<a href="with-type-arguments.html">withTypeArguments</a>(vararg args: <span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>?, substitute: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> = this is IrCall): <a href="with-type-arguments.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<a data-name="-111679350%2FFunctions%2F1226206554" anchor-label="withTypeArguments" id="-111679350%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="brief "><a data-name="-111679350%2FFunctions%2F1226206554" anchor-label="withTypeArguments" id="-111679350%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>Set the type arguments of the call.</div></div>
+<div class="brief "><p class="paragraph">Set the type arguments of the call.  If <a href="with-type-arguments.html">substitute</a> is <code>true</code> and <span data-unresolved-link="com.rnett.plugin.ir//&amp;lt;this&amp;gt;/#/PointingToCallableParameters(-1)/">this</span> is an <span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrCall///PointingToDeclaration/">IrCall</span>, calls <a href="substitute-type-params.html">substituteTypeParams</a>.</p></div></div>
 </div>
                     </div>
                   </div>
@@ -607,7 +589,7 @@
 <a data-name="259201321%2FFunctions%2F1226206554" anchor-label="withValueArguments" id="259201321%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
                 <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
                   <div class="main-subrow keyValue ">
-                    <div class=""><span class="inline-flex"><a href="with-value-arguments.html">withValueArguments</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="259201321%2FFunctions%2F1226206554"></span>
+                    <div class=""><span class="inline-flex"><a href="with-value-arguments.html"><span>with</span><wbr></wbr><span>Value</span><wbr></wbr><span><span>Arguments</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="259201321%2FFunctions%2F1226206554"></span>
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>

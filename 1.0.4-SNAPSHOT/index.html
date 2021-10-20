@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="cover ">
-            <h1 class="cover"><span>Compiler</span> <span>Plugin</span> <span>Utils</span></h1>
+            <h1 class="cover"><span><span>Compiler</span></span> <span><span>Plugin</span></span> <span><span>Utils</span></span></h1>
             <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><p class="paragraph">Utilities for writing Kotlin compiler plugins.</p><p class="paragraph"><a href="https://github.com/rnett/compiler-plugin-utils">GitHub + Overview</a></p></div></div>
           </div>
           <h2 class="">Packages</h2>
@@ -34,7 +34,9 @@
                       </span></span></div>
                   <div class="pull-right"></div>
                 </div>
-                <div><span class="brief-comment"><a data-name="-1207172108%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.ir" id="-1207172108%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>The <code>com.rnett.plugin.ir</code> package contains a number of utilities for working with IR.</span></div>
+                <div><span class="brief-comment"><a data-name="-1207172108%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.ir" id="-1207172108%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                    <p class="paragraph">The <code>com.rnett.plugin.ir</code> package contains a number of utilities for working with IR. This includes basic utilities such as <code>CompilerConfiguration.messageCollector</code>, <code>IrClass.addAnonymousInitializer</code>, <code>IrType.raiseTo</code>, and <code>IrClass.typeWith(List&lt;IrTypeArgument&gt;)</code>, all of which are available as extension functions.</p>
+                  </span></div>
               </div>
             </div>
 <a data-name="-1852780013%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.naming" id="-1852780013%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
@@ -46,7 +48,9 @@
                       </span></span></div>
                   <div class="pull-right"></div>
                 </div>
-                <div><span class="brief-comment"><a data-name="-1852780013%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.naming" id="-1852780013%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>The <code>com.rnett.plugin.naming</code> package provides ways to get <code>FqName</code>s and IR symbols for declarations.</span></div>
+                <div><span class="brief-comment"><a data-name="-1852780013%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.naming" id="-1852780013%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                    <p class="paragraph">The <code>com.rnett.plugin.naming</code> package provides ways to get <code>FqName</code>s and IR symbols for declarations. It primarily provides a structured method based on nested objects, but also provides direct access. Each of these reference types exposes the <code>FqName</code> of the element, and can be resolved with an <code>IrPluginContext</code>. Function, property, and constructor references all accept filters (essentially <code>(IrSimpleFunction) -&gt; Boolean</code> lambdas or the equivalent, but with some helper methods for common conditions) to disambiguate overloads. Some utility functions are provided in <code>HasContext</code> for working with references in IR, such as <code>irCall(FunctionRef)</code> or <code>ClassRef.resolveTypeWith</code>.</p>
+                  </span></div>
               </div>
             </div>
 <a data-name="1794906765%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.stdlib" id="1794906765%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
@@ -58,7 +62,9 @@
                       </span></span></div>
                   <div class="pull-right"></div>
                 </div>
-                <div><span class="brief-comment"><a data-name="1794906765%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.stdlib" id="1794906765%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>The <code>com.rnett.plugin.stdlib</code> package provides builders for common standard library functions, using the Naming and IR Utilities features (and providing good examples of how to use them).</span></div>
+                <div><span class="brief-comment"><a data-name="1794906765%2FPackages%2F1226206554" anchor-label="com.rnett.plugin.stdlib" id="1794906765%2FPackages%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                    <p class="paragraph">The <code>com.rnett.plugin.stdlib</code> package provides builders for common standard library functions, using the Naming and IR Utilities features (and providing good examples of how to use them). Collections, <code>toString</code> and <code>hashCode</code>, <code>typeOf</code>, scope functions, numbers, and common exceptions are included. All builder methods are tested. Note that unlike for Naming, extension functions are members of their extension receiver, i.e. <code>Map.getValue</code>. In some cases, builders will resolve their functions based on the types of arguments, such as for number operators or nullable <code>toString</code> and <code>hashCode</code>. The receiver arguments are type checked (in IR) in most cases, the other arguments aren't.</p>
+                  </span></div>
               </div>
             </div>
           </div>
