@@ -1,0 +1,762 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.rnett.plugin.naming</title>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Compiler Plugin Utils::com.rnett.plugin.naming////PointingToDeclaration//1226206554">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../index.html">Compiler Plugin Utils</a>/<a href="index.html">com.rnett.plugin.naming</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span><span>Package</span></span> <span>com.</span><wbr></wbr><span>rnett.</span><wbr></wbr><span>plugin.</span><wbr></wbr><span>naming</span></h1>
+            <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><p class="paragraph">The <code>com.rnett.plugin.naming</code> package provides ways to get <code>FqName</code>s and IR symbols for declarations. It primarily provides a structured method based on nested objects, but also provides direct access. Each of these reference types exposes the <code>FqName</code> of the element, and can be resolved with an <code>IrPluginContext</code>. Function, property, and constructor references all accept filters (essentially <code>(IrSimpleFunction) -&gt; Boolean</code> lambdas or the equivalent, but with some helper methods for common conditions) to disambiguate overloads. Some utility functions are provided in <code>HasContext</code> for working with references in IR, such as <code>irCall(FunctionRef)</code> or <code>ClassRef.resolveTypeWith</code>.</p><h2 class=""> Structured</h2><p class="paragraph">The structured name resolution can be seen in the <a href="https://github.com/rnett/compiler-plugin-utils/tree/main/src/main/kotlin/com/rnett/plugin/stdlib/Names.kt">stdlib names</a> . Objects extending <code>RootPackage</code>, <code>PackageRef</code>, and <code>ClassRef</code> can be nested, each auto-detecting the name from the object named and adding its parent's name as a prefix to its own.  <strong>This requires the compiler plugin</strong> since there is no <code>inner object</code> or object delegation. However, if both <code>name</code> and <code>parent</code> are specified the compiler plugin is unnecessary. Property, function, and constructor references can be created inside of class or package references (with constructor references in packages requiring the class name). Note that just like in IR, extension receivers are not part of an element's <code>FqName</code>, only dispatch receivers.</p><h2 class=""> Direct</h2><p class="paragraph">Methods to directly get references are also provided for classes, functions, properties, and constructors. Literal versions are also provided, that take a class, function, property, or class literal, respectively.  <strong>Using the literal versions requires the compiler plugin</strong>, since the <code>FqName</code>s of the literals will be resolved at compile time. The <code>getFqName(literal)</code> and <code>literal.fqName()</code> functions work similarly, <strong>and also require the compiler plugin</strong>. Note that all of these literal functions only work with literal arguments for the declaration being resolved (thus the name), not variables or parameters.</p><h2 class=""> Types</h2><p class="paragraph"><code>typeOf()</code>-like type resolution methods are also provided. They enable getting a <code>TypeRef</code> from a type literal with <code>typeRef&lt;T&gt;()</code>, which can be resolved to an <code>IrType</code> later with an <code>IrPluginContext</code> or <code>HasContext</code>. They can also be compared to <code>IrType</code>s without resolving using <code>eq</code>. Methods using <code>eq</code> such as <code>IrType.isType&lt;T&gt;()</code> and <code>IrType.isClassifierOf&lt;T&gt;()</code> are also provided. The <code>classifier</code> of a <code>TypeRef</code> is a <code>ClassRef</code>, which provides another method for resolving classes.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="-248926347%2FClasslikes%2F1226206554" anchor-label="BaseReference" id="-248926347%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-base-reference/index.html"><span>Base</span><wbr></wbr><span><span>Reference</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-248926347%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">sealed class <a href="-base-reference/index.html">BaseReference</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-95376296%2FClasslikes%2F1226206554" anchor-label="ClassRef" id="-95376296%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-class-ref/index.html"><span>Class</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-95376296%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>abstract </strike><strike>class </strike><a href="-class-ref/index.html"><strike>ClassRef</strike></a><strike>(</strike><strike>name</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>parent</strike><strike>: </strike><a href="-namespace/index.html">Namespace</a>?<strike>)</strike><strike> : </strike><a href="-namespace/index.html"><strike>Namespace</strike></a><strike>, </strike><a href="-reference/index.html"><strike>Reference</strike></a><strike>&lt;</strike><span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrClassSymbol///PointingToDeclaration/">IrClassSymbol</span><strike>&gt; </strike><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A class reference.  Should be the superclass of an object inside another <a href="-namespace/index.html">Namespace</a>. The parent will be auto-filled (at compile time), as will the name if not set.  The parent will be the enclosing object, which must be a <a href="-namespace/index.html">Namespace</a>. By default, the name is the object name.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="983851741%2FClasslikes%2F1226206554" anchor-label="ConstructorFilter" id="983851741%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-constructor-filter/index.html"><span>Constructor</span><wbr></wbr><span><span>Filter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="983851741%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>open </strike><strike>class </strike><a href="-constructor-filter/index.html"><strike>ConstructorFilter</strike></a><strike> : </strike><a href="-i-constructor-filter/index.html"><strike>IConstructorFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Implementation of <a href="-i-constructor-filter/index.html">IConstructorFilter</a></p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="377031258%2FClasslikes%2F1226206554" anchor-label="ConstructorRef" id="377031258%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-constructor-ref/index.html"><span>Constructor</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="377031258%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>class </strike><a href="-constructor-ref/index.html"><strike>ConstructorRef</strike></a><strike> : </strike><a href="-base-reference/index.html"><strike>BaseReference</strike></a><strike>, </strike><a href="-reference/index.html"><strike>Reference</strike></a><strike>&lt;</strike><span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrConstructorSymbol///PointingToDeclaration/">IrConstructorSymbol</span><strike>&gt; </strike><strike>, </strike><a href="-i-constructor-filter/index.html"><strike>IConstructorFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A constructor reference that gets the constructor of the parent class matching the filter.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1970140413%2FClasslikes%2F1226206554" anchor-label="FunctionFilter" id="-1970140413%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-function-filter/index.html"><span>Function</span><wbr></wbr><span><span>Filter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1970140413%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>open </strike><strike>class </strike><a href="-function-filter/index.html"><strike>FunctionFilter</strike></a><strike> : </strike><a href="-i-function-filter/index.html"><strike>IFunctionFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Implementation of <a href="-i-function-filter/index.html">IFunctionFilter</a></p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1565180916%2FClasslikes%2F1226206554" anchor-label="FunctionRef" id="1565180916%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-function-ref/index.html"><span>Function</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1565180916%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>class </strike><a href="-function-ref/index.html"><strike>FunctionRef</strike></a><strike> : </strike><a href="-base-reference/index.html"><strike>BaseReference</strike></a><strike>, </strike><a href="-reference/index.html"><strike>Reference</strike></a><strike>&lt;</strike><span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrSimpleFunctionSymbol///PointingToDeclaration/">IrSimpleFunctionSymbol</span><strike>&gt; </strike><strike>, </strike><a href="-i-function-filter/index.html"><strike>IFunctionFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A function reference that gets the function matching the name and filter.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-517225745%2FClasslikes%2F1226206554" anchor-label="FunctionRefDelegate" id="-517225745%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-function-ref-delegate/index.html"><span>Function</span><wbr></wbr><span>Ref</span><wbr></wbr><span><span>Delegate</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-517225745%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>class </strike><a href="-function-ref-delegate/index.html"><strike>FunctionRefDelegate</strike></a><strike> : </strike><a href="-function-filter/index.html"><strike>FunctionFilter</strike></a><strike>, </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-read-only-property/index.html"><strike>ReadOnlyProperty</strike></a><strike>&lt;</strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?<strike>, </strike><a href="-function-ref/index.html">FunctionRef</a><strike>&gt; </strike><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A delegate to get a <a href="-function-ref/index.html">FunctionRef</a> with the property's name</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1212971754%2FClasslikes%2F1226206554" anchor-label="IConstructorFilter" id="1212971754%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-i-constructor-filter/index.html"><span>IConstructor</span><wbr></wbr><span><span>Filter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1212971754%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>interface </strike><a href="-i-constructor-filter/index.html"><strike>IConstructorFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A filter for resolving IR constructors.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1965995542%2FClasslikes%2F1226206554" anchor-label="IFunctionFilter" id="1965995542%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-i-function-filter/index.html"><span>IFunction</span><wbr></wbr><span><span>Filter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1965995542%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>interface </strike><a href="-i-function-filter/index.html"><strike>IFunctionFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A filter for resolving IR functions</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1798157191%2FClasslikes%2F1226206554" anchor-label="IPropertyFilter" id="-1798157191%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-i-property-filter/index.html"><span>IProperty</span><wbr></wbr><span><span>Filter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1798157191%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>interface </strike><a href="-i-property-filter/index.html"><strike>IPropertyFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A filter for resolving IR properties</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="248671156%2FClasslikes%2F1226206554" anchor-label="Namespace" id="248671156%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-namespace/index.html"><span><span>Namespace</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="248671156%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>sealed </strike><strike>class </strike><a href="-namespace/index.html"><strike>Namespace</strike></a><strike> : </strike><a href="-base-reference/index.html"><strike>BaseReference</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A namespace that defiens a FqName.  Either a class or package for now.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-336613978%2FClasslikes%2F1226206554" anchor-label="PackageRef" id="-336613978%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-package-ref/index.html"><span>Package</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-336613978%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>abstract </strike><strike>class </strike><a href="-package-ref/index.html"><strike>PackageRef</strike></a><strike>(</strike><strike>name</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>parent</strike><strike>: </strike><a href="-namespace/index.html">Namespace</a>?<strike>)</strike><strike> : </strike><a href="-namespace/index.html"><strike>Namespace</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A package reference.  Should be the superclass of an object inside another <a href="-namespace/index.html">Namespace</a>. The parent will be auto-filled (at compile time), as will the name if not set.  The parent will be the enclosing object, which must be a <a href="-namespace/index.html">Namespace</a>. By default, the name is the lower case object name.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1439325850%2FClasslikes%2F1226206554" anchor-label="PropertyFilter" id="-1439325850%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-property-filter/index.html"><span>Property</span><wbr></wbr><span><span>Filter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1439325850%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>open </strike><strike>class </strike><a href="-property-filter/index.html"><strike>PropertyFilter</strike></a><strike> : </strike><a href="-i-property-filter/index.html"><strike>IPropertyFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Implementation of <a href="-i-property-filter/index.html">IPropertyFilter</a></p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-545881999%2FClasslikes%2F1226206554" anchor-label="PropertyRef" id="-545881999%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-property-ref/index.html"><span>Property</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-545881999%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>class </strike><a href="-property-ref/index.html"><strike>PropertyRef</strike></a><strike> : </strike><a href="-base-reference/index.html"><strike>BaseReference</strike></a><strike>, </strike><a href="-reference/index.html"><strike>Reference</strike></a><strike>&lt;</strike><span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrPropertySymbol///PointingToDeclaration/">IrPropertySymbol</span><strike>&gt; </strike><strike>, </strike><a href="-i-property-filter/index.html"><strike>IPropertyFilter</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A property reference that gets the property matching the name and filter.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1354386836%2FClasslikes%2F1226206554" anchor-label="PropertyRefDelegate" id="-1354386836%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-property-ref-delegate/index.html"><span>Property</span><wbr></wbr><span>Ref</span><wbr></wbr><span><span>Delegate</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1354386836%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>class </strike><a href="-property-ref-delegate/index.html"><strike>PropertyRefDelegate</strike></a><strike> : </strike><a href="-property-filter/index.html"><strike>PropertyFilter</strike></a><strike>, </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-read-only-property/index.html"><strike>ReadOnlyProperty</strike></a><strike>&lt;</strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?<strike>, </strike><a href="-property-ref/index.html">PropertyRef</a><strike>&gt; </strike><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A delegate to get a <a href="-property-ref/index.html">PropertyRef</a> with the property's name</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1260351548%2FClasslikes%2F1226206554" anchor-label="Reference" id="-1260351548%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-reference/index.html"><span><span>Reference</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1260351548%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>interface </strike><a href="-reference/index.html"><strike>Reference</strike></a><strike>&lt;</strike><a href="-reference/index.html">S</a> : <span data-unresolved-link="org.jetbrains.kotlin.ir.symbols/IrBindableSymbol///PointingToDeclaration/">IrBindableSymbol</span>&lt;*, *&gt;<strike>&gt;</strike><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A reference that is resolvable to an IR symbol via a <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span></p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="982610091%2FClasslikes%2F1226206554" anchor-label="RootPackage" id="982610091%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-root-package/index.html"><span>Root</span><wbr></wbr><span><span>Package</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="982610091%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>open </strike><strike>class </strike><a href="-root-package/index.html"><strike>RootPackage</strike></a><strike>(</strike><strike>name</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>)</strike><strike> : </strike><a href="-namespace/index.html"><strike>Namespace</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">A package with no parent.  Does not have to be a single package (i.e. <span data-unresolved-link="com.rnett.plugin.naming/RootPackage/name/#/PointingToDeclaration/">name</span> can have <code>.</code>s).</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1249613202%2FClasslikes%2F1226206554" anchor-label="StarRef" id="-1249613202%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-star-ref/index.html"><span>Star</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1249613202%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>object </strike><a href="-star-ref/index.html"><strike>StarRef</strike></a><strike> : </strike><a href="-type-projection-ref/index.html"><strike>TypeProjectionRef</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="60054341%2FClasslikes%2F1226206554" anchor-label="TypeProjectionRef" id="60054341%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-type-projection-ref/index.html"><span>Type</span><wbr></wbr><span>Projection</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="60054341%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>sealed </strike><strike>class </strike><a href="-type-projection-ref/index.html"><strike>TypeProjectionRef</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1756362922%2FClasslikes%2F1226206554" anchor-label="TypeRef" id="-1756362922%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-type-ref/index.html"><span>Type</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1756362922%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>data </strike><strike>class </strike><a href="-type-ref/index.html"><strike>TypeRef</strike></a><strike>(</strike><strike>classifier</strike><strike>: </strike><a href="-class-ref/index.html">ClassRef</a><strike>, </strike><strike>nullable</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><strike>, </strike><strike>arguments</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>&lt;<a href="-type-projection-ref/index.html">TypeProjectionRef</a>&gt;<strike>, </strike><strike>variance</strike><strike>: </strike><a href="-type-ref-variance/index.html">TypeRefVariance</a><strike>)</strike><strike> : </strike><a href="-type-projection-ref/index.html"><strike>TypeProjectionRef</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1638005531%2FClasslikes%2F1226206554" anchor-label="TypeRefVariance" id="-1638005531%2FClasslikes%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-type-ref-variance/index.html"><span>Type</span><wbr></wbr><span>Ref</span><wbr></wbr><span><span>Variance</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1638005531%2FClasslikes%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>enum </strike><a href="-type-ref-variance/index.html"><strike>TypeRefVariance</strike></a><strike> : </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html"><strike>Enum</strike></a><strike>&lt;</strike><a href="-type-ref-variance/index.html">TypeRefVariance</a><strike>&gt; </strike><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Functions</h2>
+              <div class="table" data-togglable="Functions"><a data-name="-354228717%2FFunctions%2F1226206554" anchor-label="Class" id="-354228717%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-class.html"><span><span>Class</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-354228717%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-namespace/index.html">Namespace</a><strike>.</strike><a href="-class.html"><strike>Class</strike></a><strike>(</strike><strike>)</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-property-delegate-provider/index.html">PropertyDelegateProvider</a>&lt;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a>?, <a href="-class-ref/index.html">ClassRef</a>&gt;<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Create a <a href="-class-ref/index.html">ClassRef</a> with the property's name, with the current <a href="-namespace/index.html">Namespace</a> as its parent.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-class.html"><strike>Class</strike></a><strike>(</strike><strike>ref</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;<strike>)</strike><strike>: </strike><a href="-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Create a <a href="-class-ref/index.html">ClassRef</a> from a class reference.  <a href="-class.html">ref</a> must be a literal, it can not be a variable.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-class.html"><strike>Class</strike></a><strike>(</strike><strike>fqName</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><strike>)</strike><strike>: </strike><a href="-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Create a <a href="-class-ref/index.html">ClassRef</a> from a <span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span>.  No parent is used.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-namespace/index.html">Namespace</a><strike>.</strike><a href="-class.html"><strike>Class</strike></a><strike>(</strike><strike>name</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>)</strike><strike>: </strike><a href="-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Create a <a href="-class-ref/index.html">ClassRef</a> with the given name, with the current <a href="-namespace/index.html">Namespace</a> as its parent.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="440233459%2FFunctions%2F1226206554" anchor-label="constructor" id="440233459%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="constructor.html"><span><span>constructor</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="440233459%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-class-ref/index.html">ClassRef</a><strike>.</strike><a href="constructor.html"><strike>constructor</strike></a><strike>(</strike><strike>filter</strike><strike>: </strike><a href="-i-constructor-filter/index.html">IConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a constructor from this <a href="-class-ref/index.html">ClassRef</a> that matches <a href="constructor.html">filter</a>.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="constructor.html"><strike>constructor</strike></a><strike>(</strike><strike>ref</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;<strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a constructor from the given class literal matching <a href="constructor.html">filter</a>.  Must be called with a literal.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="constructor.html"><strike>constructor</strike></a><strike>(</strike><strike>fqClassName</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a constructor from the class with <a href="constructor.html">fqClassName</a>, matching <a href="constructor.html">filter</a>.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-package-ref/index.html">PackageRef</a><strike>.</strike><a href="constructor.html"><strike>constructor</strike></a><strike>(</strike><strike>className</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a constructor for the class with <a href="constructor.html">className</a> in this <a href="-package-ref/index.html">PackageRef</a>, matching <a href="constructor.html">filter</a>.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-root-package/index.html">RootPackage</a><strike>.</strike><a href="constructor.html"><strike>constructor</strike></a><strike>(</strike><strike>className</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a constructor for the class with <a href="constructor.html">className</a> in this <a href="-root-package/index.html">RootPackage</a>, matching <a href="constructor.html">filter</a>.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1067927705%2FFunctions%2F1226206554" anchor-label="descendant" id="-1067927705%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="descendant.html"><span><span>descendant</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1067927705%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span>.<a href="descendant.html">descendant</a>(id: <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a>): <span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get the descendant of a FqName (i.e. child but <a href="descendant.html">id</a> may include <code>.</code>).  Returns <span data-unresolved-link="com.rnett.plugin.naming//&amp;lt;this&amp;gt;/#/PointingToCallableParameters(-1)/">this</span> if <a href="descendant.html">id</a> is blank.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1132143180%2FFunctions%2F1226206554" anchor-label="eq" id="-1132143180%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="eq.html"><span><span>eq</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1132143180%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>infix </strike><strike>fun </strike><span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><strike>.</strike><a href="eq.html"><strike>eq</strike></a><strike>(</strike><strike>other</strike><strike>: </strike><a href="-type-ref/index.html">TypeRef</a><strike>)</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="346398364%2FFunctions%2F1226206554" anchor-label="fqName" id="346398364%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="fq-name.html"><span>fq</span><wbr></wbr><span><span>Name</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="346398364%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-callable/index.html">KCallable</a>&lt;*&gt;<strike>.</strike><a href="fq-name.html"><strike>fqName</strike></a><strike>(</strike><strike>)</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;<strike>.</strike><a href="fq-name.html"><strike>fqName</strike></a><strike>(</strike><strike>)</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Has to be called directly on the literal (i.e. not on a reference passed as a parameter). Will be replaced during compilation.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1375425946%2FFunctions%2F1226206554" anchor-label="function" id="-1375425946%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="function.html"><span><span>function</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1375425946%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-namespace/index.html">Namespace</a><strike>.</strike><a href="function.html"><strike>function</strike></a><strike>(</strike><strike>filter</strike><strike>: </strike><a href="-function-filter/index.html">FunctionFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-function-ref-delegate/index.html">FunctionRefDelegate</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a function delegate in the current <a href="-namespace/index.html">Namespace</a> with the property's name, matching <a href="function.html">filter</a></p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="function.html"><strike>function</strike></a><strike>(</strike><strike>ref</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-function/index.html">KFunction</a>&lt;*&gt;<strike>, </strike><strike>filter</strike><strike>: </strike><a href="-function-filter/index.html">FunctionFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a function from a function literal.  Can only be called on literals, not variables.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="function.html"><strike>function</strike></a><strike>(</strike><strike>fqName</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-function-filter/index.html">FunctionFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a function with <a href="function.html">fqName</a>, matching <a href="function.html">filter</a></p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-namespace/index.html">Namespace</a><strike>.</strike><a href="function.html"><strike>function</strike></a><strike>(</strike><strike>name</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-function-filter/index.html">FunctionFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a function in the current <a href="-namespace/index.html">Namespace</a> with the given name, matching <a href="function.html">filter</a></p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-459333900%2FFunctions%2F1226206554" anchor-label="getFqName" id="-459333900%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-fq-name.html"><span>get</span><wbr></wbr><span>Fq</span><wbr></wbr><span><span>Name</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-459333900%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="get-fq-name.html"><strike>getFqName</strike></a><strike>(</strike><strike>element</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-callable/index.html">KCallable</a>&lt;*&gt;<strike>)</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="get-fq-name.html"><strike>getFqName</strike></a><strike>(</strike><strike>element</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;<strike>)</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Has to be called directly on the literal (i.e. not on a reference passed as a parameter). Will be replaced during compilation.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1937846705%2FFunctions%2F1226206554" anchor-label="invoke" id="1937846705%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="invoke.html"><span><span>invoke</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1937846705%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">inline operator fun &lt;<a href="invoke.html">T</a> : <a href="-i-constructor-filter/index.html">IConstructorFilter</a>&gt; <a href="invoke.html">T</a>.<a href="invoke.html">invoke</a>(builder: <a href="-i-constructor-filter/index.html">IConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="invoke.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">inline operator fun &lt;<a href="invoke.html">T</a> : <a href="-i-function-filter/index.html">IFunctionFilter</a>&gt; <a href="invoke.html">T</a>.<a href="invoke.html">invoke</a>(builder: <a href="-i-function-filter/index.html">IFunctionFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="invoke.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">inline operator fun &lt;<a href="invoke.html">T</a> : <a href="-i-property-filter/index.html">IPropertyFilter</a>&gt; <a href="invoke.html">T</a>.<a href="invoke.html">invoke</a>(builder: <a href="-i-property-filter/index.html">IPropertyFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a>): <a href="invoke.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1789649164%2FFunctions%2F1226206554" anchor-label="isClassifierOf" id="-1789649164%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-classifier-of.html"><span>is</span><wbr></wbr><span>Classifier</span><wbr></wbr><span><span>Of</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1789649164%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>inline </strike><strike>fun </strike><strike>&lt;</strike><a href="is-classifier-of.html">T</a><strike>&gt; </strike><span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><strike>.</strike><a href="is-classifier-of.html"><strike>isClassifierOf</strike></a><strike>(</strike><strike>)</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><strike>.</strike><a href="is-classifier-of.html"><strike>isClassifierOf</strike></a><strike>(</strike><strike>classRef</strike><strike>: </strike><a href="-class-ref/index.html">ClassRef</a><strike>)</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-225327846%2FFunctions%2F1226206554" anchor-label="isType" id="-225327846%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="is-type.html"><span>is</span><wbr></wbr><span><span>Type</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-225327846%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>inline </strike><strike>fun </strike><strike>&lt;</strike><a href="is-type.html">T</a><strike>&gt; </strike><span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><strike>.</strike><a href="is-type.html"><strike>isType</strike></a><strike>(</strike><strike>)</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1214331795%2FFunctions%2F1226206554" anchor-label="primaryConstructor" id="1214331795%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="primary-constructor.html"><span>primary</span><wbr></wbr><span><span>Constructor</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1214331795%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun <a href="-class-ref/index.html">ClassRef</a>.<a href="primary-constructor.html">primaryConstructor</a>(filter: <a href="-i-constructor-filter/index.html">IConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a> = {}): <a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get the primary constructor from this <a href="-class-ref/index.html">ClassRef</a> that matches <a href="primary-constructor.html">filter</a>.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="primary-constructor.html"><strike>primaryConstructor</strike></a><strike>(</strike><strike>ref</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a>&lt;*&gt;<strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get the primary constructor from the given class literal matching <a href="primary-constructor.html">filter</a>.  Must be called with a literal.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="primary-constructor.html"><strike>primaryConstructor</strike></a><strike>(</strike><strike>fqClassName</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get the primary constructor from the class with <a href="primary-constructor.html">fqClassName</a>, matching <a href="primary-constructor.html">filter</a>.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-package-ref/index.html">PackageRef</a><strike>.</strike><a href="primary-constructor.html"><strike>primaryConstructor</strike></a><strike>(</strike><strike>className</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get the primary constructor for the class with <a href="primary-constructor.html">className</a> in this <a href="-package-ref/index.html">PackageRef</a>, matching <a href="primary-constructor.html">filter</a>.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-root-package/index.html">RootPackage</a><strike>.</strike><a href="primary-constructor.html"><strike>primaryConstructor</strike></a><strike>(</strike><strike>className</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-constructor-filter/index.html">ConstructorFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-constructor-ref/index.html">ConstructorRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get the primary constructor for the class with <a href="primary-constructor.html">className</a> in this <a href="-root-package/index.html">RootPackage</a>, matching <a href="primary-constructor.html">filter</a>.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1451451139%2FFunctions%2F1226206554" anchor-label="property" id="-1451451139%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="property.html"><span><span>property</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1451451139%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-namespace/index.html">Namespace</a><strike>.</strike><a href="property.html"><strike>property</strike></a><strike>(</strike><strike>filter</strike><strike>: </strike><a href="-property-filter/index.html">PropertyFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-property-ref-delegate/index.html">PropertyRefDelegate</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a property delegate in the current <a href="-namespace/index.html">Namespace</a> with the property's name, matching <a href="property.html">filter</a></p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="property.html"><strike>property</strike></a><strike>(</strike><strike>ref</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-property/index.html">KProperty</a>&lt;*&gt;<strike>, </strike><strike>filter</strike><strike>: </strike><a href="-property-filter/index.html">PropertyFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-property-ref/index.html">PropertyRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a property from a property literal.  Can only be called on literals, not variables.</p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="property.html"><strike>property</strike></a><strike>(</strike><strike>fqName</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-property-filter/index.html">PropertyFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-property-ref/index.html">PropertyRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a property with <a href="property.html">fqName</a>, matching <a href="property.html">filter</a></p></div></div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike></strike><strike>fun </strike><a href="-namespace/index.html">Namespace</a><strike>.</strike><a href="property.html"><strike>property</strike></a><strike>(</strike><strike>name</strike><strike>: </strike><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>, </strike><strike>filter</strike><strike>: </strike><a href="-property-filter/index.html">PropertyFilter</a>.() -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a><strike> = {}</strike><strike>)</strike><strike>: </strike><a href="-property-ref/index.html">PropertyRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Get a property in the current <a href="-namespace/index.html">Namespace</a> with the given name, matching <a href="property.html">filter</a></p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1213435125%2FFunctions%2F1226206554" anchor-label="typeRef" id="1213435125%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="type-ref.html"><span>type</span><wbr></wbr><span><span>Ref</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1213435125%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>inline </strike><strike>fun </strike><strike>&lt;</strike><a href="type-ref.html">T</a><strike>&gt; </strike><a href="type-ref.html"><strike>typeRef</strike></a><strike>(</strike><strike>)</strike><strike>: </strike><a href="-type-ref/index.html">TypeRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-208739557%2FFunctions%2F1226206554" anchor-label="withExtensionReceiverType" id="-208739557%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-extension-receiver-type.html"><span>with</span><wbr></wbr><span>Extension</span><wbr></wbr><span>Receiver</span><wbr></wbr><span><span>Type</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-208739557%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-extension-receiver-type.html">T</a> : <a href="-i-function-filter/index.html">IFunctionFilter</a>&gt; <a href="with-extension-receiver-type.html">T</a>.<a href="with-extension-receiver-type.html">withExtensionReceiverType</a>(classRef: () -&gt; <a href="-class-ref/index.html">ClassRef</a>): <a href="with-extension-receiver-type.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Only select functions with a matching (lazily resolved) extension receiver</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="671803615%2FFunctions%2F1226206554" anchor-label="withFilter" id="671803615%2FFunctions%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a>
+                <div class="table-row" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="with-filter.html"><span>with</span><wbr></wbr><span><span>Filter</span></span></a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="671803615%2FFunctions%2F1226206554"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-filter.html">T</a> : <a href="-i-constructor-filter/index.html">IConstructorFilter</a>&gt; <a href="with-filter.html">T</a>.<a href="with-filter.html">withFilter</a>(filter: (<span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrConstructor///PointingToDeclaration/">IrConstructor</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <a href="with-filter.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="symbol monospace">fun &lt;<a href="with-filter.html">T</a> : <a href="-i-property-filter/index.html">IPropertyFilter</a>&gt; <a href="with-filter.html">T</a>.<a href="with-filter.html">withFilter</a>(filter: (<span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrProperty///PointingToDeclaration/">IrProperty</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <a href="with-filter.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+<div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">fun &lt;<a href="with-filter.html">T</a> : <a href="-i-function-filter/index.html">IFunctionFilter</a>&gt; <a href="with-filter.html">T</a>.<a href="with-filter.html">withFilter</a>(filter: (<span data-unresolved-link="org.jetbrains.kotlin.ir.declarations/IrFunction///PointingToDeclaration/">IrFunction</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a>): <a href="with-filter.html">T</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<div class="brief "><p class="paragraph">Add a lambda filter</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+
