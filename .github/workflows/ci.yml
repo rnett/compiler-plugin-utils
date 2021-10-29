@@ -22,27 +22,10 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Cache Gradle packages and Konan
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-test-gradle-${{ hashFiles('**/settings.gradle*', 'buildSrc/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-test-gradle-
-            ${{ runner.os }}-publish-gradle-
-
       - name: Build and Test
-        run: ./gradlew build -DRELEASE_SIGNING_ENABLED=false
-
-      - name: Stop gradle daemon
-        run: ./gradlew --stop
-
-      - name: Cleanup Gradle Cache
-        run: |
-          rm -f ~/.gradle/caches/*/*.lock
-          rm -f ~/.gradle/caches/*/gc.properties
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build -DRELEASE_SIGNING_ENABLED=false
 
   find-version:
     runs-on: ubuntu-latest
@@ -106,26 +89,17 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Cache Gradle packages and Konan
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-publish-gradle-${{ hashFiles('**/settings.gradle*', 'buildSrc/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-publish-gradle-
-            ${{ runner.os }}-test-gradle-
-
       - name: Publish
         if: github.ref == 'refs/heads/main'
+        uses: gradle/gradle-build-action@v2
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: rnett
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.SONATYPE_PASSWORD }}
           ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.OSSRH_GPG_SECRET_KEY }}
           ORG_GRADLE_PROJECT_sonatypeRepositoryId: ${{ needs.create_staging_repository.outputs.repository_id }}
           GRADLE_OPTS: -Xmx2048m -XX:MaxPermSize=512m
-        run: ./gradlew publish --no-daemon --no-parallel
+        with:
+          arguments: publish --no-daemon --no-parallel
 
       - name: Publish docs
         if: github.ref == 'refs/heads/main'
@@ -134,15 +108,6 @@ jobs:
           from: compiler-plugin-utils/build/dokka/html
           publish-to: $version,$latest
           version: ${{ needs.find-version.outputs.version }}
-
-      - name: Stop gradle daemon
-        run: ./gradlew --stop
-
-      - name: Cleanup Gradle Cache Posix
-        if: runner.os != 'Windows'
-        run: |
-          rm -f ~/.gradle/caches/*/*.lock
-          rm -f ~/.gradle/caches/*/gc.properties
 
   finalize:
     runs-on: ubuntu-latest
