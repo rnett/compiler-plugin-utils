@@ -1,5 +1,5 @@
 [versions]
-kotlin = "1.5.31"
+kotlin = "1.6.0-RC"
 autoservice = "1.0"
 shadow = "7.0.0"
 buildconfig = "3.0.0"

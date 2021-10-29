@@ -1,6 +1,7 @@
 package com.rnett.plugin.stdlib
 
 import com.rnett.plugin.ir.HasContext
+import com.rnett.plugin.ir.typeSystem
 import com.rnett.plugin.naming.ClassRef
 import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.ir.IrElement
@@ -40,7 +41,7 @@ public abstract class TypedMethodBuilder(
 ) : MethodBuilder(builder, context) {
 
     public constructor(supertype: IrType, builder: IrBuilderWithScope, context: IrPluginContext) : this(
-        { it.isSubtypeOf(supertype, context.irBuiltIns) },
+        { it.isSubtypeOf(supertype, context.typeSystem) },
         builder,
         context,
         { "Expression $it is not a subtype of $supertype, was ${it.type}" }
@@ -73,7 +74,7 @@ public abstract class TypedMethodBuilder(
         require(
             this.type.isSubtypeOf(
                 type,
-                context.irBuiltIns
+                context.typeSystem
             )
         ) { "Expression $this is not a subtype of $type, was ${this.type}" }
     }

@@ -1,6 +1,7 @@
 package com.rnett.plugin.stdlib
 
 import com.rnett.plugin.ir.irVararg
+import com.rnett.plugin.ir.typeSystem
 import com.rnett.plugin.ir.withExtensionReceiver
 import com.rnett.plugin.ir.withTypeArguments
 import com.rnett.plugin.ir.withValueArguments
@@ -50,7 +51,7 @@ public class CollectionsBuilders(
         startOffset: Int = UNDEFINED_OFFSET,
         endOffset: Int = UNDEFINED_OFFSET
     ): IrCall = buildStatement(startOffset, endOffset) {
-        require(items.varargElementType.isSubtypeOf(elementType, context.irBuiltIns)) {
+        require(items.varargElementType.isSubtypeOf(elementType, context.typeSystem)) {
             "Vararg type ${items.varargElementType} is not a subtype of the list type $elementType"
         }
         irCall(Kotlin.Collections.listOfVararg(), Kotlin.Collections.List.resolveTypeWith(elementType))

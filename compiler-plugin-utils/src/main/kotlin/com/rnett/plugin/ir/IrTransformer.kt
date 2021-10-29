@@ -11,6 +11,7 @@ import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
 import org.jetbrains.kotlin.ir.declarations.IrDeclaration
 import org.jetbrains.kotlin.ir.declarations.IrFile
 import org.jetbrains.kotlin.ir.declarations.IrPackageFragment
+import org.jetbrains.kotlin.ir.types.IrTypeSystemContext
 
 public abstract class IrTransformer(
     override val context: IrPluginContext,
@@ -20,6 +21,8 @@ public abstract class IrTransformer(
     HasContext, KnowsCurrentFile {
 
     override val file: IrFile get() = currentFile
+
+    public val typeSystem: IrTypeSystemContext = context.typeSystem
 
     override fun lower(irFile: IrFile) {
         visitFile(irFile)

@@ -39,7 +39,7 @@ public class IrTryBuilder(private val builder: IrBuilderWithScope) {
         contract { callsInPlace(body, InvocationKind.EXACTLY_ONCE) }
         if (!throwableType.isSubtypeOf(
                 builder.context.irBuiltIns.throwableType,
-                builder.context.irBuiltIns
+                builder.context.typeSystem
             ) && throwableType != builder.context.irBuiltIns.throwableType
         )
             error("Can only catch types that inherit from kotlin.Throwable")
