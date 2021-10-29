@@ -99,7 +99,7 @@ jobs:
           ORG_GRADLE_PROJECT_sonatypeRepositoryId: ${{ needs.create_staging_repository.outputs.repository_id }}
           GRADLE_OPTS: -Xmx2048m -XX:MaxPermSize=512m
         with:
-          arguments: publish --no-daemon --no-parallel
+          arguments: publish
 
       - name: Publish docs
         if: github.ref == 'refs/heads/main'
