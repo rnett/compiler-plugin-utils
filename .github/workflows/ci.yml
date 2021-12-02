@@ -41,6 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ find-version ]
     name: Create staging repository
+    if: github.ref == 'refs/heads/main'
     outputs:
       repository_id: ${{ steps.create.outputs.repository_id }}
     steps:
