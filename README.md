@@ -19,7 +19,7 @@ Releases are on maven central, snapshots are on `https://oss.sonatype.org/conten
 
 ### [Docs](https://rnett.github.io/compiler-plugin-utils/release/-compiler%20-plugin%20-utils)
 
-[For latest SNAPSHOT build](https://rnett.github.io/compiler-plugin-utils/snapshot/-compiler%20-plugin%20-utils/)
+[For latest SNAPSHOT build](https://rnett.github.io/compiler-plugin-utils/snapshot/)
 
 ## Features
 
