@@ -2,27 +2,31 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Collections</title>
-<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script><script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../../styles/style.css" rel="Stylesheet"><link href="../../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../../scripts/main.js" async="async"></script>  </head>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../../styles/style.css" rel="Stylesheet"><link href="../../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../../styles/main.css" rel="Stylesheet"><link href="../../../../styles/prism.css" rel="Stylesheet"><link href="../../../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../../scripts/main.js" async="async"></script><script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../../../index.html">Compiler Plugin Utils</a></div>
+      <div>1.1.0-SNAPSHOT</div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Compiler Plugin Utils::com.rnett.plugin.stdlib/Kotlin.Collections///PointingToDeclaration//1226206554">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../../../index.html">Compiler Plugin Utils</a>/<a href="../../index.html">com.rnett.plugin.stdlib</a>/<a href="../index.html">Kotlin</a>/<a href="index.html">Collections</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
+      <div id="main"><script type="text/javascript" src="../../../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="Compiler Plugin Utils::com.rnett.plugin.stdlib/Kotlin.Collections///PointingToDeclaration//1226206554">
+          <div class="breadcrumbs"><a href="../../../../index.html">Compiler Plugin Utils</a>/<a href="../../index.html">com.rnett.plugin.stdlib</a>/<a href="../index.html">Kotlin</a>/<a href="index.html">Collections</a></div>
           <div class="cover ">
             <h1 class="cover"><span><span>Collections</span></span></h1>
-            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="index.html">Collections</a> : <a href="../../../com.rnett.plugin.naming/-package-ref/index.html">PackageRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="index.html">Collections</a> : <a href="../../../com.rnett.plugin.naming/-package-ref/index.html">PackageRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Functions">Functions</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="Sources">Sources</button></div>
@@ -35,13 +39,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-list/index.html">List</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-list/index.html">List</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -52,13 +52,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-map/index.html">Map</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-map/index.html">Map</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -69,13 +65,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-mutable-list/index.html">MutableList</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-mutable-list/index.html">MutableList</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -86,13 +78,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-mutable-map/index.html">MutableMap</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-mutable-map/index.html">MutableMap</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -103,13 +91,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-mutable-set/index.html">MutableSet</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-mutable-set/index.html">MutableSet</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -120,13 +104,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-set/index.html">Set</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-set/index.html">Set</a> : <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -139,13 +119,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open override fun <a href="../../../com.rnett.plugin.naming/-base-reference/to-string.html">toString</a>(): <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../../../com.rnett.plugin.naming/-base-reference/to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -159,7 +135,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1679656082%2FProperties%2F1226206554" anchor-label="arrayToList" id="-1679656082%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="array-to-list.html">arrayToList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1679656082%2FProperties%2F1226206554" anchor-label="arrayToList" id="-1679656082%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="array-to-list.html">arrayToList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -172,7 +148,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1667847702%2FProperties%2F1226206554" anchor-label="arrayToMutableList" id="-1667847702%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="array-to-mutable-list.html">arrayToMutableList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1667847702%2FProperties%2F1226206554" anchor-label="arrayToMutableList" id="-1667847702%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="array-to-mutable-list.html">arrayToMutableList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -185,7 +161,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="995735932%2FProperties%2F1226206554" anchor-label="Collection" id="995735932%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="-collection.html">Collection</a>: <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="995735932%2FProperties%2F1226206554" anchor-label="Collection" id="995735932%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-collection.html">Collection</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -198,7 +174,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1120943442%2FProperties%2F1226206554" anchor-label="collectionToTypedArray" id="1120943442%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="collection-to-typed-array.html">collectionToTypedArray</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1120943442%2FProperties%2F1226206554" anchor-label="collectionToTypedArray" id="1120943442%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="collection-to-typed-array.html">collectionToTypedArray</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -211,7 +187,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1203942068%2FProperties%2F1226206554" anchor-label="fqName" id="1203942068%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="../../../com.rnett.plugin.naming/-base-reference/fq-name.html">fqName</a>: <span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1203942068%2FProperties%2F1226206554" anchor-label="fqName" id="1203942068%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="../../../com.rnett.plugin.naming/-base-reference/fq-name.html">fqName</a><span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.name/FqName///PointingToDeclaration/">FqName</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -224,7 +200,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-333111960%2FProperties%2F1226206554" anchor-label="Iterable" id="-333111960%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="-iterable.html">Iterable</a>: <a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-333111960%2FProperties%2F1226206554" anchor-label="Iterable" id="-333111960%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="-iterable.html">Iterable</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -237,7 +213,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1922418941%2FProperties%2F1226206554" anchor-label="iterableMinusElementToList" id="-1922418941%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="iterable-minus-element-to-list.html">iterableMinusElementToList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1922418941%2FProperties%2F1226206554" anchor-label="iterableMinusElementToList" id="-1922418941%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="iterable-minus-element-to-list.html">iterableMinusElementToList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -250,7 +226,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="704792375%2FProperties%2F1226206554" anchor-label="iterableMinusIterableToList" id="704792375%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="iterable-minus-iterable-to-list.html">iterableMinusIterableToList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="704792375%2FProperties%2F1226206554" anchor-label="iterableMinusIterableToList" id="704792375%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="iterable-minus-iterable-to-list.html">iterableMinusIterableToList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -263,7 +239,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="721394039%2FProperties%2F1226206554" anchor-label="iterablePlusElementToList" id="721394039%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="iterable-plus-element-to-list.html">iterablePlusElementToList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="721394039%2FProperties%2F1226206554" anchor-label="iterablePlusElementToList" id="721394039%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="iterable-plus-element-to-list.html">iterablePlusElementToList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -276,7 +252,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1058616131%2FProperties%2F1226206554" anchor-label="iterablePlusIterableToList" id="1058616131%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="iterable-plus-iterable-to-list.html">iterablePlusIterableToList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1058616131%2FProperties%2F1226206554" anchor-label="iterablePlusIterableToList" id="1058616131%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="iterable-plus-iterable-to-list.html">iterablePlusIterableToList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -289,7 +265,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1290208655%2FProperties%2F1226206554" anchor-label="iterableToList" id="1290208655%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="iterable-to-list.html">iterableToList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1290208655%2FProperties%2F1226206554" anchor-label="iterableToList" id="1290208655%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="iterable-to-list.html">iterableToList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -302,7 +278,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="539321137%2FProperties%2F1226206554" anchor-label="iterableToMap" id="539321137%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="iterable-to-map.html">iterableToMap</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="539321137%2FProperties%2F1226206554" anchor-label="iterableToMap" id="539321137%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="iterable-to-map.html">iterableToMap</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -315,7 +291,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1162455209%2FProperties%2F1226206554" anchor-label="iterableToMutableList" id="1162455209%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="iterable-to-mutable-list.html">iterableToMutableList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1162455209%2FProperties%2F1226206554" anchor-label="iterableToMutableList" id="1162455209%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="iterable-to-mutable-list.html">iterableToMutableList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -328,7 +304,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1060066200%2FProperties%2F1226206554" anchor-label="listOfEmpty" id="-1060066200%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="list-of-empty.html">listOfEmpty</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1060066200%2FProperties%2F1226206554" anchor-label="listOfEmpty" id="-1060066200%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="list-of-empty.html">listOfEmpty</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -341,7 +317,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-858302516%2FProperties%2F1226206554" anchor-label="listOfNotNullVararg" id="-858302516%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="list-of-not-null-vararg.html">listOfNotNullVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-858302516%2FProperties%2F1226206554" anchor-label="listOfNotNullVararg" id="-858302516%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="list-of-not-null-vararg.html">listOfNotNullVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -354,7 +330,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-575526282%2FProperties%2F1226206554" anchor-label="listOfVararg" id="-575526282%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="list-of-vararg.html">listOfVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-575526282%2FProperties%2F1226206554" anchor-label="listOfVararg" id="-575526282%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="list-of-vararg.html">listOfVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -367,7 +343,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="260929532%2FProperties%2F1226206554" anchor-label="mapGetOrDefault" id="260929532%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-get-or-default.html">mapGetOrDefault</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="260929532%2FProperties%2F1226206554" anchor-label="mapGetOrDefault" id="260929532%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-get-or-default.html">mapGetOrDefault</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -380,7 +356,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1679205700%2FProperties%2F1226206554" anchor-label="mapGetOrElse" id="1679205700%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-get-or-else.html">mapGetOrElse</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1679205700%2FProperties%2F1226206554" anchor-label="mapGetOrElse" id="1679205700%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-get-or-else.html">mapGetOrElse</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -393,7 +369,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1839866697%2FProperties%2F1226206554" anchor-label="mapGetValue" id="1839866697%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-get-value.html">mapGetValue</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1839866697%2FProperties%2F1226206554" anchor-label="mapGetValue" id="1839866697%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-get-value.html">mapGetValue</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -406,7 +382,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="284642144%2FProperties%2F1226206554" anchor-label="mapMinusIterableKeys" id="284642144%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-minus-iterable-keys.html">mapMinusIterableKeys</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="284642144%2FProperties%2F1226206554" anchor-label="mapMinusIterableKeys" id="284642144%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-minus-iterable-keys.html">mapMinusIterableKeys</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -419,7 +395,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-2054999627%2FProperties%2F1226206554" anchor-label="mapMinusKey" id="-2054999627%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-minus-key.html">mapMinusKey</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-2054999627%2FProperties%2F1226206554" anchor-label="mapMinusKey" id="-2054999627%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-minus-key.html">mapMinusKey</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -432,7 +408,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-181096704%2FProperties%2F1226206554" anchor-label="mapOfEmpty" id="-181096704%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-of-empty.html">mapOfEmpty</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-181096704%2FProperties%2F1226206554" anchor-label="mapOfEmpty" id="-181096704%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-of-empty.html">mapOfEmpty</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -445,7 +421,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="902724318%2FProperties%2F1226206554" anchor-label="mapOfVararg" id="902724318%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-of-vararg.html">mapOfVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="902724318%2FProperties%2F1226206554" anchor-label="mapOfVararg" id="902724318%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-of-vararg.html">mapOfVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -458,7 +434,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1559046266%2FProperties%2F1226206554" anchor-label="mapPlusElementPair" id="1559046266%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-plus-element-pair.html">mapPlusElementPair</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1559046266%2FProperties%2F1226206554" anchor-label="mapPlusElementPair" id="1559046266%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-plus-element-pair.html">mapPlusElementPair</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -471,7 +447,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="986204489%2FProperties%2F1226206554" anchor-label="mapPlusIterablePairs" id="986204489%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-plus-iterable-pairs.html">mapPlusIterablePairs</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="986204489%2FProperties%2F1226206554" anchor-label="mapPlusIterablePairs" id="986204489%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-plus-iterable-pairs.html">mapPlusIterablePairs</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -484,7 +460,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-723714860%2FProperties%2F1226206554" anchor-label="mapPlusMap" id="-723714860%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-plus-map.html">mapPlusMap</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-723714860%2FProperties%2F1226206554" anchor-label="mapPlusMap" id="-723714860%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-plus-map.html">mapPlusMap</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -497,7 +473,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1820493003%2FProperties%2F1226206554" anchor-label="mapToList" id="1820493003%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="map-to-list.html">mapToList</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1820493003%2FProperties%2F1226206554" anchor-label="mapToList" id="1820493003%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="map-to-list.html">mapToList</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -510,7 +486,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="664892808%2FProperties%2F1226206554" anchor-label="mutableListOfEmpty" id="664892808%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-list-of-empty.html">mutableListOfEmpty</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="664892808%2FProperties%2F1226206554" anchor-label="mutableListOfEmpty" id="664892808%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-list-of-empty.html">mutableListOfEmpty</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -523,7 +499,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1358595414%2FProperties%2F1226206554" anchor-label="mutableListOfVararg" id="1358595414%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-list-of-vararg.html">mutableListOfVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1358595414%2FProperties%2F1226206554" anchor-label="mutableListOfVararg" id="1358595414%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-list-of-vararg.html">mutableListOfVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -536,7 +512,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1075944718%2FProperties%2F1226206554" anchor-label="mutableListRemoveFirst" id="-1075944718%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-list-remove-first.html">mutableListRemoveFirst</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1075944718%2FProperties%2F1226206554" anchor-label="mutableListRemoveFirst" id="-1075944718%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-list-remove-first.html">mutableListRemoveFirst</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -549,7 +525,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-240105118%2FProperties%2F1226206554" anchor-label="mutableListRemoveLast" id="-240105118%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-list-remove-last.html">mutableListRemoveLast</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-240105118%2FProperties%2F1226206554" anchor-label="mutableListRemoveLast" id="-240105118%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-list-remove-last.html">mutableListRemoveLast</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -562,7 +538,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1391425550%2FProperties%2F1226206554" anchor-label="mutableMapGetOrPut" id="1391425550%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-map-get-or-put.html">mutableMapGetOrPut</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1391425550%2FProperties%2F1226206554" anchor-label="mutableMapGetOrPut" id="1391425550%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-map-get-or-put.html">mutableMapGetOrPut</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -575,7 +551,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="982925792%2FProperties%2F1226206554" anchor-label="mutableMapOfEmpty" id="982925792%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-map-of-empty.html">mutableMapOfEmpty</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="982925792%2FProperties%2F1226206554" anchor-label="mutableMapOfEmpty" id="982925792%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-map-of-empty.html">mutableMapOfEmpty</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -588,7 +564,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1667283970%2FProperties%2F1226206554" anchor-label="mutableMapOfVararg" id="-1667283970%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-map-of-vararg.html">mutableMapOfVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1667283970%2FProperties%2F1226206554" anchor-label="mutableMapOfVararg" id="-1667283970%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-map-of-vararg.html">mutableMapOfVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -601,7 +577,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1886863130%2FProperties%2F1226206554" anchor-label="mutableSetOfEmpty" id="-1886863130%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-set-of-empty.html">mutableSetOfEmpty</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1886863130%2FProperties%2F1226206554" anchor-label="mutableSetOfEmpty" id="-1886863130%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-set-of-empty.html">mutableSetOfEmpty</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -614,7 +590,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-436427336%2FProperties%2F1226206554" anchor-label="mutableSetOfVararg" id="-436427336%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="mutable-set-of-vararg.html">mutableSetOfVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-436427336%2FProperties%2F1226206554" anchor-label="mutableSetOfVararg" id="-436427336%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="mutable-set-of-vararg.html">mutableSetOfVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -627,7 +603,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1933983295%2FProperties%2F1226206554" anchor-label="setMinusElementToSet" id="-1933983295%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="set-minus-element-to-set.html">setMinusElementToSet</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1933983295%2FProperties%2F1226206554" anchor-label="setMinusElementToSet" id="-1933983295%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="set-minus-element-to-set.html">setMinusElementToSet</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -640,7 +616,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-35418439%2FProperties%2F1226206554" anchor-label="setMinusIterableToSet" id="-35418439%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="set-minus-iterable-to-set.html">setMinusIterableToSet</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-35418439%2FProperties%2F1226206554" anchor-label="setMinusIterableToSet" id="-35418439%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="set-minus-iterable-to-set.html">setMinusIterableToSet</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -653,7 +629,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1244081670%2FProperties%2F1226206554" anchor-label="setOfEmpty" id="1244081670%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="set-of-empty.html">setOfEmpty</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="1244081670%2FProperties%2F1226206554" anchor-label="setOfEmpty" id="1244081670%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="set-of-empty.html">setOfEmpty</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -666,7 +642,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1638311062%2FProperties%2F1226206554" anchor-label="setOfNotNullVararg" id="-1638311062%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="set-of-not-null-vararg.html">setOfNotNullVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1638311062%2FProperties%2F1226206554" anchor-label="setOfNotNullVararg" id="-1638311062%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="set-of-not-null-vararg.html">setOfNotNullVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -679,7 +655,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="2133580952%2FProperties%2F1226206554" anchor-label="setOfVararg" id="2133580952%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="set-of-vararg.html">setOfVararg</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="2133580952%2FProperties%2F1226206554" anchor-label="setOfVararg" id="2133580952%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="set-of-vararg.html">setOfVararg</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -692,7 +668,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1911678471%2FProperties%2F1226206554" anchor-label="setPlusElementToSet" id="-1911678471%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="set-plus-element-to-set.html">setPlusElementToSet</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="-1911678471%2FProperties%2F1226206554" anchor-label="setPlusElementToSet" id="-1911678471%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="set-plus-element-to-set.html">setPlusElementToSet</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -705,7 +681,7 @@
                         </span></span></div>
                     <div>
                       <div class="title">
-                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="656031105%2FProperties%2F1226206554" anchor-label="setPlusIterableToSet" id="656031105%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace">val <a href="set-plus-iterable-to-set.html">setPlusIterableToSet</a>: <a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><a data-name="656031105%2FProperties%2F1226206554" anchor-label="setPlusIterableToSet" id="656031105%2FProperties%2F1226206554" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"></a><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="set-plus-iterable-to-set.html">setPlusIterableToSet</a><span class="token operator">: </span><a href="../../../com.rnett.plugin.naming/-function-ref/index.html">FunctionRef</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
                       </div>
                     </div>
                   </div>
@@ -725,7 +701,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>

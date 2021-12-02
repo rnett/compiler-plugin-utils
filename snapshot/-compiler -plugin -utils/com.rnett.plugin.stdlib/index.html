@@ -2,27 +2,31 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>com.rnett.plugin.stdlib</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script>  </head>
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+const savedDarkMode = storage ? JSON.parse(storage) : false
+if(savedDarkMode === true){
+    document.getElementsByTagName("html")[0].classList.add("theme-dark")
+}</script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><link href="../../styles/prism.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script><script type="text/javascript" src="../../scripts/prism.js" async="async"></script>  </head>
   <body>
+    <div class="navigation-wrapper" id="navigation-wrapper">
+      <div id="leftToggler"><span class="icon-toggler"></span></div>
+      <div class="library-name"><a href="../../index.html">Compiler Plugin Utils</a></div>
+      <div>1.1.0-SNAPSHOT</div>
+      <div class="pull-right d-flex"><button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+      </div>
+    </div>
     <div id="container">
-      <div id="leftColumn"><a href="../../index.html">
-          <div id="logo"></div>
-        </a>
-        <div id="paneSearch"></div>
+      <div id="leftColumn">
         <div id="sideMenu"></div>
       </div>
-      <div id="main">
-        <div id="leftToggler"><span class="icon-toggler"></span></div>
-<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Compiler Plugin Utils::com.rnett.plugin.stdlib////PointingToDeclaration//1226206554">
-          <div class="navigation-wrapper" id="navigation-wrapper">
-            <div class="breadcrumbs"><a href="../../index.html">Compiler Plugin Utils</a>/<a href="index.html">com.rnett.plugin.stdlib</a></div>
-            <div class="pull-right d-flex">
-              <div id="searchBar"></div>
-            </div>
-          </div>
+      <div id="main"><script type="text/javascript" src="../../scripts/main.js"></script>
+        <div class="main-content" id="content" pageIds="Compiler Plugin Utils::com.rnett.plugin.stdlib////PointingToDeclaration//1226206554">
+          <div class="breadcrumbs"><a href="../../index.html">Compiler Plugin Utils</a>/<a href="index.html">com.rnett.plugin.stdlib</a></div>
           <div class="cover ">
             <h1 class="cover"><span><span>Package</span></span> <span>com.</span><wbr></wbr><span>rnett.</span><wbr></wbr><span>plugin.</span><wbr></wbr><span>stdlib</span></h1>
-            <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><p class="paragraph">The <code>com.rnett.plugin.stdlib</code> package provides builders for common standard library functions, using the Naming and IR Utilities features (and providing good examples of how to use them). Collections, <code>toString</code> and <code>hashCode</code>, <code>typeOf</code>, scope functions, numbers, and common exceptions are included. All builder methods are tested. Note that unlike for Naming, extension functions are members of their extension receiver, i.e. <code>Map.getValue</code>. In some cases, builders will resolve their functions based on the types of arguments, such as for number operators or nullable <code>toString</code> and <code>hashCode</code>. The receiver arguments are type checked (in IR) in most cases, the other arguments aren't.</p><p class="paragraph"><strong>Note that using a lot of these functions is a bad idea.</strong>  If you find yourself generating a lot of code using these methods, you should probably create a utility function and call it from IR instead. The number of builders is there to provide breadth, not depth.</p></div></div>
+            <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><p class="paragraph">The <code class="lang-kotlin">com.rnett.plugin.stdlib</code> package provides builders for common standard library functions, using the Naming and IR Utilities features (and providing good examples of how to use them). Collections, <code class="lang-kotlin">toString</code> and <code class="lang-kotlin">hashCode</code>, <code class="lang-kotlin">typeOf</code>, scope functions, numbers, and common exceptions are included. All builder methods are tested. Note that unlike for Naming, extension functions are members of their extension receiver, i.e. <code class="lang-kotlin">Map.getValue</code>. In some cases, builders will resolve their functions based on the types of arguments, such as for number operators or nullable <code class="lang-kotlin">toString</code> and <code class="lang-kotlin">hashCode</code>. The receiver arguments are type checked (in IR) in most cases, the other arguments aren't.</p><p class="paragraph"><strong>Note that using a lot of these functions is a bad idea.</strong>  If you find yourself generating a lot of code using these methods, you should probably create a utility function and call it from IR instead. The number of builders is there to provide breadth, not depth.</p></div></div>
           </div>
           <div class="tabbedcontent">
             <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
@@ -35,13 +39,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">class <a href="-any-builders/index.html">AnyBuilders</a>(builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-method-builder/index.html">MethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-any-builders/index.html">AnyBuilders</a><span class="token punctuation">(</span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-method-builder/index.html">MethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -52,13 +52,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">class <a href="-array-builders/index.html">ArrayBuilders</a>(builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-array-builders/index.html">ArrayBuilders</a><span class="token punctuation">(</span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -69,13 +65,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-collection-builders/index.html">CollectionBuilders</a>(builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>, type: <a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a>) : <a href="-iterable-builders/index.html">IterableBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-collection-builders/index.html">CollectionBuilders</a><span class="token punctuation">(</span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">, </span>type<span class="token operator">: </span><a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="token punctuation">)</span> : <a href="-iterable-builders/index.html">IterableBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -86,13 +78,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">class <a href="-collections-builders/index.html">CollectionsBuilders</a>(stdlib: <a href="-stdlib-builders/index.html">StdlibBuilders</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-method-builder/index.html">MethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-collections-builders/index.html">CollectionsBuilders</a><span class="token punctuation">(</span>stdlib<span class="token operator">: </span><a href="-stdlib-builders/index.html">StdlibBuilders</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-method-builder/index.html">MethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -103,13 +91,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-exception-builders/index.html">ExceptionBuilders</a>(klass: <a href="-exception-class/index.html">ExceptionClass</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-method-builder/index.html">MethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-exception-builders/index.html">ExceptionBuilders</a><span class="token punctuation">(</span>klass<span class="token operator">: </span><a href="-exception-class/index.html">ExceptionClass</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-method-builder/index.html">MethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -120,13 +104,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">class <a href="-exception-builders-with-cause/index.html">ExceptionBuildersWithCause</a>(klass: <a href="-exception-class-with-cause/index.html">ExceptionClassWithCause</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-exception-builders/index.html">ExceptionBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-exception-builders-with-cause/index.html">ExceptionBuildersWithCause</a><span class="token punctuation">(</span>klass<span class="token operator">: </span><a href="-exception-class-with-cause/index.html">ExceptionClassWithCause</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-exception-builders/index.html">ExceptionBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -137,13 +117,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="-exception-class/index.html">ExceptionClass</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-exception-class/index.html">ExceptionClass</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -154,13 +130,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">interface <a href="-exception-class-with-cause/index.html">ExceptionClassWithCause</a> : <a href="-exception-class/index.html">ExceptionClass</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-exception-class-with-cause/index.html">ExceptionClassWithCause</a> : <a href="-exception-class/index.html">ExceptionClass</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -171,13 +143,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-iterable-builders/index.html">IterableBuilders</a>(builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>, type: <a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a>) : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-iterable-builders/index.html">IterableBuilders</a><span class="token punctuation">(</span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">, </span>type<span class="token operator">: </span><a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="token punctuation">)</span> : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -188,13 +156,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">object <a href="-java-lang/index.html">JavaLang</a> : <a href="../com.rnett.plugin.naming/-root-package/index.html">RootPackage</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-java-lang/index.html">JavaLang</a> : <a href="../com.rnett.plugin.naming/-root-package/index.html">RootPackage</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -205,13 +169,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>object </strike><a href="-java-util/index.html"><strike>JavaUtil</strike></a><strike> : </strike><a href="../com.rnett.plugin.naming/-root-package/index.html"><strike>RootPackage</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike><span class="token keyword">object </span></strike><a href="-java-util/index.html"><strike>JavaUtil</strike></a><strike> : </strike><a href="../com.rnett.plugin.naming/-root-package/index.html"><strike>RootPackage</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -222,13 +182,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>object </strike><a href="-kotlin/index.html"><strike>Kotlin</strike></a><strike> : </strike><a href="../com.rnett.plugin.naming/-root-package/index.html"><strike>RootPackage</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">A collection of References from Kotlin's standard library.  Accessible in IR from <a href="../com.rnett.plugin.ir/-has-context/stdlib.html">com.rnett.plugin.ir.HasContext.stdlib</a></p></div></div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike><span class="token keyword">object </span></strike><a href="-kotlin/index.html"><strike>Kotlin</strike></a><strike> : </strike><a href="../com.rnett.plugin.naming/-root-package/index.html"><strike>RootPackage</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">A collection of References from Kotlin's standard library.  Accessible in IR from <a href="../com.rnett.plugin.ir/-has-context/stdlib.html">com.rnett.plugin.ir.HasContext.stdlib</a></p></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -239,13 +195,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-list-builders/index.html">ListBuilders</a>(collections: <a href="-collections-builders/index.html">CollectionsBuilders</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>, type: <a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a>) : <a href="-collection-builders/index.html">CollectionBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-list-builders/index.html">ListBuilders</a><span class="token punctuation">(</span>collections<span class="token operator">: </span><a href="-collections-builders/index.html">CollectionsBuilders</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">, </span>type<span class="token operator">: </span><a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="token punctuation">)</span> : <a href="-collection-builders/index.html">CollectionBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -256,13 +208,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-map-builders/index.html">MapBuilders</a>(collections: <a href="-collections-builders/index.html">CollectionsBuilders</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>, type: <a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a>) : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-map-builders/index.html">MapBuilders</a><span class="token punctuation">(</span>collections<span class="token operator">: </span><a href="-collections-builders/index.html">CollectionsBuilders</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">, </span>type<span class="token operator">: </span><a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="token punctuation">)</span> : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -273,13 +221,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">class <a href="-mathable-builders/index.html">MathableBuilders</a>(mathable: <a href="-kotlin/-mathable/index.html">Kotlin.Mathable</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-number-builders/index.html">NumberBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-mathable-builders/index.html">MathableBuilders</a><span class="token punctuation">(</span>mathable<span class="token operator">: </span><a href="-kotlin/-mathable/index.html">Kotlin.Mathable</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-number-builders/index.html">NumberBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -290,13 +234,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>abstract </strike><strike>class </strike><a href="-method-builder/index.html"><strike>MethodBuilder</strike></a><strike>(</strike><strike>builder</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><strike>, </strike><strike>context</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><strike>)</strike><strike> : </strike><a href="../com.rnett.plugin.ir/-has-context/index.html"><strike>HasContext</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike><span class="token keyword">abstract </span></strike><strike><span class="token keyword">class </span></strike><a href="-method-builder/index.html"><strike>MethodBuilder</strike></a><strike><span class="token punctuation">(</span></strike><strike>builder</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><strike><span class="token punctuation">, </span></strike><strike>context</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><strike><span class="token punctuation">)</span></strike><strike> : </strike><a href="../com.rnett.plugin.ir/-has-context/index.html"><strike>HasContext</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -307,13 +247,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-mutable-list-builders/index.html">MutableListBuilders</a>(collections: <a href="-collections-builders/index.html">CollectionsBuilders</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-list-builders/index.html">ListBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-mutable-list-builders/index.html">MutableListBuilders</a><span class="token punctuation">(</span>collections<span class="token operator">: </span><a href="-collections-builders/index.html">CollectionsBuilders</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-list-builders/index.html">ListBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -324,13 +260,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-mutable-map-builders/index.html">MutableMapBuilders</a>(collections: <a href="-collections-builders/index.html">CollectionsBuilders</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-map-builders/index.html">MapBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-mutable-map-builders/index.html">MutableMapBuilders</a><span class="token punctuation">(</span>collections<span class="token operator">: </span><a href="-collections-builders/index.html">CollectionsBuilders</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-map-builders/index.html">MapBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -341,13 +273,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-mutable-set-builders/index.html">MutableSetBuilders</a>(collections: <a href="-collections-builders/index.html">CollectionsBuilders</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>) : <a href="-set-builders/index.html">SetBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-mutable-set-builders/index.html">MutableSetBuilders</a><span class="token punctuation">(</span>collections<span class="token operator">: </span><a href="-collections-builders/index.html">CollectionsBuilders</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">)</span> : <a href="-set-builders/index.html">SetBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -358,13 +286,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-number-builders/index.html">NumberBuilders</a>(builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>, type: <a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a>) : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-number-builders/index.html">NumberBuilders</a><span class="token punctuation">(</span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">, </span>type<span class="token operator">: </span><a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="token punctuation">)</span> : <a href="-typed-method-builder/index.html">TypedMethodBuilder</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -375,13 +299,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace">open class <a href="-set-builders/index.html">SetBuilders</a>(collections: <a href="-collections-builders/index.html">CollectionsBuilders</a>, builder: <span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span>, context: <span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span>, type: <a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a>) : <a href="-collection-builders/index.html">CollectionBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-set-builders/index.html">SetBuilders</a><span class="token punctuation">(</span>collections<span class="token operator">: </span><a href="-collections-builders/index.html">CollectionsBuilders</a><span class="token punctuation">, </span>builder<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><span class="token punctuation">, </span>context<span class="token operator">: </span><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><span class="token punctuation">, </span>type<span class="token operator">: </span><a href="../com.rnett.plugin.naming/-class-ref/index.html">ClassRef</a><span class="token punctuation">)</span> : <a href="-collection-builders/index.html">CollectionBuilders</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -392,13 +312,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike></strike><strike>class </strike><a href="-stdlib-builders/index.html"><strike>StdlibBuilders</strike></a><strike>(</strike><strike>builder</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><strike>, </strike><strike>context</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><strike>)</strike><strike> : </strike><a href="-method-builder/index.html"><strike>MethodBuilder</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-<div class="brief "><p class="paragraph">The standard library builders, accessible from from <a href="../com.rnett.plugin.ir/-has-context/stdlib.html">com.rnett.plugin.ir.HasContext.stdlib</a></p></div></div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike><span class="token keyword">class </span></strike><a href="-stdlib-builders/index.html"><strike>StdlibBuilders</strike></a><strike><span class="token punctuation">(</span></strike><strike>builder</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><strike><span class="token punctuation">, </span></strike><strike>context</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><strike><span class="token punctuation">)</span></strike><strike> : </strike><a href="-method-builder/index.html"><strike>MethodBuilder</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><p class="paragraph">The standard library builders, accessible from from <a href="../com.rnett.plugin.ir/-has-context/stdlib.html">com.rnett.plugin.ir.HasContext.stdlib</a></p></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -409,13 +325,9 @@
                           <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                         </span></span></div>
                     <div>
-                      <div class="title"><div class="divergent-group" data-filterable-current=":compiler-plugin-utils:dokkaHtml/main" data-filterable-set=":compiler-plugin-utils:dokkaHtml/main"><div class="with-platform-tags"><span class="pull-right"></span></div>
-
-  <div>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike></strike><strike>abstract </strike><strike>class </strike><a href="-typed-method-builder/index.html"><strike>TypedMethodBuilder</strike></a><strike>(</strike><strike>typeCheck</strike><strike>: </strike>(<span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><strike>, </strike><strike>builder</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><strike>, </strike><strike>context</strike><strike>: </strike><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><strike>, </strike><strike>message</strike><strike>: </strike>(<span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span>) -&gt; <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike>)</strike><strike> : </strike><a href="-method-builder/index.html"><strike>MethodBuilder</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
-  </div>
-</div>
-</div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":compiler-plugin-utils:dokkaHtml/main"><div class="symbol monospace strikethrough"><strike><span class="token keyword">abstract </span></strike><strike><span class="token keyword">class </span></strike><a href="-typed-method-builder/index.html"><strike>TypedMethodBuilder</strike></a><strike><span class="token punctuation">(</span></strike><strike>typeCheck</strike><strike><span class="token operator">: </span></strike><span class="token punctuation">(</span><span class="token keyword"></span><span data-unresolved-link="org.jetbrains.kotlin.ir.types/IrType///PointingToDeclaration/">IrType</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><strike><span class="token punctuation">, </span></strike><strike>builder</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="org.jetbrains.kotlin.ir.builders/IrBuilderWithScope///PointingToDeclaration/">IrBuilderWithScope</span><strike><span class="token punctuation">, </span></strike><strike>context</strike><strike><span class="token operator">: </span></strike><span data-unresolved-link="org.jetbrains.kotlin.backend.common.extensions/IrPluginContext///PointingToDeclaration/">IrPluginContext</span><strike><span class="token punctuation">, </span></strike><strike>message</strike><strike><span class="token operator">: </span></strike><span class="token punctuation">(</span><span class="token keyword"></span><span data-unresolved-link="org.jetbrains.kotlin.ir.expressions/IrExpression///PointingToDeclaration/">IrExpression</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><strike><span class="token punctuation">)</span></strike><strike> : </strike><a href="-method-builder/index.html"><strike>MethodBuilder</strike></a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -423,7 +335,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2021 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
       </div>
     </div>
   </body>
