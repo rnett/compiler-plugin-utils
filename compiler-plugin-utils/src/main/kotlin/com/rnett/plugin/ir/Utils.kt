@@ -1,5 +1,6 @@
 package com.rnett.plugin.ir
 
+import org.jetbrains.kotlin.backend.common.extensions.IrPluginContext
 import org.jetbrains.kotlin.backend.common.lower.DeclarationIrBuilder
 import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
@@ -12,7 +13,9 @@ import org.jetbrains.kotlin.ir.builders.IrGeneratorContext
 import org.jetbrains.kotlin.ir.builders.IrGeneratorContextInterface
 import org.jetbrains.kotlin.ir.builders.IrGeneratorWithScope
 import org.jetbrains.kotlin.ir.builders.IrSingleStatementBuilder
+import org.jetbrains.kotlin.ir.builders.irBlockBody
 import org.jetbrains.kotlin.ir.builders.irExprBody
+import org.jetbrains.kotlin.ir.builders.irReturn
 import org.jetbrains.kotlin.ir.declarations.IrAnonymousInitializer
 import org.jetbrains.kotlin.ir.declarations.IrClass
 import org.jetbrains.kotlin.ir.declarations.IrDeclarationOrigin
@@ -29,6 +32,7 @@ import org.jetbrains.kotlin.ir.types.IrType
 import org.jetbrains.kotlin.ir.types.IrTypeSystemContext
 import org.jetbrains.kotlin.ir.types.IrTypeSystemContextImpl
 import org.jetbrains.kotlin.ir.types.typeWith
+import org.jetbrains.kotlin.platform.js.isJs
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
 
@@ -82,11 +86,19 @@ public inline fun IrClass.addAnonymousInitializer(builder: IrAnonymousInitialize
 }
 
 /**
- * JS backend doesn't support IrExprBody yet.
+ * IrExprBody on JS causes issues: (https://youtrack.jetbrains.com/issue/KT-49561).
+ *
+ * TODO deprecate and remove once https://youtrack.jetbrains.com/issue/KT-49561 is fixed.
  */
-@Deprecated("Not needed any more", ReplaceWith("irExprBody", "org.jetbrains.kotlin.ir.builders.irExprBody"))
+//@Deprecated("Not needed any more", ReplaceWith("irExprBody", "org.jetbrains.kotlin.ir.builders.irExprBody"))
 public fun IrBuilderWithScope.irJsExprBody(expression: IrExpression, useExprOnJvm: Boolean = false): IrBody =
-    irExprBody(expression)
+    if (context is IrPluginContext && !(context as IrPluginContext).platform.isJs() && useExprOnJvm) {
+        irExprBody(expression)
+    } else {
+        irBlockBody {
+            +irReturn(expression)
+        }
+    }
 
 /**
  * Get the arguments of an IrCall by their parameter names
