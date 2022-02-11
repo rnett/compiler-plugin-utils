@@ -1,11 +1,11 @@
 [versions]
-kotlin = "1.6.0"
+kotlin = "1.6.20-M1"
 autoservice = "1.0"
 shadow = "7.0.0"
 buildconfig = "3.0.0"
 publish = "0.18.0"
-dokka = "1.6.0"
-compile-testing = "1.4.6"
+dokka = "1.6.10"
+compile-testing = "1.4.7"
 
 [libraries]
 autoservice-annotations = { module = "com.google.auto.service:auto-service-annotations", version.ref = "autoservice" }
